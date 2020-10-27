@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       let loginVC = storyboard.instantiateViewController(identifier: "LoginViewController") { (coder) -> LoginViewController? in
         let loginValidator = LoginValidator()
         let loginViewModel = LoginViewModel(loginValidator: loginValidator)
-        return LoginViewController(loginViewModel: loginViewModel)
+        return LoginViewController(coder: coder, loginViewModel: loginViewModel)
       }
       window?.rootViewController = loginVC
       window?.makeKeyAndVisible()
