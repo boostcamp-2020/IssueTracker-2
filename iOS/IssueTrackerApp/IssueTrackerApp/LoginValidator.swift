@@ -9,7 +9,7 @@ import Foundation
 
 protocol LoginValidatable {
     func isValid(id: String) -> Bool
-    func isValid(password: String) -> Bool
+    func isValid(pw: String) -> Bool
 }
 
 class LoginValidator: LoginValidatable {
@@ -18,7 +18,7 @@ class LoginValidator: LoginValidatable {
         return 6...16 ~= id.count
     }
     
-    func isValid(password: String) -> Bool {
-        return 6...12 ~= password.count
+    func isValid(pw: String) -> Bool {
+        return 6...12 ~= pw.count
     }
 }

@@ -17,8 +17,13 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loginViewModel = LoginViewModel(loginValidator: LoginValidator())
-        idTextField.addTarget(self, action: #selector(editIdTextField), for: .editingChanged)
+        addingTarget()
         binding()
+    }
+    
+    private func addingTarget() {
+        idTextField.addTarget(self, action: #selector(editIdTextField), for: .editingChanged)
+        pwTextField.addTarget(self, action: #selector(editPwTextField), for: .editingChanged)
     }
     
     private func binding() {
@@ -29,17 +34,27 @@ class LoginViewController: UIViewController {
     private func bindIdTextField() {
         loginViewModel?.bindId { [weak self] isValid in
             DispatchQueue.main.async {
-                self?.idTextField.layer.borderColor = isValid ? UIColor.green.cgColor : UIColor.red.cgColor
+                self?.idTextField.layer.borderColor = isValid ? UIColor.systemGreen.cgColor : UIColor.systemRed.cgColor
             }
         }
     }
     
     private func bindPwTextField() {
+        loginViewModel?.bindPw { [weak self] isValid in
+            DispatchQueue.main.async {
+                self?.pwTextField.layer.borderColor = isValid ? UIColor.systemGreen.cgColor : UIColor.systemRed.cgColor
+            }
+        }
     }
     
     @objc private func editIdTextField() {
         guard let id = idTextField.text else { return }
         loginViewModel?.isValid(id: id)
+    }
+    
+    @objc private func editPwTextField() {
+        guard let pw = pwTextField.text else { return }
+        loginViewModel?.isValid(pw: pw)
     }
 }
 
