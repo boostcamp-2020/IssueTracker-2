@@ -51,14 +51,14 @@ class IssueViewController: UIViewController {
       guard kind == UICollectionView.elementKindSectionHeader else {
         return nil
       }
-      // 3
+      
       let view = collectionView.dequeueReusableSupplementaryView(
         ofKind: kind,
         withReuseIdentifier: "IssueHeader",
         for: indexPath) as? IssueHeader
-      // 4
-      let section = self.dataSource.snapshot()
-        .sectionIdentifiers[indexPath.section]
+      
+//      let section = self.dataSource.snapshot()
+//        .sectionIdentifiers[indexPath.section]
       
       return view
     }
