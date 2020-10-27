@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -16,58 +16,103 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="이슈 트래커" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yz0-aU-XlI">
-                                <rect key="frame" x="136.5" y="150" width="141" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이슈 트래커" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yz0-aU-XlI">
+                                <rect key="frame" x="136.66666666666666" y="114" width="140.99999999999997" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="emp-lk-rr7"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" id="pjo-nx-DFC"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e5R-dn-m6w">
-                                <rect key="frame" x="104" y="260" width="250" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e5R-dn-m6w">
+                                <rect key="frame" x="103" y="211" width="276" height="34"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g7t-HU-DJg">
-                                <rect key="frame" x="104" y="329" width="250" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g7t-HU-DJg">
+                                <rect key="frame" x="103" y="263" width="276" height="34"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4x-19-7Mo">
-                                <rect key="frame" x="108" y="384" width="39" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4x-19-7Mo">
+                                <rect key="frame" x="83" y="315" width="39" height="30"/>
                                 <state key="normal" title="로그인"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z5I-Xx-XMA">
-                                <rect key="frame" x="276" y="384" width="52" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="회원가입"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c4e-pr-nPU" customClass="SignInButton" customModule="IssueTrackerApp" customModuleProvider="target">
-                                <rect key="frame" x="66" y="531" width="288" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Sign in with GitHub">
-                                    <color key="titleColor" systemColor="labelColor"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dO4-vd-tQ9" customClass="SignInButton" customModule="IssueTrackerApp" customModuleProvider="target">
-                                <rect key="frame" x="66" y="606" width="288" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dO4-vd-tQ9" customClass="SignInButton" customModule="IssueTrackerApp" customModuleProvider="target">
+                                <rect key="frame" x="38" y="471" width="338" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="hVr-Yy-YO4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title=" Sign in with Apple">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아이디" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7sT-MS-Fag">
+                                <rect key="frame" x="35" y="217.66666666666666" width="60" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="1Fl-WS-Mjk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u1E-y3-fbS">
+                                <rect key="frame" x="35" y="269.66666666666669" width="60" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="A5j-Kb-TKk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z5I-Xx-XMA">
+                                <rect key="frame" x="279" y="315" width="52" height="30"/>
+                                <state key="normal" title="회원가입"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c4e-pr-nPU" customClass="SignInButton" customModule="IssueTrackerApp" customModuleProvider="target">
+                                <rect key="frame" x="38" y="409" width="338" height="44"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="UqO-gB-wMs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="Sign in with GitHub">
+                                    <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="e5R-dn-m6w" firstAttribute="leading" secondItem="7sT-MS-Fag" secondAttribute="trailing" constant="8" symbolic="YES" id="3ql-59-YvT"/>
+                            <constraint firstItem="c4e-pr-nPU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="38" id="5Gc-jV-qKx"/>
+                            <constraint firstItem="e5R-dn-m6w" firstAttribute="top" secondItem="Yz0-aU-XlI" secondAttribute="bottom" constant="55" id="9aJ-XM-V7H"/>
+                            <constraint firstItem="7sT-MS-Fag" firstAttribute="centerY" secondItem="e5R-dn-m6w" secondAttribute="centerY" id="AZ2-NH-T3H"/>
+                            <constraint firstItem="dO4-vd-tQ9" firstAttribute="top" secondItem="c4e-pr-nPU" secondAttribute="bottom" constant="18" id="BDA-sJ-Xb2"/>
+                            <constraint firstItem="dO4-vd-tQ9" firstAttribute="trailing" secondItem="c4e-pr-nPU" secondAttribute="trailing" id="GfK-x1-ZGr"/>
+                            <constraint firstItem="Yz0-aU-XlI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LOD-wM-LFb"/>
+                            <constraint firstItem="Z5I-Xx-XMA" firstAttribute="top" secondItem="F4x-19-7Mo" secondAttribute="top" id="Ngx-Hd-cE8"/>
+                            <constraint firstItem="g7t-HU-DJg" firstAttribute="leading" secondItem="u1E-y3-fbS" secondAttribute="trailing" constant="8" symbolic="YES" id="Nle-gM-9zx"/>
+                            <constraint firstItem="u1E-y3-fbS" firstAttribute="centerY" secondItem="g7t-HU-DJg" secondAttribute="centerY" id="QGj-44-5lt"/>
+                            <constraint firstItem="u1E-y3-fbS" firstAttribute="leading" secondItem="7sT-MS-Fag" secondAttribute="leading" id="VTb-8a-8wG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="c4e-pr-nPU" secondAttribute="trailing" constant="38" id="WIh-9g-MW9"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Z5I-Xx-XMA" secondAttribute="trailing" constant="83" id="WjI-eT-5ec"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="e5R-dn-m6w" secondAttribute="trailing" constant="35" id="eA1-Jz-ICo"/>
+                            <constraint firstItem="dO4-vd-tQ9" firstAttribute="leading" secondItem="c4e-pr-nPU" secondAttribute="leading" id="eXF-el-kei"/>
+                            <constraint firstItem="F4x-19-7Mo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="83" id="hOE-1A-PQf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="g7t-HU-DJg" secondAttribute="trailing" constant="35" id="l12-io-VP1"/>
+                            <constraint firstItem="F4x-19-7Mo" firstAttribute="top" secondItem="g7t-HU-DJg" secondAttribute="bottom" constant="18" id="lDT-cg-Ygm"/>
+                            <constraint firstItem="c4e-pr-nPU" firstAttribute="top" secondItem="F4x-19-7Mo" secondAttribute="bottom" constant="64" id="mON-Z7-YhM"/>
+                            <constraint firstItem="7sT-MS-Fag" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="35" id="veV-EE-eMA"/>
+                            <constraint firstItem="Yz0-aU-XlI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="70" id="yTf-v5-z2v"/>
+                            <constraint firstItem="g7t-HU-DJg" firstAttribute="top" secondItem="e5R-dn-m6w" secondAttribute="bottom" constant="18" id="zXU-8w-0nH"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
