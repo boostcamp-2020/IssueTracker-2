@@ -23,12 +23,18 @@ class IssueViewController: UIViewController {
     super.viewDidLoad()
     configureNavigationBar()
     applySnapshot(animatingDifferences: false)
-    issueCollectionView.delegate = self
+    configureIssueCollectionView()
     
   }
   
   private func configureNavigationBar() {
     navigationController?.navigationBar.prefersLargeTitles = true
+  }
+  
+  private func configureIssueCollectionView() {
+    issueCollectionView.delegate = self
+    guard let layout = issueCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
+    layout.sectionHeadersPinToVisibleBounds = true
   }
   
   private func makeDataSource() -> DataSource {
@@ -40,14 +46,30 @@ class IssueViewController: UIViewController {
       
       return cell
     }
+    
+    dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
+      guard kind == UICollectionView.elementKindSectionHeader else {
+        return nil
+      }
+      // 3
+      let view = collectionView.dequeueReusableSupplementaryView(
+        ofKind: kind,
+        withReuseIdentifier: "IssueHeader",
+        for: indexPath) as? IssueHeader
+      // 4
+      let section = self.dataSource.snapshot()
+        .sectionIdentifiers[indexPath.section]
+      
+      return view
+    }
+    
     return dataSource
   }
   
   private func applySnapshot(animatingDifferences: Bool = true) {
     var snapshot = Snapshot()
     snapshot.appendSections([.main])
-    let issues = [Issue(title: "레이블 목록보기 구현", description: "레이블 전체 목록을 볼 수 있어야 한다 2줄까지 보입니다."),
-                  Issue(title: "마일스톤 목록 보기 구현", description: "마일스톤 목록 보기 구현")]
+    let issues = IssueList.dummyIssues
     let issueList = IssueList(issues: issues)
     snapshot.appendItems(issueList.issues)
     dataSource.apply(snapshot, animatingDifferences: animatingDifferences)

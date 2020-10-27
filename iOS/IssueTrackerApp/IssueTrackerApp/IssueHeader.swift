@@ -9,4 +9,5 @@ import UIKit
 
 class IssueHeader: UICollectionReusableView {
         
+  @IBOutlet weak var issueSearchBar: UISearchBar!
 }

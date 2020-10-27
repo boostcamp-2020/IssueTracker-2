@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Issue-->
+        <!--이슈-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="IssueViewController" customModule="IssueTrackerApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -22,13 +22,13 @@
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="T0t-db-3lT">
                                     <size key="itemSize" width="414" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="IssueCell" id="tbz-3s-Pjj" customClass="IssueCell" customModule="IssueTrackerApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
+                                        <rect key="frame" x="0.0" y="50" width="414" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="0dw-YK-L3Q">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
@@ -68,6 +68,25 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="IssueHeader" id="9p8-rL-hOW" customClass="IssueHeader" customModule="IssueTrackerApp" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="raA-oM-XHe">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </searchBar>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="raA-oM-XHe" secondAttribute="bottom" id="2Ax-cn-E5s"/>
+                                        <constraint firstAttribute="trailing" secondItem="raA-oM-XHe" secondAttribute="trailing" id="6rr-rh-NiG"/>
+                                        <constraint firstItem="raA-oM-XHe" firstAttribute="leading" secondItem="9p8-rL-hOW" secondAttribute="leading" id="nEt-uf-lvY"/>
+                                        <constraint firstItem="raA-oM-XHe" firstAttribute="top" secondItem="9p8-rL-hOW" secondAttribute="top" id="pTE-Nc-SS3"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="issueSearchBar" destination="raA-oM-XHe" id="aJc-4e-w3U"/>
+                                    </connections>
+                                </collectionReusableView>
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -79,7 +98,7 @@
                             <constraint firstItem="4RJ-kg-sVd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="pBQ-Qr-qCL"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Issue" id="XDY-iq-qNb">
+                    <navigationItem key="navigationItem" title="이슈" id="XDY-iq-qNb">
                         <barButtonItem key="leftBarButtonItem" title="Filter" id="Kz6-V9-unb"/>
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="eq2-vE-1s1"/>
                     </navigationItem>
