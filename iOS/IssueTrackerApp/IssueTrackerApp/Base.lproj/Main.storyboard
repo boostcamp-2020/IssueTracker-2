@@ -44,18 +44,39 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udy-AG-Ecs">
-                                                    <rect key="frame" x="16" y="35.5" width="33" height="16"/>
+                                                    <rect key="frame" x="16" y="35.5" width="382" height="16"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="215" id="SrL-0C-kcK"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" id="SrL-0C-kcK"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pLI-hL-L8e">
+                                                    <rect key="frame" x="365" y="12" width="33" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" id="qte-vi-LFc"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                            <real key="value" value="0.5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="pLI-hL-L8e" secondAttribute="trailing" constant="16" id="7rY-uJ-qOr"/>
                                                 <constraint firstItem="mPz-RY-chs" firstAttribute="top" secondItem="0dw-YK-L3Q" secondAttribute="top" constant="10" id="8QX-cJ-Vgu"/>
                                                 <constraint firstItem="udy-AG-Ecs" firstAttribute="leading" secondItem="mPz-RY-chs" secondAttribute="leading" id="IhJ-Np-IMO"/>
+                                                <constraint firstItem="pLI-hL-L8e" firstAttribute="leading" relation="lessThanOrEqual" secondItem="mPz-RY-chs" secondAttribute="trailing" constant="307.5" id="RlN-Hc-nmp"/>
+                                                <constraint firstItem="pLI-hL-L8e" firstAttribute="centerY" secondItem="mPz-RY-chs" secondAttribute="centerY" id="W6g-h0-9hp"/>
+                                                <constraint firstAttribute="trailing" secondItem="udy-AG-Ecs" secondAttribute="trailing" constant="16" id="d9N-6s-wcH"/>
                                                 <constraint firstItem="mPz-RY-chs" firstAttribute="leading" secondItem="0dw-YK-L3Q" secondAttribute="leading" constant="16" id="gsQ-gH-N3g"/>
                                                 <constraint firstItem="udy-AG-Ecs" firstAttribute="top" secondItem="mPz-RY-chs" secondAttribute="bottom" constant="6" id="hRB-5D-aOa"/>
                                             </constraints>
