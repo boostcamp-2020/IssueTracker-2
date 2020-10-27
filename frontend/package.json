@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "babel-plugin-styled-components": "^1.11.1",
     "@babel/core": "^7.12.3",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
@@ -21,6 +22,7 @@
     "css-loader": "^5.0.0",
     "html-webpack-plugin": "^4.5.0",
     "style-loader": "^2.0.0",
+    "styled-components": "^5.2.0",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
