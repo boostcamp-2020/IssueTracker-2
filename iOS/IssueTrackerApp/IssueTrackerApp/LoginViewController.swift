@@ -9,10 +9,18 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    var loginViewModel: LoginViewModelBinding?
+    var loginViewModel: LoginViewModelBinding
     
     @IBOutlet weak var idTextField: UITextField!
     @IBOutlet weak var pwTextField: UITextField!
+    
+    init(loginViewModel: LoginViewModelBinding) {
+        self.loginViewModel = loginViewModel
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +40,7 @@ class LoginViewController: UIViewController {
     }
     
     private func bindIdTextField() {
-        loginViewModel?.bindId { [weak self] isValid in
+        loginViewModel.bindId { [weak self] isValid in
             DispatchQueue.main.async {
                 self?.idTextField.layer.borderColor = isValid ? UIColor.systemGreen.cgColor : UIColor.systemRed.cgColor
             }
@@ -40,7 +48,7 @@ class LoginViewController: UIViewController {
     }
     
     private func bindPwTextField() {
-        loginViewModel?.bindPw { [weak self] isValid in
+        loginViewModel.bindPw { [weak self] isValid in
             DispatchQueue.main.async {
                 self?.pwTextField.layer.borderColor = isValid ? UIColor.systemGreen.cgColor : UIColor.systemRed.cgColor
             }
@@ -49,12 +57,12 @@ class LoginViewController: UIViewController {
     
     @objc private func editIdTextField() {
         guard let id = idTextField.text else { return }
-        loginViewModel?.isValid(id: id)
+        loginViewModel.isValid(id: id)
     }
     
     @objc private func editPwTextField() {
         guard let pw = pwTextField.text else { return }
-        loginViewModel?.isValid(pw: pw)
+        loginViewModel.isValid(pw: pw)
     }
 }
 
