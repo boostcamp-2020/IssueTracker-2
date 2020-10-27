@@ -8,5 +8,4 @@ const Title = styled.h1`
 function App() {
   return <Title>Hello World!!!!!!!@@</Title>;
 }
-
 export default App;
