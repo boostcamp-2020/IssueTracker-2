@@ -7,23 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C4F34802547DAEE00E41121 /* LoginValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4F347F2547DAEE00E41121 /* LoginValidator.swift */; };
+		5C4F34842547E3BF00E41121 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4F34832547E3BF00E41121 /* LoginViewModel.swift */; };
 		BDD18CEE2546E5E900974FB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD18CED2546E5E900974FB4 /* AppDelegate.swift */; };
 		BDD18CF02546E5E900974FB4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD18CEF2546E5E900974FB4 /* SceneDelegate.swift */; };
-		BDD18CF22546E5E900974FB4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD18CF12546E5E900974FB4 /* ViewController.swift */; };
+		BDD18CF22546E5E900974FB4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD18CF12546E5E900974FB4 /* LoginViewController.swift */; };
 		BDD18CF52546E5E900974FB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDD18CF32546E5E900974FB4 /* Main.storyboard */; };
 		BDD18CF72546E5EC00974FB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDD18CF62546E5EC00974FB4 /* Assets.xcassets */; };
 		BDD18CFA2546E5EC00974FB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDD18CF82546E5EC00974FB4 /* LaunchScreen.storyboard */; };
+		BDD18D032547B4D000974FB4 /* SignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD18D022547B4D000974FB4 /* SignInButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C4F347F2547DAEE00E41121 /* LoginValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginValidator.swift; sourceTree = "<group>"; };
+		5C4F34832547E3BF00E41121 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		BDD18CEA2546E5E900974FB4 /* IssueTrackerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IssueTrackerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDD18CED2546E5E900974FB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BDD18CEF2546E5E900974FB4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BDD18CF12546E5E900974FB4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BDD18CF12546E5E900974FB4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BDD18CF42546E5E900974FB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BDD18CF62546E5EC00974FB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BDD18CF92546E5EC00974FB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BDD18CFB2546E5EC00974FB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BDD18D022547B4D000974FB4 /* SignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,11 +64,14 @@
 			children = (
 				BDD18CED2546E5E900974FB4 /* AppDelegate.swift */,
 				BDD18CEF2546E5E900974FB4 /* SceneDelegate.swift */,
-				BDD18CF12546E5E900974FB4 /* ViewController.swift */,
+				BDD18CF12546E5E900974FB4 /* LoginViewController.swift */,
 				BDD18CF32546E5E900974FB4 /* Main.storyboard */,
 				BDD18CF62546E5EC00974FB4 /* Assets.xcassets */,
 				BDD18CF82546E5EC00974FB4 /* LaunchScreen.storyboard */,
 				BDD18CFB2546E5EC00974FB4 /* Info.plist */,
+				BDD18D022547B4D000974FB4 /* SignInButton.swift */,
+				5C4F347F2547DAEE00E41121 /* LoginValidator.swift */,
+				5C4F34832547E3BF00E41121 /* LoginViewModel.swift */,
 			);
 			path = IssueTrackerApp;
 			sourceTree = "<group>";
@@ -137,9 +146,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDD18CF22546E5E900974FB4 /* ViewController.swift in Sources */,
+				BDD18CF22546E5E900974FB4 /* LoginViewController.swift in Sources */,
+				BDD18D032547B4D000974FB4 /* SignInButton.swift in Sources */,
+				5C4F34842547E3BF00E41121 /* LoginViewModel.swift in Sources */,
 				BDD18CEE2546E5E900974FB4 /* AppDelegate.swift in Sources */,
 				BDD18CF02546E5E900974FB4 /* SceneDelegate.swift in Sources */,
+				5C4F34802547DAEE00E41121 /* LoginValidator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
