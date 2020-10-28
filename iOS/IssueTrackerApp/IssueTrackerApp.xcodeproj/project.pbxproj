@@ -12,6 +12,7 @@
 		5CFED72E25492EE200DE811F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFED72B25492EE200DE811F /* SceneDelegate.swift */; };
 		5CFED72F25492EE200DE811F /* IssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFED72C25492EE200DE811F /* IssueViewController.swift */; };
 		5CFED73025492EE200DE811F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFED72D25492EE200DE811F /* AppDelegate.swift */; };
+		5CFED7332549325300DE811F /* IssueSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFED7322549325300DE811F /* IssueSection.swift */; };
 		BD090CF825480C3500454C79 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD090CF725480C3500454C79 /* Issue.swift */; };
 		BD090CFB25480D1500454C79 /* IssueList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD090CFA25480D1500454C79 /* IssueList.swift */; };
 		BD090CFE254815BA00454C79 /* IssueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD090CFD254815BA00454C79 /* IssueCell.swift */; };
@@ -29,6 +30,7 @@
 		5CFED72B25492EE200DE811F /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5CFED72C25492EE200DE811F /* IssueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueViewController.swift; sourceTree = "<group>"; };
 		5CFED72D25492EE200DE811F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5CFED7322549325300DE811F /* IssueSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueSection.swift; sourceTree = "<group>"; };
 		BD090CF725480C3500454C79 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
 		BD090CFA25480D1500454C79 /* IssueList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueList.swift; sourceTree = "<group>"; };
 		BD090CFD254815BA00454C79 /* IssueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueCell.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				BD090D2125483AD100454C79 /* LoginViewController.swift */,
 				5C4F347F2547DAEE00E41121 /* LoginValidator.swift */,
 				5C4F34832547E3BF00E41121 /* LoginViewModel.swift */,
+				5CFED7322549325300DE811F /* IssueSection.swift */,
 			);
 			path = IssueTrackerApp;
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 				5CFED73025492EE200DE811F /* AppDelegate.swift in Sources */,
 				5CFED72F25492EE200DE811F /* IssueViewController.swift in Sources */,
 				BD090D2225483AD100454C79 /* LoginViewController.swift in Sources */,
+				5CFED7332549325300DE811F /* IssueSection.swift in Sources */,
 				BDD18D032547B4D000974FB4 /* SignInButton.swift in Sources */,
 				5CFED72E25492EE200DE811F /* SceneDelegate.swift in Sources */,
 				5C4F34842547E3BF00E41121 /* LoginViewModel.swift in Sources */,
