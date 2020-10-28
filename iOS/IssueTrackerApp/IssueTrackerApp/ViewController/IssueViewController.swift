@@ -7,24 +7,24 @@
 
 import UIKit
 
-enum Section {
-  case main
-}
-
 class IssueViewController: UIViewController {
   
-  typealias DataSource = UICollectionViewDiffableDataSource<Section, Issue>
-  typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Issue>
+  typealias DataSource = UICollectionViewDiffableDataSource<IssueSection, Issue>
+  typealias Snapshot = NSDiffableDataSourceSnapshot<IssueSection, Issue>
   
   private lazy var dataSource = makeDataSource()
   
   @IBOutlet weak var issueCollectionView: UICollectionView!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    configureNavigationBar()
+    configure()
     applySnapshot(animatingDifferences: false)
+  }
+  
+  private func configure() {
+    configureNavigationBar()
     configureIssueCollectionView()
-    
   }
   
   private func configureNavigationBar() {
@@ -39,11 +39,14 @@ class IssueViewController: UIViewController {
   
   private func makeDataSource() -> DataSource {
     let dataSource = DataSource(collectionView: issueCollectionView) { (collectionView, indexPath, issue) -> UICollectionViewCell? in
-      guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IssueCell", for: indexPath) as? IssueCell else { return UICollectionViewCell() }
+      guard let cell = collectionView.dequeueReusableCell(
+              withReuseIdentifier: "IssueCell",
+              for: indexPath
+      ) as? IssueCell else {
+        return UICollectionViewCell()
+      }
       
-      cell.updateCell(withTitle: issue.title,
-                      description: issue.description)
-      
+      cell.updateCell(withTitle: issue.title, description: issue.description)
       return cell
     }
     
@@ -55,7 +58,8 @@ class IssueViewController: UIViewController {
       let view = collectionView.dequeueReusableSupplementaryView(
         ofKind: kind,
         withReuseIdentifier: "IssueHeader",
-        for: indexPath) as? IssueHeader
+        for: indexPath
+      ) as? IssueHeader
       
 //      let section = self.dataSource.snapshot()
 //        .sectionIdentifiers[indexPath.section]
@@ -76,7 +80,8 @@ class IssueViewController: UIViewController {
   }
 }
 
-extension IssueViewController: UICollectionViewDelegate {
+extension IssueViewController: UICollectionViewDelegateFlowLayout {
+  
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     guard let issue = dataSource.itemIdentifier(for: indexPath) else {
       return
@@ -84,9 +89,7 @@ extension IssueViewController: UICollectionViewDelegate {
     
     // TODO:- issue 사용
   }
-}
-
-extension IssueViewController: UICollectionViewDelegateFlowLayout {
+  
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     return CGSize(width: view.bounds.width, height: view.bounds.height / 10)
   }
