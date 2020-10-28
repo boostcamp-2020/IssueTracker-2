@@ -9,15 +9,15 @@
 /* Begin PBXBuildFile section */
 		5C4F34802547DAEE00E41121 /* LoginValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4F347F2547DAEE00E41121 /* LoginValidator.swift */; };
 		5C4F34842547E3BF00E41121 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4F34832547E3BF00E41121 /* LoginViewModel.swift */; };
+		5CFED72E25492EE200DE811F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFED72B25492EE200DE811F /* SceneDelegate.swift */; };
+		5CFED72F25492EE200DE811F /* IssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFED72C25492EE200DE811F /* IssueViewController.swift */; };
+		5CFED73025492EE200DE811F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFED72D25492EE200DE811F /* AppDelegate.swift */; };
 		BD090CF825480C3500454C79 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD090CF725480C3500454C79 /* Issue.swift */; };
 		BD090CFB25480D1500454C79 /* IssueList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD090CFA25480D1500454C79 /* IssueList.swift */; };
 		BD090CFE254815BA00454C79 /* IssueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD090CFD254815BA00454C79 /* IssueCell.swift */; };
 		BD090D012548211300454C79 /* IssueHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD090D002548211300454C79 /* IssueHeader.swift */; };
 		BD090D1B2548399700454C79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD090D1A2548399700454C79 /* Main.storyboard */; };
 		BD090D2225483AD100454C79 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD090D2125483AD100454C79 /* LoginViewController.swift */; };
-		BDD18CEE2546E5E900974FB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD18CED2546E5E900974FB4 /* AppDelegate.swift */; };
-		BDD18CF02546E5E900974FB4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD18CEF2546E5E900974FB4 /* SceneDelegate.swift */; };
-		BDD18CF22546E5E900974FB4 /* IssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD18CF12546E5E900974FB4 /* IssueViewController.swift */; };
 		BDD18CF72546E5EC00974FB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDD18CF62546E5EC00974FB4 /* Assets.xcassets */; };
 		BDD18CFA2546E5EC00974FB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDD18CF82546E5EC00974FB4 /* LaunchScreen.storyboard */; };
 		BDD18D032547B4D000974FB4 /* SignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD18D022547B4D000974FB4 /* SignInButton.swift */; };
@@ -26,6 +26,9 @@
 /* Begin PBXFileReference section */
 		5C4F347F2547DAEE00E41121 /* LoginValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginValidator.swift; sourceTree = "<group>"; };
 		5C4F34832547E3BF00E41121 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		5CFED72B25492EE200DE811F /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		5CFED72C25492EE200DE811F /* IssueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueViewController.swift; sourceTree = "<group>"; };
+		5CFED72D25492EE200DE811F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD090CF725480C3500454C79 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
 		BD090CFA25480D1500454C79 /* IssueList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueList.swift; sourceTree = "<group>"; };
 		BD090CFD254815BA00454C79 /* IssueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueCell.swift; sourceTree = "<group>"; };
@@ -33,9 +36,6 @@
 		BD090D1A2548399700454C79 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BD090D2125483AD100454C79 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BDD18CEA2546E5E900974FB4 /* IssueTrackerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IssueTrackerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BDD18CED2546E5E900974FB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BDD18CEF2546E5E900974FB4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BDD18CF12546E5E900974FB4 /* IssueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueViewController.swift; sourceTree = "<group>"; };
 		BDD18CF62546E5EC00974FB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BDD18CF92546E5EC00974FB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BDD18CFB2546E5EC00974FB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -72,9 +72,9 @@
 		BDD18CEC2546E5E900974FB4 /* IssueTrackerApp */ = {
 			isa = PBXGroup;
 			children = (
-				BDD18CED2546E5E900974FB4 /* AppDelegate.swift */,
-				BDD18CEF2546E5E900974FB4 /* SceneDelegate.swift */,
-				BDD18CF12546E5E900974FB4 /* IssueViewController.swift */,
+				5CFED72D25492EE200DE811F /* AppDelegate.swift */,
+				5CFED72C25492EE200DE811F /* IssueViewController.swift */,
+				5CFED72B25492EE200DE811F /* SceneDelegate.swift */,
 				BD090CF725480C3500454C79 /* Issue.swift */,
 				BD090CFA25480D1500454C79 /* IssueList.swift */,
 				BD090CFD254815BA00454C79 /* IssueCell.swift */,
@@ -161,18 +161,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CFED73025492EE200DE811F /* AppDelegate.swift in Sources */,
+				5CFED72F25492EE200DE811F /* IssueViewController.swift in Sources */,
 				BD090D2225483AD100454C79 /* LoginViewController.swift in Sources */,
-				BDD18CF22546E5E900974FB4 /* IssueViewController.swift in Sources */,
 				BDD18D032547B4D000974FB4 /* SignInButton.swift in Sources */,
+				5CFED72E25492EE200DE811F /* SceneDelegate.swift in Sources */,
 				5C4F34842547E3BF00E41121 /* LoginViewModel.swift in Sources */,
-				BDD18CEE2546E5E900974FB4 /* AppDelegate.swift in Sources */,
-				BDD18CF02546E5E900974FB4 /* SceneDelegate.swift in Sources */,
 				5C4F34802547DAEE00E41121 /* LoginValidator.swift in Sources */,
 				BD090CFB25480D1500454C79 /* IssueList.swift in Sources */,
 				BD090D012548211300454C79 /* IssueHeader.swift in Sources */,
-				BDD18CF22546E5E900974FB4 /* IssueViewController.swift in Sources */,
-				BDD18CEE2546E5E900974FB4 /* AppDelegate.swift in Sources */,
-				BDD18CF02546E5E900974FB4 /* SceneDelegate.swift in Sources */,
 				BD090CF825480C3500454C79 /* Issue.swift in Sources */,
 				BD090CFE254815BA00454C79 /* IssueCell.swift in Sources */,
 			);
