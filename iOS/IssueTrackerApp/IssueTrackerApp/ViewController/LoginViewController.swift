@@ -20,12 +20,11 @@ class LoginViewController: UIViewController {
   }
   
   required init?(coder: NSCoder) {
-    fatalError("")
+    fatalError("You can implement with only code.")
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    loginViewModel = LoginViewModel(loginValidator: LoginValidator())
     addingTarget()
     binding()
   }
