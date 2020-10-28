@@ -124,15 +124,15 @@
 			isa = PBXGroup;
 			children = (
 				5CFED72D25492EE200DE811F /* AppDelegate.swift */,
-				5CFED7362549375D00DE811F /* ViewController */,
 				5CFED72B25492EE200DE811F /* SceneDelegate.swift */,
+				5CFED7362549375D00DE811F /* ViewController */,
 				5CFED7372549377700DE811F /* Model */,
 				5CFED73B2549378400DE811F /* View */,
+				5CFED73F2549379900DE811F /* ViewModel */,
+				5CFED741254937F100DE811F /* Resource */,
 				BDD18CF62546E5EC00974FB4 /* Assets.xcassets */,
 				BDD18CF82546E5EC00974FB4 /* LaunchScreen.storyboard */,
-				5CFED741254937F100DE811F /* Resource */,
 				BDD18CFB2546E5EC00974FB4 /* Info.plist */,
-				5CFED73F2549379900DE811F /* ViewModel */,
 			);
 			path = IssueTrackerApp;
 			sourceTree = "<group>";
