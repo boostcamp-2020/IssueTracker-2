@@ -122,7 +122,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="V7R-yT-F2x" kind="presentation" id="woD-uV-Dch"/>
+                                    <segue destination="V7R-yT-F2x" kind="presentation" id="ZaU-jk-5AZ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -157,40 +157,76 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rb4-oa-MWd">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rb4-oa-MWd">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                 <items>
                                     <navigationItem title="새이슈" largeTitleDisplayMode="always" id="xe4-zP-S0X">
-                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="sUj-db-RQe"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="sUj-db-RQe">
+                                            <connections>
+                                                <action selector="cancelButtonTouched:" destination="V7R-yT-F2x" id="pc3-uk-8cH"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Submit" id="NAW-f8-J7L">
+                                            <connections>
+                                                <action selector="submitButtonTouched:" destination="V7R-yT-F2x" id="NI0-cK-23I"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MCv-g0-PKC">
-                                <rect key="frame" x="25" y="89" width="364" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="제목" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MCv-g0-PKC">
+                                <rect key="frame" x="25" y="76" width="364" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="eGf-2Q-MeX"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="e9k-lv-mLt">
-                                <rect key="frame" x="25" y="141" width="364" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="e9k-lv-mLt">
+                                <rect key="frame" x="25" y="152" width="364" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="uSa-hy-6ud"/>
+                                </constraints>
                                 <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
+                                    <segment title="마크다운"/>
+                                    <segment title="미리보기"/>
                                 </segments>
                             </segmentedControl>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="코멘트는 여기에 작성하세요" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ua3-2l-Fbw">
-                                <rect key="frame" x="20" y="211" width="369" height="552"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ua3-2l-Fbw">
+                                <rect key="frame" x="25" y="192" width="364" height="586"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iKW-W8-Tau">
+                                <rect key="frame" x="25" y="111" width="364" height="1"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="22Y-wa-KZI"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1u0-Az-Vfn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="e9k-lv-mLt" firstAttribute="leading" secondItem="MCv-g0-PKC" secondAttribute="leading" id="1Lk-wl-VCD"/>
+                            <constraint firstItem="iKW-W8-Tau" firstAttribute="top" secondItem="MCv-g0-PKC" secondAttribute="bottom" constant="1" id="6Kq-Q0-Fpm"/>
+                            <constraint firstItem="rb4-oa-MWd" firstAttribute="leading" secondItem="1u0-Az-Vfn" secondAttribute="leading" id="DFh-Wz-RY4"/>
+                            <constraint firstItem="rb4-oa-MWd" firstAttribute="top" secondItem="1u0-Az-Vfn" secondAttribute="top" id="Lwq-sC-OYa"/>
+                            <constraint firstItem="1u0-Az-Vfn" firstAttribute="bottom" secondItem="Ua3-2l-Fbw" secondAttribute="bottom" constant="30" id="OKo-Ix-WCf"/>
+                            <constraint firstItem="1u0-Az-Vfn" firstAttribute="trailing" secondItem="MCv-g0-PKC" secondAttribute="trailing" constant="25" id="OdQ-N8-fHn"/>
+                            <constraint firstItem="1u0-Az-Vfn" firstAttribute="trailing" secondItem="Ua3-2l-Fbw" secondAttribute="trailing" constant="25" id="TjM-yr-G0f"/>
+                            <constraint firstItem="e9k-lv-mLt" firstAttribute="top" secondItem="iKW-W8-Tau" secondAttribute="bottom" constant="40" id="Yn6-bH-1X7"/>
+                            <constraint firstItem="iKW-W8-Tau" firstAttribute="trailing" secondItem="MCv-g0-PKC" secondAttribute="trailing" id="d8i-dF-gXS"/>
+                            <constraint firstItem="rb4-oa-MWd" firstAttribute="trailing" secondItem="1u0-Az-Vfn" secondAttribute="trailing" id="e6V-ru-63m"/>
+                            <constraint firstItem="Ua3-2l-Fbw" firstAttribute="leading" secondItem="1u0-Az-Vfn" secondAttribute="leading" constant="25" id="eTD-0B-p9h"/>
+                            <constraint firstItem="Ua3-2l-Fbw" firstAttribute="top" secondItem="e9k-lv-mLt" secondAttribute="bottom" constant="10" id="eZX-b7-axT"/>
+                            <constraint firstItem="MCv-g0-PKC" firstAttribute="top" secondItem="rb4-oa-MWd" secondAttribute="bottom" constant="20" id="lmR-DY-gp4"/>
+                            <constraint firstItem="iKW-W8-Tau" firstAttribute="leading" secondItem="MCv-g0-PKC" secondAttribute="leading" id="ofk-hp-Aux"/>
+                            <constraint firstItem="e9k-lv-mLt" firstAttribute="trailing" secondItem="MCv-g0-PKC" secondAttribute="trailing" id="sd7-Ql-G48"/>
+                            <constraint firstItem="MCv-g0-PKC" firstAttribute="leading" secondItem="1u0-Az-Vfn" secondAttribute="leading" constant="25" id="uqT-G2-PbJ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JHz-jw-kjS"/>
                     <connections>
@@ -199,7 +235,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="may-DH-vSl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2828.985507246377" y="113.83928571428571"/>
+            <point key="canvasLocation" x="2844.9275362318845" y="97.767857142857139"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="jZC-Xv-x1H">
