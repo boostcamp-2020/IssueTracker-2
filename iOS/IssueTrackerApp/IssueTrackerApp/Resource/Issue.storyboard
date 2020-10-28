@@ -109,6 +109,19 @@
                                     </connections>
                                 </collectionReusableView>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iey-07-5vK" customClass="NewIssueButton" customModule="IssueTrackerApp" customModuleProvider="target">
+                                <rect key="frame" x="344" y="743.5" width="50" height="49"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="BID-v5-lhf"/>
+                                    <constraint firstAttribute="height" constant="50" id="MpP-hj-HZJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <color key="tintColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" backgroundImage="plus.circle.fill" catalog="system">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="m1b-EM-E90"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -116,6 +129,8 @@
                             <constraint firstItem="m1b-EM-E90" firstAttribute="trailing" secondItem="woj-kq-llH" secondAttribute="trailing" id="LId-B0-hiV"/>
                             <constraint firstItem="m1b-EM-E90" firstAttribute="bottom" secondItem="woj-kq-llH" secondAttribute="bottom" id="WZX-aJ-8QQ"/>
                             <constraint firstItem="woj-kq-llH" firstAttribute="top" secondItem="m1b-EM-E90" secondAttribute="top" id="g47-R0-V7a"/>
+                            <constraint firstItem="m1b-EM-E90" firstAttribute="bottom" secondItem="iey-07-5vK" secondAttribute="bottom" constant="20" id="jsc-nb-EBI"/>
+                            <constraint firstItem="m1b-EM-E90" firstAttribute="trailing" secondItem="iey-07-5vK" secondAttribute="trailing" constant="20" id="kjp-4o-1BK"/>
                             <constraint firstItem="woj-kq-llH" firstAttribute="leading" secondItem="m1b-EM-E90" secondAttribute="leading" id="yks-pb-tnU"/>
                         </constraints>
                     </view>
@@ -170,6 +185,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
