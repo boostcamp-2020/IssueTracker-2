@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   }
   
   private func getLoginVC() -> LoginViewController {
-    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let storyboard = UIStoryboard(name: "Login", bundle: nil)
     let loginVC = storyboard.instantiateViewController(identifier: "LoginViewController") { (coder) -> LoginViewController? in
       let loginValidator = LoginValidator()
       let loginViewModel = LoginViewModel(loginValidator: loginValidator)
