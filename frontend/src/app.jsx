@@ -1,11 +1,19 @@
 import React from 'react';
-import styled from 'styled-components';
 
-const Title = styled.h1`
-  color: blue;
-`;
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-function App() {
-  return <Title>Hello World!!!!!!!@@</Title>;
-}
+import Login from './components/Login';
+
+const App = () => {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/">
+          <Login />
+        </Route>
+      </Switch>
+    </BrowserRouter>
+  );
+};
+
 export default App;
