@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -47,6 +48,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       template: './public/index.html',
+      changeOrigin: true,
     }),
     new CleanWebpackPlugin(),
   ],
