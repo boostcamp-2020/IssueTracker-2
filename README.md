@@ -16,9 +16,9 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[J034김민섭](https://github.com/msmk530)</strong>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[J127유현우](https://github.com/puba5)</strong>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[J161이지은](https://github.com/zlrlo)</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[J161이지은](https://github.com/zlrlo)</strong>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[S023서명렬](https://github.com/fElix-MR)</strong>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[S054조송주](https://github.com/songjucho)</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[S054조송주](https://github.com/songjucho)</strong>
 
 <br>
 
@@ -28,7 +28,7 @@
 
 ## 프로젝트 소개
 
-> GitHub issue 클론 프로젝트입니다.
+> GitHub Issue 클론 프로젝트입니다.
 
 <br>
 
@@ -54,6 +54,8 @@
 ## 프로젝트 상세
 
 [Backlog](https://docs.google.com/spreadsheets/d/1X5dBBIllFMjnaLvKmocZAZ3RWysQW1DdZlQlCsELIT0/edit?ts=5f9a4a1c#gid=1554475908)
+
+[Wiki](https://github.com/boostcamp-2020/IssueTracker-2/wiki)
 
 ### Database Diagram
 
