@@ -15,14 +15,15 @@
 <br>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[J034 김민섭](https://github.com/msmk530)</strong>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[J127 유현우](https://github.com/puba5)</strong>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[J161 이지은](https://github.com/zlrlo)</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[J127 유현우](https://github.com/puba5)</strong>
+&nbsp;&nbsp;<strong>[J161 이지은](https://github.com/zlrlo)</strong>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[S023 서명렬](https://github.com/fElix-MR)</strong>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[S054 조송주](https://github.com/songjucho)</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[S054 조송주](https://github.com/songjucho)</strong>
 
 <br>
 
-![github-id4](https://user-images.githubusercontent.com/49441876/97657698-e2b35500-1aad-11eb-8568-8d13aed4fc44.gif)
+![github-id-5](https://user-images.githubusercontent.com/49441876/97658961-06c46580-1ab1-11eb-8842-ec5bee698160.gif)
+
 <br>
 
 ## 프로젝트 소개
