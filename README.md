@@ -4,7 +4,7 @@
 
 <br>
 
-![](./docs/images/pastel.png)
+<p align="center"><img src="./docs/images/pastel.png"></p>
 
 <br>
 
@@ -14,15 +14,15 @@
 
 <br>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[J034김민섭](https://github.com/msmk530)</strong>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[J127유현우](https://github.com/puba5)</strong>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[J161이지은](https://github.com/zlrlo)</strong>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[S023서명렬](https://github.com/fElix-MR)</strong>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[S054조송주](https://github.com/songjucho)</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[J034 김민섭](https://github.com/msmk530)</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[J127 유현우](https://github.com/puba5)</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[J161 이지은](https://github.com/zlrlo)</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[S023 서명렬](https://github.com/fElix-MR)</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[S054 조송주](https://github.com/songjucho)</strong>
 
 <br>
 
-![githubID](https://user-images.githubusercontent.com/49441876/97608232-6856e680-1a55-11eb-8ee9-f03cf0c7457f.gif)
+![GITHUBSIGN](https://user-images.githubusercontent.com/49441876/97654549-7c770400-1aa6-11eb-9a18-e996a8b688d2.gif)
 
 <br>
 
