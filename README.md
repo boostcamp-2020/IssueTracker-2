@@ -14,11 +14,11 @@
 
 <br>
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[J034 김민섭](https://github.com/msmk530)</strong>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[J127 유현우](https://github.com/puba5)</strong>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[J161 이지은](https://github.com/zlrlo)</strong>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[S023 서명렬](https://github.com/fElix-MR)</strong>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[S054 조송주](https://github.com/songjucho)</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[J034 김민섭](https://github.com/msmk530)</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[J127 유현우](https://github.com/puba5)</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[J161 이지은](https://github.com/zlrlo)</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[S023 서명렬](https://github.com/fElix-MR)</strong>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>[S054 조송주](https://github.com/songjucho)</strong>
 
 <br>
 
