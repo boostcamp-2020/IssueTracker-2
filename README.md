@@ -2,6 +2,8 @@
 
 ## 🎨 Team Pastel
 
+<br>
+
 ![](./docs/images/pastel.png)
 
 <br>
