@@ -9,6 +9,8 @@ const GitHubStrategy = require('passport-github').Strategy;
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
+const config = require('./config');
+
 const app = express();
 
 app.use(cors());
@@ -24,9 +26,9 @@ app.use('/users', usersRouter);
 passport.use(
   new GitHubStrategy(
     {
-      clientID: '90378370d90a50bc65ff',
-      clientSecret: 'edb476d8dffa6416b25bde598894a4170f36c99b',
-      callbackURL: 'http://localhost:3000/auth/github/callback',
+      clientID: config.clientID,
+      clientSecret: config.clientSecret,
+      callbackURL: config.clientURL
     },
     (accessToken, refreshToken, profile, cb) => {
       const user = profile.username;
