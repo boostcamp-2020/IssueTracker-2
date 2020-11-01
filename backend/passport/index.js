@@ -10,6 +10,11 @@ const githubConfig = {
 
 const verifyGitHub = (accessToken, refreshToken, profile, cb) => {
     const user = profile.username;
+    /**
+     * 실패한 경우
+     * return cb(err);
+     * return cb(null, false, {message:'Incorrect username'});
+     */
     return cb(null, user);
 };
 
