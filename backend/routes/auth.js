@@ -3,6 +3,6 @@ const passport = require('passport');
 const controller = require('../controller/auth-controller');
 
 router.get('/github', passport.authenticate('github'));
-router.get('/github/calback', passport.authenticate('github', { session: null }), controller.loginGitHub);
+router.get('/github/callback', controller.loginGitHub);
 
 module.exports = router;
