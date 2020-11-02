@@ -6,13 +6,38 @@
 //
 
 import UIKit
+import MarkdownView
 
 class UpdateIssueViewController: UIViewController {
   
+  private var pickerView = UIImagePickerController()
+  private var markdownPreview: MarkdownView? {
+    willSet {
+      guard let markdownPreview = newValue else { return }
+      view.addSubview(markdownPreview)
+      markdownPreview.translatesAutoresizingMaskIntoConstraints = false
+      
+      NSLayoutConstraint.activate([
+        markdownPreview.topAnchor.constraint(equalTo: issueContentTextView.topAnchor),
+        markdownPreview.bottomAnchor.constraint(equalTo: issueContentTextView.bottomAnchor),
+        markdownPreview.leadingAnchor.constraint(equalTo: issueContentTextView.leadingAnchor),
+        markdownPreview.trailingAnchor.constraint(equalTo: issueContentTextView.trailingAnchor)
+      ])
+    }
+  }
+  
   @IBOutlet weak var navigationBar: UINavigationBar!
   @IBOutlet weak var issueContentTextView: IssueContentTextView!
+  @IBOutlet weak var markdownSegmentedControl: UISegmentedControl!
   
-  var pickerView = UIImagePickerController()
+  @IBAction func cancelButtonTouched(_ sender: Any) {
+    dismiss(animated: true, completion: nil)
+  }
+  
+  @IBAction func submitButtonTouched(_ sender: Any) {
+    pickerView.sourceType = .photoLibrary
+    present(pickerView, animated: true, completion: nil)
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -23,23 +48,44 @@ class UpdateIssueViewController: UIViewController {
   private func configure() {
     configureNavigationBar()
     registerMenu()
+    configureMarkdownSegmentedControl()
   }
   
-  @IBAction func cancelButtonTouched(_ sender: Any) {
-    dismiss(animated: true, completion: nil)
-  }
-  
-  @IBAction func submitButtonTouched(_ sender: Any) {
-    pickerView.sourceType = .photoLibrary
-    present(pickerView, animated: true, completion: nil)
-  }
   private func configureNavigationBar() {
     navigationBar.topItem?.title = "새이슈"
+  }
+  
+  private func configureMarkdownSegmentedControl() {
+    markdownSegmentedControl.addTarget(self,
+                                       action: #selector(segmentedControlIndexChanged(_:)),
+                                       for: .valueChanged)
   }
   
   private func registerMenu() {
     let menuItem = UIMenuItem(title: "InsertPhoto", action: #selector(IssueContentTextView.openLibrary))
     UIMenuController.shared.menuItems = [menuItem]
+  }
+  
+  private func showMarkdownPreview() {
+    markdownPreview = MarkdownView()
+    guard let markdownPreview = markdownPreview,
+            let text = issueContentTextView.text else { return }
+    markdownPreview.load(markdown: text)
+  }
+  
+  // MARK:- obj-c Method
+  @objc private func segmentedControlIndexChanged(_ sender: UISegmentedControl) {
+    switch sender.selectedSegmentIndex {
+    case 0:
+      markdownPreview?.removeFromSuperview()
+      markdownPreview = nil
+      issueContentTextView.isHidden = false
+    case 1:
+      issueContentTextView.isHidden = true
+      showMarkdownPreview()
+    default:
+      break
+    }
   }
 }
 
