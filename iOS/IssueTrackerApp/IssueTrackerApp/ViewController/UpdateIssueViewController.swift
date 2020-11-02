@@ -35,8 +35,7 @@ class UpdateIssueViewController: UIViewController {
   }
   
   @IBAction func submitButtonTouched(_ sender: Any) {
-    pickerView.sourceType = .photoLibrary
-    present(pickerView, animated: true, completion: nil)
+    // TODO:- 이슈 데이터 저장
   }
   
   override func viewDidLoad() {
@@ -49,6 +48,7 @@ class UpdateIssueViewController: UIViewController {
     configureNavigationBar()
     registerMenu()
     configureMarkdownSegmentedControl()
+    configureIssueContentTextView()
   }
   
   private func configureNavigationBar() {
@@ -59,6 +59,14 @@ class UpdateIssueViewController: UIViewController {
     markdownSegmentedControl.addTarget(self,
                                        action: #selector(segmentedControlIndexChanged(_:)),
                                        for: .valueChanged)
+  }
+  
+  private func configureIssueContentTextView() {
+    issueContentTextView.openLibraryHandler = { [weak self] in
+      guard let self = self else { return }
+      self.pickerView.sourceType = .photoLibrary
+      self.present(self.pickerView, animated: true, completion: nil)
+    }
   }
   
   private func registerMenu() {
@@ -91,7 +99,7 @@ class UpdateIssueViewController: UIViewController {
 
 extension UpdateIssueViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-    guard let selectedImage = info[.originalImage] as? UIImage else {
+    guard let _ = info[.originalImage] as? UIImage else {
       return
     }
     pickerView.dismiss(animated: true, completion: nil)
