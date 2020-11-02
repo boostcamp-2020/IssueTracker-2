@@ -1,4 +1,4 @@
-const db = require('../db');
+const db = require('../loaders/db-loader');
 
 exports.create = async(id, profileImageUrl, password) => {
     try {

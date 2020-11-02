@@ -1,4 +1,4 @@
-const service = require('../service/test-service');
+const service = require('../services/test-service');
 
 exports.addUser = async(req, res, next) => {
      const insertId = await service.userService(); 
