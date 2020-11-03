@@ -1,12 +1,11 @@
 const users = require('../models/users');
 
-exports.userService = async (req) => {
-    try {
-        const insertId = await users.create(req);
-        return { status: 200, message: '회원가입 성공', insertId };
+exports.userService = async req => {
+  try {
+    const insertId = await users.create(req.body);
 
-    } catch {
-        return { status: 400, message: '서비스 실패', insertId };
-    }
-  
+    return { status: 200, message: '회원가입 성공', insertId };
+  } catch {
+    return { status: 400, message: '서비스 실패' };
+  }
 };

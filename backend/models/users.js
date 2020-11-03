@@ -1,6 +1,6 @@
 const db = require('../db');
 
-exports.create = async ({id, profileImageUrl, password}) => {
+exports.create = async ({ id, profileImageUrl, password }) => {
   try {
     const connection = await db.pool.getConnection(async conn => conn);
     let sql =
@@ -13,6 +13,6 @@ exports.create = async ({id, profileImageUrl, password}) => {
     connection.release();
     return insertId;
   } catch (err) {
-    // throw err; 
+    throw new Error(err);
   }
 };
