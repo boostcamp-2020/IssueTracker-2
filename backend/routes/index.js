@@ -5,7 +5,7 @@ const test = require('./test');
 router.use('/auth', auth);
 router.use('/test', test);
 
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
 });
 

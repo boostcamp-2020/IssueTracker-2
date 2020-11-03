@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const passport = require('passport');
-const controller = require('../controller/auth-controller');
+const controller = require('../controllers/auth-controller');
 
 router.get('/github', passport.authenticate('github'));
 router.get('/github/callback', controller.loginGitHub);

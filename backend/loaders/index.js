@@ -1,4 +1,4 @@
 module.exports = app => {
-    require('./express-loader')(app);
-    require('./passport-loader')();
+  require('./express-loader')(app);
+  require('./passport-loader')();
 };
