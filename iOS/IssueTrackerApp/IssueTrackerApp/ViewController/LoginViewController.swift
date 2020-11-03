@@ -115,11 +115,17 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
         return
       }
+      let queryable = GenericPasswordQueryable(service: "IssueTracker")
+      let secureStore = SecureStore(secureStoreQueryable: queryable)
       
       let userIdentifier = appleIDCredential.user
-      let fullName = appleIDCredential.fullName
-      let email = appleIDCredential.email
+//      let fullName = appleIDCredential.fullName
+//      let email = appleIDCredential.email
       
+      print("idTokenString: \(idTokenString)")
+      print("userIdentifier: \(userIdentifier)")
+      
+      try? secureStore.setValue(userIdentifier, for: "userIdentifier")
     }
   }
   
