@@ -6,14 +6,16 @@
 //
 
 import UIKit
+import KeychainService
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   
   var window: UIWindow?
-  var token: String? = "nil"
+  var token: String?
   
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     guard let _ = (scene as? UIWindowScene) else { return }
+    checkKeychain()
     guard let _ = token else {
       let loginVC = getLoginVC()
       switchScreen(with: loginVC)
@@ -36,7 +38,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     window?.rootViewController = viewController
     window?.makeKeyAndVisible()
   }
+  
+  private func checkKeychain() {
+    let queryable = GenericPasswordQueryable(service: "IssueTracker")
+    let secureStore = SecureStore(secureStoreQueryable: queryable)
     
+    token = try? secureStore.getValue(for: "userIdentifier")
+  }
   
   func sceneDidDisconnect(_ scene: UIScene) {
   }

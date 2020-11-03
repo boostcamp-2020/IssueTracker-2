@@ -139,7 +139,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="이슈" id="ddg-l3-9Rd">
                         <barButtonItem key="leftBarButtonItem" title="Filter" id="oNW-dN-5Fr"/>
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="khm-1Y-J9X"/>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="khm-1Y-J9X">
+                            <connections>
+                                <action selector="editButtonTouched:" destination="QDr-ZF-uIg" id="trE-ur-iKE"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="issueCollectionView" destination="woj-kq-llH" id="aUj-UK-14i"/>

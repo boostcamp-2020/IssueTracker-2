@@ -40,8 +40,8 @@ class IssueViewController: UIViewController {
   private func makeDataSource() -> DataSource {
     let dataSource = DataSource(collectionView: issueCollectionView) { (collectionView, indexPath, issue) -> UICollectionViewCell? in
       guard let cell = collectionView.dequeueReusableCell(
-              withReuseIdentifier: "IssueCell",
-              for: indexPath
+        withReuseIdentifier: "IssueCell",
+        for: indexPath
       ) as? IssueCell else {
         return UICollectionViewCell()
       }
@@ -61,8 +61,8 @@ class IssueViewController: UIViewController {
         for: indexPath
       ) as? IssueHeader
       
-//      let section = self.dataSource.snapshot()
-//        .sectionIdentifiers[indexPath.section]
+      //      let section = self.dataSource.snapshot()
+      //        .sectionIdentifiers[indexPath.section]
       
       return view
     }
@@ -77,6 +77,12 @@ class IssueViewController: UIViewController {
     let issueList = IssueList(issues: issues)
     snapshot.appendItems(issueList.issues)
     dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
+  }
+  
+  private func removeIssue(_ data: Issue, animated: Bool) {
+    var snapshot = dataSource.snapshot()
+    snapshot.deleteItems([data])
+    dataSource.apply(snapshot, animatingDifferences: animated)
   }
 }
 
@@ -94,3 +100,6 @@ extension IssueViewController: UICollectionViewDelegateFlowLayout {
     return CGSize(width: view.bounds.width, height: view.bounds.height / 10)
   }
 }
+
+
+// get : header에 요청을 담아서

@@ -7,6 +7,7 @@
 
 import UIKit
 import AuthenticationServices
+import KeychainService
 
 class LoginViewController: UIViewController {
   
@@ -114,11 +115,21 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
         return
       }
+      let queryable = GenericPasswordQueryable(service: "IssueTracker")
+      let secureStore = SecureStore(secureStoreQueryable: queryable)
       
       let userIdentifier = appleIDCredential.user
-      let fullName = appleIDCredential.fullName
-      let email = appleIDCredential.email
+//      let fullName = appleIDCredential.fullName
+//      let email = appleIDCredential.email
       
+      try? secureStore.setValue(userIdentifier, for: "userIdentifier")
+      
+      let storyboard = UIStoryboard(name: "Issue", bundle: nil)
+      let issueVC = storyboard.instantiateInitialViewController()
+      
+      guard let window = view.window else { return }
+      
+      window.rootViewController = issueVC
     }
   }
   
