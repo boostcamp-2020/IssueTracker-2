@@ -83,7 +83,7 @@ class IssueViewController: UIViewController {
 extension IssueViewController: UICollectionViewDelegateFlowLayout {
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    guard let issue = dataSource.itemIdentifier(for: indexPath) else {
+    guard let _ = dataSource.itemIdentifier(for: indexPath) else {
       return
     }
     
