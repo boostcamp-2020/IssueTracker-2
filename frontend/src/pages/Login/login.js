@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import UserManagementButtons from '../../../components/Login/userManagementButtons';
-import UserInput from '../../../components/Login/userInput';
+import UserManagementButtons from '../../components/Login/userManagementButtons';
+import UserInput from '../../components/Login/userInput';
 
 const Login = () => {
   const [userLoginInfo, setUserLoginInfo] = useState({ id: null, pw: null });
