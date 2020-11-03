@@ -23,7 +23,6 @@ export default function UserManagementButtons(props) {
 const ContentNav = styled.div`
   display: flex;
   justify-content: space-around;
-  margin-top: 2em;
 `;
 
 const ContentButton = styled.button`
@@ -33,22 +32,26 @@ const ContentButton = styled.button`
   outline: none;
   color: blue;
   font-size: 1em;
+  font-family: 'Nanum Gothic', sans-serif;
 `;
 
 const GithubLogo = styled.i`
-  margin-left: 1em;
+  margin-left: 0.5em;
+  font-size: 1.2em;
+  color: black;
 `;
 
 const GithubLoginButton = styled.button`
   cursor: pointer;
-  display: block;
   width: 100%;
-  font-size: 2rem;
-  text-align: center;
+  height: 2em;
+  font-size: 1.5em;
   color: white;
-  background-color: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(0, 0, 0, 0.8);
+  line-height: 2em;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.5);
   border-radius: 5px;
-  margin-top: 1.5em;
+  margin-top: 1em;
   outline: none;
+  font-family: 'Roboto', sans-serif;
 `;

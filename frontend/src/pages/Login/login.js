@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import UserManagementButtons from './userManagementButtons';
-import UserInput from './userInput';
+import UserManagementButtons from '../../../components/Login/userManagementButtons';
+import UserInput from '../../../components/Login/userInput';
 
-const BACKGROUND_GREY = '#eeeeee';
-const BORDER_GREY = '#aaaaaa';
-
-export default function Login() {
+const Login = () => {
   const [userLoginInfo, setUserLoginInfo] = useState({ id: null, pw: null });
 
   return (
@@ -24,7 +21,10 @@ export default function Login() {
       </Content>
     </Wrapper>
   );
-}
+};
+
+const BACKGROUND_GREY = '#eeeeee';
+const BORDER_GREY = '#aaaaaa';
 
 const Wrapper = styled.div`
   padding-top: 200px;
@@ -36,8 +36,8 @@ const Title = styled.h1`
   width: fit-content;
   margin: 0 auto;
   font-weight: bold;
-  font-size: 50px;
-  margin-bottom: 50px;
+  font-size: 2.8em;
+  margin-bottom: 30px;
 `;
 
 const Content = styled.div`
@@ -45,7 +45,9 @@ const Content = styled.div`
   margin: 0 auto;
   background: white;
   width: 450px;
-  padding: 30px 25px;
+  padding: 35px 25px;
   border-radius: 10px;
   border: 1px solid ${BORDER_GREY};
 `;
+
+export default Login;
