@@ -16,9 +16,31 @@
                     <view key="view" contentMode="scaleToFill" id="7lK-Yg-mEU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oyq-oD-gQt">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="필터 선택" id="hHX-kF-wzE">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Hgl-g4-qna">
+                                            <connections>
+                                                <action selector="cancelButtonTouched:" destination="SH4-pL-F2o" id="4gj-MM-vIP"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Mjm-YZ-3tF">
+                                            <connections>
+                                                <action selector="doneButtonTouched:" destination="SH4-pL-F2o" id="X1t-gW-6o9"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="s1s-gW-xsq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Q4-l4-tch" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
