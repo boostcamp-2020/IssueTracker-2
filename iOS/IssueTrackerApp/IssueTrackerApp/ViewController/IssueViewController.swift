@@ -15,6 +15,7 @@ class IssueViewController: UIViewController {
   private lazy var dataSource = makeDataSource()
   
   @IBOutlet weak var issueCollectionView: UICollectionView!
+  @IBOutlet weak var filterButton: UIBarButtonItem!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -25,6 +26,12 @@ class IssueViewController: UIViewController {
   private func configure() {
     configureNavigationBar()
     configureIssueCollectionView()
+    configureFliterButton()
+  }
+  
+  private func configureFliterButton() {
+    filterButton.target = self
+    filterButton.action = #selector(filterButtonTouched)
   }
   
   private func configureNavigationBar() {
@@ -83,6 +90,12 @@ class IssueViewController: UIViewController {
     var snapshot = dataSource.snapshot()
     snapshot.deleteItems([data])
     dataSource.apply(snapshot, animatingDifferences: animated)
+  }
+  
+  @objc private func filterButtonTouched() {
+    let storyboard = UIStoryboard(name: "IssueFilter", bundle: nil)
+    guard let issueFilterVC = storyboard.instantiateInitialViewController() else { return }
+    present(issueFilterVC, animated: true, completion: nil)
   }
 }
 
