@@ -17,9 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oyq-oD-gQt">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oyq-oD-gQt">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="필터 선택" id="hHX-kF-wzE">
                                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Hgl-g4-qna">
@@ -35,16 +34,57 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vmt-eh-Syd">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IssueFilterCell" rowHeight="83" id="Ilj-y6-Af8" customClass="FilterIssueCell" customModule="IssueTrackerApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="83"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ilj-y6-Af8" id="PV8-5C-thV">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="83"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tne-pb-Tjd">
+                                                    <rect key="frame" x="30" y="31" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="tne-pb-Tjd" firstAttribute="leading" secondItem="PV8-5C-thV" secondAttribute="leadingMargin" constant="10" id="DmK-F1-5hi"/>
+                                                <constraint firstItem="tne-pb-Tjd" firstAttribute="centerY" secondItem="PV8-5C-thV" secondAttribute="centerY" id="SMp-3M-MuV"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="filterItemLabel" destination="tne-pb-Tjd" id="kRT-OR-eZu"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="s1s-gW-xsq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Oyq-oD-gQt" secondAttribute="trailing" id="7AX-y7-kJd"/>
+                            <constraint firstItem="Oyq-oD-gQt" firstAttribute="top" secondItem="7lK-Yg-mEU" secondAttribute="top" id="B7v-Pw-2Rr"/>
+                            <constraint firstItem="vmt-eh-Syd" firstAttribute="leading" secondItem="s1s-gW-xsq" secondAttribute="leading" id="Ffn-L9-1td"/>
+                            <constraint firstItem="s1s-gW-xsq" firstAttribute="trailing" secondItem="vmt-eh-Syd" secondAttribute="trailing" id="Js0-uB-QYM"/>
+                            <constraint firstItem="s1s-gW-xsq" firstAttribute="bottom" secondItem="vmt-eh-Syd" secondAttribute="bottom" id="aFN-XP-wOq"/>
+                            <constraint firstItem="Oyq-oD-gQt" firstAttribute="leading" secondItem="7lK-Yg-mEU" secondAttribute="leading" id="h4D-a7-jcI"/>
+                            <constraint firstItem="vmt-eh-Syd" firstAttribute="top" secondItem="Oyq-oD-gQt" secondAttribute="bottom" id="uIu-OQ-Mlo"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="filterTableView" destination="vmt-eh-Syd" id="Git-BT-fKf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Q4-l4-tch" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="241" y="97"/>
+            <point key="canvasLocation" x="240.57971014492756" y="96.428571428571431"/>
         </scene>
     </scenes>
     <resources>
