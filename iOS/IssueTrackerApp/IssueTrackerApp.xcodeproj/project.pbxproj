@@ -16,6 +16,14 @@
 		5CFED7432549381400DE811F /* Issue.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CFED7422549381400DE811F /* Issue.storyboard */; };
 		5CFED74B254943CE00DE811F /* NewIssueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFED74A254943CE00DE811F /* NewIssueButton.swift */; };
 		5CFED74E254949BC00DE811F /* UpdateIssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFED74D254949BC00DE811F /* UpdateIssueViewController.swift */; };
+		BD02F13525512F500013C643 /* KeychainService.h in Headers */ = {isa = PBXBuildFile; fileRef = BD02F13325512F500013C643 /* KeychainService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BD02F13825512F500013C643 /* KeychainService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD02F13125512F500013C643 /* KeychainService.framework */; };
+		BD02F13925512F500013C643 /* KeychainService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BD02F13125512F500013C643 /* KeychainService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BD02F14425512F860013C643 /* SecureStoreQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02F13F25512F850013C643 /* SecureStoreQueryable.swift */; };
+		BD02F14525512F860013C643 /* InternetProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02F14025512F860013C643 /* InternetProtocol.swift */; };
+		BD02F14625512F860013C643 /* SecureStoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02F14125512F860013C643 /* SecureStoreError.swift */; };
+		BD02F14725512F860013C643 /* SecureStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02F14225512F860013C643 /* SecureStore.swift */; };
+		BD02F14825512F860013C643 /* InternetAuthenticationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02F14325512F860013C643 /* InternetAuthenticationType.swift */; };
 		BD090CF825480C3500454C79 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD090CF725480C3500454C79 /* Issue.swift */; };
 		BD090CFB25480D1500454C79 /* IssueList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD090CFA25480D1500454C79 /* IssueList.swift */; };
 		BD090CFE254815BA00454C79 /* IssueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD090CFD254815BA00454C79 /* IssueCell.swift */; };
@@ -28,6 +36,30 @@
 		BDD18D032547B4D000974FB4 /* SignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD18D022547B4D000974FB4 /* SignInButton.swift */; };
 		E31E97D286B47038D68F2141 /* Pods_IssueTrackerApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8997B99C248D0ACDADB72D03 /* Pods_IssueTrackerApp.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BD02F13625512F500013C643 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BDD18CE22546E5E900974FB4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BD02F13025512F500013C643;
+			remoteInfo = KeychainService;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BD02F13A25512F500013C643 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BD02F13925512F500013C643 /* KeychainService.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0B53A19D9BB8499500CE46F2 /* Pods-IssueTrackerApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTrackerApp.debug.xcconfig"; path = "Target Support Files/Pods-IssueTrackerApp/Pods-IssueTrackerApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -42,6 +74,14 @@
 		5CFED74A254943CE00DE811F /* NewIssueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssueButton.swift; sourceTree = "<group>"; };
 		5CFED74D254949BC00DE811F /* UpdateIssueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateIssueViewController.swift; sourceTree = "<group>"; };
 		8997B99C248D0ACDADB72D03 /* Pods_IssueTrackerApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IssueTrackerApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD02F13125512F500013C643 /* KeychainService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeychainService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD02F13325512F500013C643 /* KeychainService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeychainService.h; sourceTree = "<group>"; };
+		BD02F13425512F500013C643 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BD02F13F25512F850013C643 /* SecureStoreQueryable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureStoreQueryable.swift; sourceTree = "<group>"; };
+		BD02F14025512F860013C643 /* InternetProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternetProtocol.swift; sourceTree = "<group>"; };
+		BD02F14125512F860013C643 /* SecureStoreError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureStoreError.swift; sourceTree = "<group>"; };
+		BD02F14225512F860013C643 /* SecureStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureStore.swift; sourceTree = "<group>"; };
+		BD02F14325512F860013C643 /* InternetAuthenticationType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternetAuthenticationType.swift; sourceTree = "<group>"; };
 		BD090CF725480C3500454C79 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
 		BD090CFA25480D1500454C79 /* IssueList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueList.swift; sourceTree = "<group>"; };
 		BD090CFD254815BA00454C79 /* IssueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueCell.swift; sourceTree = "<group>"; };
@@ -58,10 +98,18 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		BD02F12E25512F500013C643 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BDD18CE72546E5E900974FB4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD02F13825512F500013C643 /* KeychainService.framework in Frameworks */,
 				E31E97D286B47038D68F2141 /* Pods_IssueTrackerApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -128,10 +176,25 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
+		BD02F13225512F500013C643 /* KeychainService */ = {
+			isa = PBXGroup;
+			children = (
+				BD02F13325512F500013C643 /* KeychainService.h */,
+				BD02F13425512F500013C643 /* Info.plist */,
+				BD02F14325512F860013C643 /* InternetAuthenticationType.swift */,
+				BD02F14025512F860013C643 /* InternetProtocol.swift */,
+				BD02F14225512F860013C643 /* SecureStore.swift */,
+				BD02F14125512F860013C643 /* SecureStoreError.swift */,
+				BD02F13F25512F850013C643 /* SecureStoreQueryable.swift */,
+			);
+			path = KeychainService;
+			sourceTree = "<group>";
+		};
 		BDD18CE12546E5E900974FB4 = {
 			isa = PBXGroup;
 			children = (
 				BDD18CEC2546E5E900974FB4 /* IssueTrackerApp */,
+				BD02F13225512F500013C643 /* KeychainService */,
 				BDD18CEB2546E5E900974FB4 /* Products */,
 				3C40FC26438E5963BDABC6E8 /* Pods */,
 				DA45A936224CE87AC459FFA8 /* Frameworks */,
@@ -142,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				BDD18CEA2546E5E900974FB4 /* IssueTrackerApp.app */,
+				BD02F13125512F500013C643 /* KeychainService.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -174,7 +238,36 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		BD02F12C25512F500013C643 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD02F13525512F500013C643 /* KeychainService.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		BD02F13025512F500013C643 /* KeychainService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BD02F13D25512F500013C643 /* Build configuration list for PBXNativeTarget "KeychainService" */;
+			buildPhases = (
+				BD02F12C25512F500013C643 /* Headers */,
+				BD02F12D25512F500013C643 /* Sources */,
+				BD02F12E25512F500013C643 /* Frameworks */,
+				BD02F12F25512F500013C643 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KeychainService;
+			productName = KeychainService;
+			productReference = BD02F13125512F500013C643 /* KeychainService.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		BDD18CE92546E5E900974FB4 /* IssueTrackerApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BDD18CFE2546E5EC00974FB4 /* Build configuration list for PBXNativeTarget "IssueTrackerApp" */;
@@ -184,10 +277,12 @@
 				BDD18CE72546E5E900974FB4 /* Frameworks */,
 				BDD18CE82546E5E900974FB4 /* Resources */,
 				43B68020F6C195C59CA85EB1 /* [CP] Embed Pods Frameworks */,
+				BD02F13A25512F500013C643 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BD02F13725512F500013C643 /* PBXTargetDependency */,
 			);
 			name = IssueTrackerApp;
 			productName = IssueTrackerApp;
@@ -203,6 +298,10 @@
 				LastSwiftUpdateCheck = 1210;
 				LastUpgradeCheck = 1210;
 				TargetAttributes = {
+					BD02F13025512F500013C643 = {
+						CreatedOnToolsVersion = 12.1;
+						LastSwiftMigration = 1210;
+					};
 					BDD18CE92546E5E900974FB4 = {
 						CreatedOnToolsVersion = 12.1;
 					};
@@ -222,11 +321,19 @@
 			projectRoot = "";
 			targets = (
 				BDD18CE92546E5E900974FB4 /* IssueTrackerApp */,
+				BD02F13025512F500013C643 /* KeychainService */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		BD02F12F25512F500013C643 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BDD18CE82546E5E900974FB4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -283,6 +390,18 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		BD02F12D25512F500013C643 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD02F14725512F860013C643 /* SecureStore.swift in Sources */,
+				BD02F14825512F860013C643 /* InternetAuthenticationType.swift in Sources */,
+				BD02F14625512F860013C643 /* SecureStoreError.swift in Sources */,
+				BD02F14525512F860013C643 /* InternetProtocol.swift in Sources */,
+				BD02F14425512F860013C643 /* SecureStoreQueryable.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BDD18CE62546E5E900974FB4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -307,6 +426,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		BD02F13725512F500013C643 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BD02F13025512F500013C643 /* KeychainService */;
+			targetProxy = BD02F13625512F500013C643 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		BDD18CF82546E5EC00974FB4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -319,6 +446,63 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		BD02F13B25512F500013C643 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = KeychainService/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.felix.KeychainService;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		BD02F13C25512F500013C643 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = KeychainService/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.felix.KeychainService;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		BDD18CFC2546E5EC00974FB4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -439,6 +623,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0B53A19D9BB8499500CE46F2 /* Pods-IssueTrackerApp.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = IssueTrackerApp/IssueTrackerApp.entitlements;
@@ -460,6 +645,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D4EADA6AA7F2815DF6270443 /* Pods-IssueTrackerApp.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = IssueTrackerApp/IssueTrackerApp.entitlements;
@@ -480,6 +666,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		BD02F13D25512F500013C643 /* Build configuration list for PBXNativeTarget "KeychainService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD02F13B25512F500013C643 /* Debug */,
+				BD02F13C25512F500013C643 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		BDD18CE52546E5E900974FB4 /* Build configuration list for PBXProject "IssueTrackerApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
