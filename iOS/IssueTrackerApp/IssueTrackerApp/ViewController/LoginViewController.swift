@@ -122,10 +122,14 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
 //      let fullName = appleIDCredential.fullName
 //      let email = appleIDCredential.email
       
-      print("idTokenString: \(idTokenString)")
-      print("userIdentifier: \(userIdentifier)")
-      
       try? secureStore.setValue(userIdentifier, for: "userIdentifier")
+      
+      let storyboard = UIStoryboard(name: "Issue", bundle: nil)
+      let issueVC = storyboard.instantiateInitialViewController()
+      
+      guard let window = view.window else { return }
+      
+      window.rootViewController = issueVC
     }
   }
   
