@@ -30,6 +30,7 @@ const Form = styled.div`
   flex-direction: column;
   border: 1px solid #e1e4e8;
   height: 430px;
+  width: 100%;
   border-radius: 6px;
 `;
 

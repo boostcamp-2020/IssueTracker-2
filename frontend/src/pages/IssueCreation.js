@@ -25,13 +25,14 @@ const IssueCreation = () => {
 
 const IssueCreationBody = styled.div`
   display: flex;
-  border: 1px solid;
-  width: 800px;
+  width: 1200px;
   height: 700px;
+  margin: auto;
 `;
 
 const WriteArea = styled.div`
   display: flex;
+  width: 100%;
 `;
 
 const SelectArea = styled.div`
