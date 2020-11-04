@@ -11,6 +11,7 @@ export default () => {
 
 const Title = styled.div`
   height: 50px;
+  margin: 8px;
 `;
 
 const GlowingBorder = styled.input`
