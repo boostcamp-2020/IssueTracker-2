@@ -14,8 +14,6 @@ export default function Content() {
 
 const Wrapper = styled.div`
   width: 1000px;
-  border: 1px solid #aaaaaa;
-  border-radius: 10px;
   margin: 0 auto;
 `;
 
