@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default function Description(props) {
+export default function Explanation(props) {
   return (
     <Wrapper>
       <Title>New milestone</Title>
-      <Explanation>
+      <Description>
         Create a new milestone to help organize your issues and pull requests.
         Learn more about <LinkToInfo>milestones and issue.</LinkToInfo>
-      </Explanation>
+      </Description>
     </Wrapper>
   );
 }
@@ -24,7 +24,7 @@ const Title = styled.div`
   font-size: 2em;
 `;
 
-const Explanation = styled.span``;
+const Description = styled.span``;
 
 const LinkToInfo = styled.a`
   color: #0366d6;

@@ -1,14 +1,16 @@
 import React from 'react';
 import Header from '../../components/CreateMilestone/header';
-import Description from '../../components/CreateMilestone/description';
+import Explanation from '../../components/CreateMilestone/explanation';
 import InputForm from '../../components/CreateMilestone/inputForm';
+import CreateButton from '../../components/CreateMilestone/createButton';
 
 const CreateMilestone = props => {
   return (
     <>
       <Header />
-      <Description />
+      <Explanation />
       <InputForm />
+      <CreateButton />
     </>
   );
 };
