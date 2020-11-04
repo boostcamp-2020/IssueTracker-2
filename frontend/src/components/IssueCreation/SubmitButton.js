@@ -2,13 +2,10 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 export default () => {
+  return <GreenButton>Submit new issue</GreenButton>;
+};
 
-  return (
-    <SubmitButton>Submit new issue</SubmitButton>
-  );
-}
-
-const SubmitButton = styled.button`
+const GreenButton = styled.button`
   background-color: #2ea44f;
   border: 1px solid;
   border-color: #1b1f2326;
@@ -23,7 +20,6 @@ const SubmitButton = styled.button`
 `;
 
 const Disabled = styled.button`
-    opacity: 0.6;
-    cursor: not-allowed;
+  opacity: 0.6;
+  cursor: not-allowed;
 `;
-
