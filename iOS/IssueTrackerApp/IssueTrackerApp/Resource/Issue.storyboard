@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lTR-pQ-SAM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -19,7 +20,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="woj-kq-llH">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="PyJ-jd-juM">
                                     <size key="itemSize" width="414" height="128"/>
                                     <size key="headerReferenceSize" width="50" height="50"/>
@@ -139,13 +140,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="이슈" id="ddg-l3-9Rd">
                         <barButtonItem key="leftBarButtonItem" title="Filter" id="oNW-dN-5Fr"/>
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="khm-1Y-J9X">
-                            <connections>
-                                <action selector="editButtonTouched:" destination="QDr-ZF-uIg" id="trE-ur-iKE"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="khm-1Y-J9X"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="filterButton" destination="oNW-dN-5Fr" id="qN3-PA-NFA"/>
                         <outlet property="issueCollectionView" destination="woj-kq-llH" id="aUj-UK-14i"/>
                     </connections>
                 </viewController>
