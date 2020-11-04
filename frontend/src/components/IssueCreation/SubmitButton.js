@@ -17,6 +17,7 @@ const GreenButton = styled.button`
   font-weight: 500;
   height: 35px;
   cursor: pointer;
+  outline: none;
 `;
 
 const Disabled = styled.button`

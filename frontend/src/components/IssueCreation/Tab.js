@@ -20,4 +20,5 @@ const WriteButton = styled.button`
   border-radius: 6px 6px 0 0;
   padding: 10px 16px;
   z-index: 1;
+  outline: none;
 `;
