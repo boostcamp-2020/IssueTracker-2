@@ -13,9 +13,21 @@ class IssueViewController: UIViewController {
   typealias Snapshot = NSDiffableDataSourceSnapshot<IssueSection, Issue>
   
   private lazy var dataSource = makeDataSource()
+  private var isEdited: Bool = false {
+    willSet {
+      filterButton.title = newValue == true ? "Select All" : "Filter"
+      filterButton.action = newValue == true ? #selector(selectAllButtonTouched) : #selector(filterButtonTouched)
+      editButton.title = newValue == true ? "Cancel" : "Edit"
+      let constant: CGFloat = newValue == true ? 0 : 50
+      self.height.constant = constant
+    }
+  }
   
   @IBOutlet weak var issueCollectionView: UICollectionView!
   @IBOutlet weak var filterButton: UIBarButtonItem!
+  @IBOutlet weak var editButton: UIBarButtonItem!
+  @IBOutlet weak var issueSearchBar: UISearchBar!
+  @IBOutlet weak var height: NSLayoutConstraint!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -26,12 +38,14 @@ class IssueViewController: UIViewController {
   private func configure() {
     configureNavigationBar()
     configureIssueCollectionView()
-    configureFliterButton()
+    configureNavigationBarButton()
   }
   
-  private func configureFliterButton() {
+  private func configureNavigationBarButton() {
     filterButton.target = self
     filterButton.action = #selector(filterButtonTouched)
+    editButton.target = self
+    editButton.action = #selector(editButtonTouched)
   }
   
   private func configureNavigationBar() {
@@ -57,23 +71,6 @@ class IssueViewController: UIViewController {
       return cell
     }
     
-    dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
-      guard kind == UICollectionView.elementKindSectionHeader else {
-        return nil
-      }
-      
-      let view = collectionView.dequeueReusableSupplementaryView(
-        ofKind: kind,
-        withReuseIdentifier: "IssueHeader",
-        for: indexPath
-      ) as? IssueHeader
-      
-      //      let section = self.dataSource.snapshot()
-      //        .sectionIdentifiers[indexPath.section]
-      
-      return view
-    }
-    
     return dataSource
   }
   
@@ -97,6 +94,14 @@ class IssueViewController: UIViewController {
     guard let issueFilterVC = storyboard.instantiateInitialViewController() as? IssueFilterViewController else { return }
     issueFilterVC.filterTableViewDelegate = FilterTableViewDelegate()
     present(issueFilterVC, animated: true, completion: nil)
+  }
+  
+  @objc private func editButtonTouched() {
+    isEdited.toggle()
+  }
+  
+  @objc private func selectAllButtonTouched() {
+    
   }
 }
 

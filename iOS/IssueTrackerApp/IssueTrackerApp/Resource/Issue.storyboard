@@ -18,18 +18,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="wgp-EP-K1e">
+                                <rect key="frame" x="0.0" y="88" width="414" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ZRb-rS-Yjg"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="woj-kq-llH">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="138" width="414" height="675"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="PyJ-jd-juM">
                                     <size key="itemSize" width="414" height="128"/>
-                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="IssueCell" id="TGt-Gv-sdp" customClass="IssueCell" customModule="IssueTrackerApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="414" height="128"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="OGF-Sy-rgE">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
@@ -90,25 +97,6 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="IssueHeader" id="v2c-zm-WqX" customClass="IssueHeader" customModule="IssueTrackerApp" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="wgp-EP-K1e">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </searchBar>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="wgp-EP-K1e" secondAttribute="trailing" id="Ri0-wL-jNf"/>
-                                        <constraint firstItem="wgp-EP-K1e" firstAttribute="top" secondItem="v2c-zm-WqX" secondAttribute="top" id="hft-8D-cqj"/>
-                                        <constraint firstItem="wgp-EP-K1e" firstAttribute="leading" secondItem="v2c-zm-WqX" secondAttribute="leading" id="lEw-yz-xJG"/>
-                                        <constraint firstAttribute="bottom" secondItem="wgp-EP-K1e" secondAttribute="bottom" id="s3i-xz-DZ3"/>
-                                    </constraints>
-                                    <connections>
-                                        <outlet property="issueSearchBar" destination="wgp-EP-K1e" id="o52-KF-ZXx"/>
-                                    </connections>
-                                </collectionReusableView>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iey-07-5vK" customClass="NewIssueButton" customModule="IssueTrackerApp" customModuleProvider="target">
                                 <rect key="frame" x="344" y="743.5" width="50" height="49"/>
@@ -130,21 +118,35 @@
                         <viewLayoutGuide key="safeArea" id="m1b-EM-E90"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="woj-kq-llH" firstAttribute="top" secondItem="wgp-EP-K1e" secondAttribute="bottom" id="2Xr-q5-WQE"/>
                             <constraint firstItem="m1b-EM-E90" firstAttribute="trailing" secondItem="woj-kq-llH" secondAttribute="trailing" id="LId-B0-hiV"/>
+                            <constraint firstItem="wgp-EP-K1e" firstAttribute="top" secondItem="m1b-EM-E90" secondAttribute="top" id="RYu-Me-grg"/>
                             <constraint firstItem="m1b-EM-E90" firstAttribute="bottom" secondItem="woj-kq-llH" secondAttribute="bottom" id="WZX-aJ-8QQ"/>
-                            <constraint firstItem="woj-kq-llH" firstAttribute="top" secondItem="m1b-EM-E90" secondAttribute="top" id="g47-R0-V7a"/>
+                            <constraint firstItem="wgp-EP-K1e" firstAttribute="trailing" secondItem="m1b-EM-E90" secondAttribute="trailing" id="ajB-ef-Jby"/>
+                            <constraint firstItem="wgp-EP-K1e" firstAttribute="leading" secondItem="m1b-EM-E90" secondAttribute="leading" id="deG-jF-HMg"/>
                             <constraint firstItem="m1b-EM-E90" firstAttribute="bottom" secondItem="iey-07-5vK" secondAttribute="bottom" constant="20" id="jsc-nb-EBI"/>
                             <constraint firstItem="m1b-EM-E90" firstAttribute="trailing" secondItem="iey-07-5vK" secondAttribute="trailing" constant="20" id="kjp-4o-1BK"/>
                             <constraint firstItem="woj-kq-llH" firstAttribute="leading" secondItem="m1b-EM-E90" secondAttribute="leading" id="yks-pb-tnU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="이슈" id="ddg-l3-9Rd">
-                        <barButtonItem key="leftBarButtonItem" title="Filter" id="oNW-dN-5Fr"/>
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="khm-1Y-J9X"/>
+                        <barButtonItem key="leftBarButtonItem" title="Filter" id="oNW-dN-5Fr">
+                            <connections>
+                                <action selector="filterButtonTouched:" destination="QDr-ZF-uIg" id="ldL-xC-lmm"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="khm-1Y-J9X">
+                            <connections>
+                                <action selector="editButtonTouched:" destination="QDr-ZF-uIg" id="pi9-JN-5aV"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="filterButton" destination="oNW-dN-5Fr" id="qN3-PA-NFA"/>
+                        <outlet property="editButton" destination="khm-1Y-J9X" id="k9O-OU-ENu"/>
+                        <outlet property="filterButton" destination="oNW-dN-5Fr" id="Ag2-pa-ZvH"/>
+                        <outlet property="height" destination="ZRb-rS-Yjg" id="9Ph-4q-j7v"/>
                         <outlet property="issueCollectionView" destination="woj-kq-llH" id="aUj-UK-14i"/>
+                        <outlet property="issueSearchBar" destination="wgp-EP-K1e" id="h7O-Wd-AHy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V5G-5X-fb7" sceneMemberID="firstResponder"/>
