@@ -12,7 +12,7 @@ const App = () => {
         <Route exact path="/">
           <Login />
         </Route>
-        <Route exact path="/mileston">
+        <Route exact path="/milestone">
           <Milestone />
         </Route>
       </Switch>
