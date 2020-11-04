@@ -7,19 +7,18 @@ import RightContent from './rightContent';
 export default function MilestoneList(props) {
   return (
     <Wrapper>
-      <Header>
+      <ListHeader>
+        <MilestoneIcon size={20} />
         <Open>
-          <MilestoneIcon size={20} />
-
-          <span className="open__count">2</span>
-          <span className="open__text">Open</span>
+          <Count>2</Count>
+          <span>Open</span>
         </Open>
         <Closed>
-          <CheckIcon size={20} />
-          <span className="closed__count">0</span>
-          <span className="closed__text">Closed</span>
+          <CheckIcon size={22} />
+          <Count>0</Count>
+          <span>Closed</span>
         </Closed>
-      </Header>
+      </ListHeader>
       <List>
         <Milestone>
           <LeftContent />
@@ -40,7 +39,7 @@ const Wrapper = styled.div`
   margin: auto;
 `;
 
-const Header = styled.div`
+const ListHeader = styled.div`
   width: 100%;
   padding: 0.5em 1.5em;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -49,6 +48,10 @@ const Header = styled.div`
 `;
 
 const Open = styled.span``;
+const Count = styled.span`
+  margin-left: 0.3em;
+  margin-right: 0.3em;
+`;
 const Closed = styled.span`
   margin-left: 1em;
 `;
