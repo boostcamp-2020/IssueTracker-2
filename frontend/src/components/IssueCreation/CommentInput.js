@@ -6,11 +6,10 @@ export default () => {
 };
 
 const Input = styled.textarea`
-  width: 100%;
   height: 100%;
-  margin-bottom: -3px;
   padding: 8px 12px;
-  margin-top: 7px;
+  margin: 8px;
+  margin-bottom: -3px;
   box-sizing: border-box;
   border: 1px solid #e1e4e8;
   border-bottom: none;
