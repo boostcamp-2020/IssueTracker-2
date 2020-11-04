@@ -85,7 +85,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MqT-Sd-xuo">
-                                                                    <rect key="frame" x="371" y="12" width="33" height="16"/>
+                                                                    <rect key="frame" x="365" y="12" width="33" height="16"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" id="ecc-XS-w5I"/>
                                                                     </constraints>
@@ -108,7 +108,7 @@
                                                                 <constraint firstItem="Umt-dm-itA" firstAttribute="top" secondItem="CjK-4f-wcU" secondAttribute="top" constant="10" id="79m-Di-gpF"/>
                                                                 <constraint firstItem="Qzw-De-c6x" firstAttribute="top" secondItem="Umt-dm-itA" secondAttribute="bottom" constant="10" id="KU0-Rz-9Ha"/>
                                                                 <constraint firstItem="Qzw-De-c6x" firstAttribute="leading" secondItem="CjK-4f-wcU" secondAttribute="leading" constant="16" id="P5B-ll-UDV"/>
-                                                                <constraint firstAttribute="trailing" secondItem="MqT-Sd-xuo" secondAttribute="trailing" constant="10" id="QA2-gz-MCc"/>
+                                                                <constraint firstAttribute="trailing" secondItem="MqT-Sd-xuo" secondAttribute="trailing" constant="16" id="QA2-gz-MCc"/>
                                                                 <constraint firstItem="Umt-dm-itA" firstAttribute="leading" secondItem="CjK-4f-wcU" secondAttribute="leading" constant="16" id="flO-l1-9co"/>
                                                                 <constraint firstItem="MqT-Sd-xuo" firstAttribute="centerY" secondItem="Umt-dm-itA" secondAttribute="centerY" id="vhT-NA-sEF"/>
                                                             </constraints>
@@ -144,6 +144,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <size key="customSize" width="414" height="86"/>
                                         <connections>
+                                            <outlet property="bigView" destination="nXV-CO-KqO" id="9kf-Di-Vf1"/>
                                             <outlet property="descriptionLabel" destination="Qzw-De-c6x" id="5KG-Dg-lsy"/>
                                             <outlet property="titleLabel" destination="Umt-dm-itA" id="eyw-sP-Ds5"/>
                                         </connections>

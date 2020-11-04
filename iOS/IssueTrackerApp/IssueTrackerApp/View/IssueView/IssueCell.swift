@@ -11,6 +11,13 @@ class IssueCell: UICollectionViewCell {
   
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var descriptionLabel: UILabel!
+  @IBOutlet weak var bigView: UIView!
+  
+  var isEdited: Bool = false {
+    willSet {
+      newValue == true ? editStart() : editEnd()
+    }
+  }
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -30,5 +37,18 @@ class IssueCell: UICollectionViewCell {
   func updateCell(withTitle title: String, description: String) {
     titleLabel.text = title
     descriptionLabel.text = description
+  }
+  
+  private func editStart() {
+    UIView.animate(withDuration: 0.5) { [weak self] in
+      self?.bigView.transform = CGAffineTransform(translationX: 50, y: 0)
+//      self?.bigView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+    }
+  }
+  
+  private func editEnd() {
+    UIView.animate(withDuration: 0.5) { [weak self] in
+      self?.bigView.transform = .identity
+    }
   }
 }

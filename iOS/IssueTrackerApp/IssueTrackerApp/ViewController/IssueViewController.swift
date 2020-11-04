@@ -108,6 +108,8 @@ class IssueViewController: UIViewController {
 extension IssueViewController: UICollectionViewDelegateFlowLayout {
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    guard let cell = collectionView.cellForItem(at: indexPath) as? IssueCell else { return }
+    cell.isEdited.toggle()
     guard let _ = dataSource.itemIdentifier(for: indexPath) else {
       return
     }
@@ -116,7 +118,7 @@ extension IssueViewController: UICollectionViewDelegateFlowLayout {
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: view.bounds.width, height: view.bounds.height / 10)
+    return CGSize(width: view.bounds.width, height: 80)
   }
 }
 
