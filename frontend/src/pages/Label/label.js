@@ -1,11 +1,12 @@
 import React from 'react';
 import Header from '../../components/Label/header';
+import Content from '../../components/Label/content';
 
 export default function Label() {
   return (
     <div>
       <Header />
-      레이블 페이지입니다.
+      <Content />
     </div>
   );
 }
