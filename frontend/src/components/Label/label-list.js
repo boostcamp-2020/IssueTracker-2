@@ -15,12 +15,19 @@ export default function LabelList() {
         {LABEL_LIST_INFO.map(labelInfo => {
           return (
             <LabelDescription>
-              <LabelTag
-                backgroundColor={labelInfo.backgroundColor}
-                textColor={labelInfo.textColor}
-              >
-                {labelInfo.name}
-              </LabelTag>
+              <LabelTagArea>
+                <LabelTag
+                  backgroundColor={labelInfo.backgroundColor}
+                  textColor={labelInfo.textColor}
+                >
+                  {labelInfo.name}
+                </LabelTag>
+              </LabelTagArea>
+              <LabelDescriptionArea>ddd</LabelDescriptionArea>
+              <LabelManageButtonArea>
+                <button>Edit</button>
+                <button>Delete</button>
+              </LabelManageButtonArea>
             </LabelDescription>
           );
         })}
@@ -43,6 +50,18 @@ const LabelDescriptionList = styled.div``;
 const LabelDescription = styled.div`
   padding: 20px 16px;
   border-top: 1px solid #dddddd;
+  display: flex;
+  justify-content: space-between;
+`;
+
+const LabelTagArea = styled.div`
+  width: 200px;
+`;
+const LabelDescriptionArea = styled.div`
+  width: 600px;
+`;
+const LabelManageButtonArea = styled.div`
+  width: 100px;
 `;
 
 const LabelTag = styled.div`
