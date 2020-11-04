@@ -2,9 +2,24 @@ import React from 'react';
 import styled from 'styled-components';
 
 const LABEL_LIST_INFO = [
-  { name: 'bug', description: '', textColor: 'white', backgroundColor: 'red' },
-  { name: 'bug', description: '', textColor: 'white', backgroundColor: 'red' },
-  { name: 'bug', description: '', textColor: 'white', backgroundColor: 'red' },
+  {
+    name: 'bug',
+    description: `Something isn't working`,
+    textColor: 'white',
+    backgroundColor: 'red',
+  },
+  {
+    name: 'bug',
+    description: `Something isn't working`,
+    textColor: 'white',
+    backgroundColor: 'red',
+  },
+  {
+    name: 'bug',
+    description: `Something isn't working`,
+    textColor: 'white',
+    backgroundColor: 'red',
+  },
 ];
 
 export default function LabelList() {
@@ -23,10 +38,12 @@ export default function LabelList() {
                   {labelInfo.name}
                 </LabelTag>
               </LabelTagArea>
-              <LabelDescriptionArea>ddd</LabelDescriptionArea>
+              <LabelDescriptionArea>
+                {labelInfo.description}
+              </LabelDescriptionArea>
               <LabelManageButtonArea>
-                <button>Edit</button>
-                <button>Delete</button>
+                <LabelManageButton>Edit</LabelManageButton>
+                <LabelManageButton>Delete</LabelManageButton>
               </LabelManageButtonArea>
             </LabelDescription>
           );
@@ -57,11 +74,19 @@ const LabelDescription = styled.div`
 const LabelTagArea = styled.div`
   width: 200px;
 `;
+
 const LabelDescriptionArea = styled.div`
   width: 600px;
 `;
+
 const LabelManageButtonArea = styled.div`
   width: 100px;
+  display: flex;
+  gap: 20px;
+`;
+
+const LabelManageButton = styled.a`
+  cursor: pointer;
 `;
 
 const LabelTag = styled.div`
