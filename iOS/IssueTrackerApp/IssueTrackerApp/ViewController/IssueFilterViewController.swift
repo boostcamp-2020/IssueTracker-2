@@ -12,6 +12,7 @@ class IssueFilterViewController: UIViewController {
   typealias Snapshot = NSDiffableDataSourceSnapshot<FilterSection, String>
   
   lazy var dataSource = makeDataSource()
+  var filterTableViewDelegate: UITableViewDelegate?
   
   @IBOutlet weak var filterTableView: UITableView!
   @IBAction func cancelButtonTouched(_ sender: UIBarButtonItem) {
@@ -24,7 +25,7 @@ class IssueFilterViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    filterTableView.delegate = self
+    filterTableView.delegate = filterTableViewDelegate
     applySnapshot()
     filterTableView.register(FilterIssueCell.self, forCellReuseIdentifier: "IssueFilterCell")
   }
@@ -35,7 +36,18 @@ class IssueFilterViewController: UIViewController {
         withIdentifier: "IssueFilterCell",
         for: indexPath
       ) as? FilterIssueCell else { return UITableViewCell() }
+      
       cell.updateCell(withText: item)
+      
+      if indexPath == IndexPath(row: 0, section: 0) {
+        cell.accessoryType = .checkmark
+        tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+      }
+      
+      if indexPath.section == 1 {
+        cell.accessoryType = .disclosureIndicator
+      }
+      
       return cell
     }
     
@@ -50,20 +62,5 @@ class IssueFilterViewController: UIViewController {
     snapshot.appendItems(items, toSection: .condition)
     snapshot.appendItems(detailItems, toSection: .detailContidion)
     dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
-  }
-}
-
-extension IssueFilterViewController: UITableViewDelegate {
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if let cell = tableView.cellForRow(at: indexPath),
-       indexPath.section == 0 {
-      cell.accessoryType = .checkmark
-    }
-  }
-  func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-    if let cell = tableView.cellForRow(at: indexPath),
-       indexPath.section == 0 {
-      cell.accessoryType = .none
-    }
   }
 }
