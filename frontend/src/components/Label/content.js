@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import NavBar from './nav-bar';
+import LabelList from './label-list';
 
 export default function Content() {
   return (
     <ContentContainer>
       <Wrapper>
         <NavBar />
+        <LabelList />
       </Wrapper>
     </ContentContainer>
   );
