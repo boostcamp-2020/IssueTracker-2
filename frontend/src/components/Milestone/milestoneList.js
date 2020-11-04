@@ -10,6 +10,7 @@ export default function MilestoneList(props) {
       <Header>
         <Open>
           <MilestoneIcon size={20} />
+
           <span className="open__count">2</span>
           <span className="open__text">Open</span>
         </Open>

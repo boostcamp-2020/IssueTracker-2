@@ -7,9 +7,12 @@ export default function RightContent(props) {
         <PercentGauge />
       </GaugeBar>
       <Info>
-        <span>40% complete</span>
-        <span>2 open</span>
-        <span>1 closed</span>
+        <Percent>40%</Percent>
+        <span>complete</span>
+        <OpenCount>2</OpenCount>
+        <span>open</span>
+        <ClosedCount>1</ClosedCount>
+        <span>closed</span>
       </Info>
 
       <Buttons>
@@ -44,7 +47,9 @@ const PercentGauge = styled.div`
 
 const Info = styled.div`
   margin-top: 1em;
+  display: flex;
 `;
+
 const BlueTextButton = styled.a`
   color: blue;
   margin-right: 1em;
@@ -58,4 +63,18 @@ const RedTextButton = styled.a`
 
 const Buttons = styled.div`
   margin-top: 1em;
+`;
+
+const Percent = styled.span`
+  font-weight: bold;
+  margin-right: 0.5em;
+`;
+
+const OpenCount = styled.span`
+  margin: 0 0.5em;
+  font-weight: bold;
+`;
+const ClosedCount = styled.span`
+  margin: 0 0.5em;
+  font-weight: bold;
 `;

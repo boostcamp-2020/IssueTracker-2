@@ -12,7 +12,7 @@ export default function LeftContent(props) {
         <AlertIcon />
         <Duedate>
           <ClockIcon />
-          Last updated about 2 hours ago
+          <UpdatedTime>Last updated about 2 hours ago</UpdatedTime>
         </Duedate>
       </DueInfo>
       <MilestoneDescription>마일스톤 페이지 마크업</MilestoneDescription>
@@ -27,7 +27,7 @@ const MilestoneTitle = styled.span`
 `;
 
 const DueInfo = styled.span`
-  margin-top: 0.3em;
+  margin-top: 0.5em;
   display: flex;
   position: relative;
   color: rgba(0, 0, 0, 0.7);
@@ -39,6 +39,10 @@ const Duedate = styled.span`
 `;
 
 const MilestoneDescription = styled.div`
-  margin-top: 0.3em;
+  margin-top: 0.5em;
   color: rgba(0, 0, 0, 0.7);
+`;
+
+const UpdatedTime = styled.span`
+  margin-left: 1em;
 `;
