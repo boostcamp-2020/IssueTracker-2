@@ -52,17 +52,6 @@
                                 <rect key="frame" x="83" y="315" width="39" height="30"/>
                                 <state key="normal" title="로그인"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BCh-Vm-qUO" customClass="SignInButton" customModule="IssueTrackerApp" customModuleProvider="target">
-                                <rect key="frame" x="38" y="471" width="338" height="44"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="0lg-pF-zkS"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title=" Sign in with Apple">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아이디" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7h-aD-B3F">
                                 <rect key="frame" x="35" y="217.5" width="60" height="21"/>
                                 <constraints>
@@ -102,10 +91,7 @@
                         <constraints>
                             <constraint firstItem="3Hq-SB-64U" firstAttribute="leading" secondItem="K7h-aD-B3F" secondAttribute="leading" id="0v2-qG-FBo"/>
                             <constraint firstItem="XZL-We-rUg" firstAttribute="trailing" secondItem="iXg-pF-pRO" secondAttribute="trailing" constant="83" id="2A5-op-HCr"/>
-                            <constraint firstItem="BCh-Vm-qUO" firstAttribute="trailing" secondItem="dmg-6p-QLV" secondAttribute="trailing" id="3yA-Ou-VSF"/>
-                            <constraint firstItem="BCh-Vm-qUO" firstAttribute="top" secondItem="dmg-6p-QLV" secondAttribute="bottom" constant="18" id="5LE-9A-J43"/>
                             <constraint firstItem="iXg-pF-pRO" firstAttribute="top" secondItem="lp1-aE-5bE" secondAttribute="top" id="FFR-NX-EUf"/>
-                            <constraint firstItem="BCh-Vm-qUO" firstAttribute="leading" secondItem="dmg-6p-QLV" secondAttribute="leading" id="O5O-js-fTU"/>
                             <constraint firstItem="lp1-aE-5bE" firstAttribute="leading" secondItem="XZL-We-rUg" secondAttribute="leading" constant="83" id="O60-or-URb"/>
                             <constraint firstItem="K7h-aD-B3F" firstAttribute="leading" secondItem="XZL-We-rUg" secondAttribute="leading" constant="35" id="QRk-pM-8Pb"/>
                             <constraint firstItem="mlI-hO-6Nq" firstAttribute="top" secondItem="vXN-JN-au8" secondAttribute="bottom" constant="55" id="Vdd-8S-jzD"/>
@@ -125,6 +111,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="githubSignInButton" destination="dmg-6p-QLV" id="5b0-dI-ze8"/>
                         <outlet property="idTextField" destination="mlI-hO-6Nq" id="jIg-ti-vjY"/>
                         <outlet property="pwTextField" destination="Dpp-NS-GlT" id="p1w-eQ-cJ6"/>
                     </connections>
