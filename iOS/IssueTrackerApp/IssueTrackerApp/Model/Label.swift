@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Label {
+struct Label: Codable {
   var id: Int
   var labelName: String
   var color: String
