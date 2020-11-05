@@ -9,6 +9,8 @@ import UIKit
 
 class IssueContentTextView: UITextView {
   
+  var openLibraryHandler: (() -> ())?
+  
   override init(frame: CGRect, textContainer: NSTextContainer?) {
     super.init(frame: frame, textContainer: textContainer)
   }
@@ -18,9 +20,20 @@ class IssueContentTextView: UITextView {
   }
   
   override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
-    return action == #selector(openLibrary)
+    switch action {
+    case #selector(paste(_:)):
+      break
+    case #selector(copy(_:)):
+      break
+    case #selector(openLibrary):
+      break
+    default:
+      return false
+    }
+    return true
   }
-
+  
   @objc func openLibrary() {
+    openLibraryHandler?()
   }
 }
