@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const auth = require('./auth');
+require('../loaders/database-loader');
 
 router.use('/auth', auth);
 
