@@ -1,3 +1,5 @@
+-- 추후 테이블이 모두 생성된 후 코드 안에 작성할 예정
+
 ALTER TABLE issues ADD FOREIGN KEY (user_sid) REFERENCES users (sid);
 ​
 ALTER TABLE issues ADD FOREIGN KEY (milestone_id) REFERENCES milestones (id);
