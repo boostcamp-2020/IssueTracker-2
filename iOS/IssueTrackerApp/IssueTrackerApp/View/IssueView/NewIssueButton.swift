@@ -20,11 +20,8 @@ class NewIssueButton: UIButton {
   }
   
   private func configure() {
-    layer.cornerRadius = 25
-    layer.borderWidth = 5
-    layer.borderColor = #colorLiteral(red: 0.476841867, green: 0.5048075914, blue: 1, alpha: 1)
-    layer.shadowOffset = CGSize(width: 1, height: 3)
-    layer.shadowColor = UIColor.gray.cgColor
-    layer.shadowOpacity = 0.7
+//    layer.cornerRadius = 25
+//    layer.borderWidth = 5
+//    layer.borderColor = UIColor.blue.cgColor
   }
 }

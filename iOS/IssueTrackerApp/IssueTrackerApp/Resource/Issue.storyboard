@@ -166,34 +166,41 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iey-07-5vK" customClass="NewIssueButton" customModule="IssueTrackerApp" customModuleProvider="target">
-                                <rect key="frame" x="305" y="548.5" width="50" height="49"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9MF-aY-f2n">
+                                <rect key="frame" x="310" y="553" width="45" height="45"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kwz-Hi-SNM" customClass="NewIssueButton" customModule="IssueTrackerApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.5" y="1" width="44" height="43"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="6sT-mN-gI4"/>
+                                            <constraint firstAttribute="width" secondItem="kwz-Hi-SNM" secondAttribute="height" multiplier="1:1" id="iIH-NJ-XXc"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="plus.circle.fill" catalog="system"/>
+                                        <connections>
+                                            <segue destination="V7R-yT-F2x" kind="presentation" id="oPd-O9-Kz4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="BID-v5-lhf"/>
-                                    <constraint firstAttribute="height" constant="50" id="MpP-hj-HZJ"/>
+                                    <constraint firstItem="kwz-Hi-SNM" firstAttribute="centerX" secondItem="9MF-aY-f2n" secondAttribute="centerX" id="8Wc-om-vm4"/>
+                                    <constraint firstItem="kwz-Hi-SNM" firstAttribute="centerY" secondItem="9MF-aY-f2n" secondAttribute="centerY" id="lvD-oG-G3V"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <color key="tintColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" backgroundImage="plus.circle.fill" catalog="system">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="V7R-yT-F2x" kind="presentation" id="ZaU-jk-5AZ"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="m1b-EM-E90"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="m1b-EM-E90" firstAttribute="trailing" secondItem="kwz-Hi-SNM" secondAttribute="trailing" constant="20.5" id="1nO-yw-Mh4"/>
                             <constraint firstItem="woj-kq-llH" firstAttribute="top" secondItem="wgp-EP-K1e" secondAttribute="bottom" id="2Xr-q5-WQE"/>
+                            <constraint firstItem="m1b-EM-E90" firstAttribute="bottom" secondItem="9MF-aY-f2n" secondAttribute="bottom" constant="20" id="KeF-1D-CLl"/>
                             <constraint firstItem="m1b-EM-E90" firstAttribute="trailing" secondItem="woj-kq-llH" secondAttribute="trailing" id="LId-B0-hiV"/>
                             <constraint firstItem="wgp-EP-K1e" firstAttribute="top" secondItem="m1b-EM-E90" secondAttribute="top" id="RYu-Me-grg"/>
                             <constraint firstItem="m1b-EM-E90" firstAttribute="bottom" secondItem="woj-kq-llH" secondAttribute="bottom" id="WZX-aJ-8QQ"/>
                             <constraint firstItem="wgp-EP-K1e" firstAttribute="trailing" secondItem="m1b-EM-E90" secondAttribute="trailing" id="ajB-ef-Jby"/>
                             <constraint firstItem="wgp-EP-K1e" firstAttribute="leading" secondItem="m1b-EM-E90" secondAttribute="leading" id="deG-jF-HMg"/>
-                            <constraint firstItem="m1b-EM-E90" firstAttribute="bottom" secondItem="iey-07-5vK" secondAttribute="bottom" constant="20" id="jsc-nb-EBI"/>
-                            <constraint firstItem="m1b-EM-E90" firstAttribute="trailing" secondItem="iey-07-5vK" secondAttribute="trailing" constant="20" id="kjp-4o-1BK"/>
+                            <constraint firstItem="m1b-EM-E90" firstAttribute="bottom" secondItem="kwz-Hi-SNM" secondAttribute="bottom" constant="20.5" id="mFO-lC-NF1"/>
+                            <constraint firstItem="m1b-EM-E90" firstAttribute="trailing" secondItem="9MF-aY-f2n" secondAttribute="trailing" constant="20" id="tDM-wv-z22"/>
                             <constraint firstItem="woj-kq-llH" firstAttribute="leading" secondItem="m1b-EM-E90" secondAttribute="leading" id="yks-pb-tnU"/>
                         </constraints>
                     </view>
@@ -218,7 +225,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V5G-5X-fb7" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1957.9710144927537" y="98.4375"/>
+            <point key="canvasLocation" x="1957.5999999999999" y="97.601199400299862"/>
         </scene>
         <!--Update Issue View Controller-->
         <scene sceneID="O5f-ym-Ku0">
