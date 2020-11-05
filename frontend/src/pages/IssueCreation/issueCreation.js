@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import CommentForm from '../components/IssueCreation/CommentForm';
-import Sidebar from '../components/IssueCreation/Sidebar';
-import Profile from '../components/IssueCreation/Profile';
+import CommentForm from '../../components/IssueCreation/CommentForm';
+import Sidebar from '../../components/IssueCreation/Sidebar';
+import Profile from '../../components/IssueCreation/Profile';
 
 const IssueCreation = () => {
   return (
