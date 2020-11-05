@@ -166,22 +166,25 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iey-07-5vK" customClass="NewIssueButton" customModule="IssueTrackerApp" customModuleProvider="target">
-                                <rect key="frame" x="305" y="548.5" width="50" height="49"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <view contentMode="scaleToFill" id="9MF-aY-f2n">
+                                <rect key="frame" x="320" y="563" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kwz-Hi-SNM" customClass="NewIssueButton" customModule="IssueTrackerApp" customModuleProvider="target">
+                                        <rect key="frame" x="-9.5" y="-9" width="44" height="43"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="6sT-mN-gI4"/>
+                                            <constraint firstAttribute="width" secondItem="kwz-Hi-SNM" secondAttribute="height" multiplier="1:1" id="iIH-NJ-XXc"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="plus.circle.fill" catalog="system"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="BID-v5-lhf"/>
-                                    <constraint firstAttribute="height" constant="50" id="MpP-hj-HZJ"/>
+                                    <constraint firstItem="kwz-Hi-SNM" firstAttribute="centerX" secondItem="9MF-aY-f2n" secondAttribute="centerX" id="8Wc-om-vm4"/>
+                                    <constraint firstItem="kwz-Hi-SNM" firstAttribute="centerY" secondItem="9MF-aY-f2n" secondAttribute="centerY" id="lvD-oG-G3V"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <color key="tintColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" backgroundImage="plus.circle.fill" catalog="system">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="V7R-yT-F2x" kind="presentation" id="ZaU-jk-5AZ"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="m1b-EM-E90"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -192,8 +195,6 @@
                             <constraint firstItem="m1b-EM-E90" firstAttribute="bottom" secondItem="woj-kq-llH" secondAttribute="bottom" id="WZX-aJ-8QQ"/>
                             <constraint firstItem="wgp-EP-K1e" firstAttribute="trailing" secondItem="m1b-EM-E90" secondAttribute="trailing" id="ajB-ef-Jby"/>
                             <constraint firstItem="wgp-EP-K1e" firstAttribute="leading" secondItem="m1b-EM-E90" secondAttribute="leading" id="deG-jF-HMg"/>
-                            <constraint firstItem="m1b-EM-E90" firstAttribute="bottom" secondItem="iey-07-5vK" secondAttribute="bottom" constant="20" id="jsc-nb-EBI"/>
-                            <constraint firstItem="m1b-EM-E90" firstAttribute="trailing" secondItem="iey-07-5vK" secondAttribute="trailing" constant="20" id="kjp-4o-1BK"/>
                             <constraint firstItem="woj-kq-llH" firstAttribute="leading" secondItem="m1b-EM-E90" secondAttribute="leading" id="yks-pb-tnU"/>
                         </constraints>
                     </view>
@@ -218,18 +219,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V5G-5X-fb7" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1957.9710144927537" y="98.4375"/>
+            <point key="canvasLocation" x="1957.5999999999999" y="97.601199400299862"/>
         </scene>
         <!--Update Issue View Controller-->
         <scene sceneID="O5f-ym-Ku0">
             <objects>
                 <viewController id="V7R-yT-F2x" customClass="UpdateIssueViewController" customModule="IssueTrackerApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DFO-bF-REM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rb4-oa-MWd">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="새이슈" largeTitleDisplayMode="always" id="xe4-zP-S0X">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="sUj-db-RQe">
@@ -246,7 +247,7 @@
                                 </items>
                             </navigationBar>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="제목" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MCv-g0-PKC">
-                                <rect key="frame" x="25" y="76" width="325" height="34"/>
+                                <rect key="frame" x="25" y="64" width="325" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="eGf-2Q-MeX"/>
                                 </constraints>
@@ -254,7 +255,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="e9k-lv-mLt">
-                                <rect key="frame" x="25" y="152" width="325" height="31"/>
+                                <rect key="frame" x="25" y="140" width="325" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="uSa-hy-6ud"/>
                                 </constraints>
@@ -264,14 +265,14 @@
                                 </segments>
                             </segmentedControl>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ua3-2l-Fbw" customClass="IssueContentTextView" customModule="IssueTrackerApp" customModuleProvider="target">
-                                <rect key="frame" x="25" y="192" width="325" height="425"/>
+                                <rect key="frame" x="25" y="180" width="325" height="457"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iKW-W8-Tau">
-                                <rect key="frame" x="25" y="111" width="325" height="1"/>
+                                <rect key="frame" x="25" y="99" width="325" height="1"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="22Y-wa-KZI"/>
