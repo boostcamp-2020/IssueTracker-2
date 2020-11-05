@@ -11,6 +11,14 @@ class IssueCell: UICollectionViewCell {
   
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var descriptionLabel: UILabel!
+  @IBOutlet weak var bigView: UIView!
+  @IBOutlet weak var checkmarkImageView: UIImageView!
+  
+  override var isSelected: Bool {
+    didSet {
+      checkmarkImageView.image = isSelected == true ? UIImage(systemName: "checkmark.circle")! : UIImage(systemName: "circle")!
+    }
+  }
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -27,8 +35,22 @@ class IssueCell: UICollectionViewCell {
     layer.borderColor = UIColor.lightGray.cgColor
   }
   
-  func updateCell(withTitle title: String, description: String) {
+  func updateCell(withTitle title: String) {
     titleLabel.text = title
-    descriptionLabel.text = description
+  }
+  
+  func editCell(status: Bool) {
+    if status {
+      UIView.animate(withDuration: 0.4) {
+        self.bigView.transform = CGAffineTransform(translationX: 50, y: 0)
+      }
+    } else {
+      
+      UIView.animate(withDuration: 0.4) {
+        self.bigView.transform = .identity
+      }
+    }
+    
+    
   }
 }

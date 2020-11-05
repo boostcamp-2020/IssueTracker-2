@@ -7,7 +7,22 @@
 
 import Foundation
 
-struct Issue: Hashable {
-  var title: String
-  var description: String
+struct Issue: Hashable, Codable {
+  static func == (lhs: Issue, rhs: Issue) -> Bool {
+    return lhs.id == rhs.id
+  }
+  
+  func hash(into hasher: inout Hasher) {
+    hasher.combine(id)
+  }
+  
+  var id: Int
+  var userSid: Int
+  var issueTitle: String
+  var issueAuthor: String
+  var comment: [Comment]?
+  var label: [Label]?
+  var milestone: Milestone?
+  var issueStatus: Bool = true
+  var assignee: [Int]?
 }

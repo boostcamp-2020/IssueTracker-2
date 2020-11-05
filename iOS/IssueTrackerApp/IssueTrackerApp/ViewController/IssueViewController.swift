@@ -13,9 +13,16 @@ class IssueViewController: UIViewController {
   typealias Snapshot = NSDiffableDataSourceSnapshot<IssueSection, Issue>
   
   private lazy var dataSource = makeDataSource()
+  private var isEdited: Bool = false {
+    didSet {
+      isEdited == true ? editMode() : normalMode()
+    }
+  }
   
   @IBOutlet weak var issueCollectionView: UICollectionView!
   @IBOutlet weak var filterButton: UIBarButtonItem!
+  @IBOutlet weak var editButton: UIBarButtonItem!
+  @IBOutlet weak var issueSearchBar: UISearchBar!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -26,12 +33,14 @@ class IssueViewController: UIViewController {
   private func configure() {
     configureNavigationBar()
     configureIssueCollectionView()
-    configureFliterButton()
+    configureNavigationBarButton()
   }
   
-  private func configureFliterButton() {
+  private func configureNavigationBarButton() {
     filterButton.target = self
     filterButton.action = #selector(filterButtonTouched)
+    editButton.target = self
+    editButton.action = #selector(editButtonTouched)
   }
   
   private func configureNavigationBar() {
@@ -40,8 +49,7 @@ class IssueViewController: UIViewController {
   
   private func configureIssueCollectionView() {
     issueCollectionView.delegate = self
-    guard let layout = issueCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
-    layout.sectionHeadersPinToVisibleBounds = true
+    issueCollectionView.allowsMultipleSelection = true
   }
   
   private func makeDataSource() -> DataSource {
@@ -53,25 +61,8 @@ class IssueViewController: UIViewController {
         return UICollectionViewCell()
       }
       
-      cell.updateCell(withTitle: issue.title, description: issue.description)
+      cell.updateCell(withTitle: issue.issueTitle)
       return cell
-    }
-    
-    dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
-      guard kind == UICollectionView.elementKindSectionHeader else {
-        return nil
-      }
-      
-      let view = collectionView.dequeueReusableSupplementaryView(
-        ofKind: kind,
-        withReuseIdentifier: "IssueHeader",
-        for: indexPath
-      ) as? IssueHeader
-      
-      //      let section = self.dataSource.snapshot()
-      //        .sectionIdentifiers[indexPath.section]
-      
-      return view
     }
     
     return dataSource
@@ -92,11 +83,48 @@ class IssueViewController: UIViewController {
     dataSource.apply(snapshot, animatingDifferences: animated)
   }
   
+  private func editMode() {
+    filterButton.title = "Select All"
+    filterButton.action = #selector(selectAllButtonTouched)
+    editButton.title = "Cancel"
+  }
+  
+  private func normalMode() {
+    filterButton.title = "Filter"
+    filterButton.action = #selector(filterButtonTouched)
+    editButton.title = "Edit"
+  }
+  
   @objc private func filterButtonTouched() {
     let storyboard = UIStoryboard(name: "IssueFilter", bundle: nil)
     guard let issueFilterVC = storyboard.instantiateInitialViewController() as? IssueFilterViewController else { return }
     issueFilterVC.filterTableViewDelegate = FilterTableViewDelegate()
     present(issueFilterVC, animated: true, completion: nil)
+  }
+  
+  @objc private func editButtonTouched() {
+    isEdited.toggle()
+    issueCollectionView.deselectAll(animated: true)
+
+    let visibleItemIndexPaths = issueCollectionView.indexPathsForVisibleItems
+
+    for indexPath in visibleItemIndexPaths {
+      guard let cell = issueCollectionView.cellForItem(at: indexPath) as? IssueCell else { return }
+
+      cell.editCell(status: isEdited)
+    }
+  }
+  
+  @objc private func selectAllButtonTouched() {
+    issueCollectionView.selectAll(animated: true)
+    filterButton.title = "Deselect All"
+    filterButton.action = #selector(deselectAllButtonTouched)
+  }
+  
+  @objc private func deselectAllButtonTouched() {
+    issueCollectionView.deselectAll(animated: true)
+    filterButton.title = "Select All"
+    filterButton.action = #selector(selectAllButtonTouched)
   }
 }
 
@@ -110,10 +138,30 @@ extension IssueViewController: UICollectionViewDelegateFlowLayout {
     // TODO:- issue 사용
   }
   
+  func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    guard let cell = cell as? IssueCell else { return }
+    cell.editCell(status: isEdited)
+  }
+  
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: view.bounds.width, height: view.bounds.height / 10)
+    return CGSize(width: view.bounds.width, height: 80)
   }
 }
 
-
-// get : header에 요청을 담아서
+extension UICollectionView {
+  func selectAll(animated: Bool) {
+    (0..<numberOfSections).compactMap { (section) -> [IndexPath]? in
+      return (0..<numberOfItems(inSection: section)).compactMap({ (item) -> IndexPath? in
+        return IndexPath(item: item, section: section)
+      })
+    }.flatMap { $0 }.forEach { (indexPath) in
+      selectItem(at: indexPath, animated: true, scrollPosition: [])
+    }
+  }
+  
+  func deselectAll(animated: Bool) {
+    indexPathsForSelectedItems?.forEach({ (indexPath) in
+      deselectItem(at: indexPath, animated: animated)
+    })
+  }
+}
