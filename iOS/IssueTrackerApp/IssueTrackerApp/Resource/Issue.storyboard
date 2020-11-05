@@ -166,12 +166,11 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <view contentMode="scaleToFill" id="9MF-aY-f2n">
-                                <rect key="frame" x="320" y="563" width="25" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9MF-aY-f2n">
+                                <rect key="frame" x="310" y="553" width="45" height="45"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kwz-Hi-SNM" customClass="NewIssueButton" customModule="IssueTrackerApp" customModuleProvider="target">
-                                        <rect key="frame" x="-9.5" y="-9" width="44" height="43"/>
+                                        <rect key="frame" x="0.5" y="1" width="44" height="43"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="44" id="6sT-mN-gI4"/>
                                             <constraint firstAttribute="width" secondItem="kwz-Hi-SNM" secondAttribute="height" multiplier="1:1" id="iIH-NJ-XXc"/>
@@ -192,12 +191,16 @@
                         <viewLayoutGuide key="safeArea" id="m1b-EM-E90"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="m1b-EM-E90" firstAttribute="trailing" secondItem="kwz-Hi-SNM" secondAttribute="trailing" constant="20.5" id="1nO-yw-Mh4"/>
                             <constraint firstItem="woj-kq-llH" firstAttribute="top" secondItem="wgp-EP-K1e" secondAttribute="bottom" id="2Xr-q5-WQE"/>
+                            <constraint firstItem="m1b-EM-E90" firstAttribute="bottom" secondItem="9MF-aY-f2n" secondAttribute="bottom" constant="20" id="KeF-1D-CLl"/>
                             <constraint firstItem="m1b-EM-E90" firstAttribute="trailing" secondItem="woj-kq-llH" secondAttribute="trailing" id="LId-B0-hiV"/>
                             <constraint firstItem="wgp-EP-K1e" firstAttribute="top" secondItem="m1b-EM-E90" secondAttribute="top" id="RYu-Me-grg"/>
                             <constraint firstItem="m1b-EM-E90" firstAttribute="bottom" secondItem="woj-kq-llH" secondAttribute="bottom" id="WZX-aJ-8QQ"/>
                             <constraint firstItem="wgp-EP-K1e" firstAttribute="trailing" secondItem="m1b-EM-E90" secondAttribute="trailing" id="ajB-ef-Jby"/>
                             <constraint firstItem="wgp-EP-K1e" firstAttribute="leading" secondItem="m1b-EM-E90" secondAttribute="leading" id="deG-jF-HMg"/>
+                            <constraint firstItem="m1b-EM-E90" firstAttribute="bottom" secondItem="kwz-Hi-SNM" secondAttribute="bottom" constant="20.5" id="mFO-lC-NF1"/>
+                            <constraint firstItem="m1b-EM-E90" firstAttribute="trailing" secondItem="9MF-aY-f2n" secondAttribute="trailing" constant="20" id="tDM-wv-z22"/>
                             <constraint firstItem="woj-kq-llH" firstAttribute="leading" secondItem="m1b-EM-E90" secondAttribute="leading" id="yks-pb-tnU"/>
                         </constraints>
                     </view>
