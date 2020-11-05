@@ -11,6 +11,3 @@ app.use('/', indexRouter);
 app.use('/api', apiRouter);
 
 module.exports = app;
-
-
-
