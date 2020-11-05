@@ -7,6 +7,10 @@ exports.delete = async ({ commentId }) => {
       const [{ commentDeletedId }] = await connection.query(sql, [commentId]);
       connection.release();
       return { commentDeletedId };
+    } catch (err) {
+      throw new Error(err);
+    }
+  };
 
 exports.update = async ({ commentId, commentDescription }) => {
     try {
