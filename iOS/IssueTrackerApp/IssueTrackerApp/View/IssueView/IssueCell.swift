@@ -12,10 +12,11 @@ class IssueCell: UICollectionViewCell {
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var descriptionLabel: UILabel!
   @IBOutlet weak var bigView: UIView!
+  @IBOutlet weak var checkmarkImageView: UIImageView!
   
-  var isEdited: Bool = false {
-    willSet {
-      newValue == true ? editStart() : editEnd()
+  override var isSelected: Bool {
+    didSet {
+      checkmarkImageView.image = isSelected == true ? UIImage(systemName: "checkmark.circle")! : UIImage(systemName: "circle")!
     }
   }
   
@@ -39,16 +40,18 @@ class IssueCell: UICollectionViewCell {
     descriptionLabel.text = description
   }
   
-  private func editStart() {
-    UIView.animate(withDuration: 0.5) { [weak self] in
-      self?.bigView.transform = CGAffineTransform(translationX: 50, y: 0)
-//      self?.bigView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+  func editCell(status: Bool) {
+    if status {
+      UIView.animate(withDuration: 0.4) {
+        self.bigView.transform = CGAffineTransform(translationX: 50, y: 0)
+      }
+    } else {
+      
+      UIView.animate(withDuration: 0.4) {
+        self.bigView.transform = .identity
+      }
     }
-  }
-  
-  private func editEnd() {
-    UIView.animate(withDuration: 0.5) { [weak self] in
-      self?.bigView.transform = .identity
-    }
+    
+    
   }
 }

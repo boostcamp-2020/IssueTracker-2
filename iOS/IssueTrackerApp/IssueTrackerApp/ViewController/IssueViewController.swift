@@ -14,12 +14,8 @@ class IssueViewController: UIViewController {
   
   private lazy var dataSource = makeDataSource()
   private var isEdited: Bool = false {
-    willSet {
-      filterButton.title = newValue == true ? "Select All" : "Filter"
-      filterButton.action = newValue == true ? #selector(selectAllButtonTouched) : #selector(filterButtonTouched)
-      editButton.title = newValue == true ? "Cancel" : "Edit"
-      let constant: CGFloat = newValue == true ? 0 : 50
-      self.height.constant = constant
+    didSet {
+      isEdited == true ? editMode() : normalMode()
     }
   }
   
@@ -27,7 +23,6 @@ class IssueViewController: UIViewController {
   @IBOutlet weak var filterButton: UIBarButtonItem!
   @IBOutlet weak var editButton: UIBarButtonItem!
   @IBOutlet weak var issueSearchBar: UISearchBar!
-  @IBOutlet weak var height: NSLayoutConstraint!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -54,8 +49,7 @@ class IssueViewController: UIViewController {
   
   private func configureIssueCollectionView() {
     issueCollectionView.delegate = self
-    guard let layout = issueCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
-    layout.sectionHeadersPinToVisibleBounds = true
+    issueCollectionView.allowsMultipleSelection = true
   }
   
   private func makeDataSource() -> DataSource {
@@ -89,6 +83,18 @@ class IssueViewController: UIViewController {
     dataSource.apply(snapshot, animatingDifferences: animated)
   }
   
+  private func editMode() {
+    filterButton.title = "Select All"
+    filterButton.action = #selector(selectAllButtonTouched)
+    editButton.title = "Cancel"
+  }
+  
+  private func normalMode() {
+    filterButton.title = "Filter"
+    filterButton.action = #selector(filterButtonTouched)
+    editButton.title = "Edit"
+  }
+  
   @objc private func filterButtonTouched() {
     let storyboard = UIStoryboard(name: "IssueFilter", bundle: nil)
     guard let issueFilterVC = storyboard.instantiateInitialViewController() as? IssueFilterViewController else { return }
@@ -98,18 +104,33 @@ class IssueViewController: UIViewController {
   
   @objc private func editButtonTouched() {
     isEdited.toggle()
+    issueCollectionView.deselectAll(animated: true)
+
+    let visibleItemIndexPaths = issueCollectionView.indexPathsForVisibleItems
+
+    for indexPath in visibleItemIndexPaths {
+      guard let cell = issueCollectionView.cellForItem(at: indexPath) as? IssueCell else { return }
+
+      cell.editCell(status: isEdited)
+    }
   }
   
   @objc private func selectAllButtonTouched() {
-    
+    issueCollectionView.selectAll(animated: true)
+    filterButton.title = "Deselect All"
+    filterButton.action = #selector(deselectAllButtonTouched)
+  }
+  
+  @objc private func deselectAllButtonTouched() {
+    issueCollectionView.deselectAll(animated: true)
+    filterButton.title = "Select All"
+    filterButton.action = #selector(selectAllButtonTouched)
   }
 }
 
 extension IssueViewController: UICollectionViewDelegateFlowLayout {
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    guard let cell = collectionView.cellForItem(at: indexPath) as? IssueCell else { return }
-    cell.isEdited.toggle()
     guard let _ = dataSource.itemIdentifier(for: indexPath) else {
       return
     }
@@ -117,10 +138,30 @@ extension IssueViewController: UICollectionViewDelegateFlowLayout {
     // TODO:- issue 사용
   }
   
+  func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    guard let cell = cell as? IssueCell else { return }
+    cell.editCell(status: isEdited)
+  }
+  
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     return CGSize(width: view.bounds.width, height: 80)
   }
 }
 
-
-// get : header에 요청을 담아서
+extension UICollectionView {
+  func selectAll(animated: Bool) {
+    (0..<numberOfSections).compactMap { (section) -> [IndexPath]? in
+      return (0..<numberOfItems(inSection: section)).compactMap({ (item) -> IndexPath? in
+        return IndexPath(item: item, section: section)
+      })
+    }.flatMap { $0 }.forEach { (indexPath) in
+      selectItem(at: indexPath, animated: true, scrollPosition: [])
+    }
+  }
+  
+  func deselectAll(animated: Bool) {
+    indexPathsForSelectedItems?.forEach({ (indexPath) in
+      deselectItem(at: indexPath, animated: animated)
+    })
+  }
+}
