@@ -109,6 +109,22 @@
                                     </connections>
                                 </collectionReusableView>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iey-07-5vK" customClass="NewIssueButton" customModule="IssueTrackerApp" customModuleProvider="target">
+                                <rect key="frame" x="344" y="743.5" width="50" height="49"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="BID-v5-lhf"/>
+                                    <constraint firstAttribute="height" constant="50" id="MpP-hj-HZJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <color key="tintColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" backgroundImage="plus.circle.fill" catalog="system">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="V7R-yT-F2x" kind="presentation" id="ZaU-jk-5AZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="m1b-EM-E90"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -116,6 +132,8 @@
                             <constraint firstItem="m1b-EM-E90" firstAttribute="trailing" secondItem="woj-kq-llH" secondAttribute="trailing" id="LId-B0-hiV"/>
                             <constraint firstItem="m1b-EM-E90" firstAttribute="bottom" secondItem="woj-kq-llH" secondAttribute="bottom" id="WZX-aJ-8QQ"/>
                             <constraint firstItem="woj-kq-llH" firstAttribute="top" secondItem="m1b-EM-E90" secondAttribute="top" id="g47-R0-V7a"/>
+                            <constraint firstItem="m1b-EM-E90" firstAttribute="bottom" secondItem="iey-07-5vK" secondAttribute="bottom" constant="20" id="jsc-nb-EBI"/>
+                            <constraint firstItem="m1b-EM-E90" firstAttribute="trailing" secondItem="iey-07-5vK" secondAttribute="trailing" constant="20" id="kjp-4o-1BK"/>
                             <constraint firstItem="woj-kq-llH" firstAttribute="leading" secondItem="m1b-EM-E90" secondAttribute="leading" id="yks-pb-tnU"/>
                         </constraints>
                     </view>
@@ -130,6 +148,96 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V5G-5X-fb7" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1957.9710144927537" y="98.4375"/>
+        </scene>
+        <!--Update Issue View Controller-->
+        <scene sceneID="O5f-ym-Ku0">
+            <objects>
+                <viewController id="V7R-yT-F2x" customClass="UpdateIssueViewController" customModule="IssueTrackerApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DFO-bF-REM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rb4-oa-MWd">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                <items>
+                                    <navigationItem title="새이슈" largeTitleDisplayMode="always" id="xe4-zP-S0X">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="sUj-db-RQe">
+                                            <connections>
+                                                <action selector="cancelButtonTouched:" destination="V7R-yT-F2x" id="pc3-uk-8cH"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Submit" id="NAW-f8-J7L">
+                                            <connections>
+                                                <action selector="submitButtonTouched:" destination="V7R-yT-F2x" id="NI0-cK-23I"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="제목" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MCv-g0-PKC">
+                                <rect key="frame" x="25" y="76" width="364" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="eGf-2Q-MeX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="e9k-lv-mLt">
+                                <rect key="frame" x="25" y="152" width="364" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="uSa-hy-6ud"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="마크다운"/>
+                                    <segment title="미리보기"/>
+                                </segments>
+                            </segmentedControl>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ua3-2l-Fbw" customClass="IssueContentTextView" customModule="IssueTrackerApp" customModuleProvider="target">
+                                <rect key="frame" x="25" y="192" width="364" height="586"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iKW-W8-Tau">
+                                <rect key="frame" x="25" y="111" width="364" height="1"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="22Y-wa-KZI"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="1u0-Az-Vfn"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="e9k-lv-mLt" firstAttribute="leading" secondItem="MCv-g0-PKC" secondAttribute="leading" id="1Lk-wl-VCD"/>
+                            <constraint firstItem="iKW-W8-Tau" firstAttribute="top" secondItem="MCv-g0-PKC" secondAttribute="bottom" constant="1" id="6Kq-Q0-Fpm"/>
+                            <constraint firstItem="rb4-oa-MWd" firstAttribute="leading" secondItem="1u0-Az-Vfn" secondAttribute="leading" id="DFh-Wz-RY4"/>
+                            <constraint firstItem="rb4-oa-MWd" firstAttribute="top" secondItem="1u0-Az-Vfn" secondAttribute="top" id="Lwq-sC-OYa"/>
+                            <constraint firstItem="1u0-Az-Vfn" firstAttribute="bottom" secondItem="Ua3-2l-Fbw" secondAttribute="bottom" constant="30" id="OKo-Ix-WCf"/>
+                            <constraint firstItem="1u0-Az-Vfn" firstAttribute="trailing" secondItem="MCv-g0-PKC" secondAttribute="trailing" constant="25" id="OdQ-N8-fHn"/>
+                            <constraint firstItem="1u0-Az-Vfn" firstAttribute="trailing" secondItem="Ua3-2l-Fbw" secondAttribute="trailing" constant="25" id="TjM-yr-G0f"/>
+                            <constraint firstItem="e9k-lv-mLt" firstAttribute="top" secondItem="iKW-W8-Tau" secondAttribute="bottom" constant="40" id="Yn6-bH-1X7"/>
+                            <constraint firstItem="iKW-W8-Tau" firstAttribute="trailing" secondItem="MCv-g0-PKC" secondAttribute="trailing" id="d8i-dF-gXS"/>
+                            <constraint firstItem="rb4-oa-MWd" firstAttribute="trailing" secondItem="1u0-Az-Vfn" secondAttribute="trailing" id="e6V-ru-63m"/>
+                            <constraint firstItem="Ua3-2l-Fbw" firstAttribute="leading" secondItem="1u0-Az-Vfn" secondAttribute="leading" constant="25" id="eTD-0B-p9h"/>
+                            <constraint firstItem="Ua3-2l-Fbw" firstAttribute="top" secondItem="e9k-lv-mLt" secondAttribute="bottom" constant="10" id="eZX-b7-axT"/>
+                            <constraint firstItem="MCv-g0-PKC" firstAttribute="top" secondItem="rb4-oa-MWd" secondAttribute="bottom" constant="20" id="lmR-DY-gp4"/>
+                            <constraint firstItem="iKW-W8-Tau" firstAttribute="leading" secondItem="MCv-g0-PKC" secondAttribute="leading" id="ofk-hp-Aux"/>
+                            <constraint firstItem="e9k-lv-mLt" firstAttribute="trailing" secondItem="MCv-g0-PKC" secondAttribute="trailing" id="sd7-Ql-G48"/>
+                            <constraint firstItem="MCv-g0-PKC" firstAttribute="leading" secondItem="1u0-Az-Vfn" secondAttribute="leading" constant="25" id="uqT-G2-PbJ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="JHz-jw-kjS"/>
+                    <connections>
+                        <outlet property="issueContentTextView" destination="Ua3-2l-Fbw" id="5Q5-5s-y84"/>
+                        <outlet property="markdownSegmentedControl" destination="e9k-lv-mLt" id="sdd-ly-ail"/>
+                        <outlet property="navigationBar" destination="rb4-oa-MWd" id="oPP-lV-bpL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="may-DH-vSl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2844.9275362318845" y="97.767857142857139"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="jZC-Xv-x1H">
@@ -170,6 +278,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
