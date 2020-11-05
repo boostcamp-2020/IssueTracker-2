@@ -61,7 +61,7 @@ class IssueViewController: UIViewController {
         return UICollectionViewCell()
       }
       
-      cell.updateCell(withTitle: issue.title, description: issue.description)
+      cell.updateCell(withTitle: issue.issueTitle)
       return cell
     }
     

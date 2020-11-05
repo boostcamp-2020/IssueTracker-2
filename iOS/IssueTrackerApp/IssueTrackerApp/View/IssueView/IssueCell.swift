@@ -35,9 +35,8 @@ class IssueCell: UICollectionViewCell {
     layer.borderColor = UIColor.lightGray.cgColor
   }
   
-  func updateCell(withTitle title: String, description: String) {
+  func updateCell(withTitle title: String) {
     titleLabel.text = title
-    descriptionLabel.text = description
   }
   
   func editCell(status: Bool) {
