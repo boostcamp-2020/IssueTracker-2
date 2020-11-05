@@ -1,8 +1,10 @@
-var express = require('express');
-var router = express.Router();
+const router = require('express').Router();
+const auth = require('./auth');
+require('../loaders/database-loader');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
+router.use('/auth', auth);
+
+router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
