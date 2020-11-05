@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Milestone {
-  var id: Int
+struct Milestone: Codable {
+  var issueId: Int
   var milestoneName: String
   var milestoneDescription: String?
   var endDate: String
