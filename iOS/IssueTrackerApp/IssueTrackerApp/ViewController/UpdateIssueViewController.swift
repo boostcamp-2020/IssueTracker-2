@@ -89,6 +89,7 @@ class UpdateIssueViewController: UIViewController {
       markdownPreview = nil
       issueContentTextView.isHidden = false
     case 1:
+      self.view.endEditing(true)
       issueContentTextView.isHidden = true
       showMarkdownPreview()
     default:
