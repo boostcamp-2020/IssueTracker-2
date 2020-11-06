@@ -44,6 +44,10 @@ class UpdateIssueViewController: UIViewController {
     configure()
   }
   
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    self.view.endEditing(true)
+  }
+  
   private func configure() {
     configureNavigationBar()
     registerMenu()
@@ -89,6 +93,7 @@ class UpdateIssueViewController: UIViewController {
       markdownPreview = nil
       issueContentTextView.isHidden = false
     case 1:
+      self.view.endEditing(true)
       issueContentTextView.isHidden = true
       showMarkdownPreview()
     default:

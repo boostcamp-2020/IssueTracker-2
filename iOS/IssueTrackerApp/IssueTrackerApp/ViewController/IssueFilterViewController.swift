@@ -7,12 +7,25 @@
 
 import UIKit
 
+@propertyWrapper
+struct SelectedRow {
+  var wrappedValue: Int {
+    get {
+      guard let str = UserDefaults.standard.string(forKey: "selectedRow") else { return 0 }
+      return Int(str) ?? 0
+    }
+    set {
+      UserDefaults.standard.setValue(newValue, forKey: "selectedRow")
+    }
+  }
+}
+
 class IssueFilterViewController: UIViewController {
   
   typealias Snapshot = NSDiffableDataSourceSnapshot<FilterSection, String>
   
   lazy var dataSource = makeDataSource()
-  var filterTableViewDelegate: UITableViewDelegate?
+  var filterTableViewDelegate: FilterTableViewDelegate
   
   @IBOutlet weak var filterTableView: UITableView!
   @IBAction func cancelButtonTouched(_ sender: UIBarButtonItem) {
@@ -21,6 +34,15 @@ class IssueFilterViewController: UIViewController {
   
   @IBAction func doneButtonTouched(_ sender: UIBarButtonItem) {
     dismiss(animated: true, completion: nil)
+  }
+  
+  init?(coder: NSCoder, tableViewDelegate: FilterTableViewDelegate) {
+    filterTableViewDelegate = tableViewDelegate
+    super.init(coder: coder)
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
   
   override func viewDidLoad() {
@@ -39,7 +61,7 @@ class IssueFilterViewController: UIViewController {
       
       cell.updateCell(withText: item)
       
-      if indexPath == IndexPath(row: 0, section: 0) {
+      if indexPath == IndexPath(row: self.filterTableViewDelegate.selectedFilterRow, section: 0) {
         cell.accessoryType = .checkmark
         tableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
       }

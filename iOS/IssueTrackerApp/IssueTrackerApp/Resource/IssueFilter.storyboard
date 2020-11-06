@@ -12,7 +12,7 @@
         <!--Issue Filter View Controller-->
         <scene sceneID="fnG-TD-ZaN">
             <objects>
-                <viewController id="SH4-pL-F2o" customClass="IssueFilterViewController" customModule="IssueTrackerApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IssueFilterViewController" id="SH4-pL-F2o" customClass="IssueFilterViewController" customModule="IssueTrackerApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7lK-Yg-mEU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
