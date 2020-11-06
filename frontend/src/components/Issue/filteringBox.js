@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import DropdownCaret from '../Common/DropdownCaret';
 
 export default function FiilteringBox(props) {
   return (
     <>
       <FilteringButton>
         Fileters
-        <Caret />
+        <DropdownCaret />
       </FilteringButton>
       <SearchBar type="text" value="is:issue is:open " />
     </>
@@ -30,18 +31,4 @@ const SearchBar = styled.input`
   width: 60%;
   font-size: 1em;
   padding: 0 1em;
-`;
-
-const Caret = styled.span`
-  display: inline-block;
-  margin-left: 0.5em;
-  width: 0;
-  height: 0;
-  vertical-align: middle;
-  content: '';
-  border-top-style: solid;
-  border-top-width: 4px;
-  border-right: 4px solid transparent;
-  border-bottom: 0 solid transparent;
-  border-left: 4px solid transparent;
 `;
