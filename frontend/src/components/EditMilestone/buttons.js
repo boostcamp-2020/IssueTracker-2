@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
+import NormalButton from '../Common/NormalButton';
 import SaveButton from '../Common/GreenButton';
 
 export default function Buttons(props) {
   return (
     <Wrapper>
       <ButtonSet>
-        <Button>Cancel</Button>
-        <Button>Close milestone</Button>
+        <NormalButton content="Cancel" />
+        <NormalButton content="Close milestone" />
         <SaveButton content="Save Change" />
       </ButtonSet>
     </Wrapper>
@@ -26,15 +27,4 @@ const ButtonSet = styled.div`
   width: 25%;
   display: flex;
   justify-content: space-around;
-`;
-
-const Button = styled.button`
-  background-color: #fafbfc;
-  border: 1px solid rgba(27, 31, 35, 0.15);
-  border-radius: 5px;
-  color: black;
-  padding: 0.5em 1em;
-  font-size: 1em;
-  font-weight: 500;
-  cursor: pointer;
 `;

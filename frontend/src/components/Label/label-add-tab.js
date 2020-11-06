@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import NormalButton from '../Common/NormalButton';
+import GreenButton from '../Common/GreenButton';
+
 export default function LabelAddTabl() {
   return (
     <Wrapper>
@@ -23,8 +26,8 @@ export default function LabelAddTabl() {
         <LabelAddButtonArea>
           <InputTitle />
           <AddButtonsWrapper>
-            <button>Cancel</button>
-            <button>Create Label</button>
+            <NormalButton content="Cancel" />
+            <GreenButton content="Create Label" />
           </AddButtonsWrapper>
         </LabelAddButtonArea>
       </InputList>
@@ -60,9 +63,7 @@ const LabelDescriptionArea = styled.div``;
 
 const LabelColorArea = styled.div``;
 
-const LabelAddButtonArea = styled.div`
-  width: 200px;
-`;
+const LabelAddButtonArea = styled.div``;
 
 const InputTitle = styled.p`
   font-weight: bold;
@@ -74,5 +75,4 @@ const InputTitle = styled.p`
 
 const AddButtonsWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
 `;
