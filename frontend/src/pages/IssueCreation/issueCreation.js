@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Header from '../../components/Common/Header';
 import CommentForm from '../../components/IssueCreation/CommentForm';
 import Sidebar from '../../components/IssueCreation/Sidebar';
 import Profile from '../../components/IssueCreation/Profile';
@@ -8,6 +9,7 @@ import Profile from '../../components/IssueCreation/Profile';
 const IssueCreation = () => {
   return (
     <div>
+      <Header />
       <IssueCreationBody>
         <WriteArea>
           <Profile />

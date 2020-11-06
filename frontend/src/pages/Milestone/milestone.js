@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../../components/Milestone/header';
+import Header from '../../components/Common/Header';
 import NavButton from '../../components/Milestone/navButton';
 import MileStoneList from '../../components/Milestone/milestoneList';
 
