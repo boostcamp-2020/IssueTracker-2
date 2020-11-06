@@ -5,6 +5,7 @@ import Header from '../../components/Common/Header';
 import CommentForm from '../../components/IssueCreation/CommentForm';
 import Sidebar from '../../components/IssueCreation/Sidebar';
 import Profile from '../../components/IssueCreation/Profile';
+import Footer from '../../components/Common/Footer';
 
 const IssueCreation = () => {
   return (
@@ -21,6 +22,7 @@ const IssueCreation = () => {
           <Sidebar />
         </SelectArea>
       </IssueCreationBody>
+      <Footer />
     </div>
   );
 };

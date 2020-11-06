@@ -24,7 +24,7 @@ export default function Footer(props) {
 }
 
 const Wrapper = styled.div`
-  position: relative;
+  display: flex;
   width: 90%;
   margin: auto;
   margin-top: 4em;
@@ -38,8 +38,9 @@ const GithubIcon = styled.i`
 `;
 
 const FooterMessage = styled.span`
-  position: absolute;
-  right: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
   font-size: 0.8em;
   color: rgba(0, 0, 0, 0.7);
 `;
