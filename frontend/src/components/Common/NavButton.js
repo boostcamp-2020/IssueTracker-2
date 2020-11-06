@@ -5,13 +5,15 @@ import { TagIcon, MilestoneIcon } from '@primer/octicons-react';
 export default function NavButton(props) {
   return (
     <>
-      <LabelButton>
+      <LabelButton type={props.type}>
         <TagIcon size={17} />
         <Text>Labels</Text>
+        {props.type === 'issue' && <Count>3</Count>}
       </LabelButton>
-      <MilestoneButton>
+      <MilestoneButton type={props.type}>
         <MilestoneIcon size={17} />
         <Text>Milestones</Text>
+        {props.type === 'issue' && <Count>4</Count>}
       </MilestoneButton>
     </>
   );
@@ -34,13 +36,18 @@ const Text = styled.span`
   font-size: 0.9em;
 `;
 
+const Count = styled.span``;
+
 const MilestoneButton = styled.span`
   display: inline-block;
   padding: 0.5em 1em;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 0 5px 5px 0;
   cursor: pointer;
-  color: white;
-  background-color: #0366d6;
-  fill: white;
+
+  ${props => {
+    if (props.type !== 'issue') {
+      return 'color:white; background-color:#0366d6; fill:white;';
+    }
+  }}
 `;

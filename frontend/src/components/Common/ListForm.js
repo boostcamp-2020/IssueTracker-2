@@ -4,6 +4,30 @@ import { MilestoneIcon, CheckIcon } from '@primer/octicons-react';
 
 export default function ListForm(props) {
   const getHeaderContent = type => {
+    if (type === 'issue') {
+      return (
+        <>
+          <MilestoneIcon size={20} />
+          <Open>
+            <Count>2</Count>
+            <span>Open</span>
+          </Open>
+          <Closed>
+            <CheckIcon size={22} />
+            <Count>0</Count>
+            <span>Closed</span>
+          </Closed>
+          <FilteringConditions>
+            <span>Author</span>
+            <span>label</span>
+            <span>Projects</span>
+            <span>Milestones</span>
+            <span>Assignee</span>
+            <span>Sort</span>
+          </FilteringConditions>
+        </>
+      );
+    }
     if (type === 'milestone') {
       return (
         <>
@@ -45,6 +69,8 @@ const Wrapper = styled.div`
 `;
 
 const ListHeader = styled.div`
+  display: flex;
+
   width: 100%;
   padding: 0.5em 1.5em;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -65,3 +91,4 @@ const List = styled.div`
   width: 100%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 `;
+const FilteringConditions = styled.div``;
