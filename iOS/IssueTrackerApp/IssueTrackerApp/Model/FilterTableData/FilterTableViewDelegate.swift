@@ -8,6 +8,8 @@
 import UIKit
 
 class FilterTableViewDelegate: NSObject, UITableViewDelegate {
+  @SelectedRow var selectedFilterRow: Int
+  
   func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
     tableView.indexPathsForSelectedRows?
       .filter {
@@ -21,6 +23,7 @@ class FilterTableViewDelegate: NSObject, UITableViewDelegate {
     if let cell = tableView.cellForRow(at: indexPath),
        indexPath.section == 0 {
       cell.accessoryType = .checkmark
+      selectedFilterRow = indexPath.row
     }
     return indexPath
   }

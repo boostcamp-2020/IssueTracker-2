@@ -97,8 +97,10 @@ class IssueViewController: UIViewController {
   
   @objc private func filterButtonTouched() {
     let storyboard = UIStoryboard(name: "IssueFilter", bundle: nil)
-    guard let issueFilterVC = storyboard.instantiateInitialViewController() as? IssueFilterViewController else { return }
-    issueFilterVC.filterTableViewDelegate = FilterTableViewDelegate()
+    // guard let issueFilterVC = storyboard.instantiateInitialViewController() as? IssueFilterViewController else { return }
+    let issueFilterVC = storyboard.instantiateViewController(identifier: "IssueFilterViewController", creator: { (coder) -> IssueFilterViewController? in
+      return IssueFilterViewController(coder: coder, tableViewDelegate: FilterTableViewDelegate())
+    })
     present(issueFilterVC, animated: true, completion: nil)
   }
   
