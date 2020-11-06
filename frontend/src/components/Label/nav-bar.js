@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { TagIcon, MilestoneIcon } from '@primer/octicons-react';
-import CreateButton from '../Milestone/createButton';
+import CreateButton from '../common/GreenButton';
 import { useHistory } from 'react-router-dom';
 
 export default function NavButton(props) {
@@ -19,15 +19,16 @@ export default function NavButton(props) {
         <MilestoneIcon size={17} />
         <Text>Milestones</Text>
       </MilestoneButton>
-      <CreateButton />
+      <CreateButton content="New Label" />
     </Nav>
   );
 }
 
 const Nav = styled.nav`
-  width: 90%;
-  margin: 0;
+  width: 100%;
+
   padding: 3em 0;
+
   position: relative;
 `;
 

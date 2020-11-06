@@ -7,19 +7,14 @@ import LabelAddTab from './label-add-tab';
 export default function Content() {
   return (
     <ContentContainer>
-      <Wrapper>
-        <NavBar />
-        <LabelAddTab />
-        <LabelList />
-      </Wrapper>
+      <NavBar />
+      <LabelAddTab />
+      <LabelList />
     </ContentContainer>
   );
 }
 
-const Wrapper = styled.div``;
-
 const ContentContainer = styled.div`
   width: 90%;
   margin: auto;
-  margin-top: 30px;
 `;
