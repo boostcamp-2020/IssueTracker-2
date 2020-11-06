@@ -1,15 +1,20 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
-export default function CreateButton(props) {
-  const history = useHistory();
-  const onClick = () => {
-    history.push('/milestone/new');
-  };
-  return <Button onClick={onClick}>New milestone</Button>;
+export default function CreateButton({ content }) {
+  return (
+    <Wrapper>
+      <Button>{content}</Button>
+    </Wrapper>
+  );
 }
 
+const Wrapper = styled.div`
+  width: 90%;
+  margin: auto;
+  padding: 1.5em;
+  position: relative;
+`;
 const Button = styled.button`
   position: absolute;
   right: 0;
@@ -21,5 +26,4 @@ const Button = styled.button`
   font-size: 1em;
   font-weight: 500;
   cursor: pointer;
-  outline: none;
 `;

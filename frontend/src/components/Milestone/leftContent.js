@@ -7,13 +7,13 @@ export default function LeftContent(props) {
     <ContentLeft>
       <MilestoneTitle>[WEB] 마일스톤 페이지 마크업</MilestoneTitle>
       <DueInfo>
-        <CalendarIcon />
-        or
         <AlertIcon />
-        <Duedate>
+        <DueDate>Past due by about 10 hours</DueDate>
+
+        <DueUpdate>
           <ClockIcon />
           <UpdatedTime>Last updated about 2 hours ago</UpdatedTime>
-        </Duedate>
+        </DueUpdate>
       </DueInfo>
       <MilestoneDescription>마일스톤 페이지 마크업</MilestoneDescription>
     </ContentLeft>
@@ -23,7 +23,7 @@ export default function LeftContent(props) {
 const ContentLeft = styled.span``;
 
 const MilestoneTitle = styled.span`
-  font-size: 1.8em;
+  font-size: 1.5em;
 `;
 
 const DueInfo = styled.span`
@@ -33,7 +33,12 @@ const DueInfo = styled.span`
   color: rgba(0, 0, 0, 0.7);
 `;
 
-const Duedate = styled.span`
+const DueDate = styled.span`
+  margin-left: 0.5em;
+  font-weight: bold;
+`;
+
+const DueUpdate = styled.span`
   display: flex;
   margin-left: 1em;
 `;
@@ -44,5 +49,5 @@ const MilestoneDescription = styled.div`
 `;
 
 const UpdatedTime = styled.span`
-  margin-left: 1em;
+  margin-left: 0.5em;
 `;

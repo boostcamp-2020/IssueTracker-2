@@ -1,49 +1,61 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { TagIcon, MilestoneIcon } from '@primer/octicons-react';
+import CreateButton from '../Milestone/createButton';
+import { useHistory } from 'react-router-dom';
 
-export default function NavBar() {
+export default function NavButton(props) {
+  const history = useHistory();
+  const onClick = () => {
+    history.push('/milestones');
+  };
   return (
-    <Wrapper>
-      <OptionButtonsWrapper>
-        <OptionButton borderRight="1px solid #aaaaaa">Label</OptionButton>
-        <OptionButton>Milestones</OptionButton>
-      </OptionButtonsWrapper>
-      <AddLabelButton>New label</AddLabelButton>
-    </Wrapper>
+    <Nav>
+      <LabelButton>
+        <TagIcon size={17} />
+        <Text>Labels</Text>
+      </LabelButton>
+      <MilestoneButton onClick={onClick}>
+        <MilestoneIcon size={17} />
+        <Text>Milestones</Text>
+      </MilestoneButton>
+      <CreateButton />
+    </Nav>
   );
 }
 
-const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 50px;
+const Nav = styled.nav`
+  width: 90%;
+  margin: 0;
+  padding: 3em 0;
+  position: relative;
 `;
 
-const AddLabelButton = styled.button`
-  background-color: #4caf50;
-  border: 1px solid;
-  border-color: #1b1f231a;
-  border-radius: 6px;
+const LabelButton = styled.span`
+  display: inline-block;
+  padding: 0.5em 1.5em;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-right: none;
+  border-radius: 5px 0 0 5px;
+  cursor: pointer;
   color: white;
-  padding: 5px 16px;
-  font-size: 14px;
-  font-weight: 500;
-  height: 35px;
+  background-color: #0366d6;
+  fill: white;
+`;
+
+const Text = styled.span`
+  margin-left: 5px;
+  font-size: 0.9em;
   cursor: pointer;
 `;
 
-const OptionButtonsWrapper = styled.div`
-  border-radius: 6px;
-  border: 1px solid #aaaaaa;
-`;
-
-const OptionButton = styled.button`
-  background: none;
-  border: none;
-  border-right: ${props => props.borderRight};
-  padding: 5px 16px;
-  font-size: 14px;
-  font-weight: 500;
-  height: 35px;
+const MilestoneButton = styled.span`
+  display: inline-block;
+  padding: 0.5em 1em;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+  }
 `;

@@ -16,11 +16,10 @@ export default function Content() {
   );
 }
 
-const Wrapper = styled.div`
-  width: 1000px;
-  margin: 0 auto;
-`;
+const Wrapper = styled.div``;
 
 const ContentContainer = styled.div`
+  width: 90%;
+  margin: auto;
   margin-top: 30px;
 `;

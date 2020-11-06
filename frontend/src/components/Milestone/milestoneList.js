@@ -10,7 +10,7 @@ export default function MilestoneList(props) {
       <ListHeader>
         <MilestoneIcon size={20} />
         <Open>
-          <Count>2</Count>
+          <Count>1</Count>
           <span>Open</span>
         </Open>
         <Closed>
@@ -20,10 +20,6 @@ export default function MilestoneList(props) {
         </Closed>
       </ListHeader>
       <List>
-        <Milestone>
-          <LeftContent />
-          <RightContent />
-        </Milestone>
         <Milestone>
           <LeftContent />
           <RightContent />

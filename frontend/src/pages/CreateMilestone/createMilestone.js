@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../../components/CreateMilestone/header';
 import Explanation from '../../components/CreateMilestone/explanation';
 import InputForm from '../../components/CreateMilestone/inputForm';
-import CreateButton from '../../components/CreateMilestone/createButton';
+import CreateButton from '../../components/Common/GreenButton';
 import Footer from '../../components/CreateMilestone/footer';
 
 const CreateMilestone = props => {
@@ -11,7 +11,7 @@ const CreateMilestone = props => {
       <Header />
       <Explanation />
       <InputForm />
-      <CreateButton />
+      <CreateButton content="new milestone" />
       <Footer />
     </>
   );

@@ -1,6 +1,11 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 export default function RightContent(props) {
+  const history = useHistory();
+  const onClick = () => {
+    history.push('/milestone/edit');
+  };
   return (
     <ContentRight>
       <GaugeBar>
@@ -9,14 +14,14 @@ export default function RightContent(props) {
       <Info>
         <Percent>40%</Percent>
         <span>complete</span>
-        <OpenCount>2</OpenCount>
+        <OpenCount>3</OpenCount>
         <span>open</span>
-        <ClosedCount>1</ClosedCount>
+        <ClosedCount>2</ClosedCount>
         <span>closed</span>
       </Info>
 
       <Buttons>
-        <BlueTextButton>Edit</BlueTextButton>
+        <BlueTextButton onClick={onClick}>Edit</BlueTextButton>
         <BlueTextButton>Close</BlueTextButton>
         <RedTextButton>Delete</RedTextButton>
       </Buttons>
@@ -51,14 +56,16 @@ const Info = styled.div`
 `;
 
 const BlueTextButton = styled.a`
-  color: blue;
+  color: #0366d6;
   margin-right: 1em;
   text-decoration: none;
+  cursor: pointer;
 `;
 
 const RedTextButton = styled.a`
-  color: red;
+  color: #cb2431;
   text-decoration: none;
+  cursor: pointer;
 `;
 
 const Buttons = styled.div`

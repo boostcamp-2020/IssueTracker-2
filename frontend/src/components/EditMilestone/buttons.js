@@ -1,24 +1,31 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import GreenButton from '../Common/GreenButton';
 
 export default function Buttons(props) {
+  const history = useHistory();
+  const onClickCancel = () => {
+    history.push('/milestones');
+  };
+
   return (
     <Wrapper>
       <ButtonSet>
-        <Button>Cancel</Button>
+        <Button onClick={onClickCancel}>Cancel</Button>
         <Button>Close milestone</Button>
         <SaveButton>Save Change</SaveButton>
       </ButtonSet>
     </Wrapper>
   );
 }
-
 const Wrapper = styled.div`
   width: 90%;
   margin: auto;
   padding: 1.5em;
   position: relative;
 `;
+
 const ButtonSet = styled.div`
   position: absolute;
   right: 0;
@@ -34,6 +41,7 @@ const Button = styled.button`
   padding: 0.5em 1em;
   font-size: 1em;
   font-weight: 500;
+  outline: none;
   cursor: pointer;
 `;
 const SaveButton = styled.button`
@@ -44,5 +52,6 @@ const SaveButton = styled.button`
   padding: 0.5em 1em;
   font-size: 1em;
   font-weight: 500;
+  outline: none;
   cursor: pointer;
 `;

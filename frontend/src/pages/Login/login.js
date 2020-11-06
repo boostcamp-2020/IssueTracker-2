@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import UserManagementButtons from '../../components/Login/userManagementButtons';
 import UserInput from '../../components/Login/userInput';
+import { useHistory } from 'react-router-dom';
 
 const Login = () => {
+  const history = useHistory();
+  const user = document.cookie.includes('user');
   const [userLoginInfo, setUserLoginInfo] = useState({ id: null, pw: null });
 
+  const goToMain = () => {
+    history.push('/milestones');
+  };
+
+  useEffect(() => {
+    return user && goToMain();
+  });
   return (
     <Wrapper>
       <Title>이슈 트래커</Title>

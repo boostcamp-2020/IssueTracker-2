@@ -2,11 +2,16 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { TagIcon, MilestoneIcon } from '@primer/octicons-react';
 import CreateButton from './createButton';
+import { useHistory } from 'react-router-dom';
 
 export default function NavButton(props) {
+  const history = useHistory();
+  const onClick = () => {
+    history.push('/labels');
+  };
   return (
     <Nav>
-      <LabelButton>
+      <LabelButton onClick={onClick}>
         <TagIcon size={17} />
         <Text>Labels</Text>
       </LabelButton>
