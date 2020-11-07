@@ -5,13 +5,14 @@ import {
   IssueOpenedIcon,
   CheckIcon,
 } from '@primer/octicons-react';
-import DropdownCaret from '../Common/DropdownCaret';
+import DropdownCaret from './DropdownCaret';
 
 export default function ListForm(props) {
   const getHeaderContent = type => {
     if (type === 'issue') {
       return (
         <HeaderWrapper>
+          <Checkbox type="checkbox" />
           <IssueOpenedIcon size={20} />
           <Open>
             <Count>2</Count>
@@ -91,6 +92,9 @@ const Wrapper = styled.div`
   margin: auto;
 `;
 
+const Checkbox = styled.input`
+  margin-right: 1.5em;
+`;
 const ListHeader = styled.div`
   display: flex;
   position: relative;
@@ -104,6 +108,7 @@ const ListHeader = styled.div`
 const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
+  border-left: 0;
 `;
 const Open = styled.span`
   margin-right: 1em;

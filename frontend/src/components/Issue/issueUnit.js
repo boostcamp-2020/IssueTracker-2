@@ -26,7 +26,9 @@ export default function IssueUnit(props) {
 
 const Wrapper = styled.div`
   width: 100%;
-  padding: 1em;
+  padding: 1.5em;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
 `;
 
