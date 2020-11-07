@@ -39,7 +39,7 @@ exports.loginPassport = (req, res, next) => {
     }
 
     if(!user) {
-      res.status(400).json({ message: info.message });
+      res.status(401).json({ message: info.message });
     }
 
     /**
@@ -51,7 +51,7 @@ exports.loginPassport = (req, res, next) => {
     const options = { expiresIn: '7d', subject: 'userInfo' };
     const token = jwt.sign(payload, secret, options);
     res.cookie('jwt', token);
-    res.json({ message: 'logged in successfully', token });
+    res.status(202).json({ message: 'logged in successfully' });
 
   })(req, res, next);
 };
