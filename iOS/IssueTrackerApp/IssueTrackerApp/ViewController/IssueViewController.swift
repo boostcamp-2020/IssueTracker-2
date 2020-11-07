@@ -28,6 +28,7 @@ class IssueViewController: UIViewController {
     super.viewDidLoad()
     configure()
     applySnapshot(animatingDifferences: false)
+    issueSearchBar.delegate = self
   }
   
   private func configure() {
@@ -107,12 +108,12 @@ class IssueViewController: UIViewController {
   @objc private func editButtonTouched() {
     isEdited.toggle()
     issueCollectionView.deselectAll(animated: true)
-
+    
     let visibleItemIndexPaths = issueCollectionView.indexPathsForVisibleItems
-
+    
     for indexPath in visibleItemIndexPaths {
       guard let cell = issueCollectionView.cellForItem(at: indexPath) as? IssueCell else { return }
-
+      
       cell.editCell(status: isEdited)
     }
   }
@@ -165,5 +166,16 @@ extension UICollectionView {
     indexPathsForSelectedItems?.forEach({ (indexPath) in
       deselectItem(at: indexPath, animated: animated)
     })
+  }
+}
+
+extension IssueViewController: UISearchBarDelegate {
+  func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+    searchBar.showsCancelButton = true
+  }
+  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    searchBar.text = nil
+    searchBar.showsCancelButton = false
+    searchBar.endEditing(true)
   }
 }
