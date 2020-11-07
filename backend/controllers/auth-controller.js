@@ -6,6 +6,11 @@ exports.loginGitHub = (req, res, next) => {
       return next(err);
     }
 
+    if (req.headers['user-agent'].includes('iPhone')) {
+      console.log('iphone here');
+      return res.redirect(`issuetrackerpastel://${user}`);
+    }
+
     // redirect 주소 수정 필요
     if (!user) {
       return res.redirect('http://localhost:8080');
