@@ -19,14 +19,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="wgp-EP-K1e">
-                                <rect key="frame" x="0.0" y="88" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ZRb-rS-Yjg"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="woj-kq-llH">
-                                <rect key="frame" x="0.0" y="138" width="414" height="675"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="719"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="PyJ-jd-juM">
                                     <size key="itemSize" width="414" height="86"/>
@@ -216,6 +216,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionViewBottomConstraint" destination="WZX-aJ-8QQ" id="wp6-Bb-BBK"/>
                         <outlet property="editButton" destination="khm-1Y-J9X" id="k9O-OU-ENu"/>
@@ -311,39 +312,17 @@
         <!--Tab Bar Controller-->
         <scene sceneID="jZC-Xv-x1H">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="lTR-pQ-SAM" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="lTR-pQ-SAM" customClass="TabBarController" customModule="IssueTrackerApp" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="09H-6r-9r6">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
-                    <connections>
-                        <segue destination="hwX-JD-uPt" kind="relationship" relationship="viewControllers" id="GUp-Gr-Bxz"/>
-                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PD8-Yk-Rnh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="98.4375"/>
-        </scene>
-        <!--Item-->
-        <scene sceneID="HkG-W6-uI1">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hwX-JD-uPt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="d0j-dA-TLs"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Lun-C3-hxc">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="QDr-ZF-uIg" kind="relationship" relationship="rootViewController" id="uWn-uY-0cC"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Fom-va-nre" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="98.4375"/>
+            <point key="canvasLocation" x="1172" y="97"/>
         </scene>
     </scenes>
     <resources>
