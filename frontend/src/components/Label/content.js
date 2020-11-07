@@ -6,21 +6,21 @@ import LabelAddTab from './label-add-tab';
 
 export default function Content() {
   return (
-    <ContentContainer>
-      <Wrapper>
-        <NavBar />
-        <LabelAddTab />
-        <LabelList />
-      </Wrapper>
-    </ContentContainer>
+    <>
+      <ContentContainer>
+        <Wrapper>
+          <NavBar />
+          {/* <LabelAddTab /> */}
+        </Wrapper>
+      </ContentContainer>
+      <LabelList />
+    </>
   );
 }
 
-const Wrapper = styled.div`
-  width: 1000px;
-  margin: 0 auto;
-`;
+const Wrapper = styled.div``;
 
 const ContentContainer = styled.div`
-  margin-top: 30px;
+  width: 90%;
+  margin: auto;
 `;

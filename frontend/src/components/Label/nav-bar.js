@@ -18,6 +18,7 @@ const Wrapper = styled.div`
   display: flex;
   width: 100%;
   position: relative;
+  padding: 3em 0;
 `;
 
 const ButtonWrapper = styled.div`

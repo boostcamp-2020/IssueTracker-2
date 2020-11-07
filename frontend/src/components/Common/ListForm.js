@@ -71,8 +71,8 @@ export default function ListForm(props) {
     if (type === 'label') {
       return (
         <HeaderWrapper>
-          <span>13</span>
-          <span>labels</span>
+          <LabelCount>13</LabelCount>
+          <LabelTitle>labels</LabelTitle>
         </HeaderWrapper>
       );
     }
@@ -86,6 +86,13 @@ export default function ListForm(props) {
   );
 }
 
+const LabelCount = styled.span`
+  margin-right: 0.5em;
+  font-weight: bold;
+`;
+const LabelTitle = styled.span`
+  font-weight: bold;
+`;
 const Wrapper = styled.div`
   width: 90%;
   height: 25em;
