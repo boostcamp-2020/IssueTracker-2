@@ -1,4 +1,5 @@
 const db = require('../db');
+const util = require('../util');
 
 exports.delete = async ({ commentId }) => {
     try {
@@ -28,8 +29,8 @@ exports.update = async ({ commentId, commentDescription }) => {
 exports.create = async ({ issueId, writerId, description }) => {
   try {
     const connection = await db.pool.getConnection(async conn => conn);
-    let sql = 'INSERT INTO comments (writer_id, description, issue_id) VALUES (?, ?, ?)';
-    const [{ generatedCommentId }] = await connection.query(sql, [writerId, description, issueId]);
+    let sql = 'INSERT INTO comments (writer_id, description, issue_id, created_at) VALUES (?, ?, ?, ?)';
+    const [{ generatedCommentId }] = await connection.query(sql, [writerId, description, issueId, util.now()]);
     connection.release();
     
     return { generatedCommentId };
