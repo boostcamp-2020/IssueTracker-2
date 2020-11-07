@@ -17,16 +17,21 @@ struct EndPoint<Datable: Encodable>: EndPointType {
 }
 
 class APIService {
-  //  private let router = Router<EndPoint>()
-  func requestMilestone(forEndPoint endPoint: EndPoint<Milestone>, completion: @escaping NetworkRouterCompletion) {
+  func requestMilestone(forEndPoint endPoint: EndPoint<Milestone>,
+                        completion: @escaping NetworkRouterCompletion) {
     let router = Router<EndPoint<Milestone>>()
-    let endPoint = EndPoint(path: endPoint.path, httpMethod: endPoint.httpMethod, task: endPoint.task)
     router.request(endPoint, completion: completion)
   }
   
-  func requestIssue(forEndPoint endPoint: EndPoint<Issue>, completion: @escaping NetworkRouterCompletion) {
+  func requestIssue(forEndPoint endPoint: EndPoint<Issue>,
+                    completion: @escaping NetworkRouterCompletion) {
     let router = Router<EndPoint<Issue>>()
-    let endPoint = EndPoint(path: endPoint.path, httpMethod: endPoint.httpMethod, task: endPoint.task)
+    router.request(endPoint, completion: completion)
+  }
+  
+  func requestLabel(forEndPoint endPoint: EndPoint<Label>,
+                    completion: @escaping NetworkRouterCompletion) {
+    let router = Router<EndPoint<Label>>()
     router.request(endPoint, completion: completion)
   }
 }
