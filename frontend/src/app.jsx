@@ -9,6 +9,7 @@ import {
   EditMilestone,
   Label,
   IssueCreation,
+  Issue,
 } from './pages';
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/milestone/edit" component={EditMilestone} />
         <Route path="/label" component={Label} />
         <Route path="/issue/create" component={IssueCreation} />
+        <Route path="/issues" component={Issue} />
       </Switch>
     </BrowserRouter>
   );
