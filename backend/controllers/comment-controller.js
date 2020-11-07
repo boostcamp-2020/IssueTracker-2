@@ -15,3 +15,7 @@ exports.addComment = async (req, res, next) => {
   res.status(status).json({ message, generatedCommentId });
 };
 
+exports.test = async (req, res, next) => {
+  res.status(200).json({ message : "성공" });
+};
+
