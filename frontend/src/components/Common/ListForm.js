@@ -13,7 +13,7 @@ export default function ListForm(props) {
       return (
         <HeaderWrapper>
           <Checkbox type="checkbox" />
-          <IssueOpenedIcon size={20} />
+          <IssueOpenedIcon size={18} />
           <Open>
             <Count>2</Count>
             <span>Open</span>
@@ -99,7 +99,7 @@ const ListHeader = styled.div`
   display: flex;
   position: relative;
   width: 100%;
-  padding: 0.5em 1.5em;
+  padding: 1.3em 1.5em;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 5px 5px 0 0;
   background-color: rgba(0, 0, 0, 0.05);
@@ -111,7 +111,8 @@ const HeaderWrapper = styled.div`
   border-left: 0;
 `;
 const Open = styled.span`
-  margin-right: 1em;
+  margin-left: 0.2em;
+  margin-right: 1.3em;
   transform: translateY(1px);
 `;
 const Count = styled.span`
