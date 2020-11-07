@@ -6,7 +6,10 @@ export default function IssueUnit(props) {
   return (
     <Wrapper>
       <Checkbox type="checkbox" />
-      <IssueOpenedIcon size={18} />
+      <IssueIconWrapper>
+        <IssueOpenedIcon size={18} />
+      </IssueIconWrapper>
+
       <LeftContent>
         <LeftTopContent>
           <IssueTitle>ISSUE Page 마크업</IssueTitle>
@@ -32,6 +35,9 @@ const Wrapper = styled.div`
   display: flex;
 `;
 
+const IssueIconWrapper = styled.span`
+  color: green;
+`;
 const Checkbox = styled.input`
   margin-right: 1.5em;
 `;
@@ -53,11 +59,13 @@ const Labels = styled.span`
 
 const MilestoneInfo = styled.span`
   margin-left: 0.5em;
+  color: rgba(0, 0, 0, 0.7);
 `;
 
 const MilestoneTitle = styled.span`
   margin-left: 0.5em;
   margin-top: 0.5em;
+  color: rgba(0, 0, 0, 0.7);
 `;
 
 const LeftTopContent = styled.div``;
@@ -68,4 +76,5 @@ const LeftDownContent = styled.div`
 
 const IssueInfo = styled.div`
   margin-top: 0.5em;
+  color: rgba(0, 0, 0, 0.7);
 `;

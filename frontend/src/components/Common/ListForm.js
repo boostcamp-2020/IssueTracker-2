@@ -118,7 +118,9 @@ const Count = styled.span`
   margin-left: 0.3em;
   margin-right: 0.3em;
 `;
-const Closed = styled.span``;
+const Closed = styled.span`
+  transform: translateY(1px);
+`;
 
 const List = styled.div`
   width: 100%;
