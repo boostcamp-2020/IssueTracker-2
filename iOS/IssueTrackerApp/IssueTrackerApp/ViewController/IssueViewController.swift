@@ -114,7 +114,7 @@ class IssueViewController: UIViewController {
     for indexPath in visibleItemIndexPaths {
       guard let cell = issueCollectionView.cellForItem(at: indexPath) as? IssueCell else { return }
       
-      cell.editCell(status: isEdited)
+      cell.editCurrentCell(status: isEdited)
     }
   }
   
@@ -143,7 +143,7 @@ extension IssueViewController: UICollectionViewDelegateFlowLayout {
   
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
     guard let cell = cell as? IssueCell else { return }
-    cell.editCell(status: isEdited)
+    cell.editHiddenCell(status: isEdited)
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
