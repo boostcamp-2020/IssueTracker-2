@@ -55,22 +55,18 @@ export default function LabelList() {
   );
 }
 
-const Wrapper = styled.div`
-  border: 1px solid #dddddd;
-  border-radius: 5px;
+const LabelDescriptionList = styled.div`
+  width: 100%;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  position: relative;
 `;
-
-const ContentHeader = styled.div`
-  padding: 20px 16px;
-  background: #eeeeee;
-`;
-const LabelDescriptionList = styled.div``;
 
 const LabelDescription = styled.div`
-  padding: 20px 16px;
+  width: 100%;
+  padding: 1em 1.5em;
   border-top: 1px solid #dddddd;
   display: flex;
-  justify-content: space-between;
 `;
 
 const LabelTagArea = styled.div`
@@ -78,13 +74,17 @@ const LabelTagArea = styled.div`
 `;
 
 const LabelDescriptionArea = styled.div`
-  width: 600px;
+  margin-left: 10em;
+  color: rgba(0, 0, 0, 0.5);
 `;
 
 const LabelManageButtonArea = styled.div`
-  width: 100px;
+  position: absolute;
+  right: 0;
   display: flex;
   gap: 20px;
+  padding: 0 1.5em;
+  color: rgba(0, 0, 0, 0.5);
 `;
 
 const LabelManageButton = styled.a`
