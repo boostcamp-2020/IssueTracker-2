@@ -167,7 +167,7 @@
                                 </cells>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9MF-aY-f2n">
-                                <rect key="frame" x="320.5" y="563.5" width="25" height="25"/>
+                                <rect key="frame" x="359.5" y="758.5" width="25" height="25"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kwz-Hi-SNM" customClass="NewIssueButton" customModule="IssueTrackerApp" customModuleProvider="target">
                                         <rect key="frame" x="-9.5" y="-9" width="44" height="43"/>
@@ -217,6 +217,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="collectionViewBottomConstraint" destination="WZX-aJ-8QQ" id="wp6-Bb-BBK"/>
                         <outlet property="editButton" destination="khm-1Y-J9X" id="k9O-OU-ENu"/>
                         <outlet property="filterButton" destination="oNW-dN-5Fr" id="Ag2-pa-ZvH"/>
                         <outlet property="issueCollectionView" destination="woj-kq-llH" id="aUj-UK-14i"/>
@@ -261,7 +262,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="e9k-lv-mLt">
-                                <rect key="frame" x="25" y="115" width="325" height="31"/>
+                                <rect key="frame" x="25" y="115" width="364" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="uSa-hy-6ud"/>
                                 </constraints>
@@ -271,7 +272,7 @@
                                 </segments>
                             </segmentedControl>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ua3-2l-Fbw" customClass="IssueContentTextView" customModule="IssueTrackerApp" customModuleProvider="target">
-                                <rect key="frame" x="25" y="155" width="325" height="462"/>
+                                <rect key="frame" x="25" y="155" width="364" height="623"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
