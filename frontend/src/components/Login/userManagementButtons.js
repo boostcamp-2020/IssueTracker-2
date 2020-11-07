@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export default function UserManagementButtons(props) {
   const onClick = () => {
-    location.href = 'http://localhost:3000/auth/github';
+    location.href = 'http://101.101.218.59:3000/auth/github';
   };
 
   return (
