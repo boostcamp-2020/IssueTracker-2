@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lTR-pQ-SAM">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
@@ -15,18 +15,18 @@
             <objects>
                 <viewController storyboardIdentifier="IssueViewController" id="QDr-ZF-uIg" customClass="IssueViewController" customModule="IssueTrackerApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="E1p-n3-GTV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="wgp-EP-K1e">
-                                <rect key="frame" x="0.0" y="44" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ZRb-rS-Yjg"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="woj-kq-llH">
-                                <rect key="frame" x="0.0" y="94" width="375" height="524"/>
+                                <rect key="frame" x="0.0" y="138" width="414" height="675"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="PyJ-jd-juM">
                                     <size key="itemSize" width="414" height="86"/>
@@ -36,7 +36,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="IssueCell" id="TGt-Gv-sdp" customClass="IssueCell" customModule="IssueTrackerApp" customModuleProvider="target">
-                                        <rect key="frame" x="-19.5" y="0.0" width="414" height="86"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="86"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="OGF-Sy-rgE">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="86"/>
@@ -167,10 +167,10 @@
                                 </cells>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9MF-aY-f2n">
-                                <rect key="frame" x="310" y="553" width="45" height="45"/>
+                                <rect key="frame" x="359.5" y="758.5" width="25" height="25"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kwz-Hi-SNM" customClass="NewIssueButton" customModule="IssueTrackerApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.5" y="1" width="44" height="43"/>
+                                        <rect key="frame" x="-9.5" y="-9" width="44" height="43"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="44" id="6sT-mN-gI4"/>
                                             <constraint firstAttribute="width" secondItem="kwz-Hi-SNM" secondAttribute="height" multiplier="1:1" id="iIH-NJ-XXc"/>
@@ -183,24 +183,24 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="kwz-Hi-SNM" firstAttribute="centerX" secondItem="9MF-aY-f2n" secondAttribute="centerX" id="8Wc-om-vm4"/>
-                                    <constraint firstItem="kwz-Hi-SNM" firstAttribute="centerY" secondItem="9MF-aY-f2n" secondAttribute="centerY" id="lvD-oG-G3V"/>
+                                    <constraint firstAttribute="width" secondItem="9MF-aY-f2n" secondAttribute="height" multiplier="1:1" id="0yS-S3-sC9"/>
+                                    <constraint firstItem="kwz-Hi-SNM" firstAttribute="centerY" secondItem="9MF-aY-f2n" secondAttribute="centerY" id="BDe-1b-Bxv"/>
+                                    <constraint firstItem="kwz-Hi-SNM" firstAttribute="centerX" secondItem="9MF-aY-f2n" secondAttribute="centerX" id="IOs-BV-PB2"/>
+                                    <constraint firstAttribute="width" constant="25" id="SeJ-jE-Cer"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="m1b-EM-E90"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="m1b-EM-E90" firstAttribute="trailing" secondItem="kwz-Hi-SNM" secondAttribute="trailing" constant="20.5" id="1nO-yw-Mh4"/>
+                            <constraint firstItem="m1b-EM-E90" firstAttribute="trailing" secondItem="kwz-Hi-SNM" secondAttribute="trailing" constant="20" id="1nO-yw-Mh4"/>
                             <constraint firstItem="woj-kq-llH" firstAttribute="top" secondItem="wgp-EP-K1e" secondAttribute="bottom" id="2Xr-q5-WQE"/>
-                            <constraint firstItem="m1b-EM-E90" firstAttribute="bottom" secondItem="9MF-aY-f2n" secondAttribute="bottom" constant="20" id="KeF-1D-CLl"/>
                             <constraint firstItem="m1b-EM-E90" firstAttribute="trailing" secondItem="woj-kq-llH" secondAttribute="trailing" id="LId-B0-hiV"/>
                             <constraint firstItem="wgp-EP-K1e" firstAttribute="top" secondItem="m1b-EM-E90" secondAttribute="top" id="RYu-Me-grg"/>
                             <constraint firstItem="m1b-EM-E90" firstAttribute="bottom" secondItem="woj-kq-llH" secondAttribute="bottom" id="WZX-aJ-8QQ"/>
                             <constraint firstItem="wgp-EP-K1e" firstAttribute="trailing" secondItem="m1b-EM-E90" secondAttribute="trailing" id="ajB-ef-Jby"/>
                             <constraint firstItem="wgp-EP-K1e" firstAttribute="leading" secondItem="m1b-EM-E90" secondAttribute="leading" id="deG-jF-HMg"/>
-                            <constraint firstItem="m1b-EM-E90" firstAttribute="bottom" secondItem="kwz-Hi-SNM" secondAttribute="bottom" constant="20.5" id="mFO-lC-NF1"/>
-                            <constraint firstItem="m1b-EM-E90" firstAttribute="trailing" secondItem="9MF-aY-f2n" secondAttribute="trailing" constant="20" id="tDM-wv-z22"/>
+                            <constraint firstItem="m1b-EM-E90" firstAttribute="bottom" secondItem="kwz-Hi-SNM" secondAttribute="bottom" constant="20" id="mFO-lC-NF1"/>
                             <constraint firstItem="woj-kq-llH" firstAttribute="leading" secondItem="m1b-EM-E90" secondAttribute="leading" id="yks-pb-tnU"/>
                         </constraints>
                     </view>
@@ -217,6 +217,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="collectionViewBottomConstraint" destination="WZX-aJ-8QQ" id="wp6-Bb-BBK"/>
                         <outlet property="editButton" destination="khm-1Y-J9X" id="k9O-OU-ENu"/>
                         <outlet property="filterButton" destination="oNW-dN-5Fr" id="Ag2-pa-ZvH"/>
                         <outlet property="issueCollectionView" destination="woj-kq-llH" id="aUj-UK-14i"/>
@@ -232,11 +233,11 @@
             <objects>
                 <viewController id="V7R-yT-F2x" customClass="UpdateIssueViewController" customModule="IssueTrackerApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DFO-bF-REM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rb4-oa-MWd">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                 <items>
                                     <navigationItem title="새이슈" largeTitleDisplayMode="always" id="xe4-zP-S0X">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="sUj-db-RQe">
@@ -253,7 +254,7 @@
                                 </items>
                             </navigationBar>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="제목" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MCv-g0-PKC">
-                                <rect key="frame" x="25" y="76" width="325" height="34"/>
+                                <rect key="frame" x="25" y="76" width="364" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="eGf-2Q-MeX"/>
                                 </constraints>
@@ -261,7 +262,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="e9k-lv-mLt">
-                                <rect key="frame" x="25" y="152" width="325" height="31"/>
+                                <rect key="frame" x="25" y="115" width="364" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="uSa-hy-6ud"/>
                                 </constraints>
@@ -271,37 +272,27 @@
                                 </segments>
                             </segmentedControl>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ua3-2l-Fbw" customClass="IssueContentTextView" customModule="IssueTrackerApp" customModuleProvider="target">
-                                <rect key="frame" x="25" y="192" width="325" height="425"/>
+                                <rect key="frame" x="25" y="155" width="364" height="623"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iKW-W8-Tau">
-                                <rect key="frame" x="25" y="111" width="325" height="1"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="22Y-wa-KZI"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1u0-Az-Vfn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="e9k-lv-mLt" firstAttribute="leading" secondItem="MCv-g0-PKC" secondAttribute="leading" id="1Lk-wl-VCD"/>
-                            <constraint firstItem="iKW-W8-Tau" firstAttribute="top" secondItem="MCv-g0-PKC" secondAttribute="bottom" constant="1" id="6Kq-Q0-Fpm"/>
                             <constraint firstItem="rb4-oa-MWd" firstAttribute="leading" secondItem="1u0-Az-Vfn" secondAttribute="leading" id="DFh-Wz-RY4"/>
                             <constraint firstItem="rb4-oa-MWd" firstAttribute="top" secondItem="1u0-Az-Vfn" secondAttribute="top" id="Lwq-sC-OYa"/>
+                            <constraint firstItem="e9k-lv-mLt" firstAttribute="top" secondItem="MCv-g0-PKC" secondAttribute="bottom" constant="5" id="MIq-g0-c5h"/>
                             <constraint firstItem="1u0-Az-Vfn" firstAttribute="bottom" secondItem="Ua3-2l-Fbw" secondAttribute="bottom" constant="30" id="OKo-Ix-WCf"/>
                             <constraint firstItem="1u0-Az-Vfn" firstAttribute="trailing" secondItem="MCv-g0-PKC" secondAttribute="trailing" constant="25" id="OdQ-N8-fHn"/>
                             <constraint firstItem="1u0-Az-Vfn" firstAttribute="trailing" secondItem="Ua3-2l-Fbw" secondAttribute="trailing" constant="25" id="TjM-yr-G0f"/>
-                            <constraint firstItem="e9k-lv-mLt" firstAttribute="top" secondItem="iKW-W8-Tau" secondAttribute="bottom" constant="40" id="Yn6-bH-1X7"/>
-                            <constraint firstItem="iKW-W8-Tau" firstAttribute="trailing" secondItem="MCv-g0-PKC" secondAttribute="trailing" id="d8i-dF-gXS"/>
                             <constraint firstItem="rb4-oa-MWd" firstAttribute="trailing" secondItem="1u0-Az-Vfn" secondAttribute="trailing" id="e6V-ru-63m"/>
                             <constraint firstItem="Ua3-2l-Fbw" firstAttribute="leading" secondItem="1u0-Az-Vfn" secondAttribute="leading" constant="25" id="eTD-0B-p9h"/>
                             <constraint firstItem="Ua3-2l-Fbw" firstAttribute="top" secondItem="e9k-lv-mLt" secondAttribute="bottom" constant="10" id="eZX-b7-axT"/>
                             <constraint firstItem="MCv-g0-PKC" firstAttribute="top" secondItem="rb4-oa-MWd" secondAttribute="bottom" constant="20" id="lmR-DY-gp4"/>
-                            <constraint firstItem="iKW-W8-Tau" firstAttribute="leading" secondItem="MCv-g0-PKC" secondAttribute="leading" id="ofk-hp-Aux"/>
                             <constraint firstItem="e9k-lv-mLt" firstAttribute="trailing" secondItem="MCv-g0-PKC" secondAttribute="trailing" id="sd7-Ql-G48"/>
                             <constraint firstItem="MCv-g0-PKC" firstAttribute="leading" secondItem="1u0-Az-Vfn" secondAttribute="leading" constant="25" id="uqT-G2-PbJ"/>
                         </constraints>
@@ -342,7 +333,7 @@
                     <tabBarItem key="tabBarItem" title="Item" id="d0j-dA-TLs"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Lun-C3-hxc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
