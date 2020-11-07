@@ -11,12 +11,13 @@ import KeychainService
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   
   var window: UIWindow?
-  var token: String?
+  var loginKeyChain = LoginKeychain()
   
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     guard let _ = (scene as? UIWindowScene) else { return }
-    checkKeychain()
-    guard let _ = token else {
+    removeKeychain()
+    
+    guard let _ = checkKeychain() else {
       let loginVC = getLoginVC()
       switchScreen(with: loginVC)
       return
@@ -29,7 +30,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let loginVC = storyboard.instantiateViewController(identifier: "LoginViewController") { (coder) -> LoginViewController? in
       let loginValidator = LoginValidator()
       let loginViewModel = LoginViewModel(loginValidator: loginValidator)
-      return LoginViewController(coder: coder, loginViewModel: loginViewModel)
+      let loginKeychain = LoginKeychain()
+      return LoginViewController(coder: coder, loginViewModel: loginViewModel, loginKeychain: loginKeychain)
     }
     return loginVC
   }
@@ -39,11 +41,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     window?.makeKeyAndVisible()
   }
   
-  private func checkKeychain() {
-    let queryable = GenericPasswordQueryable(service: "IssueTracker")
-    let secureStore = SecureStore(secureStoreQueryable: queryable)
-    
-    token = try? secureStore.getValue(for: "userIdentifier")
+  private func checkKeychain() -> String? {
+    return loginKeyChain.getValue(forKey: "userIdentifier")
+  }
+  
+  private func removeKeychain() {
+    loginKeyChain.removeAll()
   }
   
   func sceneDidDisconnect(_ scene: UIScene) {

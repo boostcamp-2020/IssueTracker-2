@@ -50,7 +50,5 @@ class IssueCell: UICollectionViewCell {
         self.bigView.transform = .identity
       }
     }
-    
-    
   }
 }
