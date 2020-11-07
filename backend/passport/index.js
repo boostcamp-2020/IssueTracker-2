@@ -64,9 +64,6 @@ const verifyJwt = async(jwt_payload, done) => {
     const username = jwt_payload.nickname; 
     const userInfo = await users.findAll({username});
 
-    console.log(username); 
-    console.log(userInfo); 
-
     if(!userInfo) {
       return done(null, false, { message: 'This user does not exist' });
     }
