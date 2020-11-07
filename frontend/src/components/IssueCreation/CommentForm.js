@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import IssueTitle from './IssueTitle';
 import Tab from './Tab';
 import CommentInput from './CommentInput';
-import SubmitButton from './SubmitButton';
+import SubmitButton from '../Common/GreenButton';
 import CancelButton from './CancelButton';
 
 export default () => {
@@ -19,7 +19,7 @@ export default () => {
       </FileAttachMessage>
       <ButtonWrap>
         <CancelButton />
-        <SubmitButton />
+        <SubmitButton content="Submit new issue" />
       </ButtonWrap>
     </Form>
   );
@@ -41,6 +41,7 @@ const Line = styled.div`
 
 const ButtonWrap = styled.div`
   display: flex;
+  justify-content: space-between;
   margin: 8px;
   margin-top: 0;
 `;

@@ -1,26 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-
-import NavigationButton from '../Common/NavButton';
-import CreateButton from '../Common/GreenButton';
+import { TagIcon, MilestoneIcon } from '@primer/octicons-react';
 
 export default function NavButton(props) {
   return (
-    <Nav>
-      <NavigationButton />
-      <ButtonWrapper>
-        <CreateButton content="New milestone" />
-      </ButtonWrapper>
-    </Nav>
+    <>
+      <LabelButton>
+        <TagIcon size={17} />
+        <Text>Labels</Text>
+      </LabelButton>
+      <MilestoneButton>
+        <MilestoneIcon size={17} />
+        <Text>Milestones</Text>
+      </MilestoneButton>
+    </>
   );
 }
-
-const Nav = styled.nav`
-  width: 90%;
-  margin: auto;
-  padding: 3em 0;
-  position: relative;
-`;
 
 const LabelButton = styled.span`
   display: inline-block;
@@ -48,9 +43,4 @@ const MilestoneButton = styled.span`
   color: white;
   background-color: #0366d6;
   fill: white;
-`;
-
-const ButtonWrapper = styled.span`
-  position: absolute;
-  right: 0;
 `;

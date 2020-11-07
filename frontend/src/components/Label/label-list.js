@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import ListForm from '../Common/ListForm';
 const LABEL_LIST_INFO = [
   {
     name: 'bug',
@@ -24,32 +24,34 @@ const LABEL_LIST_INFO = [
 
 export default function LabelList() {
   return (
-    <Wrapper>
-      <ContentHeader>label</ContentHeader>
-      <LabelDescriptionList>
-        {LABEL_LIST_INFO.map(labelInfo => {
-          return (
-            <LabelDescription>
-              <LabelTagArea>
-                <LabelTag
-                  backgroundColor={labelInfo.backgroundColor}
-                  textColor={labelInfo.textColor}
-                >
-                  {labelInfo.name}
-                </LabelTag>
-              </LabelTagArea>
-              <LabelDescriptionArea>
-                {labelInfo.description}
-              </LabelDescriptionArea>
-              <LabelManageButtonArea>
-                <LabelManageButton>Edit</LabelManageButton>
-                <LabelManageButton>Delete</LabelManageButton>
-              </LabelManageButtonArea>
-            </LabelDescription>
-          );
-        })}
-      </LabelDescriptionList>
-    </Wrapper>
+    <ListForm
+      content={
+        <LabelDescriptionList>
+          {LABEL_LIST_INFO.map(labelInfo => {
+            return (
+              <LabelDescription>
+                <LabelTagArea>
+                  <LabelTag
+                    backgroundColor={labelInfo.backgroundColor}
+                    textColor={labelInfo.textColor}
+                  >
+                    {labelInfo.name}
+                  </LabelTag>
+                </LabelTagArea>
+                <LabelDescriptionArea>
+                  {labelInfo.description}
+                </LabelDescriptionArea>
+                <LabelManageButtonArea>
+                  <LabelManageButton>Edit</LabelManageButton>
+                  <LabelManageButton>Delete</LabelManageButton>
+                </LabelManageButtonArea>
+              </LabelDescription>
+            );
+          })}
+        </LabelDescriptionList>
+      }
+      type="label"
+    />
   );
 }
 

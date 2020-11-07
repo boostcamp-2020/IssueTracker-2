@@ -6,8 +6,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
   entry: './src/index.js',
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
+    publicPath: '/',
+    filename: 'bundle.[hash].js',
   },
   module: {
     rules: [
@@ -48,7 +48,7 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      template: './public/index.html',
+      template: './index.html',
       changeOrigin: true,
     }),
     new CleanWebpackPlugin(),
