@@ -12,9 +12,12 @@
 		5C39519925514FED00C6AEB8 /* FilterIssueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C39519825514FED00C6AEB8 /* FilterIssueCell.swift */; };
 		5C4F34802547DAEE00E41121 /* LoginValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4F347F2547DAEE00E41121 /* LoginValidator.swift */; };
 		5C4F34842547E3BF00E41121 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4F34832547E3BF00E41121 /* LoginViewModel.swift */; };
+		5C56F3CC2557A6DE00D83A44 /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F3CB2557A6DE00D83A44 /* LabelCell.swift */; };
 		5C7B9BB62556771D00804A77 /* Label.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C7B9BB52556771D00804A77 /* Label.storyboard */; };
 		5C7B9BBA25567E4800804A77 /* LabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B9BB925567E4800804A77 /* LabelViewController.swift */; };
 		5C7B9BBE25567E9F00804A77 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B9BBD25567E9F00804A77 /* TabBarController.swift */; };
+		5C7DF6B42557B39B00D730EE /* LabelMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7DF6B32557B39B00D730EE /* LabelMark.swift */; };
+		5CCE210D2557AA1F0043FA30 /* LabelList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE210C2557AA1F0043FA30 /* LabelList.swift */; };
 		5CFED72E25492EE200DE811F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFED72B25492EE200DE811F /* SceneDelegate.swift */; };
 		5CFED72F25492EE200DE811F /* IssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFED72C25492EE200DE811F /* IssueViewController.swift */; };
 		5CFED73025492EE200DE811F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFED72D25492EE200DE811F /* AppDelegate.swift */; };
@@ -100,9 +103,12 @@
 		5C39519825514FED00C6AEB8 /* FilterIssueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterIssueCell.swift; sourceTree = "<group>"; };
 		5C4F347F2547DAEE00E41121 /* LoginValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginValidator.swift; sourceTree = "<group>"; };
 		5C4F34832547E3BF00E41121 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		5C56F3CB2557A6DE00D83A44 /* LabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
 		5C7B9BB52556771D00804A77 /* Label.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Label.storyboard; sourceTree = "<group>"; };
 		5C7B9BB925567E4800804A77 /* LabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewController.swift; sourceTree = "<group>"; };
 		5C7B9BBD25567E9F00804A77 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		5C7DF6B32557B39B00D730EE /* LabelMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelMark.swift; sourceTree = "<group>"; };
+		5CCE210C2557AA1F0043FA30 /* LabelList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelList.swift; sourceTree = "<group>"; };
 		5CFED72B25492EE200DE811F /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5CFED72C25492EE200DE811F /* IssueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueViewController.swift; sourceTree = "<group>"; };
 		5CFED72D25492EE200DE811F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -212,6 +218,7 @@
 				5C4F347F2547DAEE00E41121 /* LoginValidator.swift */,
 				5CFED7322549325300DE811F /* IssueSection.swift */,
 				BD02F16525523FBB0013C643 /* FilterTableData */,
+				5CCE210C2557AA1F0043FA30 /* LabelList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -221,6 +228,8 @@
 			children = (
 				BD02F169255240890013C643 /* IssueView */,
 				BD02F16B255240940013C643 /* LoginView */,
+				5C56F3CB2557A6DE00D83A44 /* LabelCell.swift */,
+				5C7DF6B32557B39B00D730EE /* LabelMark.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -595,6 +604,7 @@
 			files = (
 				5CFED74B254943CE00DE811F /* NewIssueButton.swift in Sources */,
 				5C7B9BBE25567E9F00804A77 /* TabBarController.swift in Sources */,
+				5C56F3CC2557A6DE00D83A44 /* LabelCell.swift in Sources */,
 				5CFED73025492EE200DE811F /* AppDelegate.swift in Sources */,
 				5CFED72F25492EE200DE811F /* IssueViewController.swift in Sources */,
 				BD090D2225483AD100454C79 /* LoginViewController.swift in Sources */,
@@ -618,7 +628,9 @@
 				BD090CFE254815BA00454C79 /* IssueCell.swift in Sources */,
 				BD02F15C25523EFA0013C643 /* FilterSection.swift in Sources */,
 				5CFED74E254949BC00DE811F /* UpdateIssueViewController.swift in Sources */,
+				5CCE210D2557AA1F0043FA30 /* LabelList.swift in Sources */,
 				BD02F15925519FDC0013C643 /* FilterTableDataSource.swift in Sources */,
+				5C7DF6B42557B39B00D730EE /* LabelMark.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
