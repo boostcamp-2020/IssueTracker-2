@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LabelCell: UICollectionViewCell, Reusable, NibLoadable {
+class LabelCell: UICollectionViewCell, ReusableView, NibLoadableView {
   
   @IBOutlet weak var labelTitleLabel: UILabel!
   @IBOutlet weak var labelDescriptionLabel: UILabel!
@@ -18,6 +18,7 @@ class LabelCell: UICollectionViewCell, Reusable, NibLoadable {
   }
   
   func updateCell(withTitle title: String, description: String) {
+    print(title, description)
     labelTitleLabel.text = title
     labelDescriptionLabel.text = description
   }
