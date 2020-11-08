@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import NormalButton from '../Common/NormalButton';
 import SaveButton from '../Common/GreenButton';
 
 export default function Buttons({ Context, milestoneService }) {
   const milestoneInfo = useContext(Context);
+  const history = useHistory();
 
   const updateMilestone = () => {
     milestoneService.updateMilestone('http://localhost:3000/api/milestone', {
@@ -15,6 +17,7 @@ export default function Buttons({ Context, milestoneService }) {
       end_date: milestoneInfo.dueDate,
       status: 'open',
     });
+    history.push('/milestones');
   };
   return (
     <Wrapper>
@@ -36,7 +39,7 @@ const Wrapper = styled.div`
 const ButtonSet = styled.div`
   position: absolute;
   right: 0;
-  width: 25%;
+  gap: 1em;
   display: flex;
   justify-content: space-around;
 `;

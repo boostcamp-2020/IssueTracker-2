@@ -30,21 +30,19 @@ export default function InputForm({ milestoneService, type }) {
         </SetDescContext.Provider>
       </Wrapper>
 
-      {type === 'edit' ? (
-        <MilestoneContext.Provider value={{ title, dueDate, desc }}>
+      <MilestoneContext.Provider value={{ title, dueDate, desc }}>
+        {type === 'edit' ? (
           <EditButtons
             Context={MilestoneContext}
             milestoneService={milestoneService}
           />
-        </MilestoneContext.Provider>
-      ) : (
-        <MilestoneContext.Provider value={{ title, dueDate, desc }}>
+        ) : (
           <Buttons
             Context={MilestoneContext}
             milestoneService={milestoneService}
           />
-        </MilestoneContext.Provider>
-      )}
+        )}
+      </MilestoneContext.Provider>
     </>
   );
 }

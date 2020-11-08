@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import CreateButton from '../Common/GreenButton';
 
 export default function buttons({ Context, milestoneService }) {
   const milestoneInfo = useContext(Context);
+  const history = useHistory();
 
   const createMilestone = () => {
     milestoneService.createMilestone('http://localhost:3000/api/milestone', {
@@ -13,6 +15,7 @@ export default function buttons({ Context, milestoneService }) {
       end_date: milestoneInfo.dueDate,
       status: 'open',
     });
+    history.push('/milestones');
   };
 
   return (
