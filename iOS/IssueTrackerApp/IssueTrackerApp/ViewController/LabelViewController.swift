@@ -47,7 +47,7 @@ class LabelViewController: UIViewController {
         return UICollectionViewCell()
       }
       
-      cell.updateCell(withTitle: label.labelName, description: label.labelDescription ?? "")
+      cell.updateCell(withTitle: label.labelName, description: label.labelDescription ?? "", color: label.color)
       return cell
     }
     
