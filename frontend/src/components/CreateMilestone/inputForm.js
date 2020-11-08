@@ -12,7 +12,6 @@ const SetDescContext = createContext(() => {});
 const MilestoneContext = createContext('');
 
 export default function InputForm({ milestoneService, type }) {
-  console.log(type);
   const [title, setTitle] = useState('');
   const [dueDate, setDueDate] = useState('');
   const [desc, setDesc] = useState('');
@@ -32,7 +31,12 @@ export default function InputForm({ milestoneService, type }) {
       </Wrapper>
 
       {type === 'edit' ? (
-        <EditButtons />
+        <MilestoneContext.Provider value={{ title, dueDate, desc }}>
+          <EditButtons
+            Context={MilestoneContext}
+            milestoneService={milestoneService}
+          />
+        </MilestoneContext.Provider>
       ) : (
         <MilestoneContext.Provider value={{ title, dueDate, desc }}>
           <Buttons

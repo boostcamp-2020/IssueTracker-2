@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import NormalButton from '../Common/NormalButton';
 import SaveButton from '../Common/GreenButton';
 
-export default function Buttons({ milestoneService }) {
+export default function Buttons({ Context, milestoneService }) {
+  const milestoneInfo = useContext(Context);
+
   const updateMilestone = () => {
     milestoneService.updateMilestone('http://localhost:3000/api/milestone', {
-      id: 7,
-      issue_id: 3,
-      milestone_name: 'updatefetch',
-      milestone_description: 'updatefetch!!!!!',
-      end_date: '2020-11-08',
-      status: 'closed',
+      id: 13,
+      issue_id: 0,
+      milestone_name: milestoneInfo.title,
+      milestone_description: milestoneInfo.desc,
+      end_date: milestoneInfo.dueDate,
+      status: 'open',
     });
   };
   return (
