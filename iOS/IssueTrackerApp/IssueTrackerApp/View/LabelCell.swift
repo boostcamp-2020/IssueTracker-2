@@ -9,7 +9,7 @@ import UIKit
 
 class LabelCell: UICollectionViewCell, Reusable, NibLoadable {
   
-  @IBOutlet weak var labelTitleLabel: UILabel!
+  @IBOutlet weak var labelTitleLabel: LabelMark!
   @IBOutlet weak var labelDescriptionLabel: UILabel!
   
   
@@ -17,8 +17,10 @@ class LabelCell: UICollectionViewCell, Reusable, NibLoadable {
     super.awakeFromNib()
   }
   
-  func updateCell(withTitle title: String, description: String) {
+  func updateCell(withTitle title: String, description: String, colorAsHex: String) {
     labelTitleLabel.text = title
+    let color = UIColor(hex: colorAsHex)
+    labelTitleLabel.setColor(withColor: color)
     labelDescriptionLabel.text = description
   }
 }
