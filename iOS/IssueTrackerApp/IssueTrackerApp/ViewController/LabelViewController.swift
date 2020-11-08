@@ -24,29 +24,30 @@ class LabelViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    applySnapshot(animatingDifferences: false)
+    
     configureNavigator()
+    labelCollectionView.register(LabelCell.self)
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    applySnapshot(animatingDifferences: false)
   }
   
   private func configureNavigator() {
-      self.navigationItem.rightBarButtonItem = self.addButton
-      guard let navigationController = navigationController else { return }
-      navigationController.navigationBar.prefersLargeTitles = true
-      navigationController.navigationBar.topItem?.title = "레이블"
-      navigationItem.largeTitleDisplayMode = .automatic
-      navigationController.navigationBar.sizeToFit()
+    self.navigationItem.rightBarButtonItem = self.addButton
+    guard let navigationController = navigationController else { return }
+    navigationController.navigationBar.prefersLargeTitles = true
+    navigationController.navigationBar.topItem?.title = "레이블"
+    navigationItem.largeTitleDisplayMode = .automatic
+    navigationController.navigationBar.sizeToFit()
   }
   
   private func makeDataSource() -> DataSource {
-    let dataSource = DataSource(collectionView: labelCollectionView) { (collectionView, indexPath, label) -> UICollectionViewCell? in
-      guard let cell = collectionView.dequeueReusableCell(
-        withReuseIdentifier: "LabelCell",
-        for: indexPath
-      ) as? LabelCell else {
-        return UICollectionViewCell()
-      }
+    let dataSource = DataSource(collectionView: labelCollectionView) { (collectionView, indexPath, item) -> UICollectionViewCell? in
+      let cell: LabelCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
       
-      cell.updateCell(withTitle: label.labelName, description: label.labelDescription ?? "")
+      cell.updateCell(withTitle: item.labelName, description: item.labelDescription ?? "")
       return cell
     }
     
