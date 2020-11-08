@@ -133,10 +133,24 @@ const createLabelTable = async () => {
   }
 };
 
+const createMilestoneTable = async () => {
+  try {
+    const connection = await db.pool.getConnection(async conn => conn);
+
+    connection
+      .query(SQL_DROP_MILESTONE_TABLE)
+      .then(() => connection.query(SQL_CREATE_MILESTONE_TABLE))
+      .then(() => connection.release());
+  } catch (err) {
+    throw new Error(err);
+  }
+};
+
 const initializeTables = () => {
   createUserTable();
   createEmojiTable();
   createLabelTable();
+  createMilestoneTable();
 };
 
 initializeTables();
