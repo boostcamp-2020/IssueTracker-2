@@ -29,24 +29,24 @@
                                 <rect key="frame" x="0.0" y="94" width="414" height="719"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="PyJ-jd-juM">
-                                    <size key="itemSize" width="414" height="86"/>
+                                    <size key="itemSize" width="414" height="108"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="IssueCell" id="TGt-Gv-sdp" customClass="IssueCell" customModule="IssueTrackerApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="86"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="OGF-Sy-rgE">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="86"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nXV-CO-KqO" userLabel="BigView">
-                                                    <rect key="frame" x="-50" y="0.0" width="624" height="86"/>
+                                                    <rect key="frame" x="-50" y="0.0" width="624" height="108"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cancel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dej-9M-p74">
-                                                            <rect key="frame" x="464" y="0.0" width="86" height="86"/>
+                                                            <rect key="frame" x="464" y="0.0" width="108" height="108"/>
                                                             <color key="backgroundColor" systemColor="systemRedColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="dej-9M-p74" secondAttribute="height" multiplier="1:1" id="OLu-pi-oqW"/>
@@ -56,7 +56,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Close" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCb-dk-W64">
-                                                            <rect key="frame" x="550" y="0.0" width="74" height="86"/>
+                                                            <rect key="frame" x="572" y="0.0" width="52" height="108"/>
                                                             <color key="backgroundColor" systemColor="systemBlueColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="sCb-dk-W64" secondAttribute="height" multiplier="1:1" id="bHo-5e-pk3"/>
@@ -66,10 +66,10 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jsy-dg-K9U" userLabel="CheckMarkView">
-                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="86"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="108"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="te4-NF-DKj">
-                                                                    <rect key="frame" x="15" y="33.5" width="20" height="19"/>
+                                                                    <rect key="frame" x="15" y="44.5" width="20" height="19"/>
                                                                     <color key="tintColor" systemColor="systemBlueColor"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="20" id="d6o-YF-PnU"/>
@@ -84,7 +84,7 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CjK-4f-wcU" userLabel="MyContentView">
-                                                            <rect key="frame" x="50" y="0.0" width="414" height="86"/>
+                                                            <rect key="frame" x="50" y="0.0" width="414" height="108"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Umt-dm-itA">
                                                                     <rect key="frame" x="16" y="10" width="41.5" height="19.5"/>
@@ -156,7 +156,7 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <size key="customSize" width="414" height="86"/>
+                                        <size key="customSize" width="414" height="108"/>
                                         <connections>
                                             <outlet property="bigView" destination="nXV-CO-KqO" id="9kf-Di-Vf1"/>
                                             <outlet property="checkmarkImageView" destination="te4-NF-DKj" id="maA-lG-s3O"/>
@@ -176,9 +176,6 @@
                                             <constraint firstAttribute="width" secondItem="kwz-Hi-SNM" secondAttribute="height" multiplier="1:1" id="iIH-NJ-XXc"/>
                                         </constraints>
                                         <state key="normal" backgroundImage="plus.circle.fill" catalog="system"/>
-                                        <connections>
-                                            <segue destination="V7R-yT-F2x" kind="presentation" id="oPd-O9-Kz4"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -227,18 +224,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V5G-5X-fb7" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1957.5999999999999" y="97.601199400299862"/>
+            <point key="canvasLocation" x="1956.521739130435" y="97.098214285714278"/>
         </scene>
         <!--Update Issue View Controller-->
         <scene sceneID="O5f-ym-Ku0">
             <objects>
                 <viewController id="V7R-yT-F2x" customClass="UpdateIssueViewController" customModule="IssueTrackerApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DFO-bF-REM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rb4-oa-MWd">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="새이슈" largeTitleDisplayMode="always" id="xe4-zP-S0X">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="sUj-db-RQe">
@@ -255,7 +252,7 @@
                                 </items>
                             </navigationBar>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="제목" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MCv-g0-PKC">
-                                <rect key="frame" x="25" y="76" width="364" height="34"/>
+                                <rect key="frame" x="25" y="108" width="364" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="eGf-2Q-MeX"/>
                                 </constraints>
@@ -263,7 +260,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="e9k-lv-mLt">
-                                <rect key="frame" x="25" y="115" width="364" height="31"/>
+                                <rect key="frame" x="25" y="147" width="364" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="uSa-hy-6ud"/>
                                 </constraints>
@@ -273,7 +270,7 @@
                                 </segments>
                             </segmentedControl>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ua3-2l-Fbw" customClass="IssueContentTextView" customModule="IssueTrackerApp" customModuleProvider="target">
-                                <rect key="frame" x="25" y="155" width="364" height="623"/>
+                                <rect key="frame" x="25" y="187" width="364" height="645"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
