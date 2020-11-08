@@ -24,16 +24,12 @@ class LabelViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    applySnapshot(animatingDifferences: false)
+    labelCollectionView.delegate = self
     configureNavigator()
     labelCollectionView.register(LabelCell.self)
   }
-  
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-    applySnapshot(animatingDifferences: false)
-  }
-  
+
   private func configureNavigator() {
     self.navigationItem.rightBarButtonItem = self.addButton
     guard let navigationController = navigationController else { return }
@@ -47,7 +43,7 @@ class LabelViewController: UIViewController {
     let dataSource = DataSource(collectionView: labelCollectionView) { (collectionView, indexPath, item) -> UICollectionViewCell? in
       let cell: LabelCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
       
-      cell.updateCell(withTitle: item.labelName, description: item.labelDescription ?? "")
+      cell.updateCell(withTitle: label.labelName, description: label.labelDescription ?? "", color: label.color)
       return cell
     }
     
