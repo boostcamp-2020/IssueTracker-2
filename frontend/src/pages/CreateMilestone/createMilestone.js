@@ -4,16 +4,13 @@ import Header from '../../components/Common/Header';
 import Explanation from '../../components/CreateMilestone/explanation';
 import InputForm from '../../components/CreateMilestone/inputForm';
 import Footer from '../../components/Common/Footer';
-import Buttons from '../../components/CreateMilestone/buttons';
 
 const CreateMilestone = ({ milestoneService }) => {
-  console.log(milestoneService);
   return (
     <Wrapper>
       <Header />
       <Explanation />
-      <InputForm />
-      <Buttons milestoneService={milestoneService} />
+      <InputForm milestoneService={milestoneService} />
       <Footer />
     </Wrapper>
   );

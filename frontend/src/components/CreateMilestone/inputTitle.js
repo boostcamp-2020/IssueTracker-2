@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 
-export default function InputTitle(props) {
+export default function InputTitle({ SetTitleContext }) {
+  const setTitle = useContext(SetTitleContext);
+
+  const onChange = e => {
+    setTitle(e.target.value);
+  };
+
   return (
     <Wrapper>
       <Title>Title</Title>
-      <TitleInput type="text" placeholder="Title" />
+      <TitleInput type="text" placeholder="Title" onChange={onChange} />
     </Wrapper>
   );
 }

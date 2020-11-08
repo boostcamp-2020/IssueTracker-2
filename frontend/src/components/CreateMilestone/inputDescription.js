@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
-export default function InputDescription(props) {
+export default function InputDescription({ SetDescContext }) {
+  const setDesc = useContext(SetDescContext);
+  const onChange = e => {
+    setDesc(e.target.value);
+  };
   return (
     <Wrapper>
       <Description>Description</Description>
-      <DescriptionInput />
+      <DescriptionInput onChange={onChange} />
     </Wrapper>
   );
 }
