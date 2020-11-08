@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import KeychainService
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   
@@ -25,6 +24,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // TODO: - 이슈 vc를 rootVC 로 만드는 작업
   }
   
+  func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+    guard let url = URLContexts.first?.url else { return }
+    guard url.absoluteString.starts(with: "issuetrackerpastel://") else { return }
+    guard let token = url.absoluteString.split(separator: "/").last.map({ String($0) }) else { return }
+    getIssueVC()
+    loginKeyChain.save(value: token, forKey: "userIdentifier")
+  }
+  
   private func getLoginVC() -> LoginViewController {
     let storyboard = UIStoryboard(name: "Login", bundle: nil)
     let loginVC = storyboard.instantiateViewController(identifier: "LoginViewController") { (coder) -> LoginViewController? in
@@ -34,6 +41,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       return LoginViewController(coder: coder, loginViewModel: loginViewModel, loginKeychain: loginKeychain)
     }
     return loginVC
+  }
+  
+  private func getIssueVC() {
+    let storyboard = UIStoryboard(name: "Issue", bundle: nil)
+    let issueVC = storyboard.instantiateInitialViewController()
+    
+    window?.rootViewController = issueVC
+    window?.makeKeyAndVisible()
   }
   
   private func switchScreen(with viewController: UIViewController) {
@@ -63,7 +78,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   
   func sceneDidEnterBackground(_ scene: UIScene) {
   }
-  
-  
 }
 

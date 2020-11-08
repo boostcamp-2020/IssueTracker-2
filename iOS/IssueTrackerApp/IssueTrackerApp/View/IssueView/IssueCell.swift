@@ -39,13 +39,20 @@ class IssueCell: UICollectionViewCell {
     titleLabel.text = title
   }
   
-  func editCell(status: Bool) {
+  func editHiddenCell(status: Bool) {
+    if status {
+      self.bigView.transform = CGAffineTransform(translationX: 50, y: 0)
+    } else {
+      self.bigView.transform = .identity
+    }
+  }
+  
+  func editCurrentCell(status: Bool) {
     if status {
       UIView.animate(withDuration: 0.4) {
         self.bigView.transform = CGAffineTransform(translationX: 50, y: 0)
       }
     } else {
-      
       UIView.animate(withDuration: 0.4) {
         self.bigView.transform = .identity
       }

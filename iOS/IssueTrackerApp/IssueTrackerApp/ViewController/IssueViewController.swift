@@ -23,17 +23,42 @@ class IssueViewController: UIViewController {
   @IBOutlet weak var filterButton: UIBarButtonItem!
   @IBOutlet weak var editButton: UIBarButtonItem!
   @IBOutlet weak var issueSearchBar: UISearchBar!
+  @IBOutlet weak var collectionViewBottomConstraint: NSLayoutConstraint!
+  
+  @IBAction func newIssueButtonTouched(_ sender: Any) {
+    guard let newIssueVC = storyboard?.instantiateViewController(identifier: "NewIssueVC") else { return }
+    present(newIssueVC, animated: true)
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
     configure()
     applySnapshot(animatingDifferences: false)
+    issueSearchBar.delegate = self
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    registerForKeyboardNotifications()
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    unregisterForKeyboardNotifications()
   }
   
   private func configure() {
     configureNavigationBar()
     configureIssueCollectionView()
     configureNavigationBarButton()
+  }
+  
+  func registerForKeyboardNotifications() {
+    NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+  }
+  
+  func unregisterForKeyboardNotifications() {
+    NotificationCenter.default.removeObserver(self, name:UIResponder.keyboardWillShowNotification, object: nil)
+    NotificationCenter.default.removeObserver(self, name:UIResponder.keyboardWillHideNotification, object: nil)
   }
   
   private func configureNavigationBarButton() {
@@ -107,13 +132,13 @@ class IssueViewController: UIViewController {
   @objc private func editButtonTouched() {
     isEdited.toggle()
     issueCollectionView.deselectAll(animated: true)
-
+    
     let visibleItemIndexPaths = issueCollectionView.indexPathsForVisibleItems
-
+    
     for indexPath in visibleItemIndexPaths {
       guard let cell = issueCollectionView.cellForItem(at: indexPath) as? IssueCell else { return }
-
-      cell.editCell(status: isEdited)
+      
+      cell.editCurrentCell(status: isEdited)
     }
   }
   
@@ -127,6 +152,20 @@ class IssueViewController: UIViewController {
     issueCollectionView.deselectAll(animated: true)
     filterButton.title = "Select All"
     filterButton.action = #selector(selectAllButtonTouched)
+  }
+  
+  @objc func keyboardWillShow(note: NSNotification) {
+    if let keyboardSize = (note.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+      UIView.animate(withDuration: 0.3, animations: {
+        self.collectionViewBottomConstraint.constant = keyboardSize.height - CGFloat(80)
+      })
+    }
+  }
+  
+  @objc func keyboardWillHide(note: NSNotification) {
+    UIView.animate(withDuration: 0.3, animations: {
+      self.collectionViewBottomConstraint.constant = 0
+    })
   }
 }
 
@@ -142,7 +181,7 @@ extension IssueViewController: UICollectionViewDelegateFlowLayout {
   
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
     guard let cell = cell as? IssueCell else { return }
-    cell.editCell(status: isEdited)
+    cell.editHiddenCell(status: isEdited)
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -165,5 +204,16 @@ extension UICollectionView {
     indexPathsForSelectedItems?.forEach({ (indexPath) in
       deselectItem(at: indexPath, animated: animated)
     })
+  }
+}
+
+extension IssueViewController: UISearchBarDelegate {
+  func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+    searchBar.showsCancelButton = true
+  }
+  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    searchBar.text = nil
+    searchBar.showsCancelButton = false
+    searchBar.endEditing(true)
   }
 }

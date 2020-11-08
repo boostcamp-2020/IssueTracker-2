@@ -7,7 +7,6 @@
 
 import UIKit
 import AuthenticationServices
-import KeychainService
 
 class LoginViewController: UIViewController {
   
@@ -22,6 +21,13 @@ class LoginViewController: UIViewController {
     let button = ASAuthorizationAppleIDButton()
     return button
   }()
+  
+  @IBAction func githubSignInButtonTouched(_ sender: Any) {
+    guard let url = URL(string: "http://101.101.218.59:3000/auth/github") else { return }
+    if UIApplication.shared.canOpenURL(url) {
+      UIApplication.shared.open(url)
+    }
+  }
   
   init?(coder: NSCoder, loginViewModel: LoginViewModelBinding, loginKeychain: Keychainable) {
     self.loginViewModel = loginViewModel
@@ -120,6 +126,8 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
       
       let userIdentifier = appleIDCredential.user
       loginKeychain.save(value: userIdentifier, forKey: "userIdentifier")
+      
+      
       
       let storyboard = UIStoryboard(name: "Issue", bundle: nil)
       let issueVC = storyboard.instantiateInitialViewController()
