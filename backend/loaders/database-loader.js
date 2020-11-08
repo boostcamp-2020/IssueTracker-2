@@ -69,8 +69,11 @@ const SQL_CREATE_COMMNET_TABLE = `
     CREATE TABLE comments (
         id int PRIMARY KEY AUTO_INCREMENT,
         writer_id int,
+        issue_id int,
         description varchar(255),
         created_at datetime
+        
+        
     );`;
 
 const SQL_DROP_EMOJI_TABLE = `DROP TABLE IF EXISTS emojis`;
