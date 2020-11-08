@@ -5,13 +5,13 @@ import InputForm from '../../components/CreateMilestone/inputForm';
 import Buttons from '../../components/EditMilestone/buttons';
 import Footer from '../../components/Common/Footer';
 
-const EditMilestone = props => {
+const EditMilestone = ({ milestoneService }) => {
   return (
     <>
       <Header />
       <NavButton />
       <InputForm />
-      <Buttons />
+      <Buttons milestoneService={milestoneService} />
       <Footer />
     </>
   );
