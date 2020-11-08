@@ -7,11 +7,11 @@
 
 import UIKit
 import AuthenticationServices
-import KeychainService
 
 class LoginViewController: UIViewController {
   
   var loginViewModel: LoginViewModelBinding
+  var loginKeychain: Keychainable
   
   @IBOutlet weak var idTextField: UITextField!
   @IBOutlet weak var pwTextField: UITextField!
@@ -22,8 +22,16 @@ class LoginViewController: UIViewController {
     return button
   }()
   
-  init?(coder: NSCoder, loginViewModel: LoginViewModelBinding) {
+  @IBAction func githubSignInButtonTouched(_ sender: Any) {
+    guard let url = URL(string: "http://101.101.218.59:3000/auth/github") else { return }
+    if UIApplication.shared.canOpenURL(url) {
+      UIApplication.shared.open(url)
+    }
+  }
+  
+  init?(coder: NSCoder, loginViewModel: LoginViewModelBinding, loginKeychain: Keychainable) {
     self.loginViewModel = loginViewModel
+    self.loginKeychain = loginKeychain
     super.init(coder: coder)
   }
   
@@ -115,20 +123,16 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
         return
       }
-      let queryable = GenericPasswordQueryable(service: "IssueTracker")
-      let secureStore = SecureStore(secureStoreQueryable: queryable)
       
       let userIdentifier = appleIDCredential.user
-//      let fullName = appleIDCredential.fullName
-//      let email = appleIDCredential.email
+      loginKeychain.save(value: userIdentifier, forKey: "userIdentifier")
       
-      try? secureStore.setValue(userIdentifier, for: "userIdentifier")
+      
       
       let storyboard = UIStoryboard(name: "Issue", bundle: nil)
       let issueVC = storyboard.instantiateInitialViewController()
       
       guard let window = view.window else { return }
-      
       window.rootViewController = issueVC
     }
   }

@@ -177,7 +177,7 @@
                                         </constraints>
                                         <state key="normal" backgroundImage="plus.circle.fill" catalog="system"/>
                                         <connections>
-                                            <segue destination="V7R-yT-F2x" kind="presentation" id="oPd-O9-Kz4"/>
+                                            <action selector="newIssueButtonTouched:" destination="QDr-ZF-uIg" eventType="touchUpInside" id="sGj-2G-Dzn"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -231,13 +231,13 @@
         <!--Update Issue View Controller-->
         <scene sceneID="O5f-ym-Ku0">
             <objects>
-                <viewController id="V7R-yT-F2x" customClass="UpdateIssueViewController" customModule="IssueTrackerApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewIssueVC" id="V7R-yT-F2x" customClass="UpdateIssueViewController" customModule="IssueTrackerApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DFO-bF-REM">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rb4-oa-MWd">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="새이슈" largeTitleDisplayMode="always" id="xe4-zP-S0X">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="sUj-db-RQe">
@@ -254,7 +254,7 @@
                                 </items>
                             </navigationBar>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="제목" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MCv-g0-PKC">
-                                <rect key="frame" x="25" y="76" width="364" height="34"/>
+                                <rect key="frame" x="25" y="108" width="364" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="eGf-2Q-MeX"/>
                                 </constraints>
