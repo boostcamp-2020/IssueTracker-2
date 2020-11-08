@@ -15,7 +15,7 @@ exports.getMilestones = async req => {
 
     milestonesInfo.openTotalCount = await milestones.getStatusCount(status.open);
     milestonesInfo.closeTotalCount = await milestones.getStatusCount(status.close); 
-    milestonesInfo.milestoneArray = await milestones.getAll();
+    milestonesInfo.milestoneArray = await milestones.getAll(req.query);
     
     return { status: 202, message: 'milestones', milestonesInfo };
 

@@ -27,7 +27,7 @@ exports.create = async ({
   }
 };
 
-exports.getAll = async () => {
+exports.getAll = async ({status}) => {
   try {
     const connection = await db.pool.getConnection(async conn => conn);
     let sql =
@@ -54,9 +54,10 @@ exports.getAll = async () => {
       group by m.id
     ) as t2 
     on t1.id = t2.id
+    where t3.status = ?
     `
       
-    const [milestones] = await connection.query(sql);
+    const [milestones] = await connection.query(sql, [status]);
     connection.release();
     return milestones;
   

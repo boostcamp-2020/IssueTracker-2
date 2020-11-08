@@ -11,7 +11,7 @@ exports.addMilestone = async (req, res, next) => {
 
 exports.getMilestones = async (req, res, next) => {
   try {
-    const { status, message, milestonesInfo } = await service.getMilestones();
+    const { status, message, milestonesInfo } = await service.getMilestones(req);
     res.status(status).json({ message,  milestonesInfo });
   } catch(err) {
     next(err);
