@@ -25,8 +25,7 @@ const App = ({ milestoneService }) => {
         />
         <Route
           path="/milestone/new"
-          milestoneService={milestoneService}
-          component={CreateMilestone}
+          render={() => <CreateMilestone milestoneService={milestoneService} />}
         />
         <Route
           path="/milestone/edit"

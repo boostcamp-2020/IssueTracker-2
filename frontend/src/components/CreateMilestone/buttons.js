@@ -4,7 +4,13 @@ import CreateButton from '../Common/GreenButton';
 
 export default function buttons({ milestoneService }) {
   const createMilestone = () => {
-    console.log('create milestone');
+    milestoneService.createMilestone('http://localhost:3000/api/milestone', {
+      issue_id: 3,
+      milestone_name: 'postfetch test',
+      milestone_description: 'postfetch !!',
+      end_date: '2020-11-08',
+      status: 'open',
+    });
   };
 
   return (

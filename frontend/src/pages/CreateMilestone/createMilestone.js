@@ -7,6 +7,7 @@ import Footer from '../../components/Common/Footer';
 import Buttons from '../../components/CreateMilestone/buttons';
 
 const CreateMilestone = ({ milestoneService }) => {
+  console.log(milestoneService);
   return (
     <Wrapper>
       <Header />
