@@ -12,7 +12,6 @@
 		5C39519925514FED00C6AEB8 /* FilterIssueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C39519825514FED00C6AEB8 /* FilterIssueCell.swift */; };
 		5C4F34802547DAEE00E41121 /* LoginValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4F347F2547DAEE00E41121 /* LoginValidator.swift */; };
 		5C4F34842547E3BF00E41121 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4F34832547E3BF00E41121 /* LoginViewModel.swift */; };
-		5C56F3CC2557A6DE00D83A44 /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C56F3CB2557A6DE00D83A44 /* LabelCell.swift */; };
 		5C7B9BB62556771D00804A77 /* Label.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C7B9BB52556771D00804A77 /* Label.storyboard */; };
 		5C7B9BBA25567E4800804A77 /* LabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B9BB925567E4800804A77 /* LabelViewController.swift */; };
 		5C7B9BBE25567E9F00804A77 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B9BBD25567E9F00804A77 /* TabBarController.swift */; };
@@ -62,6 +61,11 @@
 		BDA8F89B255685B700A0E7C9 /* IssueEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA8F89A255685B700A0E7C9 /* IssueEndPoint.swift */; };
 		BDA8F8A6255686A800A0E7C9 /* LabelEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA8F8A5255686A800A0E7C9 /* LabelEndPoint.swift */; };
 		BDA8F8AA25568BBD00A0E7C9 /* MilestoneEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA8F8A925568BBD00A0E7C9 /* MilestoneEndPoint.swift */; };
+		BDA8F8E32557DCDD00A0E7C9 /* LabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA8F8E12557DCDD00A0E7C9 /* LabelCell.swift */; };
+		BDA8F8E42557DCDD00A0E7C9 /* LabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDA8F8E22557DCDD00A0E7C9 /* LabelCell.xib */; };
+		BDA8F8EE2557E51D00A0E7C9 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA8F8ED2557E51D00A0E7C9 /* Reusable.swift */; };
+		BDA8F8F22557E54C00A0E7C9 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA8F8F12557E54C00A0E7C9 /* NibLoadable.swift */; };
+		BDA8F8F82557E59A00A0E7C9 /* Extension+UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA8F8F72557E59A00A0E7C9 /* Extension+UICollectionView.swift */; };
 		BDD18CF72546E5EC00974FB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDD18CF62546E5EC00974FB4 /* Assets.xcassets */; };
 		BDD18CFA2546E5EC00974FB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDD18CF82546E5EC00974FB4 /* LaunchScreen.storyboard */; };
 		BDD18D032547B4D000974FB4 /* SignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD18D022547B4D000974FB4 /* SignInButton.swift */; };
@@ -108,7 +112,6 @@
 		5C39519825514FED00C6AEB8 /* FilterIssueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterIssueCell.swift; sourceTree = "<group>"; };
 		5C4F347F2547DAEE00E41121 /* LoginValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginValidator.swift; sourceTree = "<group>"; };
 		5C4F34832547E3BF00E41121 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		5C56F3CB2557A6DE00D83A44 /* LabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
 		5C7B9BB52556771D00804A77 /* Label.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Label.storyboard; sourceTree = "<group>"; };
 		5C7B9BB925567E4800804A77 /* LabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewController.swift; sourceTree = "<group>"; };
 		5C7B9BBD25567E9F00804A77 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -159,6 +162,11 @@
 		BDA8F89A255685B700A0E7C9 /* IssueEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueEndPoint.swift; sourceTree = "<group>"; };
 		BDA8F8A5255686A800A0E7C9 /* LabelEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelEndPoint.swift; sourceTree = "<group>"; };
 		BDA8F8A925568BBD00A0E7C9 /* MilestoneEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneEndPoint.swift; sourceTree = "<group>"; };
+		BDA8F8E12557DCDD00A0E7C9 /* LabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCell.swift; sourceTree = "<group>"; };
+		BDA8F8E22557DCDD00A0E7C9 /* LabelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelCell.xib; sourceTree = "<group>"; };
+		BDA8F8ED2557E51D00A0E7C9 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		BDA8F8F12557E54C00A0E7C9 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
+		BDA8F8F72557E59A00A0E7C9 /* Extension+UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UICollectionView.swift"; sourceTree = "<group>"; };
 		BDD18CEA2546E5E900974FB4 /* IssueTrackerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IssueTrackerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDD18CF62546E5EC00974FB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BDD18CF92546E5EC00974FB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -231,6 +239,9 @@
 				BD02F16525523FBB0013C643 /* FilterTableData */,
 				5CCE210C2557AA1F0043FA30 /* LabelList.swift */,
 				BDA8F89E2556865C00A0E7C9 /* APIService */,
+				BDA8F8ED2557E51D00A0E7C9 /* Reusable.swift */,
+				BDA8F8F12557E54C00A0E7C9 /* NibLoadable.swift */,
+				BDA8F8F72557E59A00A0E7C9 /* Extension+UICollectionView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -240,7 +251,8 @@
 			children = (
 				BD02F169255240890013C643 /* IssueView */,
 				BD02F16B255240940013C643 /* LoginView */,
-				5C56F3CB2557A6DE00D83A44 /* LabelCell.swift */,
+				BDA8F8E12557DCDD00A0E7C9 /* LabelCell.swift */,
+				BDA8F8E22557DCDD00A0E7C9 /* LabelCell.xib */,
 				5C7DF6B32557B39B00D730EE /* LabelMark.swift */,
 			);
 			path = View;
@@ -546,6 +558,7 @@
 				5C3951912551431600C6AEB8 /* IssueFilter.storyboard in Resources */,
 				5C7B9BB62556771D00804A77 /* Label.storyboard in Resources */,
 				BDD18CFA2546E5EC00974FB4 /* LaunchScreen.storyboard in Resources */,
+				BDA8F8E42557DCDD00A0E7C9 /* LabelCell.xib in Resources */,
 				BDD18CF72546E5EC00974FB4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -627,7 +640,6 @@
 			files = (
 				5CFED74B254943CE00DE811F /* NewIssueButton.swift in Sources */,
 				5C7B9BBE25567E9F00804A77 /* TabBarController.swift in Sources */,
-				5C56F3CC2557A6DE00D83A44 /* LabelCell.swift in Sources */,
 				5CFED73025492EE200DE811F /* AppDelegate.swift in Sources */,
 				BDA8F8AA25568BBD00A0E7C9 /* MilestoneEndPoint.swift in Sources */,
 				5CFED72F25492EE200DE811F /* IssueViewController.swift in Sources */,
@@ -642,14 +654,17 @@
 				5C7B9BBA25567E4800804A77 /* LabelViewController.swift in Sources */,
 				5C39519925514FED00C6AEB8 /* FilterIssueCell.swift in Sources */,
 				BDA8F88F25565A2F00A0E7C9 /* LoginKeychain.swift in Sources */,
+				BDA8F8F82557E59A00A0E7C9 /* Extension+UICollectionView.swift in Sources */,
 				5C3951942551438A00C6AEB8 /* IssueFilterViewController.swift in Sources */,
 				5C4F34842547E3BF00E41121 /* LoginViewModel.swift in Sources */,
 				5C4F34802547DAEE00E41121 /* LoginValidator.swift in Sources */,
+				BDA8F8E32557DCDD00A0E7C9 /* LabelCell.swift in Sources */,
 				BD090CFB25480D1500454C79 /* IssueList.swift in Sources */,
 				BDA8F8352553CD2600A0E7C9 /* Milestone.swift in Sources */,
 				BD090D012548211300454C79 /* IssueHeader.swift in Sources */,
 				BD090CF825480C3500454C79 /* Issue.swift in Sources */,
 				BDA8F8392553CE6B00A0E7C9 /* Comment.swift in Sources */,
+				BDA8F8F22557E54C00A0E7C9 /* NibLoadable.swift in Sources */,
 				BD090CFE254815BA00454C79 /* IssueCell.swift in Sources */,
 				BDA8F8972556771300A0E7C9 /* APIService.swift in Sources */,
 				BD02F15C25523EFA0013C643 /* FilterSection.swift in Sources */,
@@ -659,6 +674,7 @@
 				5C7DF6B42557B39B00D730EE /* LabelMark.swift in Sources */,
 				BDA8F89B255685B700A0E7C9 /* IssueEndPoint.swift in Sources */,
 				BDA8F8A6255686A800A0E7C9 /* LabelEndPoint.swift in Sources */,
+				BDA8F8EE2557E51D00A0E7C9 /* Reusable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
