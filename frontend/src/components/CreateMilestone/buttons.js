@@ -2,11 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import CreateButton from '../Common/GreenButton';
 
-export default function buttons(props) {
+export default function buttons({ milestoneService }) {
+  const createMilestone = () => {
+    console.log('create milestone');
+  };
+
   return (
     <Wrapper>
       <ButtonWrapper>
-        <CreateButton content="Create milestone" />
+        <CreateButton onClick={createMilestone} content="Create milestone" />
       </ButtonWrapper>
     </Wrapper>
   );

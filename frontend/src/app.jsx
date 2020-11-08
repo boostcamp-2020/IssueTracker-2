@@ -12,14 +12,27 @@ import {
   Issue,
 } from './pages';
 
-const App = () => {
+const App = ({ milestoneService }) => {
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Login} />
-        <Route exact path="/milestones" component={Milestone} />
-        <Route path="/milestone/new" component={CreateMilestone} />
-        <Route path="/milestone/edit" component={EditMilestone} />
+        <Route
+          exact
+          path="/milestones"
+          milestoneService={milestoneService}
+          component={Milestone}
+        />
+        <Route
+          path="/milestone/new"
+          milestoneService={milestoneService}
+          component={CreateMilestone}
+        />
+        <Route
+          path="/milestone/edit"
+          milestoneService={milestoneService}
+          component={EditMilestone}
+        />
         <Route path="/labels" component={Label} />
         <Route path="/issue/create" component={IssueCreation} />
         <Route path="/issues" component={Issue} />

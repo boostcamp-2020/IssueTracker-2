@@ -6,13 +6,13 @@ import InputForm from '../../components/CreateMilestone/inputForm';
 import Footer from '../../components/Common/Footer';
 import Buttons from '../../components/CreateMilestone/buttons';
 
-const CreateMilestone = props => {
+const CreateMilestone = ({ milestoneService }) => {
   return (
     <Wrapper>
       <Header />
       <Explanation />
       <InputForm />
-      <Buttons />
+      <Buttons milestoneService={milestoneService} />
       <Footer />
     </Wrapper>
   );
