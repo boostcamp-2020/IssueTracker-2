@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-export default function InputDescription({ SetDescContext }) {
+export default function InputDescription({ SetDescContext, milestoneInfo }) {
   const setDesc = useContext(SetDescContext);
   const onChange = e => {
-    setDesc(e.target.value);
+    setDesc({ ...milestoneInfo, desc: e.target.value });
   };
   return (
     <Wrapper>

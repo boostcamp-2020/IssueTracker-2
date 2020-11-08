@@ -6,6 +6,7 @@ import SaveButton from '../Common/GreenButton';
 
 export default function Buttons({ Context, milestoneService }) {
   const milestoneInfo = useContext(Context);
+
   const history = useHistory();
 
   const updateMilestone = () => {

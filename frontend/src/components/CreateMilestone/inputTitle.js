@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 
-export default function InputTitle({ SetTitleContext }) {
+export default function InputTitle({ SetTitleContext, milestoneInfo }) {
   const setTitle = useContext(SetTitleContext);
 
   const onChange = e => {
-    setTitle(e.target.value);
+    setTitle({ ...milestoneInfo, title: e.target.value });
   };
 
   return (
