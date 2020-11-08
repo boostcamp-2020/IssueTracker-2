@@ -1,35 +1,24 @@
 //
-//  LabelCellCollectionViewCell.swift
+//  MyLabelCell.swift
 //  IssueTrackerApp
 //
-//  Created by 송주 on 2020/11/08.
+//  Created by 서명렬 on 2020/11/08.
 //
 
 import UIKit
 
-class LabelCell: UICollectionViewCell {
-    
-  @IBOutlet weak var labelMark: UILabel!
-  @IBOutlet weak var labelDescription: UILabel!
+class LabelCell: UICollectionViewCell, Reusable, NibLoadable {
   
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-    configure()
-  }
+  @IBOutlet weak var labelTitleLabel: UILabel!
+  @IBOutlet weak var labelDescriptionLabel: UILabel!
   
-  required init?(coder: NSCoder) {
-    super.init(coder: coder)
-    configure()
-  }
   
-  private func configure() {
-    layer.borderWidth = 0.2
-    layer.borderColor = UIColor.lightGray.cgColor
+  override func awakeFromNib() {
+    super.awakeFromNib()
   }
   
   func updateCell(withTitle title: String, description: String) {
-    labelMark.text = title
-    labelDescription.text = description
-    // labelMark.backgroundColor =
+    labelTitleLabel.text = title
+    labelDescriptionLabel.text = description
   }
 }
