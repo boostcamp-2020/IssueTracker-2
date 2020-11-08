@@ -2,22 +2,23 @@ const db = require('../db');
 const util = require('../util');
 
 exports.create = async ({
-  id,
   issue_id,
   milestone_name,
   milestone_description,
   end_date,
+  status,
 }) => {
   try {
     const connection = await db.pool.getConnection(async conn => conn);
     let sql =
-      'INSERT INTO milestones (issue_id,milestone_name, milestone_description, end_date, created_at) VALUES (?, ?, ?, ?)';
+      'INSERT INTO milestones (issue_id,milestone_name, milestone_description, end_date, created_at,status) VALUES (?, ?, ?, ?,?,?)';
     const [{ insertId }] = await connection.query(sql, [
       issue_id,
       milestone_name,
       milestone_description,
       end_date,
-      util.now()
+      util.now(),
+      status,
     ]);
     connection.release();
     return insertId;
@@ -45,17 +46,19 @@ exports.update = async ({
   issue_id,
   milestone_name,
   milestone_description,
-  end_date
+  end_date,
+  status,
 }) => {
   try {
     const connection = await db.pool.getConnection(async conn => conn);
     let sql =
-      'UPDATE milestones SET issue_id=? , milestone_name=?, milestone_description=?, end_date=? WHERE id= ?';
+      'UPDATE milestones SET issue_id=? , milestone_name=?, milestone_description=?, end_date=?, status=? WHERE id= ?';
     const [{ insertId }] = await connection.query(sql, [
       issue_id,
       milestone_name,
       milestone_description,
       end_date,
+      status,
       id,
     ]);
     connection.release();
