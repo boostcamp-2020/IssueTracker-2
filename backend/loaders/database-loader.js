@@ -115,9 +115,28 @@ const createEmojiTable = async () => {
   }
 };
 
+const createLabelTable = async () => {
+  try {
+    const connection = await db.pool.getConnection(async conn => conn);
+
+    connection
+      .query(SQL_DROP_LABEL_TABLE)
+      .then(() => connection.query(SQL_CREATE_LABEL_TABLE))
+      .then(() =>
+        connection.query(
+          `INSERT INTO labels values(1, "bug", "red","this is bug"),(2, "Web", "blue","Web is full stack"),(3, "iOS", "green","iOS is App");`,
+        ),
+      )
+      .then(() => connection.release());
+  } catch (err) {
+    throw new Error(err);
+  }
+};
+
 const initializeTables = () => {
   createUserTable();
   createEmojiTable();
+  createLabelTable();
 };
 
 initializeTables();
