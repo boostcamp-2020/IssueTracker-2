@@ -43,7 +43,7 @@ class LabelViewController: UIViewController {
     let dataSource = DataSource(collectionView: labelCollectionView) { (collectionView, indexPath, item) -> UICollectionViewCell? in
       let cell: LabelCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
       
-      cell.updateCell(withTitle: label.labelName, description: label.labelDescription ?? "", color: label.color)
+      cell.updateCell(withTitle: item.labelName, description: item.labelDescription ?? "", colorAsHex: item.color)
       return cell
     }
     
