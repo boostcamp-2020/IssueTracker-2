@@ -75,18 +75,15 @@ class IssueViewController: UIViewController {
   private func configureIssueCollectionView() {
     issueCollectionView.delegate = self
     issueCollectionView.allowsMultipleSelection = true
+    issueCollectionView.register(IssueCell.self)
   }
   
   private func makeDataSource() -> DataSource {
-    let dataSource = DataSource(collectionView: issueCollectionView) { (collectionView, indexPath, issue) -> UICollectionViewCell? in
-      guard let cell = collectionView.dequeueReusableCell(
-        withReuseIdentifier: "IssueCell",
-        for: indexPath
-      ) as? IssueCell else {
-        return UICollectionViewCell()
-      }
+    let dataSource = DataSource(collectionView: issueCollectionView) { (collectionView, indexPath, item) -> UICollectionViewCell? in
+      let cell: IssueCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
       
-      cell.updateCell(withTitle: issue.issueTitle)
+      cell.updateCell(withTitle: item.issueTitle)
+      
       return cell
     }
     
