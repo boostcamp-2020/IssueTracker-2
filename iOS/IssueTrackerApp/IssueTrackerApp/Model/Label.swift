@@ -7,7 +7,15 @@
 
 import Foundation
 
-struct Label: Codable {
+struct Label: Codable, Hashable {
+  static func == (lhs: Label, rhs: Label) -> Bool {
+    return lhs.id == rhs.id
+  }
+  
+  func hash(into hasher: inout Hasher) {
+    hasher.combine(id)
+  }
+  
   var id: Int
   var labelName: String
   var color: String
