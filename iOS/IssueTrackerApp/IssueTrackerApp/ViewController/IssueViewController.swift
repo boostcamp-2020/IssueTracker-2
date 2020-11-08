@@ -25,6 +25,11 @@ class IssueViewController: UIViewController {
   @IBOutlet weak var issueSearchBar: UISearchBar!
   @IBOutlet weak var collectionViewBottomConstraint: NSLayoutConstraint!
   
+  @IBAction func newIssueButtonTouched(_ sender: Any) {
+    guard let newIssueVC = storyboard?.instantiateViewController(identifier: "NewIssueVC") else { return }
+    present(newIssueVC, animated: true)
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     configure()

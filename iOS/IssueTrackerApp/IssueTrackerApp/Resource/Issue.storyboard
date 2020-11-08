@@ -176,6 +176,9 @@
                                             <constraint firstAttribute="width" secondItem="kwz-Hi-SNM" secondAttribute="height" multiplier="1:1" id="iIH-NJ-XXc"/>
                                         </constraints>
                                         <state key="normal" backgroundImage="plus.circle.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="newIssueButtonTouched:" destination="QDr-ZF-uIg" eventType="touchUpInside" id="sGj-2G-Dzn"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -229,7 +232,7 @@
         <!--Update Issue View Controller-->
         <scene sceneID="O5f-ym-Ku0">
             <objects>
-                <viewController id="V7R-yT-F2x" customClass="UpdateIssueViewController" customModule="IssueTrackerApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewIssueVC" id="V7R-yT-F2x" customClass="UpdateIssueViewController" customModule="IssueTrackerApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DFO-bF-REM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
