@@ -10,8 +10,7 @@ const EditMilestone = ({ milestoneService }) => {
     <>
       <Header />
       <NavButton />
-      <InputForm />
-      <Buttons milestoneService={milestoneService} />
+      <InputForm type="edit" />
       <Footer />
     </>
   );

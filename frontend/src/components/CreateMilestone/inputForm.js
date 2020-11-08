@@ -4,13 +4,15 @@ import InputTitle from './inputTitle';
 import InputDueDate from './inputDueDate';
 import InputDescription from './inputDescription';
 import Buttons from './buttons';
+import EditButtons from '../EditMilestone/buttons';
 
 const SetTitleContext = createContext(() => {});
 const SetDueDateContext = createContext(() => {});
 const SetDescContext = createContext(() => {});
 const MilestoneContext = createContext('');
 
-export default function InputForm({ milestoneService }) {
+export default function InputForm({ milestoneService, type }) {
+  console.log(type);
   const [title, setTitle] = useState('');
   const [dueDate, setDueDate] = useState('');
   const [desc, setDesc] = useState('');
@@ -29,12 +31,16 @@ export default function InputForm({ milestoneService }) {
         </SetDescContext.Provider>
       </Wrapper>
 
-      <MilestoneContext.Provider value={{ title, dueDate, desc }}>
-        <Buttons
-          Context={MilestoneContext}
-          milestoneService={milestoneService}
-        />
-      </MilestoneContext.Provider>
+      {type === 'edit' ? (
+        <EditButtons />
+      ) : (
+        <MilestoneContext.Provider value={{ title, dueDate, desc }}>
+          <Buttons
+            Context={MilestoneContext}
+            milestoneService={milestoneService}
+          />
+        </MilestoneContext.Provider>
+      )}
     </>
   );
 }
