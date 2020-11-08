@@ -20,8 +20,11 @@ class LabelMark: UILabel {
   
   private func configure() {
     layer.cornerRadius = 5
-    layer.borderWidth = 1
-    layer.borderColor = UIColor.lightGray.cgColor
-    layer.backgroundColor = UIColor.lightGray.cgColor
+    layer.masksToBounds = true
+  }
+  
+  func setColor(withColor color: UIColor) {
+    layer.borderColor = color.cgColor
+    backgroundColor = color
   }
 }

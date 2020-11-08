@@ -24,12 +24,12 @@ class LabelCell: UICollectionViewCell {
   
   private func configure() {
     layer.borderWidth = 0.2
-    layer.borderColor = UIColor.lightGray.cgColor
   }
   
-  func updateCell(withTitle title: String, description: String) {
+  func updateCell(withTitle title: String, description: String, color: String) {
     labelMark.text = title
     labelDescription.text = description
-    // labelMark.backgroundColor =
+    guard let label = labelMark as? LabelMark else { return }
+    label.setColor(withColor: UIColor(hex: color))
   }
 }

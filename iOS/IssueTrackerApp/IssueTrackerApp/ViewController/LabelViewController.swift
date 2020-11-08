@@ -25,16 +25,17 @@ class LabelViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     applySnapshot(animatingDifferences: false)
+    labelCollectionView.delegate = self
     configureNavigator()
   }
   
   private func configureNavigator() {
-      self.navigationItem.rightBarButtonItem = self.addButton
-      guard let navigationController = navigationController else { return }
-      navigationController.navigationBar.prefersLargeTitles = true
-      navigationController.navigationBar.topItem?.title = "레이블"
-      navigationItem.largeTitleDisplayMode = .automatic
-      navigationController.navigationBar.sizeToFit()
+    self.navigationItem.rightBarButtonItem = self.addButton
+    guard let navigationController = navigationController else { return }
+    navigationController.navigationBar.prefersLargeTitles = true
+    navigationController.navigationBar.topItem?.title = "레이블"
+    navigationItem.largeTitleDisplayMode = .automatic
+    navigationController.navigationBar.sizeToFit()
   }
   
   private func makeDataSource() -> DataSource {
@@ -46,7 +47,7 @@ class LabelViewController: UIViewController {
         return UICollectionViewCell()
       }
       
-      cell.updateCell(withTitle: label.labelName, description: label.labelDescription ?? "")
+      cell.updateCell(withTitle: label.labelName, description: label.labelDescription ?? "", color: label.color)
       return cell
     }
     
