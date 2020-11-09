@@ -44,7 +44,8 @@ const SQL_CREATE_MILESTONE_TABLE = `
         id int PRIMARY KEY,
         milestone_name varchar(255),
         milestone_description varchar(255),
-        end_date datetime
+        end_date datetime,
+        status TINYINT
     );`;
 
 const SQL_DROP_LABEL_TABLE = `DROP TABLE IF EXISTS labels`;
