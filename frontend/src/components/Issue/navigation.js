@@ -31,6 +31,6 @@ const ButtonWrapper = styled.div`
   position: absolute;
   right: 0;
   display: flex;
-  width: 30%;
+  gap: 1em;
   justify-content: space-between;
 `;
