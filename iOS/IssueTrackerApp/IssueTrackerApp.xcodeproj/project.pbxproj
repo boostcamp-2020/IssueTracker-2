@@ -24,6 +24,8 @@
 		5CBF7C1B2557DCB000853F62 /* UpdateLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CBF7C1A2557DCB000853F62 /* UpdateLabelView.xib */; };
 		5CBF7C272557E8C900853F62 /* UpdateLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBF7C262557E8C900853F62 /* UpdateLabelView.swift */; };
 		5CCE210D2557AA1F0043FA30 /* LabelList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCE210C2557AA1F0043FA30 /* LabelList.swift */; };
+		5CEC93782559140E005F0772 /* UpdateMilestoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEC93772559140E005F0772 /* UpdateMilestoneView.swift */; };
+		5CEC937C2559162B005F0772 /* UpdateMilestoneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CEC937B2559162B005F0772 /* UpdateMilestoneView.xib */; };
 		5CFED72E25492EE200DE811F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFED72B25492EE200DE811F /* SceneDelegate.swift */; };
 		5CFED72F25492EE200DE811F /* IssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFED72C25492EE200DE811F /* IssueViewController.swift */; };
 		5CFED73025492EE200DE811F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFED72D25492EE200DE811F /* AppDelegate.swift */; };
@@ -131,6 +133,8 @@
 		5CBF7C1A2557DCB000853F62 /* UpdateLabelView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdateLabelView.xib; sourceTree = "<group>"; };
 		5CBF7C262557E8C900853F62 /* UpdateLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLabelView.swift; sourceTree = "<group>"; };
 		5CCE210C2557AA1F0043FA30 /* LabelList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelList.swift; sourceTree = "<group>"; };
+		5CEC93772559140E005F0772 /* UpdateMilestoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMilestoneView.swift; sourceTree = "<group>"; };
+		5CEC937B2559162B005F0772 /* UpdateMilestoneView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdateMilestoneView.xib; sourceTree = "<group>"; };
 		5CFED72B25492EE200DE811F /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5CFED72C25492EE200DE811F /* IssueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueViewController.swift; sourceTree = "<group>"; };
 		5CFED72D25492EE200DE811F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -273,6 +277,8 @@
 				5CBF7C262557E8C900853F62 /* UpdateLabelView.swift */,
 				5C15D2432558251900D4F56A /* MilestoneCell.swift */,
 				5C15D2442558251900D4F56A /* MilestoneCell.xib */,
+				5CEC93772559140E005F0772 /* UpdateMilestoneView.swift */,
+				5CEC937B2559162B005F0772 /* UpdateMilestoneView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -583,6 +589,7 @@
 				5C7B9BB62556771D00804A77 /* Label.storyboard in Resources */,
 				BDD18CFA2546E5EC00974FB4 /* LaunchScreen.storyboard in Resources */,
 				BDA8F8E42557DCDD00A0E7C9 /* LabelCell.xib in Resources */,
+				5CEC937C2559162B005F0772 /* UpdateMilestoneView.xib in Resources */,
 				BDD18CF72546E5EC00974FB4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -682,6 +689,7 @@
 				BDA8F88F25565A2F00A0E7C9 /* LoginKeychain.swift in Sources */,
 				BDA8F8F82557E59A00A0E7C9 /* Extension+UICollectionView.swift in Sources */,
 				5C3951942551438A00C6AEB8 /* IssueFilterViewController.swift in Sources */,
+				5CEC93782559140E005F0772 /* UpdateMilestoneView.swift in Sources */,
 				5C4F34842547E3BF00E41121 /* LoginViewModel.swift in Sources */,
 				5C4F34802547DAEE00E41121 /* LoginValidator.swift in Sources */,
 				BDA8F8E32557DCDD00A0E7C9 /* LabelCell.swift in Sources */,
