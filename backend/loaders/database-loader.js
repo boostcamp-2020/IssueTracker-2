@@ -41,11 +41,12 @@ const SQL_CREATE_ISSUE_COMMENT_TABLE = `
 const SQL_DROP_MILESTONE_TABLE = `DROP TABLE IF EXISTS milestones`;
 const SQL_CREATE_MILESTONE_TABLE = `
     CREATE TABLE milestones (
-        id int PRIMARY KEY,
+        id int PRIMARY KEY AUTO_INCREMENT,
         milestone_name varchar(255),
         milestone_description varchar(255),
         end_date datetime,
-        status TINYINT
+        status TINYINT,
+        created_at datetime
     );`;
 
 const SQL_DROP_LABEL_TABLE = `DROP TABLE IF EXISTS labels`;
