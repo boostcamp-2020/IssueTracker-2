@@ -18,13 +18,20 @@ class MilestoneCell: UICollectionViewCell, Reusable, NibLoadable {
   
   override func awakeFromNib() {
     super.awakeFromNib()
+    configure()
+  }
+  
+  private func configure() {
+    layer.borderWidth = 0.25
+    layer.borderColor = UIColor.lightGray.cgColor
   }
   
   func updateCell(withItem item: Milestone) {
     milestoneLabel.text = item.milestoneName
     endDateLabel.text = transformDate(fromDate: item.endDate)
+    
     descriptionLabel.text = item.milestoneDescription
-    let percentage = Int(Float(item.closeCount) / Float(item.closeCount + item.openCount) * Float(100))
+    let percentage: Int = item.openCount + item.closeCount == 0 ? 0 : Int(Float(item.closeCount) / Float(item.closeCount + item.openCount) * Float(100))
     percentageLabel.text = String(percentage) + "%"
     openIssueLabel.text = "\(item.openCount) open"
     closedIssueLabel.text = "\(item.closeCount) closed"
