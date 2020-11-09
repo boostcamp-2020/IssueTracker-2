@@ -11,8 +11,9 @@ exports.labelService = async req => {
 
 exports.addlabelService = async req => {
   try {
-    const { generatedLabelId } = await labels.read(req.body);
-    return { status: 202, message: '레이블 읽기 성공', labelList };
+    console.log('req', req.body);
+    const { generatedLabelId } = await labels.create(req.body);
+    return { status: 202, message: '레이블 추가 성공', generatedLabelId };
   } catch (err) {
     throw err;
   }

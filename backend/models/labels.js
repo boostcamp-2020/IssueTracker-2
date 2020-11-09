@@ -1,20 +1,15 @@
 const db = require('../db');
 
-exports.create = async ({
-  labelId,
-  labelName,
-  labelColor,
-  labelDescription,
-}) => {
+exports.create = async ({ id, label_name, color, label_description }) => {
   try {
     const connection = await db.pool.getConnection(async conn => conn);
     let sql =
       'INSERT INTO labels (id, label_name, color, label_description) VALUES (?, ?, ?, ?)';
     const [{ generatedLabelId }] = await connection.query(sql, [
-      labelId,
-      labelName,
-      labelColor,
-      labelDescription,
+      id,
+      label_name,
+      color,
+      label_description,
     ]);
     connection.release();
 
