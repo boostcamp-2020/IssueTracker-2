@@ -1,16 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
 import { TagIcon, MilestoneIcon } from '@primer/octicons-react';
+import { useHistory } from 'react-router-dom';
 
 export default function NavButton(props) {
+  const history = useHistory();
+
+  const onClickLabelNav = () => {
+    history.push('/labels');
+  };
+
+  const onClickMilestoneNav = () => {
+    history.push('/milestones');
+  };
+
   return (
     <>
-      <LabelButton type={props.type}>
+      <LabelButton onClick={onClickLabelNav} type={props.type}>
         <TagIcon size={20} />
         <Text>Labels</Text>
         {props.type === 'issue' && <Count>3</Count>}
       </LabelButton>
-      <MilestoneButton type={props.type}>
+      <MilestoneButton onClick={onClickMilestoneNav} type={props.type}>
         <MilestoneIcon size={20} />
 
         <Text>Milestones</Text>
