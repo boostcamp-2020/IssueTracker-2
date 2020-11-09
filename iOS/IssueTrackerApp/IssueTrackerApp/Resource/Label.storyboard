@@ -28,6 +28,15 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <visualEffectView hidden="YES" opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" id="AkN-xJ-4jX">
+                                <rect key="frame" x="0.0" y="39" width="414" height="818"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="nEl-dZ-gjP">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="regular"/>
+                            </visualEffectView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lFF-ec-lNj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -40,6 +49,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="p4v-Og-Cwo"/>
                     <connections>
+                        <outlet property="blurView" destination="AkN-xJ-4jX" id="N4h-mu-CXb"/>
                         <outlet property="labelCollectionView" destination="Kh5-wZ-Xot" id="eWH-gW-l0U"/>
                     </connections>
                 </viewController>
