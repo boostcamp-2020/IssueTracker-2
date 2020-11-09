@@ -16,3 +16,7 @@ enum IssueSection {
 enum LabelSection {
   case main
 }
+
+enum MilestoneSection {
+  case main
+}

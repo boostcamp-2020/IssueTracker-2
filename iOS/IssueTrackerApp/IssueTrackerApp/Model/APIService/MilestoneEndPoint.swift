@@ -36,19 +36,19 @@ enum MilestoneEndPoint {
       )
     case .getMilestones:
       return EndPoint(
-        path: "api/milestones",
+        path: "api/milestone/all",
         httpMethod: .get,
         task: .request
       )
     case .getDetailMilestone(let milestoneId):
       return EndPoint(
-        path: "api/milestone\(milestoneId)",
+        path: "api/milestone/\(milestoneId)",
         httpMethod: .get,
         task: .request
       )
     case .deleteMilestone(let milestoneId):
       return EndPoint(
-        path: "api/milestone\(milestoneId)",
+        path: "api/milestone/\(milestoneId)",
         httpMethod: .get,
         task: .request
       )
