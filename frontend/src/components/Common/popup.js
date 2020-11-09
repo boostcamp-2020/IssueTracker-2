@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 export default function popup({ type }) {
+  const onClickCancel = e => {
+    e.target.closest('details').removeAttribute('open');
+  };
+
   return (
     <>
       <DetailMenu>
@@ -10,6 +14,7 @@ export default function popup({ type }) {
             <Wrapper>
               <FilteringHeader role="button" aria-haspopup="menu">
                 Fitler issues
+                <PopupCancel onClick={onClickCancel}>x</PopupCancel>
               </FilteringHeader>
               <FilteringCondition>Open issues</FilteringCondition>
               <FilteringCondition>Your issues</FilteringCondition>
@@ -23,6 +28,7 @@ export default function popup({ type }) {
             <Wrapper>
               <FilteringHeader role="button" aria-haspopup="menu">
                 Filter by {type}
+                <PopupCancel onClick={onClickCancel}>x</PopupCancel>
               </FilteringHeader>
               <FilteringCondition>
                 각 조건에 따른 데이터 배열형태로 생성해서 사용하기.
@@ -66,6 +72,23 @@ const FilteringHeader = styled.div`
   padding: 1em;
   font-weight: bold;
   font-size: 0.8em;
+  display: flex;
+`;
+
+const PopupCancel = styled.div`
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  position: absolute;
+  right: 0;
+  font-size: 1.5em;
+  text-align: center;
+  transform: translateY(-0.5em);
+  color: rgba(0, 0, 0, 0.5);
+  &:hover {
+    color: black;
+  }
+  cursor: pointer;
 `;
 
 const FilteringCondition = styled.div`
