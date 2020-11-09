@@ -8,9 +8,9 @@ export default function Header() {
     history.push('/issues');
   };
   return (
-    <Title onClick={onClickHeader}>
+    <Title>
       <RepoIcon size={24} />
-      <Text>ISSUE</Text>
+      <Text onClick={onClickHeader}>ISSUE</Text>
     </Title>
   );
 }
