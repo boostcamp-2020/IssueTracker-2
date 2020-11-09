@@ -10,7 +10,7 @@ import UIKit
 class IssueCell: UICollectionViewCell, Reusable, NibLoadable {
   
   @IBOutlet weak var titleLabel: UILabel!
-  @IBOutlet weak var milestoneLabel: UILabel!
+  @IBOutlet weak var milestoneLabel: MilestoneMarkLabel!
   @IBOutlet weak var labelLabel: UILabel!
   @IBOutlet weak var bigView: UIView!
   @IBOutlet weak var checkmarkImageView: UIImageView!
@@ -23,10 +23,17 @@ class IssueCell: UICollectionViewCell, Reusable, NibLoadable {
   
   override func awakeFromNib() {
     super.awakeFromNib()
+    configure()
   }
   
-  func updateCell(withTitle title: String) {
-    titleLabel.text = title
+  private func configure() {
+    layer.borderWidth = 0.25
+    layer.borderColor = UIColor.lightGray.cgColor
+  }
+  
+  func updateCell(withItem item: Issue) {
+    titleLabel.text = item.issueTitle
+    milestoneLabel.text = "마일스톤"
   }
   
   func editHiddenCell(status: Bool) {
