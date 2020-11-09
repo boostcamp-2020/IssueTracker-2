@@ -9,7 +9,7 @@ import UIKit
 
 class MilestoneCell: UICollectionViewCell, Reusable, NibLoadable {
   
-  @IBOutlet weak var milestoneLabel: UILabel!
+  @IBOutlet weak var milestoneLabel: PaddingLabel!
   @IBOutlet weak var endDateLabel: UILabel!
   @IBOutlet weak var descriptionLabel: UILabel!
   @IBOutlet weak var percentageLabel: UILabel!

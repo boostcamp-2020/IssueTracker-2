@@ -9,7 +9,7 @@ import UIKit
 
 class LabelCell: UICollectionViewCell, Reusable, NibLoadable {
   
-  @IBOutlet weak var labelTitleLabel: LabelMark!
+  @IBOutlet weak var labelTitleLabel: LabelMarkLabel!
   @IBOutlet weak var labelDescriptionLabel: UILabel!
   
   

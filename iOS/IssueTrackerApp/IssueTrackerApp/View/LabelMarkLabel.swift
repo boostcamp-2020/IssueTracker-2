@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LabelMark: UILabel {
+class LabelMarkLabel: PaddingLabel {
   override init(frame: CGRect) {
     super.init(frame: frame)
     configure()
