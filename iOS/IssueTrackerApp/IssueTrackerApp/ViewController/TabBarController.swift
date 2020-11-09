@@ -18,9 +18,13 @@ class TabBarController: UITabBarController {
     let labelViewController = getViewController(storyboard: "Label", identifier: "LabelViewController")
     labelViewController.tabBarItem = UITabBarItem(title: "레이블", image: .checkmark, selectedImage: .strokedCheckmark)
     
+    let milestoneViewController = getViewController(storyboard: "Milestone", identifier: "MilestoneViewController")
+    milestoneViewController.tabBarItem = UITabBarItem(title: "마일스톤", image: .checkmark, selectedImage: .strokedCheckmark)
+    
     viewControllers = [
       UINavigationController(rootViewController: issueViewController),
-      UINavigationController(rootViewController: labelViewController)
+      UINavigationController(rootViewController: labelViewController),
+      UINavigationController(rootViewController: milestoneViewController)
     ]
   }
   
