@@ -2,15 +2,16 @@
 //  IssueCell.swift
 //  IssueTrackerApp
 //
-//  Created by 서명렬 on 2020/10/27.
+//  Created by 서명렬 on 2020/11/08.
 //
 
 import UIKit
 
-class IssueCell: UICollectionViewCell {
+class IssueCell: UICollectionViewCell, Reusable, NibLoadable {
   
   @IBOutlet weak var titleLabel: UILabel!
-  @IBOutlet weak var descriptionLabel: UILabel!
+  @IBOutlet weak var milestoneLabel: UILabel!
+  @IBOutlet weak var labelLabel: UILabel!
   @IBOutlet weak var bigView: UIView!
   @IBOutlet weak var checkmarkImageView: UIImageView!
   
@@ -20,19 +21,8 @@ class IssueCell: UICollectionViewCell {
     }
   }
   
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-    configure()
-  }
-  
-  required init?(coder: NSCoder) {
-    super.init(coder: coder)
-    configure()
-  }
-  
-  private func configure() {
-    layer.borderWidth = 0.2
-    layer.borderColor = UIColor.lightGray.cgColor
+  override func awakeFromNib() {
+    super.awakeFromNib()
   }
   
   func updateCell(withTitle title: String) {
