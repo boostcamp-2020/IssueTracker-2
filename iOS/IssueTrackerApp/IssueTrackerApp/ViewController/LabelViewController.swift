@@ -90,7 +90,7 @@ extension LabelViewController: UICollectionViewDelegateFlowLayout {
   }
 }
 
-extension LabelViewController: ButtonTouchDelegate {
+extension LabelViewController: UpdateLabelViewDelegate {
   func closeButtonTouched(_ sender: UIButton) {
     dismissUpdateLabelView()
   }

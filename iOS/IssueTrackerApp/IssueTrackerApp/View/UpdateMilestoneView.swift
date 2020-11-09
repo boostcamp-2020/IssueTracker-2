@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ButtonTouchDelegate2: class {
+protocol UpdateMilestoneViewDelegate: class {
   func closeButtonTouched(_ sender: UIButton)
   func resetButtonTouched(_ sender: UIButton, title: UITextField, description: UITextField)
   func saveButtonTouched(_ sender: UIButton)
@@ -15,7 +15,7 @@ protocol ButtonTouchDelegate2: class {
 
 class UpdateMilestoneView: UIView {
   
-  weak var delegate: ButtonTouchDelegate2?
+  weak var delegate: UpdateMilestoneViewDelegate?
   
   @IBOutlet weak var titleLabel: UITextField!
   @IBOutlet weak var endDateLabel: UITextField!

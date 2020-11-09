@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ButtonTouchDelegate: class {
+protocol UpdateLabelViewDelegate: class {
   func closeButtonTouched(_ sender: UIButton)
   func resetButtonTouched(_ sender: UIButton, title: UITextField, description: UITextField)
   func colorRefreshButtonTouched(_ sender: UIButton, colorLabel: UILabel, colorPreview: UIView)
@@ -16,7 +16,7 @@ protocol ButtonTouchDelegate: class {
 
 class UpdateLabelView: UIView {
   
-  weak var delegate: ButtonTouchDelegate?
+  weak var delegate: UpdateLabelViewDelegate?
   
   @IBOutlet weak var titleTextField: UITextField!
   @IBOutlet weak var descriptionTextField: UITextField!
