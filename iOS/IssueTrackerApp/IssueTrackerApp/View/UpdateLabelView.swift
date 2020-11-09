@@ -17,7 +17,7 @@ protocol ButtonTouchDelegate: class {
 class UpdateLabelView: UIView {
   
   weak var delegate: ButtonTouchDelegate?
-
+  
   @IBOutlet weak var titleTextField: UITextField!
   @IBOutlet weak var descriptionTextField: UITextField!
   @IBOutlet weak var colorHexLabel: UILabel!
@@ -41,30 +41,14 @@ class UpdateLabelView: UIView {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-  }
-  
-  required init?(coder: NSCoder) {
-    super.init(coder: coder)
     configure()
   }
   
   func configure() {
     layer.cornerRadius = 10
-    let nib = UINib(nibName: "UpdateLabelView", bundle: Bundle.main)
-
-    guard let xibView = nib.instantiate(withOwner: self, options: nil).first as? UIView else { return }
-    xibView.layer.cornerRadius = 10
-    xibView.frame = self.bounds
-    xibView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-    self.addSubview(xibView)
+    frame = CGRect(x: 0, y: 0, width: 350, height: 384)
     
     colorPreview.layer.cornerRadius = 10
-    textFieldConfigure()
-  }
-  
-  private func textFieldConfigure() {
-    titleTextField.layer.borderWidth = 0
-    descriptionTextField.layer.borderWidth = 0
   }
 }
 

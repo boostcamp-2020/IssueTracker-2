@@ -15,6 +15,12 @@ class LabelCell: UICollectionViewCell, Reusable, NibLoadable {
   
   override func awakeFromNib() {
     super.awakeFromNib()
+    configure()
+  }
+  
+  private func configure() {
+    layer.borderWidth = 0.2
+    layer.borderColor = UIColor.lightGray.cgColor
   }
   
   func updateCell(withTitle title: String, description: String, colorAsHex: String) {

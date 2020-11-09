@@ -15,7 +15,6 @@ class LabelViewController: UIViewController {
   private lazy var dataSource = makeDataSource()
   
   @IBOutlet weak var labelCollectionView: UICollectionView!
-  @IBOutlet weak var updateLabelView: UpdateLabelView!
   @IBOutlet weak var blurView: UIVisualEffectView!
   
   lazy var addButton: UIBarButtonItem = {
@@ -27,18 +26,17 @@ class LabelViewController: UIViewController {
     super.viewDidLoad()
     applySnapshot(animatingDifferences: false)
     labelCollectionView.delegate = self
-    updateLabelView.delegate = self
     configureNavigator()
     labelCollectionView.register(LabelCell.self)
   }
-
+  
   private func configureNavigator() {
     self.navigationItem.rightBarButtonItem = self.addButton
     guard let navigationController = navigationController else { return }
     navigationController.navigationBar.prefersLargeTitles = true
     navigationController.navigationBar.topItem?.title = "레이블"
-    navigationItem.largeTitleDisplayMode = .automatic
-    navigationController.navigationBar.sizeToFit()
+    // navigationItem.largeTitleDisplayMode = .automatic
+    // navigationController.navigationBar.sizeToFit()
   }
   
   private func makeDataSource() -> DataSource {
@@ -59,13 +57,30 @@ class LabelViewController: UIViewController {
     dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
   }
   
+  private func dismissUpdateLabelView() {
+    blurView.isHidden.toggle()
+    view.subviews.last?.removeFromSuperview()
+  }
+  
   @objc func addButtonTapped() {
+    
+    if let nib = Bundle.main.loadNibNamed("UpdateLabelView", owner: self),
+       let nibView = nib.first as? UpdateLabelView {
+      self.view.addSubview(nibView)
+      
+      nibView.translatesAutoresizingMaskIntoConstraints = false
+      NSLayoutConstraint.activate([
+        nibView.heightAnchor.constraint(equalToConstant: 384),
+        nibView.widthAnchor.constraint(equalToConstant: 350),
+        nibView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        nibView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+      ])
+      nibView.delegate = self
+    }
+    
     blurView.effect = UIBlurEffect(style: .dark)
     blurView.frame = self.view.bounds
-    UIView.animate(withDuration: 0.5) {
-      self.blurView.isHidden = false
-      self.updateLabelView.isHidden = false
-    }
+    self.blurView.isHidden.toggle()
   }
 }
 
@@ -77,8 +92,7 @@ extension LabelViewController: UICollectionViewDelegateFlowLayout {
 
 extension LabelViewController: ButtonTouchDelegate {
   func closeButtonTouched(_ sender: UIButton) {
-    blurView.isHidden.toggle()
-    updateLabelView.isHidden.toggle()
+    dismissUpdateLabelView()
   }
   
   func resetButtonTouched(_ sender: UIButton, title: UITextField, description: UITextField) {
@@ -93,5 +107,6 @@ extension LabelViewController: ButtonTouchDelegate {
   }
   
   func saveButtonTouched(_ sender: UIButton) {
+    dismissUpdateLabelView()
   }
 }
