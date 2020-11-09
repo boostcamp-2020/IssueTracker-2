@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Title-->
+        <!--Label View Controller-->
         <scene sceneID="Wej-96-ISx">
             <objects>
                 <viewController storyboardIdentifier="LabelViewController" id="A8k-Q1-LyM" customClass="LabelViewController" customModule="IssueTrackerApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -47,7 +47,6 @@
                             <constraint firstItem="lFF-ec-lNj" firstAttribute="bottom" secondItem="Kh5-wZ-Xot" secondAttribute="bottom" id="vwv-Zp-NS8"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="p4v-Og-Cwo"/>
                     <connections>
                         <outlet property="blurView" destination="AkN-xJ-4jX" id="N4h-mu-CXb"/>
                         <outlet property="labelCollectionView" destination="Kh5-wZ-Xot" id="eWH-gW-l0U"/>
