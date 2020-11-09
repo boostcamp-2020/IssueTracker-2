@@ -19,7 +19,7 @@ class LabelCell: UICollectionViewCell, Reusable, NibLoadable {
   }
   
   private func configure() {
-    layer.borderWidth = 0.2
+    layer.borderWidth = 0.25
     layer.borderColor = UIColor.lightGray.cgColor
   }
   

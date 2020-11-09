@@ -10,7 +10,7 @@ import UIKit
 protocol UpdateMilestoneViewDelegate: class {
   func closeButtonTouched(_ sender: UIButton)
   func resetButtonTouched(_ sender: UIButton, title: UITextField, description: UITextField)
-  func saveButtonTouched(_ sender: UIButton)
+  func saveButtonTouched(withTitle title: String, description: String?, endDate: String)
 }
 
 class UpdateMilestoneView: UIView {
@@ -31,7 +31,10 @@ class UpdateMilestoneView: UIView {
   }
   
   @IBAction func saveButtonTouched(_ sender: UIButton) {
-    delegate?.saveButtonTouched(sender)
+    guard let title = titleLabel.text,
+          let endDate = endDateLabel.text else { return }
+    let description = descriptionLabel.text
+    delegate?.saveButtonTouched(withTitle: title, description: description, endDate: endDate)
   }
   
   override func awakeFromNib() {

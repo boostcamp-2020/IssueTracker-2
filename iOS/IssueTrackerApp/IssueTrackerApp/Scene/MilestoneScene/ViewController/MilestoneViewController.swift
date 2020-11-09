@@ -13,20 +13,13 @@ class MilestoneViewController: UIViewController {
   typealias Snapshot = NSDiffableDataSourceSnapshot<MilestoneSection, Milestone>
   
   lazy var dataSource = makeDataSource()
-  lazy var milestoneData: [Milestone] = {
-    var datas = [Milestone]()
-    let apiService = APIService()
-    let endPoint = MilestoneEndPoint.getMilestones.endPoint
-    apiService.requestMilestone(forEndPoint: endPoint) { (data, response, error) in
-      guard let res = response as? HTTPURLResponse else { return }
-      print(res.statusCode)
-      let decoder = JSONDecoder()
-      let a = try? decoder.decode([Milestone].self, from: data!)
-      print(String(data: data!, encoding: .utf8))
-      
+  var milestoneData: [Milestone] = [] {
+    willSet {
+      DispatchQueue.main.async { [weak self] in
+        self?.applySnapshot(withItem: newValue)
+      }
     }
-    return datas
-  }()
+  }
   
   lazy var addButton: UIBarButtonItem = {
     let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTouched))
@@ -39,11 +32,15 @@ class MilestoneViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    // title = "마일스톤"
     configure()
-    applySnapshot()
+    
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    loadMilestoneData()
+  }
+
   private func configure() {
     configureNavigationBar()
     configureMilestoneCollectionView()
@@ -54,8 +51,18 @@ class MilestoneViewController: UIViewController {
     guard let navigationController = navigationController else { return }
     navigationController.navigationBar.prefersLargeTitles = true
     navigationController.navigationBar.topItem?.title = "마일스톤"
-//     navigationItem.largeTitleDisplayMode = .automatic
-//     navigationController.navigationBar.sizeToFit()
+  }
+  
+  private func loadMilestoneData() {
+    let apiService = APIService()
+    let endPoint = MilestoneEndPoint.getMilestones.endPoint
+    apiService.requestMilestone(forEndPoint: endPoint) { [weak self] (data, response, error) in
+      let decoder = JSONDecoder()
+      decoder.keyDecodingStrategy = .convertFromSnakeCase
+      guard let data = data else { return }
+      guard let result = try? decoder.decode(MilestoneResponse.self, from: data) else { return }
+      self?.milestoneData = result.milestonesInfo.milestoneArray
+    }
   }
   
   private func configureMilestoneCollectionView() {
@@ -75,16 +82,10 @@ class MilestoneViewController: UIViewController {
     return dataSource
   }
   
-  private func applySnapshot() {
+  private func applySnapshot(withItem item: [Milestone]) {
     var snapshot = Snapshot()
     snapshot.appendSections([.main])
-    snapshot.appendItems(
-      [
-        Milestone(id: 0, milestoneName: "마일스톤 0", milestoneDescription: "0번째 마일스톤", endDate: "2020-11-09", status: 0, openCount: 5, closeCount: 3),
-        Milestone(id: 1, milestoneName: "마일스톤 1", milestoneDescription: "1번째 마일스톤", endDate: "2020-11-09", status: 0, openCount: 12, closeCount: 4),
-        Milestone(id: 2, milestoneName: "마일스톤 2", milestoneDescription: "2번째 마일스톤", endDate: "2020-11-09", status: 0, openCount: 2, closeCount: 3),
-        Milestone(id: 3, milestoneName: "마일스톤 3", milestoneDescription: "3번째 마일스톤", endDate: "2020-11-09", status: 0, openCount: 17, closeCount: 34),
-      ])
+    snapshot.appendItems(item)
     dataSource.apply(snapshot, animatingDifferences: true)
   }
   
@@ -130,9 +131,13 @@ extension MilestoneViewController: UpdateMilestoneViewDelegate {
     description.text = ""
   }
   
-  func saveButtonTouched(_ sender: UIButton) {
+  func saveButtonTouched(withTitle title: String, description: String?, endDate: String) {
     dismissUpdateLabelView()
+    let milestone = Milestone(milestoneName: title, milestoneDescription: description, endDate: endDate)
+    let apiService = APIService()
+    let endPoint = MilestoneEndPoint.postMilestone(milestone: milestone).endPoint
+    apiService.requestMilestone(forEndPoint: endPoint) { [weak self] (data, response, error) in
+      self?.loadMilestoneData()
+    }
   }
-  
-  
 }

@@ -78,6 +78,8 @@
 		BDA8F9132557F65800A0E7C9 /* IssueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BDA8F9112557F65800A0E7C9 /* IssueCell.xib */; };
 		BDA8F9622559370C00A0E7C9 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA8F9612559370C00A0E7C9 /* PaddingLabel.swift */; };
 		BDA8F966255938D800A0E7C9 /* MilestoneMarkLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA8F965255938D700A0E7C9 /* MilestoneMarkLabel.swift */; };
+		BDA8F98F255964C300A0E7C9 /* URLParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA8F98E255964C300A0E7C9 /* URLParameterEncoder.swift */; };
+		BDA8F99325596CCD00A0E7C9 /* MilestoneResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA8F99225596CCD00A0E7C9 /* MilestoneResponse.swift */; };
 		BDD18CF72546E5EC00974FB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDD18CF62546E5EC00974FB4 /* Assets.xcassets */; };
 		BDD18CFA2546E5EC00974FB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDD18CF82546E5EC00974FB4 /* LaunchScreen.storyboard */; };
 		BDD18D032547B4D000974FB4 /* SignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD18D022547B4D000974FB4 /* SignInButton.swift */; };
@@ -191,6 +193,8 @@
 		BDA8F9112557F65800A0E7C9 /* IssueCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IssueCell.xib; sourceTree = "<group>"; };
 		BDA8F9612559370C00A0E7C9 /* PaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		BDA8F965255938D700A0E7C9 /* MilestoneMarkLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneMarkLabel.swift; sourceTree = "<group>"; };
+		BDA8F98E255964C300A0E7C9 /* URLParameterEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLParameterEncoder.swift; sourceTree = "<group>"; };
+		BDA8F99225596CCD00A0E7C9 /* MilestoneResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneResponse.swift; sourceTree = "<group>"; };
 		BDD18CEA2546E5E900974FB4 /* IssueTrackerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IssueTrackerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDD18CF62546E5EC00974FB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BDD18CF92546E5EC00974FB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -289,6 +293,7 @@
 			children = (
 				BDA8F8522553D9AF00A0E7C9 /* ParameterEncoding.swift */,
 				BDA8F8542553D9AF00A0E7C9 /* JSONParameterEncoder.swift */,
+				BDA8F98E255964C300A0E7C9 /* URLParameterEncoder.swift */,
 			);
 			path = Encoding;
 			sourceTree = "<group>";
@@ -485,6 +490,7 @@
 			isa = PBXGroup;
 			children = (
 				BDA8F8342553CD2600A0E7C9 /* Milestone.swift */,
+				BDA8F99225596CCD00A0E7C9 /* MilestoneResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -777,6 +783,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDA8F98F255964C300A0E7C9 /* URLParameterEncoder.swift in Sources */,
 				BDA8F8622553D9AF00A0E7C9 /* EndPointType.swift in Sources */,
 				BDA8F85F2553D9AF00A0E7C9 /* HTTPTask.swift in Sources */,
 				BDA8F8602553D9AF00A0E7C9 /* HTTPMethod.swift in Sources */,
@@ -825,6 +832,7 @@
 				5CBF7C272557E8C900853F62 /* UpdateLabelView.swift in Sources */,
 				BDA8F8F22557E54C00A0E7C9 /* NibLoadable.swift in Sources */,
 				BDA8F8972556771300A0E7C9 /* APIService.swift in Sources */,
+				BDA8F99325596CCD00A0E7C9 /* MilestoneResponse.swift in Sources */,
 				BD02F15C25523EFA0013C643 /* FilterSection.swift in Sources */,
 				5CFED74E254949BC00DE811F /* UpdateIssueViewController.swift in Sources */,
 				5CCE210D2557AA1F0043FA30 /* LabelList.swift in Sources */,

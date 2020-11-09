@@ -82,7 +82,7 @@ class IssueViewController: UIViewController {
     let dataSource = DataSource(collectionView: issueCollectionView) { (collectionView, indexPath, item) -> UICollectionViewCell? in
       let cell: IssueCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
       
-      cell.updateCell(withTitle: item.issueTitle)
+      cell.updateCell(withItem: item)
       
       return cell
     }
