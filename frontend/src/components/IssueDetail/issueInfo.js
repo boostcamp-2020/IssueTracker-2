@@ -61,6 +61,7 @@ const IssueInfoDescription = styled.div`
   padding: 2em 0;
   display: flex;
   gap: 2em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 `;
 
 const EditBtn = styled.span`
