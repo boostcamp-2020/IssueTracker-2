@@ -236,69 +236,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		5CFED7362549375D00DE811F /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				5CFED72C25492EE200DE811F /* IssueViewController.swift */,
-				BD090D2125483AD100454C79 /* LoginViewController.swift */,
-				5CFED74D254949BC00DE811F /* UpdateIssueViewController.swift */,
-				5C3951932551438A00C6AEB8 /* IssueFilterViewController.swift */,
-				5C7B9BB925567E4800804A77 /* LabelViewController.swift */,
-				5C7B9BBD25567E9F00804A77 /* TabBarController.swift */,
-				5C15D25125582A7200D4F56A /* MilestoneViewController.swift */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		5CFED7372549377700DE811F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				BDA8F8382553CE6B00A0E7C9 /* Comment.swift */,
-				BDA8F8342553CD2600A0E7C9 /* Milestone.swift */,
-				BDA8F8312553CCCA00A0E7C9 /* Label.swift */,
-				BD090CF725480C3500454C79 /* Issue.swift */,
-				BD090CFA25480D1500454C79 /* IssueList.swift */,
-				5C4F347F2547DAEE00E41121 /* LoginValidator.swift */,
-				5CFED7322549325300DE811F /* IssueSection.swift */,
-				BDA8F88E25565A2F00A0E7C9 /* LoginKeychain.swift */,
-				BD02F16525523FBB0013C643 /* FilterTableData */,
-				5CCE210C2557AA1F0043FA30 /* LabelList.swift */,
-				BDA8F89E2556865C00A0E7C9 /* APIService */,
-				BDA8F8ED2557E51D00A0E7C9 /* Reusable.swift */,
-				BDA8F8F12557E54C00A0E7C9 /* NibLoadable.swift */,
-				BDA8F8F72557E59A00A0E7C9 /* Extension+UICollectionView.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		5CFED73B2549378400DE811F /* View */ = {
-			isa = PBXGroup;
-			children = (
-				BDA8F9612559370C00A0E7C9 /* PaddingLabel.swift */,
-				BD02F169255240890013C643 /* IssueView */,
-				BD02F16B255240940013C643 /* LoginView */,
-				BDA8F8E12557DCDD00A0E7C9 /* LabelCell.swift */,
-				BDA8F8E22557DCDD00A0E7C9 /* LabelCell.xib */,
-				5C7DF6B32557B39B00D730EE /* LabelMarkLabel.swift */,
-				5CBF7C1A2557DCB000853F62 /* UpdateLabelView.xib */,
-				5CBF7C262557E8C900853F62 /* UpdateLabelView.swift */,
-				5C15D2432558251900D4F56A /* MilestoneCell.swift */,
-				5C15D2442558251900D4F56A /* MilestoneCell.xib */,
-				5CEC93772559140E005F0772 /* UpdateMilestoneView.swift */,
-				5CEC937B2559162B005F0772 /* UpdateMilestoneView.xib */,
-				BDA8F965255938D700A0E7C9 /* MilestoneMarkLabel.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		5CFED73F2549379900DE811F /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				5C4F34832547E3BF00E41121 /* LoginViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		5CFED741254937F100DE811F /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -334,27 +271,6 @@
 				BD02F16E2552772F0013C643 /* FilterTableViewDelegate.swift */,
 			);
 			path = FilterTableData;
-			sourceTree = "<group>";
-		};
-		BD02F169255240890013C643 /* IssueView */ = {
-			isa = PBXGroup;
-			children = (
-				BDA8F9102557F65800A0E7C9 /* IssueCell.swift */,
-				BDA8F9112557F65800A0E7C9 /* IssueCell.xib */,
-				BD090D002548211300454C79 /* IssueHeader.swift */,
-				5CFED74A254943CE00DE811F /* NewIssueButton.swift */,
-				BD090D3325495F6700454C79 /* IssueContentTextView.swift */,
-				5C39519825514FED00C6AEB8 /* FilterIssueCell.swift */,
-			);
-			path = IssueView;
-			sourceTree = "<group>";
-		};
-		BD02F16B255240940013C643 /* LoginView */ = {
-			isa = PBXGroup;
-			children = (
-				BDD18D022547B4D000974FB4 /* SignInButton.swift */,
-			);
-			path = LoginView;
 			sourceTree = "<group>";
 		};
 		BDA8F8442553D97D00A0E7C9 /* NetworkService */ = {
@@ -400,6 +316,206 @@
 			path = APIService;
 			sourceTree = "<group>";
 		};
+		BDA8F96B25593E7A00A0E7C9 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				5C7B9BBD25567E9F00804A77 /* TabBarController.swift */,
+				BDA8F96C25593E9900A0E7C9 /* LoginScene */,
+				BDA8F96E25593EAC00A0E7C9 /* IssueScene */,
+				BDA8F96F25593EB400A0E7C9 /* LabelScene */,
+				BDA8F97025593EBC00A0E7C9 /* MilestoneScene */,
+				5CFED741254937F100DE811F /* Resource */,
+				BDA8F98B2559407900A0E7C9 /* Common */,
+				BDA8F89E2556865C00A0E7C9 /* APIService */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		BDA8F96C25593E9900A0E7C9 /* LoginScene */ = {
+			isa = PBXGroup;
+			children = (
+				BDA8F9862559403600A0E7C9 /* ViewModel */,
+				BDA8F97325593F0800A0E7C9 /* Model */,
+				BDA8F97525593F1C00A0E7C9 /* View */,
+				BDA8F97425593F0D00A0E7C9 /* ViewController */,
+			);
+			path = LoginScene;
+			sourceTree = "<group>";
+		};
+		BDA8F96D25593EA300A0E7C9 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5CFED72C25492EE200DE811F /* IssueViewController.swift */,
+				5CFED74D254949BC00DE811F /* UpdateIssueViewController.swift */,
+				5C3951932551438A00C6AEB8 /* IssueFilterViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		BDA8F96E25593EAC00A0E7C9 /* IssueScene */ = {
+			isa = PBXGroup;
+			children = (
+				BDA8F97125593ECF00A0E7C9 /* Model */,
+				BDA8F97225593EDB00A0E7C9 /* View */,
+				BDA8F96D25593EA300A0E7C9 /* ViewController */,
+			);
+			path = IssueScene;
+			sourceTree = "<group>";
+		};
+		BDA8F96F25593EB400A0E7C9 /* LabelScene */ = {
+			isa = PBXGroup;
+			children = (
+				BDA8F97825593F2F00A0E7C9 /* Model */,
+				BDA8F97725593F2B00A0E7C9 /* View */,
+				BDA8F97625593F2400A0E7C9 /* ViewController */,
+			);
+			path = LabelScene;
+			sourceTree = "<group>";
+		};
+		BDA8F97025593EBC00A0E7C9 /* MilestoneScene */ = {
+			isa = PBXGroup;
+			children = (
+				BDA8F97B25593F3B00A0E7C9 /* Model */,
+				BDA8F97A25593F3600A0E7C9 /* View */,
+				BDA8F97925593F3200A0E7C9 /* ViewController */,
+			);
+			path = MilestoneScene;
+			sourceTree = "<group>";
+		};
+		BDA8F97125593ECF00A0E7C9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BD02F16525523FBB0013C643 /* FilterTableData */,
+				BDA8F8382553CE6B00A0E7C9 /* Comment.swift */,
+				BD090CF725480C3500454C79 /* Issue.swift */,
+				BD090CFA25480D1500454C79 /* IssueList.swift */,
+				5CFED7322549325300DE811F /* IssueSection.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BDA8F97225593EDB00A0E7C9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BDA8F9102557F65800A0E7C9 /* IssueCell.swift */,
+				BDA8F9112557F65800A0E7C9 /* IssueCell.xib */,
+				BD090D002548211300454C79 /* IssueHeader.swift */,
+				5CFED74A254943CE00DE811F /* NewIssueButton.swift */,
+				BD090D3325495F6700454C79 /* IssueContentTextView.swift */,
+				5C39519825514FED00C6AEB8 /* FilterIssueCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BDA8F97325593F0800A0E7C9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5C4F347F2547DAEE00E41121 /* LoginValidator.swift */,
+				BDA8F88E25565A2F00A0E7C9 /* LoginKeychain.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BDA8F97425593F0D00A0E7C9 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BD090D2125483AD100454C79 /* LoginViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		BDA8F97525593F1C00A0E7C9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BDD18D022547B4D000974FB4 /* SignInButton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BDA8F97625593F2400A0E7C9 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5C7B9BB925567E4800804A77 /* LabelViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		BDA8F97725593F2B00A0E7C9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BDA8F8E12557DCDD00A0E7C9 /* LabelCell.swift */,
+				BDA8F8E22557DCDD00A0E7C9 /* LabelCell.xib */,
+				5C7DF6B32557B39B00D730EE /* LabelMarkLabel.swift */,
+				5CBF7C1A2557DCB000853F62 /* UpdateLabelView.xib */,
+				5CBF7C262557E8C900853F62 /* UpdateLabelView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BDA8F97825593F2F00A0E7C9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5CCE210C2557AA1F0043FA30 /* LabelList.swift */,
+				BDA8F8312553CCCA00A0E7C9 /* Label.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BDA8F97925593F3200A0E7C9 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5C15D25125582A7200D4F56A /* MilestoneViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		BDA8F97A25593F3600A0E7C9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5C15D2432558251900D4F56A /* MilestoneCell.swift */,
+				5C15D2442558251900D4F56A /* MilestoneCell.xib */,
+				5CEC93772559140E005F0772 /* UpdateMilestoneView.swift */,
+				5CEC937B2559162B005F0772 /* UpdateMilestoneView.xib */,
+				BDA8F965255938D700A0E7C9 /* MilestoneMarkLabel.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BDA8F97B25593F3B00A0E7C9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BDA8F8342553CD2600A0E7C9 /* Milestone.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BDA8F97F25593FD800A0E7C9 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				5CBF7C162557D25800853F62 /* UIColor+Hex.swift */,
+				BDA8F8F72557E59A00A0E7C9 /* Extension+UICollectionView.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		BDA8F9862559403600A0E7C9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5C4F34832547E3BF00E41121 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		BDA8F98B2559407900A0E7C9 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				BDA8F8ED2557E51D00A0E7C9 /* Reusable.swift */,
+				BDA8F8F12557E54C00A0E7C9 /* NibLoadable.swift */,
+				BDA8F9612559370C00A0E7C9 /* PaddingLabel.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		BDD18CE12546E5E900974FB4 = {
 			isa = PBXGroup;
 			children = (
@@ -425,18 +541,14 @@
 		BDD18CEC2546E5E900974FB4 /* IssueTrackerApp */ = {
 			isa = PBXGroup;
 			children = (
+				BDA8F97F25593FD800A0E7C9 /* Extension */,
+				BDA8F96B25593E7A00A0E7C9 /* Scene */,
 				5C395189255005F700C6AEB8 /* IssueTrackerApp.entitlements */,
 				5CFED72D25492EE200DE811F /* AppDelegate.swift */,
 				5CFED72B25492EE200DE811F /* SceneDelegate.swift */,
-				5CFED7362549375D00DE811F /* ViewController */,
-				5CFED7372549377700DE811F /* Model */,
-				5CFED73B2549378400DE811F /* View */,
-				5CFED73F2549379900DE811F /* ViewModel */,
-				5CFED741254937F100DE811F /* Resource */,
 				BDD18CF62546E5EC00974FB4 /* Assets.xcassets */,
 				BDD18CF82546E5EC00974FB4 /* LaunchScreen.storyboard */,
 				BDD18CFB2546E5EC00974FB4 /* Info.plist */,
-				5CBF7C162557D25800853F62 /* UIColor+Hex.swift */,
 			);
 			path = IssueTrackerApp;
 			sourceTree = "<group>";
