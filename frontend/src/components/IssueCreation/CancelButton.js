@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
 export default () => {
-  return <TextButton>Cancel</TextButton>;
+  const history = useHistory();
+  const onClickCancel = () => {
+    history.push('/issues');
+  };
+  return <TextButton onClick={onClickCancel}>Cancel</TextButton>;
 };
 
 const TextButton = styled.button`
