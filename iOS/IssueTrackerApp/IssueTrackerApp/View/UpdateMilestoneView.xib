@@ -9,17 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UpdateMilestoneView" customModule="IssueTrackerApp" customModuleProvider="target">
-            <connections>
-                <outlet property="descriptionLabel" destination="XiX-GD-ST1" id="dUc-I7-uGX"/>
-                <outlet property="endDateLabel" destination="R5K-0c-B6C" id="GrA-DA-FEi"/>
-                <outlet property="resetButton" destination="6bk-7s-OUl" id="4zg-jv-tWz"/>
-                <outlet property="saveButton" destination="Xnx-l3-tU6" id="eHB-xq-6FM"/>
-                <outlet property="titleLabel" destination="axI-GC-SfU" id="Tqr-9a-eZF"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="UpdateMilestoneView" customModule="IssueTrackerApp" customModuleProvider="target">
+        <view contentMode="scaleToFill" restorationIdentifier="UpdateMilestoneView" id="iN0-l3-epB" customClass="UpdateMilestoneView" customModule="IssueTrackerApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -64,7 +56,7 @@
                     <rect key="frame" x="10" y="10" width="30" height="30"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <connections>
-                        <action selector="closeButtonTouched:" destination="-1" eventType="touchUpInside" id="pd2-oS-gMG"/>
+                        <action selector="closeButtonTouched:" destination="iN0-l3-epB" eventType="touchUpInside" id="6RE-oT-jTY"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xMG-EQ-WVV">
@@ -89,7 +81,7 @@
                         <color key="titleColor" systemColor="systemGrayColor"/>
                     </state>
                     <connections>
-                        <action selector="resetButtonTouched:" destination="-1" eventType="touchUpInside" id="cRd-o2-Pwn"/>
+                        <action selector="resetButtonTouched:" destination="iN0-l3-epB" eventType="touchUpInside" id="o24-5q-aGb"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xnx-l3-tU6">
@@ -108,7 +100,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <action selector="saveButtonTouched:" destination="-1" eventType="touchUpInside" id="G46-HL-zHc"/>
+                        <action selector="saveButtonTouched:" destination="iN0-l3-epB" eventType="touchUpInside" id="Rzx-Oa-Hd4"/>
                     </connections>
                 </button>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="yyyy-MM-dd (선택)" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="R5K-0c-B6C">
@@ -171,6 +163,12 @@
                 <constraint firstItem="xYL-7f-ylr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="pIl-TX-U28"/>
                 <constraint firstItem="R5K-0c-B6C" firstAttribute="centerY" secondItem="FxZ-YH-GCi" secondAttribute="centerY" id="qaQ-2O-8kE"/>
             </constraints>
+            <connections>
+                <outlet property="descriptionLabel" destination="XiX-GD-ST1" id="pZy-hP-pdR"/>
+                <outlet property="endDateLabel" destination="R5K-0c-B6C" id="xuP-PU-yxw"/>
+                <outlet property="saveButton" destination="Xnx-l3-tU6" id="VfZ-qA-T4s"/>
+                <outlet property="titleLabel" destination="axI-GC-SfU" id="bb6-gE-iJw"/>
+            </connections>
             <point key="canvasLocation" x="140.625" y="117.5"/>
         </view>
     </objects>
