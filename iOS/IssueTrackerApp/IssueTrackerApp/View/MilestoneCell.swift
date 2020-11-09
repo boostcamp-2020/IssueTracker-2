@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MilestoneCell: UICollectionViewCell {
+class MilestoneCell: UICollectionViewCell, Reusable, NibLoadable {
   
   @IBOutlet weak var milestoneLabel: UILabel!
   @IBOutlet weak var endDateLabel: UILabel!
@@ -20,13 +20,15 @@ class MilestoneCell: UICollectionViewCell {
     super.awakeFromNib()
   }
   
-  func updateCell(withMilestone milestone: String, endDate: String, description: String, percentage: String, openIssue: String, closedIssue: String) {
-    milestoneLabel.text = milestone
-    endDateLabel.text = transformDate(fromDate: endDate)
-    descriptionLabel.text = description
-    percentageLabel.text = percentage + "%"
-    openIssueLabel.text = openIssue + "open"
-    closedIssueLabel.text = closedIssue + "closed"
+  func updateCell(withItem item: Milestone) {
+    milestoneLabel.text = item.milestoneName
+    endDateLabel.text = transformDate(fromDate: item.endDate)
+    descriptionLabel.text = item.milestoneDescription
+    let percentage = Int(Float(item.closeCount) / Float(item.closeCount + item.openCount) * Float(100))
+    percentageLabel.text = String(percentage) + "%"
+    openIssueLabel.text = "\(item.openCount) open"
+    closedIssueLabel.text = "\(item.closeCount) closed"
+    
   }
   
   private func transformDate(fromDate date: String) -> String {
