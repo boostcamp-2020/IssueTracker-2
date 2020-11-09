@@ -33,14 +33,14 @@ public class Router<EndPoint: EndPointType>: NetworkRouter {
     var request = URLRequest(url: route.baseURL.appendingPathComponent(route.path),
                              cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
                              timeoutInterval: 10.0)
+
     request.httpMethod = route.httpMethod.rawValue
     
     do {
       switch route.task {
       case .request:
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-      case .requestParmeters(let bodyParameters, let urlParameters):
+      case .requestParameters(let bodyParameters, let urlParameters):
         try configureParameters(bodyParameters: bodyParameters,
                                 urlParameters: urlParameters,
                                 request: &request)
@@ -61,14 +61,14 @@ public class Router<EndPoint: EndPointType>: NetworkRouter {
   }
   
   fileprivate func configureParameters<T: Encodable>(bodyParameters: T?,
-                                                     urlParameters: T?,
+                                                     urlParameters: [String: Any]?,
                                                      request: inout URLRequest) throws {
     do {
       if let bodyParameters = bodyParameters {
         try JSONParameterEncoder.encode(urlRequest: &request, with: bodyParameters)
       }
       if let urlParameters = urlParameters {
-        try JSONParameterEncoder.encode(urlRequest: &request, with: urlParameters)
+        try URLParameterEncoder.encode(urlRequest: &request, with: urlParameters)
       }
     } catch {
       throw error
