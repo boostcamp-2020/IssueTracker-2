@@ -56,13 +56,13 @@ export default function ListForm(props) {
       return (
         <HeaderWrapper>
           <MilestoneIcon size={19} />
-          <Open>
-            <Count>2</Count>
+          <Open onClick={props.clickOpen} status={props.status}>
+            <Count>{props.openTotalCount}</Count>
             <span>Open</span>
           </Open>
-          <Closed>
+          <Closed onClick={props.clickClose} status={props.status}>
             <CheckIcon size={22} />
-            <Count>0</Count>
+            <Count>{props.closeTotalCount}</Count>
             <span>Closed</span>
           </Closed>
         </HeaderWrapper>
@@ -118,16 +118,31 @@ const HeaderWrapper = styled.div`
   border-left: 0;
 `;
 const Open = styled.span`
+  cursor: pointer;
   margin-left: 0.2em;
   margin-right: 1.3em;
   transform: translateY(1px);
+
+  ${props => {
+    if (!props.status) {
+      return `font-weight: bold;`;
+    }
+    return ``;
+  }}
 `;
 const Count = styled.span`
   margin-left: 0.3em;
   margin-right: 0.3em;
 `;
 const Closed = styled.span`
+  cursor: pointer;
   transform: translateY(1px);
+  ${props => {
+    if (props.status) {
+      return `font-weight: bold;`;
+    }
+    return ``;
+  }}
 `;
 
 const List = styled.div`
