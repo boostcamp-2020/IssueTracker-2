@@ -3,13 +3,18 @@ import styled from 'styled-components';
 
 import NavigationButton from '../Common/NavButton';
 import CreateButton from '../Common/GreenButton';
+import { useHistory } from 'react-router-dom';
 
 export default function NavButton(props) {
+  const history = useHistory();
+  const onClickNewMilestone = () => {
+    history.push('/milestone/new');
+  };
   return (
     <Nav>
       <NavigationButton />
       <ButtonWrapper>
-        <CreateButton content="New milestone" />
+        <CreateButton onClick={onClickNewMilestone} content="New milestone" />
       </ButtonWrapper>
     </Nav>
   );
