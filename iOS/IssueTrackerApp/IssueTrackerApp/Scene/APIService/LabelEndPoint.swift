@@ -21,7 +21,7 @@ enum LabelEndPoint {
       return EndPoint(
         path: "api/label",
         httpMethod: .post,
-        task: .requestParmeters(
+        task: .requestParameters(
           bodyParameters: label,
           urlParameters: nil
         )
@@ -30,7 +30,7 @@ enum LabelEndPoint {
       return EndPoint(
         path: "api/label",
         httpMethod: .post,
-        task: .requestParmeters(
+        task: .requestParameters(
           bodyParameters: label,
           urlParameters: nil
         )

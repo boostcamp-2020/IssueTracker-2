@@ -9,7 +9,7 @@ import Foundation
 import NetworkService
 
 struct EndPoint<Datable: Encodable>: EndPointType {
-  var baseURL: URL = URL(string: "http://49.50.167.109:3000")!
+  var baseURL: URL = URL(string: "http://101.101.218.59:3000")!
   var path: String
   var httpMethod: HTTPMethod
   var task: HTTPTask<Datable>

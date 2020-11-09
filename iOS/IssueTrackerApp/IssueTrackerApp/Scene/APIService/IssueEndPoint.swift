@@ -21,7 +21,7 @@ enum IssueEndPoint {
       return EndPoint<Issue>(
         path: "api/issue",
         httpMethod: .post,
-        task: .requestParmeters(
+        task: .requestParameters(
           bodyParameters: issue,
           urlParameters: nil)
       )
@@ -29,7 +29,7 @@ enum IssueEndPoint {
       return EndPoint<Issue>(
         path: "api/issue",
         httpMethod: .post,
-        task: .requestParmeters(
+        task: .requestParameters(
           bodyParameters: issue,
           urlParameters: nil
         )

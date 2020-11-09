@@ -20,7 +20,7 @@ enum MilestoneEndPoint {
       return EndPoint(
         path: "api/milestone",
         httpMethod: .post,
-        task: .requestParmeters(
+        task: .requestParameters(
           bodyParameters: milestone,
           urlParameters: nil
         )
@@ -29,7 +29,7 @@ enum MilestoneEndPoint {
       return EndPoint(
         path: "api/milestone",
         httpMethod: .post,
-        task: .requestParmeters(
+        task: .requestParameters(
           bodyParameters: milestone,
           urlParameters: nil
         )
@@ -38,7 +38,7 @@ enum MilestoneEndPoint {
       return EndPoint(
         path: "api/milestone/all",
         httpMethod: .get,
-        task: .request
+        task: .requestParameters(bodyParameters: nil, urlParameters: ["status": "0"])
       )
     case .getDetailMilestone(let milestoneId):
       return EndPoint(
