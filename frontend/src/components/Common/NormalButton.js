@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 export default function NormalButton({ onClick, content }) {
   return <Button onClick={onClick}>{content}</Button>;
 }

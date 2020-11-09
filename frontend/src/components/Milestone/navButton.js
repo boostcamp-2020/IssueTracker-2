@@ -12,7 +12,7 @@ export default function NavButton(props) {
   };
   return (
     <Nav>
-      <NavigationButton />
+      <NavigationButton type="milestone" />
       <ButtonWrapper>
         <CreateButton onClick={onClickNewMilestone} content="New milestone" />
       </ButtonWrapper>
