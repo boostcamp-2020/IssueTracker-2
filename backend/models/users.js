@@ -4,7 +4,7 @@ exports.create = async ({ id, profileImageUrl, password }) => {
   try {
     const connection = await db.pool.getConnection(async conn => conn);
     let sql =
-      'INSERT INTO users (id, profile_image_url, password) VALUES (?, ?, ?)';
+      'INSERT INTO users (nickname, profile_image_url, password) VALUES (?, ?, ?)';
     const [{ insertId }] = await connection.query(sql, [
       id,
       profileImageUrl,
@@ -17,13 +17,11 @@ exports.create = async ({ id, profileImageUrl, password }) => {
   }
 };
 
-exports.findAll = async ({username}) => {
+exports.findAll = async ({ username }) => {
   try {
     const connection = await db.pool.getConnection(async conn => conn);
     let sql = `SELECT * FROM users WHERE nickname=?`;
-    const [[userInfo]] = await connection.query(sql, [
-      username
-    ]); 
+    const [[userInfo]] = await connection.query(sql, [username]);
     connection.release();
     return userInfo;
   } catch (err) {

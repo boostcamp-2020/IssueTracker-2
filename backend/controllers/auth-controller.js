@@ -8,12 +8,11 @@ exports.loginGitHub = (req, res, next) => {
     }
 
     if (req.headers['user-agent'].includes('iPhone')) {
-      console.log('iphone here');
-      return res.redirect(`issuetrackerpastel://${user}`);
+      return res.redirect(`issuetrackerpastel://${user[0]}`);
     }
 
     // redirect 주소 수정 필요
-    if (!user) {
+    if (!user[0]) {
       return res.redirect('http://localhost:8080');
     }
 
@@ -25,7 +24,7 @@ exports.loginGitHub = (req, res, next) => {
      * });
      */
 
-    res.cookie('user', user);
+    res.cookie('user', user[0]);
 
     // redirect 주소 수정 필요
     res.redirect('http://localhost:8080');
@@ -38,7 +37,7 @@ exports.loginPassport = (req, res, next) => {
       return next(err);
     }
 
-    if(!user) {
+    if (!user) {
       res.status(401).json({ message: info.message });
     }
 
@@ -52,8 +51,5 @@ exports.loginPassport = (req, res, next) => {
     const token = jwt.sign(payload, secret, options);
     res.cookie('jwt', token);
     res.status(202).json({ message: 'logged in successfully' });
-
   })(req, res, next);
 };
-
-
