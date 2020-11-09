@@ -4,6 +4,6 @@ const controller = require('../controllers/auth-controller');
 
 router.get('/github', passport.authenticate('github'));
 router.get('/github/callback', controller.loginGitHub);
-router.get('/login', controller.loginPassport);
+router.get('/logout', controller.logout);
 
 module.exports = router;
