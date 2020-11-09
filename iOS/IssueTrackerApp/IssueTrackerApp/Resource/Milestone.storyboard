@@ -28,17 +28,17 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="rps-Aa-UCv">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="TF9-gS-kcr">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="y2R-vM-6bk">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="shV-WW-0vM">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" id="12h-9M-asV">
+                            <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" id="12h-9M-asV">
                                 <rect key="frame" x="0.0" y="39" width="414" height="818"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="fY0-Qe-NvH">
@@ -57,10 +57,13 @@
                             <constraint firstItem="pUY-zr-edt" firstAttribute="trailing" secondItem="1VR-2i-xFN" secondAttribute="trailing" id="uwP-wk-LjM"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="milestoneCollectionView" destination="1VR-2i-xFN" id="iEc-Pl-FJE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ctv-Vi-afb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="191" y="170"/>
+            <point key="canvasLocation" x="189.85507246376812" y="169.41964285714286"/>
         </scene>
     </scenes>
     <resources>
