@@ -63,7 +63,7 @@ class MilestoneViewController: UIViewController {
     let dataSource = DataSource(collectionView: milestoneCollectionView) { (collectionView, indexPath, item) -> UICollectionViewCell? in
       let cell: MilestoneCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
       
-      cell.ubdateCell(withItem: item)
+      cell.updateCell(withItem: item)
       
       return cell
     }
