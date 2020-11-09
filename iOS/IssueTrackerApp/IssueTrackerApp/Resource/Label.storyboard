@@ -28,19 +28,12 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" id="AkN-xJ-4jX">
+                            <visualEffectView hidden="YES" opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" id="AkN-xJ-4jX">
                                 <rect key="frame" x="0.0" y="39" width="414" height="818"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="nEl-dZ-gjP">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N0g-qH-4eS" customClass="UpdateLabelView" customModule="IssueTrackerApp" customModuleProvider="target">
-                                            <rect key="frame" x="30" y="185" width="354" height="418"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        </view>
-                                    </subviews>
                                 </view>
                                 <blurEffect style="regular"/>
                             </visualEffectView>
@@ -58,7 +51,6 @@
                     <connections>
                         <outlet property="blurView" destination="AkN-xJ-4jX" id="N4h-mu-CXb"/>
                         <outlet property="labelCollectionView" destination="Kh5-wZ-Xot" id="eWH-gW-l0U"/>
-                        <outlet property="updateLabelView" destination="N0g-qH-4eS" id="Zed-iT-2qH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ocS-bZ-jMb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

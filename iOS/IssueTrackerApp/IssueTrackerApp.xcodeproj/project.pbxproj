@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C15D2452558251900D4F56A /* MilestoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15D2432558251900D4F56A /* MilestoneCell.swift */; };
+		5C15D2462558251900D4F56A /* MilestoneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C15D2442558251900D4F56A /* MilestoneCell.xib */; };
+		5C15D24E255829CA00D4F56A /* Milestone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C15D24D255829CA00D4F56A /* Milestone.storyboard */; };
+		5C15D25225582A7200D4F56A /* MilestoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15D25125582A7200D4F56A /* MilestoneViewController.swift */; };
 		5C3951912551431600C6AEB8 /* IssueFilter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C3951902551431600C6AEB8 /* IssueFilter.storyboard */; };
 		5C3951942551438A00C6AEB8 /* IssueFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3951932551438A00C6AEB8 /* IssueFilterViewController.swift */; };
 		5C39519925514FED00C6AEB8 /* FilterIssueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C39519825514FED00C6AEB8 /* FilterIssueCell.swift */; };
@@ -109,6 +113,10 @@
 
 /* Begin PBXFileReference section */
 		0B53A19D9BB8499500CE46F2 /* Pods-IssueTrackerApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTrackerApp.debug.xcconfig"; path = "Target Support Files/Pods-IssueTrackerApp/Pods-IssueTrackerApp.debug.xcconfig"; sourceTree = "<group>"; };
+		5C15D2432558251900D4F56A /* MilestoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneCell.swift; sourceTree = "<group>"; };
+		5C15D2442558251900D4F56A /* MilestoneCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MilestoneCell.xib; sourceTree = "<group>"; };
+		5C15D24D255829CA00D4F56A /* Milestone.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Milestone.storyboard; sourceTree = "<group>"; };
+		5C15D25125582A7200D4F56A /* MilestoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneViewController.swift; sourceTree = "<group>"; };
 		5C395189255005F700C6AEB8 /* IssueTrackerApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = IssueTrackerApp.entitlements; sourceTree = "<group>"; };
 		5C3951902551431600C6AEB8 /* IssueFilter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IssueFilter.storyboard; sourceTree = "<group>"; };
 		5C3951932551438A00C6AEB8 /* IssueFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueFilterViewController.swift; sourceTree = "<group>"; };
@@ -227,6 +235,7 @@
 				5C3951932551438A00C6AEB8 /* IssueFilterViewController.swift */,
 				5C7B9BB925567E4800804A77 /* LabelViewController.swift */,
 				5C7B9BBD25567E9F00804A77 /* TabBarController.swift */,
+				5C15D25125582A7200D4F56A /* MilestoneViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -262,6 +271,8 @@
 				5C7DF6B32557B39B00D730EE /* LabelMark.swift */,
 				5CBF7C1A2557DCB000853F62 /* UpdateLabelView.xib */,
 				5CBF7C262557E8C900853F62 /* UpdateLabelView.swift */,
+				5C15D2432558251900D4F56A /* MilestoneCell.swift */,
+				5C15D2442558251900D4F56A /* MilestoneCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -281,6 +292,7 @@
 				5CFED7422549381400DE811F /* Issue.storyboard */,
 				5C3951902551431600C6AEB8 /* IssueFilter.storyboard */,
 				5C7B9BB52556771D00804A77 /* Label.storyboard */,
+				5C15D24D255829CA00D4F56A /* Milestone.storyboard */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -562,8 +574,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C15D2462558251900D4F56A /* MilestoneCell.xib in Resources */,
 				5CFED7432549381400DE811F /* Issue.storyboard in Resources */,
 				5CBF7C1B2557DCB000853F62 /* UpdateLabelView.xib in Resources */,
+				5C15D24E255829CA00D4F56A /* Milestone.storyboard in Resources */,
 				BD090D1B2548399700454C79 /* Login.storyboard in Resources */,
 				5C3951912551431600C6AEB8 /* IssueFilter.storyboard in Resources */,
 				5C7B9BB62556771D00804A77 /* Label.storyboard in Resources */,
@@ -663,6 +677,7 @@
 				BD02F15F25523F1C0013C643 /* FilterItem.swift in Sources */,
 				5CBF7C172557D25800853F62 /* UIColor+Hex.swift in Sources */,
 				5C7B9BBA25567E4800804A77 /* LabelViewController.swift in Sources */,
+				5C15D2452558251900D4F56A /* MilestoneCell.swift in Sources */,
 				5C39519925514FED00C6AEB8 /* FilterIssueCell.swift in Sources */,
 				BDA8F88F25565A2F00A0E7C9 /* LoginKeychain.swift in Sources */,
 				BDA8F8F82557E59A00A0E7C9 /* Extension+UICollectionView.swift in Sources */,
@@ -684,6 +699,7 @@
 				5CCE210D2557AA1F0043FA30 /* LabelList.swift in Sources */,
 				BD02F15925519FDC0013C643 /* FilterTableDataSource.swift in Sources */,
 				5C7DF6B42557B39B00D730EE /* LabelMark.swift in Sources */,
+				5C15D25225582A7200D4F56A /* MilestoneViewController.swift in Sources */,
 				BDA8F89B255685B700A0E7C9 /* IssueEndPoint.swift in Sources */,
 				BDA8F8A6255686A800A0E7C9 /* LabelEndPoint.swift in Sources */,
 				BDA8F8EE2557E51D00A0E7C9 /* Reusable.swift in Sources */,
