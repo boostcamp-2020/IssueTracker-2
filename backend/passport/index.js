@@ -16,7 +16,7 @@ const verifyGitHub = async (accessToken, refreshToken, profile, cb) => {
   const user = profile.username;
   const avatar = profile.photos[0].value;
 
-  const userInfo = await users.findAll({ user });
+  const userInfo = await users.findAll({ username: user });
 
   if (!userInfo) {
     await users.create({
@@ -24,9 +24,10 @@ const verifyGitHub = async (accessToken, refreshToken, profile, cb) => {
       profileImageUrl: avatar,
       password: 'initial',
     });
+    return cb(null, [user, avatar]);
   }
 
-  return cb(null, [user, avatar]);
+  return cb(null, new Error('Already exist user'));
 };
 
 const verifyPassport = async (username, password, done) => {
