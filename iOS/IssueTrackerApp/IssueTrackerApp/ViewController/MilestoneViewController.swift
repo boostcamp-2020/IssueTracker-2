@@ -120,7 +120,7 @@ extension MilestoneViewController: UICollectionViewDelegateFlowLayout {
   }
 }
 
-extension MilestoneViewController: ButtonTouchDelegate2 {
+extension MilestoneViewController: UpdateMilestoneViewDelegate {
   func closeButtonTouched(_ sender: UIButton) {
     dismissUpdateLabelView()
   }

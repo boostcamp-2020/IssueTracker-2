@@ -20,7 +20,7 @@ class MilestoneMarkLabel: PaddingLabel {
   
   private func configure() {
     layer.cornerRadius = 5
-    layer.borderColor = UIColor.white.cgColor
+    layer.borderColor = UIColor.systemBackground.cgColor
     layer.borderWidth = 1
     layer.masksToBounds = true
   }
