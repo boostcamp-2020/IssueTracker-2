@@ -20,3 +20,7 @@ enum LabelSection {
 enum MilestoneSection {
   case main
 }
+
+enum CommentSection {
+  case main
+}
