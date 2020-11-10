@@ -24,6 +24,8 @@ class LabelMarkLabel: PaddingLabel {
   }
   
   func setColor(withColor color: UIColor) {
+    textColor = color.isDark() == true ? UIColor.white : UIColor.black
+
     layer.borderColor = color.cgColor
     backgroundColor = color
   }
