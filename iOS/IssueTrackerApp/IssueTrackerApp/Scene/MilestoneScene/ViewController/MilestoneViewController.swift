@@ -174,6 +174,7 @@ extension MilestoneViewController: UpdateMilestoneViewDelegate {
     let endPoint = MilestoneEndPoint.postMilestone(milestone: milestone).endPoint
     apiService.requestMilestone(forEndPoint: endPoint) { [weak self] (data, response, error) in
       self?.loadMilestoneData()
+      self?.addButton.isEnabled = true
     }
   }
 }

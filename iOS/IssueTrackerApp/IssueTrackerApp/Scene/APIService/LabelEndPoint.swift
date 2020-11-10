@@ -37,7 +37,7 @@ enum LabelEndPoint {
       )
     case .getLabels:
       return EndPoint(
-        path: "api/labels",
+        path: "api/label",
         httpMethod: .get,
         task: .request
       )

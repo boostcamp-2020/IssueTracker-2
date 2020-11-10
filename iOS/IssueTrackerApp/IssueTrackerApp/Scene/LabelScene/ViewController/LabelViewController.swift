@@ -22,12 +22,20 @@ class LabelViewController: UIViewController {
     return button
   }()
   
+  private var labelData: [Label] = [] {
+    willSet {
+      DispatchQueue.main.async { [weak self] in
+        self?.applySnapshot(withItem: newValue)
+      }
+    }
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    applySnapshot(animatingDifferences: false)
     labelCollectionView.delegate = self
     configureNavigator()
     labelCollectionView.register(LabelCell.self)
+    loadLabelData()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -64,18 +72,28 @@ class LabelViewController: UIViewController {
     return dataSource
   }
   
-  private func applySnapshot(animatingDifferences: Bool = true) {
+  private func applySnapshot(withItem items: [Label], animatingDifferences: Bool = true) {
     var snapshot = Snapshot()
     snapshot.appendSections([.main])
-    let labels = LabelList.dummyLabels
-    let labelList = LabelList(labels: labels)
-    snapshot.appendItems(labelList.labels)
+    snapshot.appendItems(items)
     dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
   }
   
   private func dismissUpdateLabelView() {
     blurView.isHidden.toggle()
     view.subviews.last?.removeFromSuperview()
+  }
+  
+  private func loadLabelData() {
+    let apiService = APIService()
+    let endPoint = LabelEndPoint.getLabels.endPoint
+    apiService.requestLabel(forEndPoint: endPoint) { [weak self] (data, response, error) in
+      let decoder = JSONDecoder()
+      decoder.keyDecodingStrategy = .convertFromSnakeCase
+      guard let data = data else { return }
+      guard let result = try? decoder.decode(LabelResponse.self, from: data) else { return }
+      self?.labelData = result.labels
+    }
   }
   
   @objc func addButtonTapped() {
