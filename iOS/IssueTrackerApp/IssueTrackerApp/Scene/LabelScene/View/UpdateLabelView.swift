@@ -11,7 +11,7 @@ protocol UpdateLabelViewDelegate: class {
   func closeButtonTouched(_ sender: UIButton)
   func resetButtonTouched(_ sender: UIButton, title: UITextField, description: UITextField)
   func colorRefreshButtonTouched(_ sender: UIButton, colorLabel: UILabel, colorPreview: UIView)
-  func saveButtonTouched(_ sender: UIButton)
+  func saveButtonTouched(title: String, description: String?, colorAsHex: String)
 }
 
 class UpdateLabelView: UIView {
@@ -36,7 +36,10 @@ class UpdateLabelView: UIView {
   }
   
   @IBAction func saveButtonTouched(_ sender: UIButton) {
-    delegate?.saveButtonTouched(sender)
+    guard let title = titleTextField.text,
+          let colorAsHex = colorHexLabel.text else { return }
+    let description = descriptionTextField.text
+    delegate?.saveButtonTouched(title: title, description: description, colorAsHex: colorAsHex)
   }
   
   override func awakeFromNib() {

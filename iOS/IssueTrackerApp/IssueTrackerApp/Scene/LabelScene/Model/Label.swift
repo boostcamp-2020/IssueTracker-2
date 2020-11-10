@@ -16,7 +16,7 @@ struct Label: Codable, Hashable {
     hasher.combine(id)
   }
   
-  var id: Int
+  var id: Int = 0
   var labelName: String
   var color: String
   var labelDescription: String?

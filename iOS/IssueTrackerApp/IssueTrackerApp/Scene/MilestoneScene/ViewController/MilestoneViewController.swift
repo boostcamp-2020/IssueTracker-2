@@ -105,8 +105,10 @@ class MilestoneViewController: UIViewController {
   }
   
   private func dismissUpdateLabelView() {
-    blurView.isHidden.toggle()
-    view.subviews.last?.removeFromSuperview()
+    DispatchQueue.main.async { [weak self] in
+      self?.blurView.isHidden.toggle()
+      self?.view.subviews.last?.removeFromSuperview()
+    }
   }
   
   @objc private func addButtonTouched() {
@@ -168,13 +170,13 @@ extension MilestoneViewController: UpdateMilestoneViewDelegate {
   }
   
   func saveButtonTouched(withTitle title: String, description: String?, endDate: String) {
-    dismissUpdateLabelView()
     let milestone = Milestone(milestoneName: title, milestoneDescription: description, endDate: endDate)
     let apiService = APIService()
     let endPoint = MilestoneEndPoint.postMilestone(milestone: milestone).endPoint
     apiService.requestMilestone(forEndPoint: endPoint) { [weak self] (data, response, error) in
       self?.loadMilestoneData()
       self?.addButton.isEnabled = true
+      self?.dismissUpdateLabelView()
     }
   }
 }
