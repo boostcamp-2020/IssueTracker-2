@@ -2,7 +2,15 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
-export default function RightContent(props) {
+
+const getPercent = (open, close) => {
+  if (open === 0) return 0;
+  return close / (open + close);
+};
+
+export default function RightContent({ milestone }) {
+
+
   const history = useHistory();
   const onClickEdit = () => {
     history.push('/milestone/edit');
@@ -14,11 +22,13 @@ export default function RightContent(props) {
         <PercentGauge />
       </GaugeBar>
       <Info>
-        <Percent>40%</Percent>
+        <Percent>
+          {`${getPercent(milestone.open_count, milestone.close_count)}%`}
+        </Percent>
         <span>complete</span>
-        <OpenCount>2</OpenCount>
+        <OpenCount>{milestone.open_count}</OpenCount>
         <span>open</span>
-        <ClosedCount>1</ClosedCount>
+        <ClosedCount>{milestone.close_count}</ClosedCount>
         <span>closed</span>
       </Info>
 
