@@ -110,6 +110,7 @@ class MilestoneViewController: UIViewController {
   }
   
   @objc private func addButtonTouched() {
+    addButton.isEnabled = false
     if let nib = Bundle.main.loadNibNamed("UpdateMilestoneView", owner: self),
        let nibView = nib.first as? UpdateMilestoneView {
       self.view.addSubview(nibView)
@@ -155,7 +156,10 @@ extension MilestoneViewController: UICollectionViewDelegateFlowLayout {
 
 extension MilestoneViewController: UpdateMilestoneViewDelegate {
   func closeButtonTouched(_ sender: UIButton) {
-    dismissUpdateLabelView()
+    AlertFactory.shared.makeActionSheet(viewControllerToPresent: self) { [weak self] in
+      self?.dismissUpdateLabelView()
+      self?.addButton.isEnabled = true
+    }
   }
   
   func resetButtonTouched(_ sender: UIButton, title: UITextField, description: UITextField) {
