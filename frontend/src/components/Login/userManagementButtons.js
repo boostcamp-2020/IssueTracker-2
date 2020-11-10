@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
 export default function UserManagementButtons(props) {
+  const history = useHistory();
+
   const onClick = () => {
     location.href = 'http://101.101.218.59:3000/auth/github';
   };
+
+  useEffect(() => {
+    if (document.cookie.includes('user')) {
+      history.push('/issues');
+    }
+  });
 
   return (
     <>

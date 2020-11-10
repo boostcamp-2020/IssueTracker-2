@@ -6,8 +6,13 @@ import Tab from './Tab';
 import CommentInput from './CommentInput';
 import SubmitButton from '../Common/GreenButton';
 import CancelButton from './CancelButton';
+import { useHistory } from 'react-router-dom';
 
 export default () => {
+  const history = useHistory();
+  const onClickSubmitButton = () => {
+    history.push('/issues');
+  };
   return (
     <Form>
       <IssueTitle />
@@ -19,7 +24,10 @@ export default () => {
       </FileAttachMessage>
       <ButtonWrap>
         <CancelButton />
-        <SubmitButton content="Submit new issue" />
+        <SubmitButton
+          onClick={onClickSubmitButton}
+          content="Submit new issue"
+        />
       </ButtonWrap>
     </Form>
   );

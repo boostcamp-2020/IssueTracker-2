@@ -1,11 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import { RepoIcon } from '@primer/octicons-react';
+import { useHistory } from 'react-router-dom';
 export default function Header() {
+  const history = useHistory();
+  const onClickHeader = () => {
+    history.push('/issues');
+  };
   return (
     <Title>
       <RepoIcon size={24} />
-      <Text>ISSUE</Text>
+      <Text onClick={onClickHeader}>ISSUE</Text>
     </Title>
   );
 }
@@ -23,4 +28,5 @@ const Title = styled.header`
 
 const Text = styled.span`
   margin-left: 0.2em;
+  cursor: pointer;
 `;

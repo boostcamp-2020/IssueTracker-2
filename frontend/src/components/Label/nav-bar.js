@@ -6,7 +6,7 @@ import NavigationButton from '../Common/NavButton';
 export default function NavBar() {
   return (
     <Wrapper>
-      <NavigationButton />
+      <NavigationButton type="label" />
       <ButtonWrapper>
         <CreateButton content="New label" />
       </ButtonWrapper>
