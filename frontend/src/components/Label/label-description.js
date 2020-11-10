@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { deleteFetch } from '../../service/fetch';
 
 export default function LabelDescription({ labelInfo }) {
+  const deleteLabel = () => {
+    deleteFetch(process.env.SERVER_URL + '/api/label', { id: labelInfo.id });
+  };
   return (
     <Wrapper>
       <LabelTagArea>
@@ -15,7 +19,7 @@ export default function LabelDescription({ labelInfo }) {
       <LabelDescriptionArea>{labelInfo.label_description}</LabelDescriptionArea>
       <LabelManageButtonArea>
         <LabelManageButton>Edit</LabelManageButton>
-        <LabelManageButton>Delete</LabelManageButton>
+        <LabelManageButton onClick={deleteLabel}>Delete</LabelManageButton>
       </LabelManageButtonArea>
     </Wrapper>
   );
