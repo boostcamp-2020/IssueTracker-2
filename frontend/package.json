@@ -35,7 +35,8 @@
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
-    "babel-polyfill": "^6.26.0"
+    "babel-polyfill": "^6.26.0",
+    "dotenv-webpack": "^4.0.0"
   },
   "dependencies": {
     "@primer/octicons-react": "^11.0.0",

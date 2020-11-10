@@ -6,7 +6,7 @@ export default function UserManagementButtons(props) {
   const history = useHistory();
 
   const onClick = () => {
-    location.href = 'http://101.101.218.59:3000/auth/github';
+    location.href = `${process.env.SERVER_URL}/auth/github`;
   };
 
   useEffect(() => {
