@@ -38,9 +38,14 @@ class MilestoneViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    registerForKeyboardNotifications()
     loadMilestoneData()
   }
-
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    unregisterForKeyboardNotifications()
+  }
+  
   private func configure() {
     configureNavigationBar()
     configureMilestoneCollectionView()
@@ -51,6 +56,16 @@ class MilestoneViewController: UIViewController {
     guard let navigationController = navigationController else { return }
     navigationController.navigationBar.prefersLargeTitles = true
     navigationController.navigationBar.topItem?.title = "마일스톤"
+  }
+  
+  func registerForKeyboardNotifications() {
+    NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+  }
+  
+  func unregisterForKeyboardNotifications() {
+    NotificationCenter.default.removeObserver(self, name:UIResponder.keyboardWillShowNotification, object: nil)
+    NotificationCenter.default.removeObserver(self, name:UIResponder.keyboardWillHideNotification, object: nil)
   }
   
   private func loadMilestoneData() {
@@ -112,6 +127,23 @@ class MilestoneViewController: UIViewController {
     blurView.effect = UIBlurEffect(style: .dark)
     blurView.frame = self.view.bounds
     self.blurView.isHidden.toggle()
+  }
+  
+  @objc func keyboardWillShow(note: NSNotification) {
+    if let keyboardSize = (note.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+       let updateMilestoneView = view.subviews.last as? UpdateMilestoneView {
+      UIView.animate(withDuration: 0.3, animations: {
+        updateMilestoneView.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + 230)
+      })
+    }
+  }
+  
+  @objc func keyboardWillHide(note: NSNotification) {
+    if let updateMilestoneView = view.subviews.last as? UpdateMilestoneView {
+      UIView.animate(withDuration: 0.3, animations: {
+        updateMilestoneView.transform = .identity
+      })
+    }
   }
 }
 

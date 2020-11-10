@@ -172,6 +172,7 @@
                         <outlet property="issueContentTextView" destination="Ua3-2l-Fbw" id="5Q5-5s-y84"/>
                         <outlet property="markdownSegmentedControl" destination="e9k-lv-mLt" id="sdd-ly-ail"/>
                         <outlet property="navigationBar" destination="rb4-oa-MWd" id="oPP-lV-bpL"/>
+                        <outlet property="textViewBottomConstraint" destination="OKo-Ix-WCf" id="7Kw-Kp-T3x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="may-DH-vSl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
