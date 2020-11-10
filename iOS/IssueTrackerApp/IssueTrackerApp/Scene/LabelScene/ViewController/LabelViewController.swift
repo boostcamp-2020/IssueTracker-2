@@ -124,7 +124,9 @@ extension LabelViewController: UICollectionViewDelegateFlowLayout {
 
 extension LabelViewController: UpdateLabelViewDelegate {
   func closeButtonTouched(_ sender: UIButton) {
-    dismissUpdateLabelView()
+    AlertFactory.shared.makeActionSheet(viewControllerToPresent: self) { [weak self] in
+      self?.dismissUpdateLabelView()
+    }
   }
   
   func resetButtonTouched(_ sender: UIButton, title: UITextField, description: UITextField) {
