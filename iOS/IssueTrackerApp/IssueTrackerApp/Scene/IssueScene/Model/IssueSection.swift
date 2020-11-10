@@ -10,3 +10,13 @@ import Foundation
 enum IssueSection {
   case main
 }
+
+// 옮기기
+
+enum LabelSection {
+  case main
+}
+
+enum MilestoneSection {
+  case main
+}

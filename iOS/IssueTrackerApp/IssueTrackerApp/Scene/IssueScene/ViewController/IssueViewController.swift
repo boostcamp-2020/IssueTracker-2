@@ -25,6 +25,11 @@ class IssueViewController: UIViewController {
   @IBOutlet weak var issueSearchBar: UISearchBar!
   @IBOutlet weak var collectionViewBottomConstraint: NSLayoutConstraint!
   
+  @IBAction func newIssueButtonTouched(_ sender: Any) {
+    guard let newIssueVC = storyboard?.instantiateViewController(identifier: "NewIssueVC") else { return }
+    present(newIssueVC, animated: true)
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     configure()
@@ -70,22 +75,43 @@ class IssueViewController: UIViewController {
   private func configureIssueCollectionView() {
     issueCollectionView.delegate = self
     issueCollectionView.allowsMultipleSelection = true
+    issueCollectionView.register(IssueCell.self)
   }
   
   private func makeDataSource() -> DataSource {
-    let dataSource = DataSource(collectionView: issueCollectionView) { (collectionView, indexPath, issue) -> UICollectionViewCell? in
-      guard let cell = collectionView.dequeueReusableCell(
-        withReuseIdentifier: "IssueCell",
-        for: indexPath
-      ) as? IssueCell else {
-        return UICollectionViewCell()
-      }
+    let dataSource = DataSource(collectionView: issueCollectionView) { (collectionView, indexPath, item) -> UICollectionViewCell? in
+      let cell: IssueCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
       
-      cell.updateCell(withTitle: issue.issueTitle)
+      let leftGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.swipeLeft(_:)))
+      let rightGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.swipeRight(_:)))
+      
+      leftGesture.direction = .left
+      rightGesture.direction = .right
+      
+      cell.gestureRecognizers = [leftGesture, rightGesture]
+      
+      cell.updateCell(withItem: item)
+      
       return cell
     }
     
     return dataSource
+  }
+  
+  @objc func swipeLeft(_ sender: UISwipeGestureRecognizer) {
+    guard let view = sender.view as? IssueCell else { return }
+    UIView.animate(withDuration: 0.5) {
+      view.bigView.transform = CGAffineTransform(translationX: -160, y: 0)
+      view.closeLabel.transform = CGAffineTransform(translationX: -80, y: 0)
+    }
+  }
+  
+  @objc func swipeRight(_ sender: UISwipeGestureRecognizer) {
+    guard let view = sender.view as? IssueCell else { return }
+    UIView.animate(withDuration: 0.5) {
+      view.bigView.transform = .identity
+      view.closeLabel.transform = .identity
+    }
   }
   
   private func applySnapshot(animatingDifferences: Bool = true) {

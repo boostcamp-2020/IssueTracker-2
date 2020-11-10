@@ -2,17 +2,19 @@
 //  IssueCell.swift
 //  IssueTrackerApp
 //
-//  Created by 서명렬 on 2020/10/27.
+//  Created by 서명렬 on 2020/11/08.
 //
 
 import UIKit
 
-class IssueCell: UICollectionViewCell {
+class IssueCell: UICollectionViewCell, Reusable, NibLoadable {
   
   @IBOutlet weak var titleLabel: UILabel!
-  @IBOutlet weak var descriptionLabel: UILabel!
+  @IBOutlet weak var milestoneLabel: MilestoneMarkLabel!
+  @IBOutlet weak var labelLabel: UILabel!
   @IBOutlet weak var bigView: UIView!
   @IBOutlet weak var checkmarkImageView: UIImageView!
+  @IBOutlet weak var closeLabel: UILabel!
   
   override var isSelected: Bool {
     didSet {
@@ -20,23 +22,19 @@ class IssueCell: UICollectionViewCell {
     }
   }
   
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-    configure()
-  }
-  
-  required init?(coder: NSCoder) {
-    super.init(coder: coder)
+  override func awakeFromNib() {
+    super.awakeFromNib()
     configure()
   }
   
   private func configure() {
-    layer.borderWidth = 0.2
+    layer.borderWidth = 0.25
     layer.borderColor = UIColor.lightGray.cgColor
   }
   
-  func updateCell(withTitle title: String) {
-    titleLabel.text = title
+  func updateCell(withItem item: Issue) {
+    titleLabel.text = item.issueTitle
+    milestoneLabel.text = "마일스톤"
   }
   
   func editHiddenCell(status: Bool) {
