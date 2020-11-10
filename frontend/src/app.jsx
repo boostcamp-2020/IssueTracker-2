@@ -11,6 +11,7 @@ import {
   Label,
   IssueCreation,
   Issue,
+  IssueDetail,
 } from './pages';
 
 const App = ({ milestoneService }) => {
@@ -35,6 +36,7 @@ const App = ({ milestoneService }) => {
         <Route path="/labels" component={Label} />
         <Route path="/issue/create" component={IssueCreation} />
         <Route path="/issues" component={Issue} />
+        <Route exact path="/issue/:id" component={IssueDetail} />
       </Switch>
     </BrowserRouter>
   );

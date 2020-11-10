@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-export default function NormalButton(props) {
-  return <Button>{props.content}</Button>;
+
+export default function NormalButton({ onClick, content }) {
+  return <Button onClick={onClick}>{content}</Button>;
 }
 
 const Button = styled.button`

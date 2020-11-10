@@ -6,6 +6,7 @@ import {
   CheckIcon,
 } from '@primer/octicons-react';
 import DropdownCaret from './DropdownCaret';
+import PopupContent from '../Common/popup';
 
 export default function ListForm(props) {
   const getHeaderContent = type => {
@@ -24,30 +25,49 @@ export default function ListForm(props) {
             <span>Closed</span>
           </Closed>
           <FilteringConditions>
-            <Condition>
-              Author
-              <DropdownCaret />
-            </Condition>
-            <Condition>
-              label
-              <DropdownCaret />
-            </Condition>
-            <Condition>
-              Projects
-              <DropdownCaret />
-            </Condition>
-            <Condition>
-              Milestones
-              <DropdownCaret />
-            </Condition>
-            <Condition>
-              Assignee
-              <DropdownCaret />
-            </Condition>
-            <Condition>
-              Sort
-              <DropdownCaret />
-            </Condition>
+            <Details>
+              <Condition>
+                Author
+                <DropdownCaret />
+              </Condition>
+              <PopupContent type="Author" />
+            </Details>
+
+            <Details>
+              <Condition>
+                Label
+                <DropdownCaret />
+              </Condition>
+              <PopupContent type="Label" />
+            </Details>
+            <Details>
+              <Condition>
+                Projects
+                <DropdownCaret />
+              </Condition>
+              <PopupContent type="Projects" />
+            </Details>
+            <Details>
+              <Condition>
+                Milestones
+                <DropdownCaret />
+              </Condition>
+              <PopupContent type="Milestone" />
+            </Details>
+            <Details>
+              <Condition>
+                Assignee
+                <DropdownCaret />
+              </Condition>
+              <PopupContent type="Assignee" />
+            </Details>
+            <Details>
+              <Condition>
+                Sort
+                <DropdownCaret />
+              </Condition>
+              <PopupContent type="Sort" />
+            </Details>
           </FilteringConditions>
         </HeaderWrapper>
       );
@@ -56,13 +76,13 @@ export default function ListForm(props) {
       return (
         <HeaderWrapper>
           <MilestoneIcon size={19} />
-          <Open>
-            <Count>2</Count>
+          <Open onClick={props.clickOpen} status={props.status}>
+            <Count>{props.openTotalCount}</Count>
             <span>Open</span>
           </Open>
-          <Closed>
+          <Closed onClick={props.clickClose} status={props.status}>
             <CheckIcon size={22} />
-            <Count>0</Count>
+            <Count>{props.closeTotalCount}</Count>
             <span>Closed</span>
           </Closed>
         </HeaderWrapper>
@@ -118,16 +138,31 @@ const HeaderWrapper = styled.div`
   border-left: 0;
 `;
 const Open = styled.span`
+  cursor: pointer;
   margin-left: 0.2em;
   margin-right: 1.3em;
   transform: translateY(1px);
+
+  ${props => {
+    if (!props.status) {
+      return `font-weight: bold;`;
+    }
+    return ``;
+  }}
 `;
 const Count = styled.span`
   margin-left: 0.3em;
   margin-right: 0.3em;
 `;
 const Closed = styled.span`
+  cursor: pointer;
   transform: translateY(1px);
+  ${props => {
+    if (props.status) {
+      return `font-weight: bold;`;
+    }
+    return ``;
+  }}
 `;
 
 const List = styled.div`
@@ -144,4 +179,10 @@ const FilteringConditions = styled.div`
   width: 40%;
   display: flex;
   justify-content: space-around;
+`;
+
+const Details = styled.details`
+  & > summary::-webkit-details-marker {
+    display: none;
+  }
 `;

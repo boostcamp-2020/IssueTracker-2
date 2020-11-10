@@ -1,22 +1,39 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-export default function RightContent(props) {
+
+
+const getPercent = (open, close) => {
+  if (open === 0) return 0;
+  return close / (open + close);
+};
+
+export default function RightContent({ milestone }) {
+
+
+  const history = useHistory();
+  const onClickEdit = () => {
+    history.push('/milestone/edit');
+  };
+
   return (
     <ContentRight>
       <GaugeBar>
         <PercentGauge />
       </GaugeBar>
       <Info>
-        <Percent>40%</Percent>
+        <Percent>
+          {`${getPercent(milestone.open_count, milestone.close_count)}%`}
+        </Percent>
         <span>complete</span>
-        <OpenCount>2</OpenCount>
+        <OpenCount>{milestone.open_count}</OpenCount>
         <span>open</span>
-        <ClosedCount>1</ClosedCount>
+        <ClosedCount>{milestone.close_count}</ClosedCount>
         <span>closed</span>
       </Info>
 
       <Buttons>
-        <BlueTextButton>Edit</BlueTextButton>
+        <BlueTextButton onClick={onClickEdit}>Edit</BlueTextButton>
         <BlueTextButton>Close</BlueTextButton>
         <RedTextButton>Delete</RedTextButton>
       </Buttons>
@@ -54,11 +71,13 @@ const BlueTextButton = styled.a`
   color: blue;
   margin-right: 1em;
   text-decoration: none;
+  cursor: pointer;
 `;
 
 const RedTextButton = styled.a`
   color: red;
   text-decoration: none;
+  cursor: pointer;
 `;
 
 const Buttons = styled.div`
