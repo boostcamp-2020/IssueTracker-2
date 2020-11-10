@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="IssueDetailHeader" reuseIdentifier="IssueDetailHeader" id="U6b-Vx-4bR" customClass="IssueDetailHeader" customModule="IssueTrackerApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="289" height="116"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1gi-oI-MIm">
+                    <rect key="frame" x="10" y="15" width="25" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="25" id="7KM-5n-rJD"/>
+                        <constraint firstAttribute="width" secondItem="1gi-oI-MIm" secondAttribute="height" multiplier="1:1" id="NRT-bh-KhH"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✓ open" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GxP-tp-NTg" customClass="LabelMarkLabel" customModule="IssueTrackerApp" customModuleProvider="target">
+                    <rect key="frame" x="10" y="80" width="60" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="yJu-db-kXv"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wDP-rF-hTA">
+                    <rect key="frame" x="10" y="47.5" width="269" height="21"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUA-ax-lHc">
+                    <rect key="frame" x="237" y="15" width="42" height="25"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="flH-hG-uhe">
+                    <rect key="frame" x="42" y="19.5" width="35.5" height="16"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="GxP-tp-NTg" firstAttribute="leading" secondItem="wDP-rF-hTA" secondAttribute="leading" id="0ax-Ix-5Em"/>
+                <constraint firstItem="wDP-rF-hTA" firstAttribute="centerY" secondItem="U6b-Vx-4bR" secondAttribute="centerY" id="6ko-ho-2Xh"/>
+                <constraint firstItem="wDP-rF-hTA" firstAttribute="leading" secondItem="1gi-oI-MIm" secondAttribute="leading" id="Jtj-rc-TD3"/>
+                <constraint firstItem="fUA-ax-lHc" firstAttribute="centerY" secondItem="1gi-oI-MIm" secondAttribute="centerY" id="Ocy-TS-bF7"/>
+                <constraint firstAttribute="trailing" secondItem="fUA-ax-lHc" secondAttribute="trailing" constant="10" id="QIg-JA-JWU"/>
+                <constraint firstItem="flH-hG-uhe" firstAttribute="leading" secondItem="1gi-oI-MIm" secondAttribute="trailing" constant="7" id="ZsY-lx-IbL"/>
+                <constraint firstAttribute="bottom" secondItem="GxP-tp-NTg" secondAttribute="bottom" constant="15" id="euQ-Zg-NuI"/>
+                <constraint firstAttribute="trailing" secondItem="wDP-rF-hTA" secondAttribute="trailing" constant="10" id="fc2-ej-dQM"/>
+                <constraint firstItem="1gi-oI-MIm" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="15" id="inb-WF-c2c"/>
+                <constraint firstItem="flH-hG-uhe" firstAttribute="centerY" secondItem="1gi-oI-MIm" secondAttribute="centerY" id="jmT-6H-RgG"/>
+                <constraint firstItem="fUA-ax-lHc" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="15" id="o7A-9a-x6B"/>
+                <constraint firstItem="1gi-oI-MIm" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="10" id="ojr-de-ZDs"/>
+            </constraints>
+            <connections>
+                <outlet property="issueIDLabel" destination="fUA-ax-lHc" id="Hz4-73-yHb"/>
+                <outlet property="issueStatusLabel" destination="GxP-tp-NTg" id="tsC-1S-f0F"/>
+                <outlet property="issueTitleLabel" destination="wDP-rF-hTA" id="yLp-WQ-Jvb"/>
+                <outlet property="profileImageView" destination="1gi-oI-MIm" id="djW-e3-1Ug"/>
+                <outlet property="userNameLabel" destination="flH-hG-uhe" id="aQY-wS-sdI"/>
+            </connections>
+            <point key="canvasLocation" x="163.04347826086959" y="17.410714285714285"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
