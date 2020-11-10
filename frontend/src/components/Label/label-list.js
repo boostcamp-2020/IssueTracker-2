@@ -7,10 +7,14 @@ import { getFetch } from '../../service/fetch';
 export default function LabelList() {
   const [labelListData, setLabelListData] = useState([]);
 
-  useEffect(() => {
+  const getLabelList = () => {
     getFetch(process.env.SERVER_URL + '/api/label')
       .then(res => res.json())
       .then(data => setLabelListData(data.labels));
+  };
+
+  useEffect(() => {
+    getLabelList();
   }, []);
 
   return (
@@ -18,7 +22,13 @@ export default function LabelList() {
       content={
         <LabelDescriptionList>
           {labelListData.map((labelInfo, index) => {
-            return <LabelDescription key={index} labelInfo={labelInfo} />;
+            return (
+              <LabelDescription
+                key={index}
+                labelInfo={labelInfo}
+                getLabelList={getLabelList}
+              />
+            );
           })}
         </LabelDescriptionList>
       }

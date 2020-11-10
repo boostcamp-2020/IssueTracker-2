@@ -3,11 +3,13 @@ import styled from 'styled-components';
 import { deleteFetch } from '../../service/fetch';
 import LabelEditTab from './label-edit-tab';
 
-export default function LabelDescription({ labelInfo }) {
+export default function LabelDescription({ labelInfo, getLabelList }) {
   const [isEditTab, setIsEditTab] = useState(false);
 
   const deleteLabel = () => {
-    deleteFetch(process.env.SERVER_URL + '/api/label', { id: labelInfo.id });
+    deleteFetch(process.env.SERVER_URL + '/api/label', {
+      id: labelInfo.id,
+    }).then(() => getLabelList());
   };
 
   const handleShowEditTab = () => {
@@ -40,7 +42,11 @@ export default function LabelDescription({ labelInfo }) {
         </LabelManageButtonArea>
       </Wrapper>
       {isEditTab && (
-        <LabelEditTab labelInfo={labelInfo} setIsEditTab={setIsEditTab} />
+        <LabelEditTab
+          labelInfo={labelInfo}
+          setIsEditTab={setIsEditTab}
+          getLabelList={getLabelList}
+        />
       )}
     </>
   );

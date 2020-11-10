@@ -6,7 +6,11 @@ import { updateFetch } from '../../service/fetch';
 import NormalButton from '../Common/NormalButton';
 import GreenButton from '../Common/GreenButton';
 
-export default function LabelEditTab({ labelInfo, setIsEditTab }) {
+export default function LabelEditTab({
+  labelInfo,
+  setIsEditTab,
+  getLabelList,
+}) {
   const [newLabelInfo, setNewLabelInfo] = useState({
     labelId: labelInfo.id,
     labelName: labelInfo.label_name,
@@ -36,7 +40,7 @@ export default function LabelEditTab({ labelInfo, setIsEditTab }) {
       label_name: newLabelInfo.labelName,
       label_description: newLabelInfo.labelDescription,
       color: newLabelInfo.labelColor,
-    });
+    }).then(() => getLabelList());
     closeEditTab();
   };
 
