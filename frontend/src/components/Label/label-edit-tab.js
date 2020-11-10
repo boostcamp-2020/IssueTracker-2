@@ -8,6 +8,7 @@ export default function LabelEditTab({ labelInfo, setIsEditTab }) {
   const [newLabelInfo, setNewLabelInfo] = useState({
     labelName: labelInfo.label_name,
     labelDescription: labelInfo.label_description,
+    labelColor: labelInfo.color,
   });
   const handleLabelName = event => {
     setNewLabelInfo({ ...newLabelInfo, labelName: event.target.value });
@@ -15,6 +16,10 @@ export default function LabelEditTab({ labelInfo, setIsEditTab }) {
 
   const handleLabelDescription = event => {
     setNewLabelInfo({ ...newLabelInfo, labelDescription: event.target.value });
+  };
+
+  const handleLabelColor = event => {
+    setNewLabelInfo({ ...newLabelInfo, labelColor: event.target.value });
   };
 
   return (
@@ -34,7 +39,10 @@ export default function LabelEditTab({ labelInfo, setIsEditTab }) {
           </LabelDescriptionArea>
           <LabelColorArea>
             <InputTitle>Color</InputTitle>
-            <textarea />
+            <textarea
+              onChange={handleLabelColor}
+              value={newLabelInfo.labelColor}
+            />
           </LabelColorArea>
         </LabelDetailArea>
         <LabelAddButtonArea>
