@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import NormalButton from '../Common/NormalButton';
 import GreenButton from '../Common/GreenButton';
 
-export default function LabelEditTab({ setIsEditTab, labelDescription }) {
+export default function LabelEditTab({ labelInfo, setIsEditTab }) {
+  const [newLabelInfo, setNewLabelInfo] = useState({
+    labelName: labelInfo.label_name,
+    labelDescription: labelInfo.label_description,
+  });
+
+  const handleLabelDescription = event => {
+    setNewLabelInfo({ ...newLabelInfo, labelDescription: event.target.value });
+  };
+
   return (
     <Wrapper>
       <InputList>
@@ -15,7 +24,10 @@ export default function LabelEditTab({ setIsEditTab, labelDescription }) {
         <LabelDetailArea>
           <LabelDescriptionArea>
             <InputTitle>Description</InputTitle>
-            <textarea value={labelDescription} />
+            <textarea
+              onChange={handleLabelDescription}
+              value={newLabelInfo.labelDescription}
+            />
           </LabelDescriptionArea>
           <LabelColorArea>
             <InputTitle>Color</InputTitle>

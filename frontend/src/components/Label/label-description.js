@@ -40,10 +40,7 @@ export default function LabelDescription({ labelInfo }) {
         </LabelManageButtonArea>
       </Wrapper>
       {isEditTab && (
-        <LabelEditTab
-          labelDescription={labelInfo.label_description}
-          setIsEditTab={setIsEditTab}
-        />
+        <LabelEditTab labelInfo={labelInfo} setIsEditTab={setIsEditTab} />
       )}
     </>
   );
