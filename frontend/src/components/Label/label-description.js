@@ -1,27 +1,51 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { deleteFetch } from '../../service/fetch';
+import LabelEditTab from './label-edit-tab';
 
 export default function LabelDescription({ labelInfo }) {
+  const [isEditTab, setIsEditTab] = useState(false);
+
   const deleteLabel = () => {
     deleteFetch(process.env.SERVER_URL + '/api/label', { id: labelInfo.id });
   };
+
+  const handleShowEditTab = () => {
+    setIsEditTab(!isEditTab);
+  };
+
   return (
-    <Wrapper>
-      <LabelTagArea>
-        <LabelTag
-          backgroundColor={labelInfo.color}
-          textColor={labelInfo.textColor}
-        >
-          {labelInfo.label_name}
-        </LabelTag>
-      </LabelTagArea>
-      <LabelDescriptionArea>{labelInfo.label_description}</LabelDescriptionArea>
-      <LabelManageButtonArea>
-        <LabelManageButton>Edit</LabelManageButton>
-        <LabelManageButton onClick={deleteLabel}>Delete</LabelManageButton>
-      </LabelManageButtonArea>
-    </Wrapper>
+    <>
+      <Wrapper>
+        <LabelTagArea>
+          <LabelTag
+            backgroundColor={labelInfo.color}
+            textColor={labelInfo.textColor}
+          >
+            {labelInfo.label_name}
+          </LabelTag>
+        </LabelTagArea>
+        {!isEditTab && (
+          <LabelDescriptionArea>
+            {labelInfo.label_description}
+          </LabelDescriptionArea>
+        )}
+        <LabelManageButtonArea>
+          {!isEditTab && (
+            <LabelManageButton onClick={handleShowEditTab}>
+              Edit
+            </LabelManageButton>
+          )}
+          <LabelManageButton onClick={deleteLabel}>Delete</LabelManageButton>
+        </LabelManageButtonArea>
+      </Wrapper>
+      {isEditTab && (
+        <LabelEditTab
+          labelDescription={labelInfo.label_description}
+          setIsEditTab={setIsEditTab}
+        />
+      )}
+    </>
   );
 }
 
