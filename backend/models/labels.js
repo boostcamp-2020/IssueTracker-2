@@ -1,5 +1,24 @@
 const db = require('../db');
 
+exports.create = async ({ id, label_name, color, label_description }) => {
+  try {
+    const connection = await db.pool.getConnection(async conn => conn);
+    let sql =
+      'INSERT INTO labels (id, label_name, color, label_description) VALUES (?, ?, ?, ?)';
+    const [{ generatedLabelId }] = await connection.query(sql, [
+      id,
+      label_name,
+      color,
+      label_description,
+    ]);
+    connection.release();
+
+    return { generatedLabelId };
+  } catch (err) {
+    throw new Error(err);
+  }
+};
+
 exports.read = async () => {
   try {
     const connection = await db.pool.getConnection(async conn => conn);
@@ -13,13 +32,34 @@ exports.read = async () => {
   }
 };
 
-exports.update = async ({ id }) => {
+
+exports.delete = async ({ id }) => {
   try {
     const connection = await db.pool.getConnection(async conn => conn);
     let sql = 'DELETE FROM labels WHERE id = ?';
     const [{ deleteLabelId }] = await connection.query(sql, [id]);
     connection.release();
     return deleteLabelId;
+  } catch (err) {
+    throw new Error(err);
+  }
+};
+
+exports.update = async ({ id, label_name, color, label_description }) => {
+  try {
+    const connection = await db.pool.getConnection(async conn => conn);
+    let sql =
+      'Update labels SET label_name = ?, color = ?, label_description = ? WHERE id = ?';
+    const [{ generatedLabelId }] = await connection.query(sql, [
+      label_name,
+      color,
+      label_description,
+      id,
+    ]);
+    connection.release();
+
+    return { generatedLabelId };
+
   } catch (err) {
     throw new Error(err);
   }

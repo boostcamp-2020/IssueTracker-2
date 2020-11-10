@@ -14,6 +14,10 @@ export default function MilestoneList(props) {
             <LeftContent />
             <RightContent />
           </Milestone>
+          <Milestone>
+            <LeftContent />
+            <RightContent />
+          </Milestone>
         </>
       }
       type="milestone"

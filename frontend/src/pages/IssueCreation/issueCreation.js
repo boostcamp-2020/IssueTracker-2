@@ -28,8 +28,9 @@ const IssueCreation = () => {
 };
 
 const IssueCreationBody = styled.div`
+  width: 90%;
   display: flex;
-  width: 1200px;
+  padding: 3em 0;
   height: 700px;
   margin: auto;
 `;
