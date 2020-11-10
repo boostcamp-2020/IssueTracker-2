@@ -9,6 +9,9 @@ export default function LabelEditTab({ labelInfo, setIsEditTab }) {
     labelName: labelInfo.label_name,
     labelDescription: labelInfo.label_description,
   });
+  const handleLabelName = event => {
+    setNewLabelInfo({ ...newLabelInfo, labelName: event.target.value });
+  };
 
   const handleLabelDescription = event => {
     setNewLabelInfo({ ...newLabelInfo, labelDescription: event.target.value });
@@ -19,7 +22,7 @@ export default function LabelEditTab({ labelInfo, setIsEditTab }) {
       <InputList>
         <LabelNameArea>
           <InputTitle>Label name</InputTitle>
-          <textarea />
+          <textarea onChange={handleLabelName} value={newLabelInfo.labelName} />
         </LabelNameArea>
         <LabelDetailArea>
           <LabelDescriptionArea>
