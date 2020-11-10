@@ -5,6 +5,10 @@ import { postFetch } from '../../service/fetch';
 
 import NormalButton from '../Common/NormalButton';
 import GreenButton from '../Common/GreenButton';
+import RandomColorButton from '../Common/RandomColorButton';
+
+const HEX_NUMBER = '0123456789abcdef';
+const HEX_NUMBER_LENGTH = 6;
 
 export default function LabelAddTabl({ setIsAddTab, getLabelList }) {
   const [newLabelInfo, setNewLabelInfo] = useState({
@@ -31,6 +35,18 @@ export default function LabelAddTabl({ setIsAddTab, getLabelList }) {
 
   const handleLabelColor = event => {
     setNewLabelInfo({ ...newLabelInfo, labelColor: event.target.value });
+  };
+
+  const getRandomColorHex = () => {
+    let randomColorHex = '#';
+
+    for (let i = 0; i < HEX_NUMBER_LENGTH; i++)
+      randomColorHex += HEX_NUMBER[Math.floor(Math.random() * 16)];
+
+    setNewLabelInfo({
+      ...newLabelInfo,
+      labelColor: randomColorHex,
+    });
   };
 
   const handleAddLabelChange = () => {
@@ -60,10 +76,16 @@ export default function LabelAddTabl({ setIsAddTab, getLabelList }) {
           </LabelDescriptionArea>
           <LabelColorArea>
             <InputTitle>Color</InputTitle>
-            <textarea
-              onChange={handleLabelColor}
-              value={newLabelInfo.labelColor}
-            />
+            <ColorInputArea>
+              <RandomColorButton
+                state={newLabelInfo}
+                setState={setNewLabelInfo}
+              />
+              <textarea
+                onChange={handleLabelColor}
+                value={newLabelInfo.labelColor}
+              />
+            </ColorInputArea>
           </LabelColorArea>
         </LabelDetailArea>
         <LabelAddButtonArea>
@@ -120,5 +142,9 @@ const InputTitle = styled.p`
 `;
 
 const AddButtonsWrapper = styled.div`
+  display: flex;
+`;
+
+const ColorInputArea = styled.div`
   display: flex;
 `;

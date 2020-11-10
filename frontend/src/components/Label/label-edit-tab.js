@@ -5,6 +5,7 @@ import { updateFetch } from '../../service/fetch';
 
 import NormalButton from '../Common/NormalButton';
 import GreenButton from '../Common/GreenButton';
+import RandomColorButton from '../Common/RandomColorButton';
 
 export default function LabelEditTab({
   labelInfo,
@@ -61,10 +62,16 @@ export default function LabelEditTab({
           </LabelDescriptionArea>
           <LabelColorArea>
             <InputTitle>Color</InputTitle>
-            <textarea
-              onChange={handleLabelColor}
-              value={newLabelInfo.labelColor}
-            />
+            <ColorInputArea>
+              <RandomColorButton
+                state={newLabelInfo}
+                setState={setNewLabelInfo}
+              />
+              <textarea
+                onChange={handleLabelColor}
+                value={newLabelInfo.labelColor}
+              />
+            </ColorInputArea>
           </LabelColorArea>
         </LabelDetailArea>
         <LabelAddButtonArea>
@@ -114,5 +121,9 @@ const InputTitle = styled.p`
 `;
 
 const AddButtonsWrapper = styled.div`
+  display: flex;
+`;
+
+const ColorInputArea = styled.div`
   display: flex;
 `;
