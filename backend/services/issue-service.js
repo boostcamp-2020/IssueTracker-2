@@ -1,8 +1,15 @@
 const issues = require('../models/issues');
+const issueLabels = require('../models/issue_labels');
+const issueAssignees = require('../models/issue_assignees');
 
 exports.createIssue = async req => {
   try {
     const insertId = await issues.create(req.body);
+    const issue_id = insertId;
+    const label_name = req.body.label_name;
+    const assignee_id = req.body.assignee_id;
+    await issueLabels.create({ issue_id, label_name });
+    await issueAssignees.create({ issue_id, assignee_id });
     return { status: 202, message: '이슈 등록 성공', insertId };
   } catch (err) {
     throw err;
