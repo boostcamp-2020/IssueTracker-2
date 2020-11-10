@@ -29,7 +29,7 @@ export default () => {
 
 const Sidebar = styled.div`
   border-bottom: 1px solid #eaecef;
-  width: 250px;
+  width: 20em;
   padding-top: 16px;
 `;
 

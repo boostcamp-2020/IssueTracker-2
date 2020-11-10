@@ -2,7 +2,6 @@ const db = require('../db');
 const util = require('../util');
 
 exports.create = async ({
-  issue_id,
   milestone_name,
   milestone_description,
   end_date,
@@ -11,9 +10,8 @@ exports.create = async ({
   try {
     const connection = await db.pool.getConnection(async conn => conn);
     let sql =
-      'INSERT INTO milestones (issue_id,milestone_name, milestone_description, end_date, created_at,status) VALUES (?, ?, ?, ?,?,?)';
+      'INSERT INTO milestones (milestone_name, milestone_description, end_date, created_at,status) VALUES ( ?, ?, ?,?,?)';
     const [{ insertId }] = await connection.query(sql, [
-      issue_id,
       milestone_name,
       milestone_description,
       end_date,
@@ -27,11 +25,10 @@ exports.create = async ({
   }
 };
 
-exports.getAll = async ({status}) => {
+exports.getAll = async ({ status }) => {
   try {
     const connection = await db.pool.getConnection(async conn => conn);
-    let sql =
-    `
+    let sql = `
     select t3.id, t3.milestone_name, t3.milestone_description, t3.end_date, t3.status, IFNULL(t1.count, 0) as open_count, IFNULL(t2.count, 0) as close_count
     from milestones as t3
     left join 
@@ -55,12 +52,11 @@ exports.getAll = async ({status}) => {
     ) as t2 
     on t1.id = t2.id
     where t3.status = ?
-    `
-      
+    `;
+
     const [milestones] = await connection.query(sql, [status]);
     connection.release();
     return milestones;
-  
   } catch (err) {
     throw new Error(err);
   }
@@ -105,14 +101,13 @@ exports.delete = async ({ id }) => {
   }
 };
 
-exports.getStatusCount = async (status) => {
+exports.getStatusCount = async status => {
   try {
     const connection = await db.pool.getConnection(async conn => conn);
     let sql = 'SELECT count(*) as count FROM milestones WHERE status = ?';
     const [[result]] = await connection.query(sql, [status]);
     connection.release();
     return result.count;
-
   } catch (err) {
     throw new Error(err);
   }

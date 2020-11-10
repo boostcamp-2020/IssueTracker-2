@@ -20,10 +20,14 @@ export default function Buttons({ Context, milestoneService }) {
     });
     history.push('/milestones');
   };
+
+  const onClickCancel = () => {
+    history.push('/milestones');
+  };
   return (
     <Wrapper>
       <ButtonSet>
-        <NormalButton content="Cancel" />
+        <NormalButton onClick={onClickCancel} content="Cancel" />
         <NormalButton content="Close milestone" />
         <SaveButton onClick={updateMilestone} content="Save Change" />
       </ButtonSet>

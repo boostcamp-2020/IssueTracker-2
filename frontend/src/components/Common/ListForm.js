@@ -6,6 +6,7 @@ import {
   CheckIcon,
 } from '@primer/octicons-react';
 import DropdownCaret from './DropdownCaret';
+import PopupContent from '../Common/popup';
 
 export default function ListForm(props) {
   const getHeaderContent = type => {
@@ -24,30 +25,49 @@ export default function ListForm(props) {
             <span>Closed</span>
           </Closed>
           <FilteringConditions>
-            <Condition>
-              Author
-              <DropdownCaret />
-            </Condition>
-            <Condition>
-              label
-              <DropdownCaret />
-            </Condition>
-            <Condition>
-              Projects
-              <DropdownCaret />
-            </Condition>
-            <Condition>
-              Milestones
-              <DropdownCaret />
-            </Condition>
-            <Condition>
-              Assignee
-              <DropdownCaret />
-            </Condition>
-            <Condition>
-              Sort
-              <DropdownCaret />
-            </Condition>
+            <Details>
+              <Condition>
+                Author
+                <DropdownCaret />
+              </Condition>
+              <PopupContent type="Author" />
+            </Details>
+
+            <Details>
+              <Condition>
+                Label
+                <DropdownCaret />
+              </Condition>
+              <PopupContent type="Label" />
+            </Details>
+            <Details>
+              <Condition>
+                Projects
+                <DropdownCaret />
+              </Condition>
+              <PopupContent type="Projects" />
+            </Details>
+            <Details>
+              <Condition>
+                Milestones
+                <DropdownCaret />
+              </Condition>
+              <PopupContent type="Milestone" />
+            </Details>
+            <Details>
+              <Condition>
+                Assignee
+                <DropdownCaret />
+              </Condition>
+              <PopupContent type="Assignee" />
+            </Details>
+            <Details>
+              <Condition>
+                Sort
+                <DropdownCaret />
+              </Condition>
+              <PopupContent type="Sort" />
+            </Details>
           </FilteringConditions>
         </HeaderWrapper>
       );
@@ -159,4 +179,10 @@ const FilteringConditions = styled.div`
   width: 40%;
   display: flex;
   justify-content: space-around;
+`;
+
+const Details = styled.details`
+  & > summary::-webkit-details-marker {
+    display: none;
+  }
 `;

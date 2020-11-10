@@ -69,7 +69,20 @@ export default function MilestoneList(props) {
   return (
     <ListForm
       content={
+
         <List milestones={milestones.milestoneArray} loading={loading} />
+
+        <>
+          <Milestone>
+            <LeftContent />
+            <RightContent />
+          </Milestone>
+          <Milestone>
+            <LeftContent />
+            <RightContent />
+          </Milestone>
+        </>
+
       }
       type="milestone"
       openTotalCount={milestones.openTotalCount}
