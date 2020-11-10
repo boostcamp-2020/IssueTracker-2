@@ -26,6 +26,7 @@
 		5C8D457B255A5E5400CDC167 /* IssueDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C8D4579255A5E5400CDC167 /* IssueDetailHeader.xib */; };
 		5C8D4580255A631300CDC167 /* IssueDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8D457E255A631300CDC167 /* IssueDetailCell.swift */; };
 		5C8D4581255A631300CDC167 /* IssueDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C8D457F255A631300CDC167 /* IssueDetailCell.xib */; };
+		5C8D459A255AB21C00CDC167 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8D4599255AB21C00CDC167 /* User.swift */; };
 		5CBF7C172557D25800853F62 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBF7C162557D25800853F62 /* UIColor+Hex.swift */; };
 		5CBF7C1B2557DCB000853F62 /* UpdateLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CBF7C1A2557DCB000853F62 /* UpdateLabelView.xib */; };
 		5CBF7C272557E8C900853F62 /* UpdateLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBF7C262557E8C900853F62 /* UpdateLabelView.swift */; };
@@ -52,7 +53,7 @@
 		BD02F15F25523F1C0013C643 /* FilterItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02F15E25523F1C0013C643 /* FilterItem.swift */; };
 		BD02F16F255277300013C643 /* FilterTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD02F16E2552772F0013C643 /* FilterTableViewDelegate.swift */; };
 		BD090CF825480C3500454C79 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD090CF725480C3500454C79 /* Issue.swift */; };
-		BD090CFB25480D1500454C79 /* IssueList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD090CFA25480D1500454C79 /* IssueList.swift */; };
+		BD090CFB25480D1500454C79 /* DummyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD090CFA25480D1500454C79 /* DummyList.swift */; };
 		BD090D012548211300454C79 /* IssueHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD090D002548211300454C79 /* IssueHeader.swift */; };
 		BD090D1B2548399700454C79 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD090D1A2548399700454C79 /* Login.storyboard */; };
 		BD090D2225483AD100454C79 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD090D2125483AD100454C79 /* LoginViewController.swift */; };
@@ -148,6 +149,7 @@
 		5C8D4579255A5E5400CDC167 /* IssueDetailHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IssueDetailHeader.xib; sourceTree = "<group>"; };
 		5C8D457E255A631300CDC167 /* IssueDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailCell.swift; sourceTree = "<group>"; };
 		5C8D457F255A631300CDC167 /* IssueDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IssueDetailCell.xib; sourceTree = "<group>"; };
+		5C8D4599255AB21C00CDC167 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5CBF7C162557D25800853F62 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		5CBF7C1A2557DCB000853F62 /* UpdateLabelView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdateLabelView.xib; sourceTree = "<group>"; };
 		5CBF7C262557E8C900853F62 /* UpdateLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLabelView.swift; sourceTree = "<group>"; };
@@ -175,7 +177,7 @@
 		BD02F15E25523F1C0013C643 /* FilterItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterItem.swift; sourceTree = "<group>"; };
 		BD02F16E2552772F0013C643 /* FilterTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewDelegate.swift; sourceTree = "<group>"; };
 		BD090CF725480C3500454C79 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
-		BD090CFA25480D1500454C79 /* IssueList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueList.swift; sourceTree = "<group>"; };
+		BD090CFA25480D1500454C79 /* DummyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyList.swift; sourceTree = "<group>"; };
 		BD090D002548211300454C79 /* IssueHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueHeader.swift; sourceTree = "<group>"; };
 		BD090D1A2548399700454C79 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		BD090D2125483AD100454C79 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -411,8 +413,9 @@
 				BD02F16525523FBB0013C643 /* FilterTableData */,
 				BDA8F8382553CE6B00A0E7C9 /* Comment.swift */,
 				BD090CF725480C3500454C79 /* Issue.swift */,
-				BD090CFA25480D1500454C79 /* IssueList.swift */,
+				BD090CFA25480D1500454C79 /* DummyList.swift */,
 				5CFED7322549325300DE811F /* IssueSection.swift */,
+				5C8D4599255AB21C00CDC167 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -853,7 +856,7 @@
 				5C4F34842547E3BF00E41121 /* LoginViewModel.swift in Sources */,
 				5C4F34802547DAEE00E41121 /* LoginValidator.swift in Sources */,
 				BDA8F8E32557DCDD00A0E7C9 /* LabelCell.swift in Sources */,
-				BD090CFB25480D1500454C79 /* IssueList.swift in Sources */,
+				BD090CFB25480D1500454C79 /* DummyList.swift in Sources */,
 				BDA8F8352553CD2600A0E7C9 /* Milestone.swift in Sources */,
 				5C8D4580255A631300CDC167 /* IssueDetailCell.swift in Sources */,
 				BD090D012548211300454C79 /* IssueHeader.swift in Sources */,
@@ -866,6 +869,7 @@
 				BDA8F9B0255A969E00A0E7C9 /* LabelResponse.swift in Sources */,
 				BD02F15C25523EFA0013C643 /* FilterSection.swift in Sources */,
 				5CFED74E254949BC00DE811F /* UpdateIssueViewController.swift in Sources */,
+				5C8D459A255AB21C00CDC167 /* User.swift in Sources */,
 				5C8D457A255A5E5400CDC167 /* IssueDetailHeader.swift in Sources */,
 				5CCE210D2557AA1F0043FA30 /* LabelList.swift in Sources */,
 				BD02F15925519FDC0013C643 /* FilterTableDataSource.swift in Sources */,

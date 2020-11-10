@@ -47,7 +47,13 @@ class UpdateLabelView: UIView {
   func configure() {
     layer.cornerRadius = 10
     frame = CGRect(x: 0, y: 0, width: 350, height: 384)
-    
+    configureColorInfo()
+  }
+  
+  func configureColorInfo() {
+    let randomColor = UIColor.random
+    colorPreview.backgroundColor = randomColor
+    colorHexLabel.text = randomColor.toHexString()
     colorPreview.layer.cornerRadius = 10
   }
 }
