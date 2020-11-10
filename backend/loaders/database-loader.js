@@ -129,7 +129,7 @@ const createLabelTable = async () => {
       .then(() => connection.query(SQL_CREATE_LABEL_TABLE))
       .then(() =>
         connection.query(
-          `INSERT INTO labels values(1, "bug", "red","this is bug"),(2, "Web", "blue","Web is full stack"),(3, "iOS", "green","iOS is App");`,
+          `INSERT INTO labels values(1, "bug", "#aaaaaa","This is bug"),(2, "Web", "#11aa22","Web is Full stack"),(3, "iOS", "#aa33bb","iOS is App");`,
         ),
       )
       .then(() => connection.release());
