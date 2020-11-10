@@ -1,5 +1,14 @@
 const issues = require('../models/issues');
 
+exports.createIssue = async req => {
+  try {
+    const insertId = await issues.create(req.body);
+    return { status: 202, message: '이슈 등록 성공', insertId };
+  } catch (err) {
+    throw err;
+  }
+};
+
 exports.updateIssue = async req => {
   try {
     const insertId = await issues.update(req.body);
