@@ -1,9 +1,16 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import CreateButton from '../Common/GreenButton';
 import NavButton from '../Common/NavButton';
 import FiilteringBox from './filteringBox';
 export default function Navigation(props) {
+  const history = useHistory();
+
+  const onClickNewIssue = () => {
+    history.push('/issue/create');
+  };
+
   return (
     <Wrapper>
       <FiilteringBox />
@@ -11,7 +18,7 @@ export default function Navigation(props) {
         <Nav>
           <NavButton type="issue" />
         </Nav>
-        <CreateButton content="New issue" />
+        <CreateButton onClick={onClickNewIssue} content="New issue" />
       </ButtonWrapper>
     </Wrapper>
   );
@@ -31,6 +38,6 @@ const ButtonWrapper = styled.div`
   position: absolute;
   right: 0;
   display: flex;
-  width: 30%;
+  gap: 1em;
   justify-content: space-between;
 `;

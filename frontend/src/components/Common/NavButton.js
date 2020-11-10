@@ -1,20 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
 import { TagIcon, MilestoneIcon } from '@primer/octicons-react';
+import { useHistory } from 'react-router-dom';
 
-export default function NavButton(props) {
+export default function NavButton({ type }) {
+  const history = useHistory();
+
+  const onClickLabelNav = () => {
+    history.push('/labels');
+  };
+
+  const onClickMilestoneNav = () => {
+    history.push('/milestones');
+  };
+
   return (
     <>
-      <LabelButton type={props.type}>
+      <LabelButton onClick={onClickLabelNav} type={type}>
         <TagIcon size={20} />
         <Text>Labels</Text>
-        {props.type === 'issue' && <Count>3</Count>}
+        {type === 'issue' && <Count>3</Count>}
       </LabelButton>
-      <MilestoneButton type={props.type}>
+      <MilestoneButton onClick={onClickMilestoneNav} type={type}>
         <MilestoneIcon size={20} />
 
         <Text>Milestones</Text>
-        {props.type === 'issue' && <Count>4</Count>}
+        {type === 'issue' && <Count>4</Count>}
       </MilestoneButton>
     </>
   );
@@ -27,9 +38,15 @@ const LabelButton = styled.span`
   border-right: none;
   border-radius: 5px 0 0 5px;
   cursor: pointer;
-  &:hover {
+
+  ${props => {
+    if (props.type === 'label') {
+      return 'color:white; background-color:#0366d6; fill:white;';
+    }
+    return `&:hover {
     background-color: rgba(0, 0, 0, 0.03);
-  }
+  }`;
+  }}
 `;
 
 const Text = styled.span`
@@ -57,8 +74,11 @@ const MilestoneButton = styled.span`
   cursor: pointer;
 
   ${props => {
-    if (props.type !== 'issue') {
+    if (props.type === 'milestone') {
       return 'color:white; background-color:#0366d6; fill:white;';
     }
+    return `&:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+  }`;
   }}
 `;

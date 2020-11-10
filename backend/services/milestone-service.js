@@ -10,9 +10,15 @@ exports.createMilestone = async req => {
 };
 exports.getMilestones = async req => {
   try {
-    const milestoneArray = await milestones.getAll();
+    const status = { open : 0, close : 1};
+    const milestonesInfo = {};
 
-    return { status: 202, message: 'milestones', milestoneArray };
+    milestonesInfo.openTotalCount = await milestones.getStatusCount(status.open);
+    milestonesInfo.closeTotalCount = await milestones.getStatusCount(status.close); 
+    milestonesInfo.milestoneArray = await milestones.getAll(req.query);
+    
+    return { status: 202, message: 'milestones', milestonesInfo };
+
   } catch(err) {
     throw(err);
   }
@@ -33,3 +39,4 @@ exports.deleteMilestone = async req => {
     throw(err);
   }
 };
+

@@ -9,6 +9,7 @@ exports.readLabel = async (req, res, next) => {
   }
 };
 
+
 exports.updateLabel = async (req, res, next) => {
   try {
     const {
@@ -17,6 +18,18 @@ exports.updateLabel = async (req, res, next) => {
       updatedLabelId,
     } = await service.updateLabelService(req);
     res.status(status).json({ message, updatedLabelId: updatedLabelId });
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.addLabel = async (req, res, next) => {
+  try {
+    const { status, message, generatedLabelId } = await service.addlabelService(
+      req,
+    );
+    res.status(status).json({ message, labelId: generatedLabelId });
+
   } catch (err) {
     next(err);
   }

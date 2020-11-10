@@ -4,15 +4,13 @@ import Header from '../../components/Common/Header';
 import Explanation from '../../components/CreateMilestone/explanation';
 import InputForm from '../../components/CreateMilestone/inputForm';
 import Footer from '../../components/Common/Footer';
-import Buttons from '../../components/CreateMilestone/buttons';
 
-const CreateMilestone = props => {
+const CreateMilestone = ({ milestoneService }) => {
   return (
     <Wrapper>
       <Header />
       <Explanation />
-      <InputForm />
-      <Buttons />
+      <InputForm milestoneService={milestoneService} />
       <Footer />
     </Wrapper>
   );
