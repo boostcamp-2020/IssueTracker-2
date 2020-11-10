@@ -1,45 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ListForm from '../Common/ListForm';
-const LABEL_LIST_INFO = [
-  {
-    name: 'bug',
-    description: `Something isn't working`,
-    textColor: 'white',
-    backgroundColor: 'red',
-  },
-  {
-    name: 'bug',
-    description: `Something isn't working`,
-    textColor: 'white',
-    backgroundColor: 'red',
-  },
-  {
-    name: 'bug',
-    description: `Something isn't working`,
-    textColor: 'white',
-    backgroundColor: 'red',
-  },
-];
+import { getFetch } from '../../service/fetch';
 
 export default function LabelList() {
+  const [labelListData, setLabelListData] = useState([]);
+  useEffect(() => {
+    getFetch(process.env.SERVER_URL + '/api/label')
+      .then(res => res.json())
+      .then(data => setLabelListData(data.labels));
+  }, []);
+
   return (
     <ListForm
       content={
         <LabelDescriptionList>
-          {LABEL_LIST_INFO.map(labelInfo => {
+          {labelListData.map(labelInfo => {
             return (
               <LabelDescription>
                 <LabelTagArea>
                   <LabelTag
-                    backgroundColor={labelInfo.backgroundColor}
+                    backgroundColor={labelInfo.color}
                     textColor={labelInfo.textColor}
                   >
-                    {labelInfo.name}
+                    {labelInfo.label_name}
                   </LabelTag>
                 </LabelTagArea>
                 <LabelDescriptionArea>
-                  {labelInfo.description}
+                  {labelInfo.label_description}
                 </LabelDescriptionArea>
                 <LabelManageButtonArea>
                   <LabelManageButton>Edit</LabelManageButton>
