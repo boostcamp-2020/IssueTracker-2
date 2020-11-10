@@ -4,7 +4,11 @@ import styled from 'styled-components';
 import NormalButton from '../Common/NormalButton';
 import GreenButton from '../Common/GreenButton';
 
-export default function LabelAddTabl() {
+export default function LabelAddTabl({ setIsAddTab }) {
+  const handleCancelAddTab = () => {
+    setIsAddTab(false);
+  };
+
   return (
     <Wrapper>
       <Header>Label Preview</Header>
@@ -26,7 +30,7 @@ export default function LabelAddTabl() {
         <LabelAddButtonArea>
           <InputTitle />
           <AddButtonsWrapper>
-            <NormalButton content="Cancel" />
+            <NormalButton onClick={handleCancelAddTab} content="Cancel" />
             <GreenButton content="Create Label" />
           </AddButtonsWrapper>
         </LabelAddButtonArea>

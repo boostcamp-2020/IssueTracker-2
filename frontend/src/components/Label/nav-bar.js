@@ -3,12 +3,16 @@ import styled from 'styled-components';
 import CreateButton from '../Common/GreenButton';
 import NavigationButton from '../Common/NavButton';
 
-export default function NavBar() {
+export default function NavBar({ isAddTab, setIsAddTab }) {
+  const handleCreateButton = () => {
+    setIsAddTab(!isAddTab);
+    console.log('Hello');
+  };
   return (
     <Wrapper>
       <NavigationButton type="label" />
       <ButtonWrapper>
-        <CreateButton content="New label" />
+        <CreateButton onClick={handleCreateButton} content="New label" />
       </ButtonWrapper>
     </Wrapper>
   );
