@@ -14,6 +14,7 @@ class IssueCell: UICollectionViewCell, Reusable, NibLoadable {
   @IBOutlet weak var labelLabel: UILabel!
   @IBOutlet weak var bigView: UIView!
   @IBOutlet weak var checkmarkImageView: UIImageView!
+  @IBOutlet weak var closeLabel: UILabel!
   
   override var isSelected: Bool {
     didSet {
