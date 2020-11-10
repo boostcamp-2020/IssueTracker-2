@@ -145,7 +145,6 @@ class IssueViewController: UIViewController {
   
   @objc private func filterButtonTouched() {
     let storyboard = UIStoryboard(name: "IssueFilter", bundle: nil)
-    // guard let issueFilterVC = storyboard.instantiateInitialViewController() as? IssueFilterViewController else { return }
     let issueFilterVC = storyboard.instantiateViewController(identifier: "IssueFilterViewController", creator: { (coder) -> IssueFilterViewController? in
       return IssueFilterViewController(coder: coder, tableViewDelegate: FilterTableViewDelegate())
     })
@@ -195,11 +194,12 @@ class IssueViewController: UIViewController {
 extension IssueViewController: UICollectionViewDelegateFlowLayout {
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    guard let _ = dataSource.itemIdentifier(for: indexPath) else {
-      return
-    }
-    
-    // TODO:- issue 사용
+    let storyboard = UIStoryboard(name: "IssueDetail", bundle: nil)
+    guard let issue = dataSource.itemIdentifier(for: indexPath) else { return }
+    let issueDetailVC = storyboard.instantiateViewController(identifier: "IssueDetailViewController", creator: { (coder) -> IssueDetailViewController? in
+      return IssueDetailViewController(coder: coder, issue: issue)
+    })
+    navigationController?.pushViewController(issueDetailVC, animated: true)
   }
   
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
