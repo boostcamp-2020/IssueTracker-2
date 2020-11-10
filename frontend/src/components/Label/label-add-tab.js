@@ -1,12 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+
+import { postFetch } from '../../service/fetch';
 
 import NormalButton from '../Common/NormalButton';
 import GreenButton from '../Common/GreenButton';
 
-export default function LabelAddTabl({ setIsAddTab }) {
-  const handleCancelAddTab = () => {
+export default function LabelAddTabl({ setIsAddTab, getLabelList }) {
+  const [newLabelInfo, setNewLabelInfo] = useState({
+    labelName: '',
+    labelDescription: '',
+    labelColor: '',
+  });
+
+  const closeEditTab = () => {
     setIsAddTab(false);
+  };
+
+  const handleCancelAddTab = () => {
+    closeEditTab();
+  };
+
+  const handleLabelName = event => {
+    setNewLabelInfo({ ...newLabelInfo, labelName: event.target.value });
+  };
+
+  const handleLabelDescription = event => {
+    setNewLabelInfo({ ...newLabelInfo, labelDescription: event.target.value });
+  };
+
+  const handleLabelColor = event => {
+    setNewLabelInfo({ ...newLabelInfo, labelColor: event.target.value });
+  };
+
+  const handleAddLabelChange = () => {
+    postFetch(process.env.SERVER_URL + '/api/label', {
+      label_name: newLabelInfo.labelName,
+      label_description: newLabelInfo.labelDescription,
+      color: newLabelInfo.labelColor,
+    }).then(() => getLabelList());
+    closeEditTab();
   };
 
   return (
@@ -15,23 +48,32 @@ export default function LabelAddTabl({ setIsAddTab }) {
       <InputList>
         <LabelNameArea>
           <InputTitle>Label name</InputTitle>
-          <textarea />
+          <textarea onChange={handleLabelName} value={newLabelInfo.labelName} />
         </LabelNameArea>
         <LabelDetailArea>
           <LabelDescriptionArea>
             <InputTitle>Description</InputTitle>
-            <textarea />
+            <textarea
+              onChange={handleLabelDescription}
+              value={newLabelInfo.labelDescription}
+            />
           </LabelDescriptionArea>
           <LabelColorArea>
             <InputTitle>Color</InputTitle>
-            <textarea />
+            <textarea
+              onChange={handleLabelColor}
+              value={newLabelInfo.labelColor}
+            />
           </LabelColorArea>
         </LabelDetailArea>
         <LabelAddButtonArea>
           <InputTitle />
           <AddButtonsWrapper>
             <NormalButton onClick={handleCancelAddTab} content="Cancel" />
-            <GreenButton content="Create Label" />
+            <GreenButton
+              onClick={handleAddLabelChange}
+              content="Create Label"
+            />
           </AddButtonsWrapper>
         </LabelAddButtonArea>
       </InputList>

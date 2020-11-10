@@ -1,22 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import ListForm from '../Common/ListForm';
 import LabelDescription from './label-description';
-import { getFetch } from '../../service/fetch';
 
-export default function LabelList() {
-  const [labelListData, setLabelListData] = useState([]);
-
-  const getLabelList = () => {
-    getFetch(process.env.SERVER_URL + '/api/label')
-      .then(res => res.json())
-      .then(data => setLabelListData(data.labels));
-  };
-
-  useEffect(() => {
-    getLabelList();
-  }, []);
-
+export default function LabelList({ labelListData, getLabelList }) {
   return (
     <ListForm
       content={

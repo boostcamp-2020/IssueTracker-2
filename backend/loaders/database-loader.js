@@ -52,7 +52,7 @@ const SQL_CREATE_MILESTONE_TABLE = `
 const SQL_DROP_LABEL_TABLE = `DROP TABLE IF EXISTS labels`;
 const SQL_CREATE_LABEL_TABLE = `
     CREATE TABLE labels (
-        id int PRIMARY KEY,
+        id int PRIMARY KEY AUTO_INCREMENT, 
         label_name varchar(255),
         color varchar(255),
         label_description varchar(255)

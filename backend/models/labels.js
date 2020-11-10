@@ -4,7 +4,7 @@ exports.create = async ({ label_name, color, label_description }) => {
   try {
     const connection = await db.pool.getConnection(async conn => conn);
     let sql =
-      'INSERT INTO labels (label_name, color, label_description) VALUES (?, ?, ?, ?)';
+      'INSERT INTO labels (label_name, color, label_description) VALUES (?, ?, ?)';
     const [{ generatedLabelId }] = await connection.query(sql, [
       label_name,
       color,

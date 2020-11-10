@@ -6,7 +6,6 @@ import NavigationButton from '../Common/NavButton';
 export default function NavBar({ isAddTab, setIsAddTab }) {
   const handleCreateButton = () => {
     setIsAddTab(!isAddTab);
-    console.log('Hello');
   };
   return (
     <Wrapper>
