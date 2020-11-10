@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
+import { updateFetch } from '../../service/fetch';
+
 import NormalButton from '../Common/NormalButton';
 import GreenButton from '../Common/GreenButton';
 
 export default function LabelEditTab({ labelInfo, setIsEditTab }) {
   const [newLabelInfo, setNewLabelInfo] = useState({
+    labelId: labelInfo.id,
     labelName: labelInfo.label_name,
     labelDescription: labelInfo.label_description,
     labelColor: labelInfo.color,
   });
+
+  const closeEditTab = () => {
+    setIsEditTab(false);
+  };
+
   const handleLabelName = event => {
     setNewLabelInfo({ ...newLabelInfo, labelName: event.target.value });
   };
@@ -20,6 +28,16 @@ export default function LabelEditTab({ labelInfo, setIsEditTab }) {
 
   const handleLabelColor = event => {
     setNewLabelInfo({ ...newLabelInfo, labelColor: event.target.value });
+  };
+
+  const handleSaveChange = () => {
+    updateFetch(process.env.SERVER_URL + '/api/label', {
+      id: newLabelInfo.labelId,
+      label_name: newLabelInfo.labelName,
+      label_description: newLabelInfo.labelDescription,
+      color: newLabelInfo.labelColor,
+    });
+    closeEditTab();
   };
 
   return (
@@ -48,13 +66,8 @@ export default function LabelEditTab({ labelInfo, setIsEditTab }) {
         <LabelAddButtonArea>
           <InputTitle />
           <AddButtonsWrapper>
-            <NormalButton
-              content="Cancel"
-              onClick={() => {
-                setIsEditTab(false);
-              }}
-            />
-            <GreenButton content="Save changes" />
+            <NormalButton content="Cancel" onClick={closeEditTab} />
+            <GreenButton content="Save changes" onClick={handleSaveChange} />
           </AddButtonsWrapper>
         </LabelAddButtonArea>
       </InputList>
