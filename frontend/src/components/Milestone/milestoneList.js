@@ -7,7 +7,7 @@ import ListForm from '../Common/ListForm';
 
 // custom hooks
 // 분리해서 사용하면 좋을 듯
-const useFetch = (callback, url) => {
+const useFetch = (status, callback, url) => {
   const [loading, setLoading] = useState(false);
 
   const fetchInitialData = async () => {
@@ -20,7 +20,7 @@ const useFetch = (callback, url) => {
 
   useEffect(() => {
     fetchInitialData();
-  }, []);
+  }, [status]);
 
   return loading;
 };
@@ -48,6 +48,7 @@ export default function MilestoneList(props) {
   });
 
   const loading = useFetch(
+    status,
     setMilestones,
     `http://localhost:3000/api/milestone/all?status=${status}`,
   );
@@ -68,22 +69,7 @@ export default function MilestoneList(props) {
 
   return (
     <ListForm
-      content={
-
-        <List milestones={milestones.milestoneArray} loading={loading} />
-
-        <>
-          <Milestone>
-            <LeftContent />
-            <RightContent />
-          </Milestone>
-          <Milestone>
-            <LeftContent />
-            <RightContent />
-          </Milestone>
-        </>
-
-      }
+      content={<List milestones={milestones.milestoneArray} loading={loading} />}
       type="milestone"
       openTotalCount={milestones.openTotalCount}
       closeTotalCount={milestones.closeTotalCount}
