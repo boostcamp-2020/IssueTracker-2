@@ -25,9 +25,13 @@ class UpdateIssueViewController: UIViewController {
       ])
     }
   }
+
+  private var issueTitle: String = ""
+  private var issueNumber: Int?
   
   @IBOutlet weak var navigationBar: UINavigationBar!
   @IBOutlet weak var issueContentTextView: IssueContentTextView!
+  @IBOutlet weak var issueTitleTextField: UITextField!
   @IBOutlet weak var markdownSegmentedControl: UISegmentedControl!
   @IBOutlet weak var textViewBottomConstraint: NSLayoutConstraint!
   
@@ -37,6 +41,16 @@ class UpdateIssueViewController: UIViewController {
   
   @IBAction func submitButtonTouched(_ sender: Any) {
     // TODO:- 이슈 데이터 저장
+  }
+  
+  init?(coder: NSCoder, issueTitle: String = "", issueNumber: Int? = nil) {
+    self.issueTitle = issueTitle
+    self.issueNumber = issueNumber
+    super.init(coder: coder)
+  }
+  
+  required init?(coder: NSCoder) {
+    super.init(coder: coder)
   }
   
   override func viewDidLoad() {
@@ -65,7 +79,12 @@ class UpdateIssueViewController: UIViewController {
   }
   
   private func configureNavigationBar() {
-    navigationBar.topItem?.title = "새이슈"
+    if let number = issueNumber {
+      navigationBar.topItem?.title = "#" + String(number)
+      issueTitleTextField.text = issueTitle
+    } else {
+      navigationBar.topItem?.title = "새이슈"
+    }
   }
   
   private func configureMarkdownSegmentedControl() {
