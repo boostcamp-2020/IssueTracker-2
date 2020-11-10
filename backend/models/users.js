@@ -17,7 +17,8 @@ exports.create = async ({ id, profileImageUrl, password }) => {
   }
 };
 
-exports.findAll = async ({ username }) => {
+
+exports.findOne = async ({username}) => {
   try {
     const connection = await db.pool.getConnection(async conn => conn);
     let sql = `SELECT * FROM users WHERE nickname=?`;

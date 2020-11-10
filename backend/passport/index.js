@@ -24,16 +24,17 @@ const verifyGitHub = async (accessToken, refreshToken, profile, cb) => {
       profileImageUrl: avatar,
       password: 'initial',
     });
-    return cb(null, [user, avatar]);
+    return cb(null, userInfo);
   }
 
   return cb(null, new Error('Already exist user'));
 };
 
-const verifyPassport = async (username, password, done) => {
-  try {
-    const userInfo = await users.findAll({ username });
 
+const verifyPassport = async(username, password, done) => {
+    try {
+      const userInfo = await users.findOne({username});
+      
     if (!userInfo) {
       return done(null, false, { message: 'This user does not exist' });
     }
@@ -66,8 +67,9 @@ const jwtConfig = {
 
 const verifyJwt = async (jwt_payload, done) => {
   try {
-    const username = jwt_payload.nickname;
-    const userInfo = await users.findAll({ username });
+
+    const username = jwt_payload.nickname; 
+    const userInfo = await users.findOne({username});
 
     if (!userInfo) {
       return done(null, false, { message: 'This user does not exist' });
