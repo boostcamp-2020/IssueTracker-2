@@ -32,6 +32,19 @@ exports.read = async () => {
   }
 };
 
+
+exports.delete = async ({ id }) => {
+  try {
+    const connection = await db.pool.getConnection(async conn => conn);
+    let sql = 'DELETE FROM labels WHERE id = ?';
+    const [{ deleteLabelId }] = await connection.query(sql, [id]);
+    connection.release();
+    return deleteLabelId;
+  } catch (err) {
+    throw new Error(err);
+  }
+};
+
 exports.update = async ({ id, label_name, color, label_description }) => {
   try {
     const connection = await db.pool.getConnection(async conn => conn);
@@ -46,6 +59,7 @@ exports.update = async ({ id, label_name, color, label_description }) => {
     connection.release();
 
     return { generatedLabelId };
+
   } catch (err) {
     throw new Error(err);
   }

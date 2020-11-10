@@ -10,6 +10,18 @@ exports.readLabel = async (req, res, next) => {
 };
 
 
+exports.deleteLabel = async (req, res, next) => {
+  try {
+    const { status, message, deleteLabelId } = await service.deleteLabelService(
+      req,
+    );
+    res.status(status).json({ message, deleteLabelId });
+    } catch (err) {
+    next(err);
+  }
+};
+
+
 exports.updateLabel = async (req, res, next) => {
   try {
     const {
@@ -29,7 +41,6 @@ exports.addLabel = async (req, res, next) => {
       req,
     );
     res.status(status).json({ message, labelId: generatedLabelId });
-
   } catch (err) {
     next(err);
   }
