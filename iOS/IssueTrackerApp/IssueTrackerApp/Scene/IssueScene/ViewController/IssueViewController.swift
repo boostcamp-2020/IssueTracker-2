@@ -82,12 +82,36 @@ class IssueViewController: UIViewController {
     let dataSource = DataSource(collectionView: issueCollectionView) { (collectionView, indexPath, item) -> UICollectionViewCell? in
       let cell: IssueCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
       
+      let leftGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.swipeLeft(_:)))
+      let rightGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.swipeRight(_:)))
+      
+      leftGesture.direction = .left
+      rightGesture.direction = .right
+      
+      cell.gestureRecognizers = [leftGesture, rightGesture]
+      
       cell.updateCell(withItem: item)
       
       return cell
     }
     
     return dataSource
+  }
+  
+  @objc func swipeLeft(_ sender: UISwipeGestureRecognizer) {
+    guard let view = sender.view as? IssueCell else { return }
+    UIView.animate(withDuration: 0.5) {
+      view.bigView.transform = CGAffineTransform(translationX: -160, y: 0)
+      view.closeLabel.transform = CGAffineTransform(translationX: -80, y: 0)
+    }
+  }
+  
+  @objc func swipeRight(_ sender: UISwipeGestureRecognizer) {
+    guard let view = sender.view as? IssueCell else { return }
+    UIView.animate(withDuration: 0.5) {
+      view.bigView.transform = .identity
+      view.closeLabel.transform = .identity
+    }
   }
   
   private func applySnapshot(animatingDifferences: Bool = true) {
