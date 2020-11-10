@@ -1,12 +1,11 @@
 const db = require('../db');
 
-exports.create = async ({ id, label_name, color, label_description }) => {
+exports.create = async ({ label_name, color, label_description }) => {
   try {
     const connection = await db.pool.getConnection(async conn => conn);
     let sql =
-      'INSERT INTO labels (id, label_name, color, label_description) VALUES (?, ?, ?, ?)';
+      'INSERT INTO labels (label_name, color, label_description) VALUES (?, ?, ?, ?)';
     const [{ generatedLabelId }] = await connection.query(sql, [
-      id,
       label_name,
       color,
       label_description,
@@ -31,7 +30,6 @@ exports.read = async () => {
     throw new Error(err);
   }
 };
-
 
 exports.delete = async ({ id }) => {
   try {
@@ -59,7 +57,6 @@ exports.update = async ({ id, label_name, color, label_description }) => {
     connection.release();
 
     return { generatedLabelId };
-
   } catch (err) {
     throw new Error(err);
   }
