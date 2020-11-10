@@ -9,8 +9,7 @@ import Foundation
 
 struct JSONParameterEncoder: ParameterEncoder {
   
-  static func encode<T: Encodable>(urlRequest: inout URLRequest, with parameters: T?) throws {
-    guard let parameters = parameters else { return }
+  static func encode<T: Encodable>(urlRequest: inout URLRequest, with parameters: T) throws {
     do {
       let jsonEncoder = JSONEncoder()
       jsonEncoder.keyEncodingStrategy = .convertToSnakeCase
