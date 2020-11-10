@@ -22,6 +22,10 @@
 		5C7DF6B42557B39B00D730EE /* LabelMarkLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7DF6B32557B39B00D730EE /* LabelMarkLabel.swift */; };
 		5C8D4571255A539700CDC167 /* IssueDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C8D4570255A539700CDC167 /* IssueDetail.storyboard */; };
 		5C8D4575255A53C700CDC167 /* IssueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8D4574255A53C700CDC167 /* IssueDetailViewController.swift */; };
+		5C8D457A255A5E5400CDC167 /* IssueDetailHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8D4578255A5E5400CDC167 /* IssueDetailHeader.swift */; };
+		5C8D457B255A5E5400CDC167 /* IssueDetailHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C8D4579255A5E5400CDC167 /* IssueDetailHeader.xib */; };
+		5C8D4580255A631300CDC167 /* IssueDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8D457E255A631300CDC167 /* IssueDetailCell.swift */; };
+		5C8D4581255A631300CDC167 /* IssueDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C8D457F255A631300CDC167 /* IssueDetailCell.xib */; };
 		5CBF7C172557D25800853F62 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBF7C162557D25800853F62 /* UIColor+Hex.swift */; };
 		5CBF7C1B2557DCB000853F62 /* UpdateLabelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CBF7C1A2557DCB000853F62 /* UpdateLabelView.xib */; };
 		5CBF7C272557E8C900853F62 /* UpdateLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBF7C262557E8C900853F62 /* UpdateLabelView.swift */; };
@@ -139,6 +143,10 @@
 		5C7DF6B32557B39B00D730EE /* LabelMarkLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelMarkLabel.swift; sourceTree = "<group>"; };
 		5C8D4570255A539700CDC167 /* IssueDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IssueDetail.storyboard; sourceTree = "<group>"; };
 		5C8D4574255A53C700CDC167 /* IssueDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailViewController.swift; sourceTree = "<group>"; };
+		5C8D4578255A5E5400CDC167 /* IssueDetailHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailHeader.swift; sourceTree = "<group>"; };
+		5C8D4579255A5E5400CDC167 /* IssueDetailHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IssueDetailHeader.xib; sourceTree = "<group>"; };
+		5C8D457E255A631300CDC167 /* IssueDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailCell.swift; sourceTree = "<group>"; };
+		5C8D457F255A631300CDC167 /* IssueDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IssueDetailCell.xib; sourceTree = "<group>"; };
 		5CBF7C162557D25800853F62 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		5CBF7C1A2557DCB000853F62 /* UpdateLabelView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdateLabelView.xib; sourceTree = "<group>"; };
 		5CBF7C262557E8C900853F62 /* UpdateLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLabelView.swift; sourceTree = "<group>"; };
@@ -416,6 +424,10 @@
 				5CFED74A254943CE00DE811F /* NewIssueButton.swift */,
 				BD090D3325495F6700454C79 /* IssueContentTextView.swift */,
 				5C39519825514FED00C6AEB8 /* FilterIssueCell.swift */,
+				5C8D4578255A5E5400CDC167 /* IssueDetailHeader.swift */,
+				5C8D4579255A5E5400CDC167 /* IssueDetailHeader.xib */,
+				5C8D457E255A631300CDC167 /* IssueDetailCell.swift */,
+				5C8D457F255A631300CDC167 /* IssueDetailCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -725,6 +737,8 @@
 				5C7B9BB62556771D00804A77 /* Label.storyboard in Resources */,
 				BDD18CFA2546E5EC00974FB4 /* LaunchScreen.storyboard in Resources */,
 				BDA8F9132557F65800A0E7C9 /* IssueCell.xib in Resources */,
+				5C8D457B255A5E5400CDC167 /* IssueDetailHeader.xib in Resources */,
+				5C8D4581255A631300CDC167 /* IssueDetailCell.xib in Resources */,
 				BDA8F8E42557DCDD00A0E7C9 /* LabelCell.xib in Resources */,
 				5CEC937C2559162B005F0772 /* UpdateMilestoneView.xib in Resources */,
 				5C8D4571255A539700CDC167 /* IssueDetail.storyboard in Resources */,
@@ -838,6 +852,7 @@
 				BDA8F8E32557DCDD00A0E7C9 /* LabelCell.swift in Sources */,
 				BD090CFB25480D1500454C79 /* IssueList.swift in Sources */,
 				BDA8F8352553CD2600A0E7C9 /* Milestone.swift in Sources */,
+				5C8D4580255A631300CDC167 /* IssueDetailCell.swift in Sources */,
 				BD090D012548211300454C79 /* IssueHeader.swift in Sources */,
 				BD090CF825480C3500454C79 /* Issue.swift in Sources */,
 				BDA8F8392553CE6B00A0E7C9 /* Comment.swift in Sources */,
@@ -847,6 +862,7 @@
 				BDA8F99325596CCD00A0E7C9 /* MilestoneResponse.swift in Sources */,
 				BD02F15C25523EFA0013C643 /* FilterSection.swift in Sources */,
 				5CFED74E254949BC00DE811F /* UpdateIssueViewController.swift in Sources */,
+				5C8D457A255A5E5400CDC167 /* IssueDetailHeader.swift in Sources */,
 				5CCE210D2557AA1F0043FA30 /* LabelList.swift in Sources */,
 				BD02F15925519FDC0013C643 /* FilterTableDataSource.swift in Sources */,
 				5C7DF6B42557B39B00D730EE /* LabelMarkLabel.swift in Sources */,
