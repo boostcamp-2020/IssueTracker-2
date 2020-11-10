@@ -119,9 +119,8 @@ class IssueViewController: UIViewController {
   private func applySnapshot(animatingDifferences: Bool = true) {
     var snapshot = Snapshot()
     snapshot.appendSections([.main])
-    let issues = IssueList.dummyIssues
-    let issueList = IssueList(issues: issues)
-    snapshot.appendItems(issueList.issues)
+    let issues = DummyList.dummyIssues
+    snapshot.appendItems(issues)
     dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
   }
   
@@ -194,6 +193,7 @@ class IssueViewController: UIViewController {
 extension IssueViewController: UICollectionViewDelegateFlowLayout {
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    if isEdited { return }
     let storyboard = UIStoryboard(name: "IssueDetail", bundle: nil)
     guard let issue = dataSource.itemIdentifier(for: indexPath) else { return }
     let issueDetailVC = storyboard.instantiateViewController(identifier: "IssueDetailViewController", creator: { (coder) -> IssueDetailViewController? in
