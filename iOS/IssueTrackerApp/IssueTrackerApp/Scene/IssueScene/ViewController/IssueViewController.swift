@@ -99,6 +99,7 @@ class IssueViewController: UIViewController {
   }
   
   @objc func swipeLeft(_ sender: UISwipeGestureRecognizer) {
+    if isEdited { return }
     guard let view = sender.view as? IssueCell else { return }
     UIView.animate(withDuration: 0.5) {
       view.bigView.transform = CGAffineTransform(translationX: -160, y: 0)
@@ -107,6 +108,7 @@ class IssueViewController: UIViewController {
   }
   
   @objc func swipeRight(_ sender: UISwipeGestureRecognizer) {
+    if isEdited { return }
     guard let view = sender.view as? IssueCell else { return }
     UIView.animate(withDuration: 0.5) {
       view.bigView.transform = .identity

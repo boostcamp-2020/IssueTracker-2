@@ -79,6 +79,7 @@ class LabelViewController: UIViewController {
   }
   
   @objc func addButtonTapped() {
+    addButton.isEnabled = false
     if let nib = Bundle.main.loadNibNamed("UpdateLabelView", owner: self),
        let nibView = nib.first as? UpdateLabelView {
       self.view.addSubview(nibView)
@@ -126,6 +127,7 @@ extension LabelViewController: UpdateLabelViewDelegate {
   func closeButtonTouched(_ sender: UIButton) {
     AlertFactory.shared.makeActionSheet(viewControllerToPresent: self) { [weak self] in
       self?.dismissUpdateLabelView()
+      self?.addButton.isEnabled = true
     }
   }
   
