@@ -13,12 +13,19 @@ import {
   Issue,
   IssueDetail,
 } from './pages';
+import { useState } from 'react';
 
 const App = ({ milestoneService }) => {
+  const [userInfo, setUserInfo] = useState({});
+  console.log(userInfo);
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component={Login} />
+        <Route
+          exact
+          path="/"
+          render={() => <Login setUserInfo={setUserInfo} />}
+        />
         <Route
           exact
           path="/milestones"
