@@ -5,22 +5,20 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="InnerLabelCell" id="gTV-IL-0wX" customClass="InnerLabelCell" customModule="IssueTrackerApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="176" height="50"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="InnerLabelCell" customModule="IssueTrackerApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="138" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="176" height="50"/>
+                <rect key="frame" x="0.0" y="0.0" width="138" height="50"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQ1-xH-vj3" customClass="LabelMarkLabel" customModule="IssueTrackerApp" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="176" height="50"/>
-                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i61-LI-xof" customClass="LabelMarkLabel" customModule="IssueTrackerApp" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="138" height="50"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -29,21 +27,16 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="sQ1-xH-vj3" secondAttribute="trailing" id="APO-6R-w5n"/>
-                <constraint firstItem="sQ1-xH-vj3" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="f45-Hu-4qT"/>
-                <constraint firstItem="sQ1-xH-vj3" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="h5J-jx-Hf3"/>
-                <constraint firstAttribute="bottom" secondItem="sQ1-xH-vj3" secondAttribute="bottom" id="hbs-hK-sQi"/>
+                <constraint firstItem="i61-LI-xof" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ULr-xf-593"/>
+                <constraint firstAttribute="bottom" secondItem="i61-LI-xof" secondAttribute="bottom" id="XX2-ux-i9y"/>
+                <constraint firstAttribute="trailing" secondItem="i61-LI-xof" secondAttribute="trailing" id="klL-GP-P0L"/>
+                <constraint firstItem="i61-LI-xof" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="sKy-Mc-rJG"/>
             </constraints>
-            <size key="customSize" width="176" height="50"/>
+            <size key="customSize" width="138" height="50"/>
             <connections>
-                <outlet property="labelTitleLabel" destination="sQ1-xH-vj3" id="xmO-zk-T8N"/>
+                <outlet property="innerLabel" destination="i61-LI-xof" id="Fdu-Em-BbJ"/>
             </connections>
-            <point key="canvasLocation" x="169.56521739130437" y="71.651785714285708"/>
+            <point key="canvasLocation" x="-82.608695652173921" y="71.651785714285708"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-    </resources>
 </document>

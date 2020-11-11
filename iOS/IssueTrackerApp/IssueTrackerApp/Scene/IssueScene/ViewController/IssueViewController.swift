@@ -91,7 +91,6 @@ class IssueViewController: UIViewController {
       cell.gestureRecognizers = [leftGesture, rightGesture]
       
       cell.updateCell(withItem: item)
-      
       return cell
     }
     
@@ -119,9 +118,7 @@ class IssueViewController: UIViewController {
   private func applySnapshot(animatingDifferences: Bool = true) {
     var snapshot = Snapshot()
     snapshot.appendSections([.main])
-    let issues = IssueList.dummyIssues
-    let issueList = IssueList(issues: issues)
-    snapshot.appendItems(issueList.issues)
+    snapshot.appendItems(DummyList.dummyIssues)
     dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
   }
   
@@ -207,9 +204,10 @@ extension IssueViewController: UICollectionViewDelegateFlowLayout {
     cell.editHiddenCell(status: isEdited)
   }
   
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: view.bounds.width, height: 80)
-  }
+//  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//
+//    return CGSize(width: UIScreen.main.bounds.width, height: 170)
+//  }
 }
 
 extension UICollectionView {

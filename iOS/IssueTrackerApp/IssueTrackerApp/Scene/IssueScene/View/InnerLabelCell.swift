@@ -1,5 +1,5 @@
 //
-//  InnerLabelCell.swift
+//  InnerLabelCellCollectionViewCell.swift
 //  IssueTrackerApp
 //
 //  Created by 서명렬 on 2020/11/10.
@@ -9,13 +9,16 @@ import UIKit
 
 class InnerLabelCell: UICollectionViewCell, Reusable, NibLoadable {
   
-  @IBOutlet weak var labelTitleLabel: LabelMarkLabel!
+  @IBOutlet weak var innerLabel: LabelMarkLabel!
   
   override func awakeFromNib() {
     super.awakeFromNib()
+    // Initialization code
   }
   
-  func updateCell(withTitle title: String) {
-    labelTitleLabel.text = title
+  func updateCell(withLabel label: Label) {
+    innerLabel.text = label.labelName
+    let color = UIColor(hex: label.color)
+    innerLabel.backgroundColor = color
   }
 }
