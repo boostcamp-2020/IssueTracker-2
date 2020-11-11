@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UserCell: UICollectionReusableView {
+class UserCell: UICollectionViewCell, Reusable, NibLoadable {
   
   @IBOutlet weak var userImageView: UIImageView!
   @IBOutlet weak var userNameLabel: UILabel!

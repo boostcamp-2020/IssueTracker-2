@@ -89,7 +89,10 @@ class IssueDetailViewController: UIViewController {
   
   private func addBottomSheetViewController() {
     let storyboard = UIStoryboard.init(name: "IssueInfo", bundle: nil)
-    guard let issueInfoVC = storyboard.instantiateViewController(withIdentifier: "IssueInfoViewController") as? IssueInfoViewController else { return }
+    let issueInfoVC = storyboard.instantiateViewController(identifier: "IssueInfoViewController", creator: { (coder) -> IssueInfoViewController? in
+      return IssueInfoViewController(coder: coder, issue: self.issue)
+    })
+    
     self.addChild(issueInfoVC)
     self.view.addSubview(issueInfoVC.view)
     issueInfoVC.didMove(toParent: self)

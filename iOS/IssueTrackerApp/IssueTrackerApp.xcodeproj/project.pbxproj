@@ -24,6 +24,8 @@
 		5C7B9BB62556771D00804A77 /* Label.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C7B9BB52556771D00804A77 /* Label.storyboard */; };
 		5C7B9BBA25567E4800804A77 /* LabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B9BB925567E4800804A77 /* LabelViewController.swift */; };
 		5C7B9BBE25567E9F00804A77 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B9BBD25567E9F00804A77 /* TabBarController.swift */; };
+		5C7C84A3255BAC150009CEAE /* IssueInfoMileStoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7C84A1255BAC150009CEAE /* IssueInfoMileStoneCell.swift */; };
+		5C7C84A4255BAC150009CEAE /* IssueInfoMileStoneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C7C84A2255BAC150009CEAE /* IssueInfoMileStoneCell.xib */; };
 		5C7DF6B42557B39B00D730EE /* LabelMarkLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7DF6B32557B39B00D730EE /* LabelMarkLabel.swift */; };
 		5C8D4571255A539700CDC167 /* IssueDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C8D4570255A539700CDC167 /* IssueDetail.storyboard */; };
 		5C8D4575255A53C700CDC167 /* IssueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8D4574255A53C700CDC167 /* IssueDetailViewController.swift */; };
@@ -152,6 +154,8 @@
 		5C7B9BB52556771D00804A77 /* Label.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Label.storyboard; sourceTree = "<group>"; };
 		5C7B9BB925567E4800804A77 /* LabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewController.swift; sourceTree = "<group>"; };
 		5C7B9BBD25567E9F00804A77 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		5C7C84A1255BAC150009CEAE /* IssueInfoMileStoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueInfoMileStoneCell.swift; sourceTree = "<group>"; };
+		5C7C84A2255BAC150009CEAE /* IssueInfoMileStoneCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IssueInfoMileStoneCell.xib; sourceTree = "<group>"; };
 		5C7DF6B32557B39B00D730EE /* LabelMarkLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelMarkLabel.swift; sourceTree = "<group>"; };
 		5C8D4570255A539700CDC167 /* IssueDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IssueDetail.storyboard; sourceTree = "<group>"; };
 		5C8D4574255A53C700CDC167 /* IssueDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailViewController.swift; sourceTree = "<group>"; };
@@ -448,6 +452,8 @@
 				5C6E59F1255B8DD30098CC00 /* IssueInfoButton.swift */,
 				5C6E59F5255B97350098CC00 /* UserCell.swift */,
 				5C6E59F6255B97350098CC00 /* UserCell.xib */,
+				5C7C84A1255BAC150009CEAE /* IssueInfoMileStoneCell.swift */,
+				5C7C84A2255BAC150009CEAE /* IssueInfoMileStoneCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -763,6 +769,7 @@
 				5C8D457B255A5E5400CDC167 /* IssueDetailHeader.xib in Resources */,
 				5C8D4581255A631300CDC167 /* IssueDetailCell.xib in Resources */,
 				BDA8F8E42557DCDD00A0E7C9 /* LabelCell.xib in Resources */,
+				5C7C84A4255BAC150009CEAE /* IssueInfoMileStoneCell.xib in Resources */,
 				5CEC937C2559162B005F0772 /* UpdateMilestoneView.xib in Resources */,
 				5C8D4571255A539700CDC167 /* IssueDetail.storyboard in Resources */,
 				BDD18CF72546E5EC00974FB4 /* Assets.xcassets in Resources */,
@@ -891,6 +898,7 @@
 				5CFED74E254949BC00DE811F /* UpdateIssueViewController.swift in Sources */,
 				5C8D459A255AB21C00CDC167 /* User.swift in Sources */,
 				5C8D457A255A5E5400CDC167 /* IssueDetailHeader.swift in Sources */,
+				5C7C84A3255BAC150009CEAE /* IssueInfoMileStoneCell.swift in Sources */,
 				5CCE210D2557AA1F0043FA30 /* LabelList.swift in Sources */,
 				BD02F15925519FDC0013C643 /* FilterTableDataSource.swift in Sources */,
 				5C7DF6B42557B39B00D730EE /* LabelMarkLabel.swift in Sources */,
