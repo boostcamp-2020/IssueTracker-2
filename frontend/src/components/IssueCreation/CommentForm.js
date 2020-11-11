@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import IssueTitle from './IssueTitle';
@@ -9,16 +9,24 @@ import CancelButton from './CancelButton';
 import { useHistory } from 'react-router-dom';
 
 export default ({ nickname, id }) => {
+  const [tabType, setTabType] = useState('write');
+  const [content, setContent] = useState('');
+
   const history = useHistory();
   const onClickSubmitButton = () => {
     history.push('/issues');
   };
+
   return (
     <Form>
       <IssueTitle />
-      <Tab />
+      <Tab tabType={tabType} setTabType={setTabType} />
       <Line />
-      <CommentInput />
+      <CommentInput
+        tabType={tabType}
+        setContent={setContent}
+        content={content}
+      />
       <FileAttachMessage>
         Attach files by dragging & droppping, selecting or pasting then.
       </FileAttachMessage>

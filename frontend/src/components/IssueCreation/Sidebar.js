@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default () => {
+export default ({ type }) => {
   return (
     <Sidebar>
       <BoldText>
-        <div>Assignees</div>
+        {type === 'assignee' && <div>Assignees</div>}
+        {type === 'label' && <div>Labels</div>}
+        {type === 'milestone' && <div>Milestones</div>}
         <SettingImg>
           <svg
             className="octicon octicon-gear"
@@ -22,7 +24,9 @@ export default () => {
           </svg>
         </SettingImg>
       </BoldText>
-      <DescText>No one-assign yourself</DescText>
+      {type === 'assignee' && <DescText>No one-assign yourself</DescText>}
+      {type === 'label' && <DescText>None yet</DescText>}
+      {type === 'milestone' && <DescText>No milestone</DescText>}
     </Sidebar>
   );
 };
