@@ -80,8 +80,10 @@ class LabelViewController: UIViewController {
   }
   
   private func dismissUpdateLabelView() {
-    blurView.isHidden.toggle()
-    view.subviews.last?.removeFromSuperview()
+    DispatchQueue.main.async { [weak self] in
+      self?.blurView.isHidden.toggle()
+      self?.view.subviews.last?.removeFromSuperview()
+    }
   }
   
   private func loadLabelData() {
@@ -160,7 +162,15 @@ extension LabelViewController: UpdateLabelViewDelegate {
     colorPreview.backgroundColor = randomColor
   }
   
-  func saveButtonTouched(_ sender: UIButton) {
-    dismissUpdateLabelView()
+  func saveButtonTouched(title: String, description: String?, colorAsHex: String) {
+    let apiService = APIService()
+    let label = Label(labelName: title, color: colorAsHex, labelDescription: description)
+    let endPoint = LabelEndPoint.postLabel(label: label).endPoint
+    apiService.requestLabel(forEndPoint: endPoint) { [weak self] (data, res, error) in
+      guard let res = res as? HTTPURLResponse else { return }
+      self?.loadLabelData()
+      self?.addButton.isEnabled = true
+      self?.dismissUpdateLabelView()
+    }
   }
 }
