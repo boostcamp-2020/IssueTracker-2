@@ -9,7 +9,6 @@ export default function IssueUnit(props) {
       <IssueIconWrapper>
         <IssueOpenedIcon size={18} />
       </IssueIconWrapper>
-
       <LeftContent>
         <LeftTopContent>
           <IssueTitle>ISSUE Page 마크업</IssueTitle>

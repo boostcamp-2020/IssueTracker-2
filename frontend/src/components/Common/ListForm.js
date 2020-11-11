@@ -32,7 +32,6 @@ export default function ListForm(props) {
               </Condition>
               <PopupContent type="Author" />
             </Details>
-
             <Details>
               <Condition>
                 Label
