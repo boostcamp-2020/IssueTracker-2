@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import UserManagementButtons from '../../components/Login/userManagementButtons';
 import UserInput from '../../components/Login/userInput';
+import { useHistory } from 'react-router-dom';
+import { getFetch } from '../../service/fetch';
 
-const Login = () => {
+const Login = ({ setUserInfo }) => {
   const [userLoginInfo, setUserLoginInfo] = useState({ id: null, pw: null });
+
+  const history = useHistory();
 
   return (
     <Wrapper>
