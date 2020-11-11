@@ -27,11 +27,6 @@ struct DummyList: Hashable {
     Label(id: 4, labelName: "invalid", color: "#01DF3A", labelDescription: "유효하지 않은 문제"),
     Label(id: 5, labelName: "UI", color: "#01DF3A", labelDescription: "UI 관련 레이블"),
     Label(id: 6, labelName: "enhancement", color: "#01DF3A", labelDescription: "새로운 feature나 request"),
-    Label(id: 7, labelName: "Frontend", color: "#000000", labelDescription: "프론트엔드 개발 관련 레이블"),
-    Label(id: 8, labelName: "bug", color: "#5858FA", labelDescription: "작동하지 않는 문제"),
-    Label(id: 9, labelName: "invalid", color: "#01DF3A", labelDescription: "유효하지 않은 문제"),
-    Label(id: 10, labelName: "UI", color: "#01DF3A", labelDescription: "UI 관련 레이블"),
-    Label(id: 11, labelName: "enhancement", color: "#01DF3A", labelDescription: "새로운 feature나 request")
   ]
   
   var dummyMilestone: Milestone =

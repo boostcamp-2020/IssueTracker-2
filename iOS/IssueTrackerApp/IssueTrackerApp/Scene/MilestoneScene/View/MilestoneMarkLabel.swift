@@ -13,6 +13,12 @@ class MilestoneMarkLabel: PaddingLabel {
     configure()
   }
   
+  var isOpen: Bool = true {
+    willSet {
+      layer.borderColor = newValue == true ? UIColor.systemGreen.cgColor : UIColor.systemRed.cgColor
+    }
+  }
+  
   required init?(coder: NSCoder) {
     super.init(coder: coder)
     configure()
@@ -20,12 +26,8 @@ class MilestoneMarkLabel: PaddingLabel {
   
   private func configure() {
     layer.cornerRadius = 5
-    layer.borderColor = UIColor.systemRed.cgColor
+    layer.borderColor = UIColor.lightGray.cgColor
     layer.borderWidth = 1
     layer.masksToBounds = true
-  }
-  
-  func setColor(withColor color: UIColor) {
-    layer.borderColor = color.cgColor
   }
 }

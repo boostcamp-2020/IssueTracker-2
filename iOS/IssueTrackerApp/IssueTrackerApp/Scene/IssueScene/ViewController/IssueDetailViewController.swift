@@ -44,8 +44,14 @@ class IssueDetailViewController: UIViewController, UIGestureRecognizerDelegate {
     applySnapshot()
   }
   
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    tabBarController?.tabBar.isHidden = false
+  }
+  
   private func configure() {
     configureNavigator()
+    tabBarController?.tabBar.isHidden = true
     issueDetailCollectionView.register(IssueDetailCell.self)
     issueDetailCollectionView.registerHeader(IssueDetailHeader.self)
   }
@@ -114,7 +120,7 @@ class IssueDetailViewController: UIViewController, UIGestureRecognizerDelegate {
     issueInfoVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
     issueInfoVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
     issueInfoVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-    heightConstraint = issueInfoVC.view.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2)
+    heightConstraint = issueInfoVC.view.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.25)
     heightConstraint?.isActive = true
 
     }

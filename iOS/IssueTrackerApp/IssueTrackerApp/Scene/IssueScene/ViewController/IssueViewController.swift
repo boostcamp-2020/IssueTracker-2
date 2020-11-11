@@ -7,15 +7,28 @@
 
 import UIKit
 
+struct IssueResponse: Decodable {
+  var issues: [Issue]
+}
+
 class IssueViewController: UIViewController {
   
   typealias DataSource = UICollectionViewDiffableDataSource<IssueSection, Issue>
   typealias Snapshot = NSDiffableDataSourceSnapshot<IssueSection, Issue>
   
+  private var dummyList = DummyList()
   private lazy var dataSource = makeDataSource()
   private var isEdited: Bool = false {
     didSet {
       isEdited == true ? editMode() : normalMode()
+    }
+  }
+  
+  private var issueData: [Issue] = [] {
+    willSet {
+      DispatchQueue.main.async { [weak self] in
+        self?.applySnapshot(issueData: newValue)
+      }
     }
   }
   
@@ -33,8 +46,8 @@ class IssueViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     configure()
-    applySnapshot(animatingDifferences: false)
     issueSearchBar.delegate = self
+    loadIssueData()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -49,6 +62,24 @@ class IssueViewController: UIViewController {
     configureNavigationBar()
     configureIssueCollectionView()
     configureNavigationBarButton()
+  }
+  
+  private func loadIssueData() {
+    let apiService = APIService()
+    let endPoint = IssueEndPoint.getOpenIssues.endPoint
+    apiService.requestIssue(forEndPoint: endPoint) { [weak self] (data, res, error) in
+      if let res = res as? HTTPURLResponse {
+        if res.statusCode == 202 {
+          let decoder = JSONDecoder()
+          guard let data = data,
+                let result = try? decoder.decode(IssueResponse.self, from: data) else { return }
+          
+          self?.issueData = result.issues
+        } else {
+          self?.issueData = DummyList().dummyIssues
+        }
+      }
+    }
   }
   
   func registerForKeyboardNotifications() {
@@ -115,10 +146,10 @@ class IssueViewController: UIViewController {
     }
   }
   
-  private func applySnapshot(animatingDifferences: Bool = true) {
+  private func applySnapshot(issueData: [Issue], animatingDifferences: Bool = true) {
     var snapshot = Snapshot()
     snapshot.appendSections([.main])
-    let issues = DummyList().dummyIssues
+    let issues = issueData
     snapshot.appendItems(issues)
     dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
   }

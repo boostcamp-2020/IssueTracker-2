@@ -55,15 +55,6 @@ class IssueCell: UICollectionViewCell, Reusable, NibLoadable {
   }
   
   private func configureContentView() {
-//    contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-//    translatesAutoresizingMaskIntoConstraints = true
-//    translatesAutoresizingMaskIntoConstraints = false
-//    NSLayoutConstraint.activate([
-//      topAnchor.constraint(equalTo: topAnchor),
-//      bottomAnchor.constraint(equalTo: bottomAnchor),
-//      leadingAnchor.constraint(equalTo: leadingAnchor),
-//      trailingAnchor.constraint(equalTo: trailingAnchor)
-//    ])
   }
   
   private func makeDataSource() -> DataSource {
@@ -87,7 +78,7 @@ class IssueCell: UICollectionViewCell, Reusable, NibLoadable {
   
   func updateCell(withItem item: Issue) {
     titleLabel.text = item.issueTitle
-    milestoneLabel.text = "마일스톤"
+    milestoneLabel.text = item.milestone?.milestoneName
     if let labels = item.label {
       labelData = labels
     }

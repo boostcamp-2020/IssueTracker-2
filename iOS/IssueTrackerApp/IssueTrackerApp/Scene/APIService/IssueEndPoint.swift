@@ -11,7 +11,11 @@ import NetworkService
 enum IssueEndPoint {
   case postIssue(issue: Issue)
   case updateIssue(issue: Issue)
-  case getIssues
+  case getOpenIssues
+  case getYourIssues(id: Int)
+  case getAssignedIssues(id: Int)
+//  case getMentioningIssues
+  case getCloseIssues
   case getDetailIssue(issueId: Int)
   case deleteIssue(issueId: Int)
   
@@ -34,11 +38,43 @@ enum IssueEndPoint {
           urlParameters: nil
         )
       )
-    case .getIssues:
+    case .getOpenIssues:
       return EndPoint<Issue>(
-        path: "api/issues",
+        path: "api/issue/all",
         httpMethod: .get,
-        task: .request
+        task: .requestParameters(
+          bodyParameters: nil,
+          urlParameters: ["fliter": "open"]
+        )
+      )
+    case .getYourIssues(let id):
+      return EndPoint<Issue>(
+        path: "api/issue/all",
+        httpMethod: .get,
+        task: .requestParameters(
+          bodyParameters: nil,
+          urlParameters: ["filter": "your",
+                          "id": "\(id)"]
+        )
+      )
+    case .getAssignedIssues(let id):
+      return EndPoint<Issue>(
+        path: "api/issue/all",
+        httpMethod: .get,
+        task: .requestParameters(
+          bodyParameters: nil,
+          urlParameters: ["filter": "assigned",
+                          "id": "\(id)"]
+        )
+      )
+    case .getCloseIssues:
+      return EndPoint<Issue>(
+        path: "api/issue/all",
+        httpMethod: .get,
+        task: .requestParameters(
+          bodyParameters: nil,
+          urlParameters: ["filter": "close"]
+        )
       )
     case .getDetailIssue(let issueId):
       return EndPoint<Issue>(

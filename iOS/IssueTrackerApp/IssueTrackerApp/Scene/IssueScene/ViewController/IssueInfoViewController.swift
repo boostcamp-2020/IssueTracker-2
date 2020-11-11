@@ -22,7 +22,6 @@ class IssueInfoViewController: UIViewController {
     
     issueInfoCollectionView.delegate = self
     issueInfoCollectionView.dataSource = self
-    issueInfoCollectionView.reloadData()
     configure()
   }
   
@@ -38,6 +37,12 @@ class IssueInfoViewController: UIViewController {
   
   private func configure() {
     self.view.layer.cornerRadius = 20
+  }
+  
+  private func reloadData() {
+    DispatchQueue.main.async { [weak self] in
+      self?.issueInfoCollectionView.reloadData()
+    }
   }
   
   @IBAction func closeButtonTouched(_ sender: Any) {
