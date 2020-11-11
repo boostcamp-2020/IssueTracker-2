@@ -27,27 +27,40 @@ exports.create = async ({
   }
 };
 
-exports.getAll = async () => {
+exports.getAll = async ({column, condition}) => {
   try {
-    const connection = await db.pool.getConnection(async conn => conn);
-    let sql = `
+    const sql = `
     select i.issue_name, i.created_at, i.issue_status, l.label_name, l.color, m.milestone_name, u.profile_image_url
-from issues as i
-left join issue_labels as il
-on i.id = il.issue_id
-left join labels as l
-on l.id = il.label_id
-left join milestones as m
-on m.id = i.milestone_id
-left join issue_assignees as ia
-on i.user_sid = ia.issue_id
-left join users as u
-on u.sid = ia.assignee_id
+
+
+    from issues as i
+    left join issue_labels as il
+    on i.id = il.issue_id
+    left join labels as l
+    on l.id = il.label_id
+    left join milestones as m
+    on m.id = i.milestone_id
+    left join issue_assignees as ia
+    on i.user_sid = ia.issue_id
+    left join users as u
+    on u.sid = ia.assignee_id
+
     `;
 
-    const [milestones] = await connection.query(sql, []);
-    connection.release();
-    return milestones;
+    if(column) {
+      const connection = await db.pool.getConnection(async conn => conn);
+      let newSql = sql + `where ${column}=${condition}`
+      const [milestones] = await connection.query(newSql, []);
+      connection.release();
+      return milestones;
+    }
+    else {
+      const connection = await db.pool.getConnection(async conn => conn);
+      const [milestones] = await connection.query(sql, []);
+      connection.release();
+      return milestones;
+    }
+
   } catch (err) {
     throw new Error(err);
   }
