@@ -278,4 +278,4 @@ const makeRelation = () => {
   createTableRelation();
 };
 
-initializeTables();
+// initializeTables();
