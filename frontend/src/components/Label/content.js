@@ -11,9 +11,9 @@ export default function Content() {
   const [labelListData, setLabelListData] = useState([]);
 
   const getLabelList = () => {
-    getFetch(process.env.SERVER_URL + '/api/label')
-      .then(res => res.json())
-      .then(data => setLabelListData(data.labels));
+    getFetch(process.env.SERVER_URL + '/api/label').then(data =>
+      setLabelListData(data.labels),
+    );
   };
 
   useEffect(() => {
