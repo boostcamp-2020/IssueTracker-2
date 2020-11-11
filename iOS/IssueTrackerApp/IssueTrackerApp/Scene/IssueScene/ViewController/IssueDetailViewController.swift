@@ -21,7 +21,9 @@ class IssueDetailViewController: UIViewController {
     super.viewDidLoad()
     configure()
     issueDetailCollectionView.delegate = self
+    navigationItem.largeTitleDisplayMode = .never
     applySnapshot(animatingDifferences: true)
+    addBottomSheetViewController()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -57,7 +59,7 @@ class IssueDetailViewController: UIViewController {
     
     dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
       let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "IssueDetailHeader", for: indexPath) as? IssueDetailHeader
-
+      
       sectionHeader?.updateHeader(withItem: self.issue)
       return sectionHeader
     }
@@ -76,13 +78,27 @@ class IssueDetailViewController: UIViewController {
                 ㅁㅁㅁㅁㅁㅁㅁㅁㄹ디지ㅏㅁ로지ㅏ러지Kflajf;lw jc;ilwef;o.
                 efj;iowejFlkwefjkwbfkhwe.fkhwekfhwkfhwljl.
                 wjkflsdflwkehf,eknf
-                """, createAt: "2020-11-08")
+                """, createAt: "2020-11-08"),
+      Comment(id: 2, writerId: 2, description: "가나다라마바사", createAt: "2020-01-11")
     ]
     snapshot.appendItems(comments, toSection: .main)
     UIView.animate(withDuration: 0.5) {
       self.dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
     }
+  }
+  
+  private func addBottomSheetViewController() {
+    let storyboard = UIStoryboard.init(name: "IssueInfo", bundle: nil)
+    guard let issueInfoVC = storyboard.instantiateViewController(withIdentifier: "IssueInfoViewController") as? IssueInfoViewController else { return }
+    self.addChild(issueInfoVC)
+    self.view.addSubview(issueInfoVC.view)
+    issueInfoVC.didMove(toParent: self)
     
+    issueInfoVC.view.translatesAutoresizingMaskIntoConstraints = false
+    issueInfoVC.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+    issueInfoVC.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+    issueInfoVC.view.topAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -500).isActive = true
+    issueInfoVC.view.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
   }
   
   @objc func editButtonTouched() {
@@ -102,6 +118,6 @@ extension IssueDetailViewController: UICollectionViewDelegateFlowLayout {
     dummyTextView.text = item.description
     dummyTextView.sizeToFit()
     
-    return CGSize(width: view.bounds.width, height: dummyTextView.frame.height + 80)
+    return CGSize(width: view.bounds.width, height: dummyTextView.frame.height + 100)
   }
 }

@@ -24,3 +24,20 @@ enum MilestoneSection {
 enum CommentSection {
   case main
 }
+
+enum IssueInfoSection: CaseIterable {
+  case assignee
+  case label
+  case milestone
+  
+  var header: String {
+    switch self {
+    case .assignee:
+      return "담당자"
+    case .label:
+      return "레이블"
+    case .milestone:
+      return "마일스톤"
+    }
+  }
+}

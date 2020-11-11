@@ -191,6 +191,7 @@ class IssueViewController: UIViewController {
 extension IssueViewController: UICollectionViewDelegateFlowLayout {
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    if isEdited { return }
     let storyboard = UIStoryboard(name: "IssueDetail", bundle: nil)
     guard let issue = dataSource.itemIdentifier(for: indexPath) else { return }
     let issueDetailVC = storyboard.instantiateViewController(identifier: "IssueDetailViewController", creator: { (coder) -> IssueDetailViewController? in

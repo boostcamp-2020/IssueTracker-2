@@ -20,10 +20,13 @@ class LabelMarkLabel: PaddingLabel {
   
   private func configure() {
     layer.cornerRadius = 5
+    layer.borderWidth = 0.5
     layer.masksToBounds = true
   }
   
   func setColor(withColor color: UIColor) {
+    textColor = color.isDark() == true ? UIColor.white : UIColor.black
+
     layer.borderColor = color.cgColor
     backgroundColor = color
   }

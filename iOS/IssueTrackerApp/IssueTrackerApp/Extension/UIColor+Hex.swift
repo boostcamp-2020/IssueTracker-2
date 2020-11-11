@@ -45,4 +45,13 @@ extension UIColor {
     
     return NSString(format:"#%06x", rgb) as String
   }
+  
+  func isDark() -> Bool {
+    var red: CGFloat { return CIColor(color: self).red }
+    var blue: CGFloat { return CIColor(color: self).blue}
+    var green: CGFloat { return CIColor(color: self).green}
+    let yiq = ((red * 299) + (green * 587) + (blue * blue)) / 1000
+    
+    return yiq < 150 ? true : false
+  }
 }
