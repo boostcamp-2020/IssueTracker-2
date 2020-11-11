@@ -20,6 +20,7 @@ class LabelMarkLabel: PaddingLabel {
   
   private func configure() {
     layer.cornerRadius = 5
+    layer.borderWidth = 0.5
     layer.masksToBounds = true
   }
   

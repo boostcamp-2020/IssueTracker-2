@@ -16,6 +16,11 @@
 		5C39519925514FED00C6AEB8 /* FilterIssueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C39519825514FED00C6AEB8 /* FilterIssueCell.swift */; };
 		5C4F34802547DAEE00E41121 /* LoginValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4F347F2547DAEE00E41121 /* LoginValidator.swift */; };
 		5C4F34842547E3BF00E41121 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4F34832547E3BF00E41121 /* LoginViewModel.swift */; };
+		5C6E59EA255B82770098CC00 /* IssueInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6E59E9255B82770098CC00 /* IssueInfoViewController.swift */; };
+		5C6E59EE255B85100098CC00 /* IssueInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C6E59ED255B85100098CC00 /* IssueInfo.storyboard */; };
+		5C6E59F2255B8DD30098CC00 /* IssueInfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6E59F1255B8DD30098CC00 /* IssueInfoButton.swift */; };
+		5C6E59F7255B97350098CC00 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C6E59F5255B97350098CC00 /* UserCell.swift */; };
+		5C6E59F8255B97350098CC00 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C6E59F6255B97350098CC00 /* UserCell.xib */; };
 		5C7B9BB62556771D00804A77 /* Label.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C7B9BB52556771D00804A77 /* Label.storyboard */; };
 		5C7B9BBA25567E4800804A77 /* LabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B9BB925567E4800804A77 /* LabelViewController.swift */; };
 		5C7B9BBE25567E9F00804A77 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7B9BBD25567E9F00804A77 /* TabBarController.swift */; };
@@ -139,6 +144,11 @@
 		5C39519825514FED00C6AEB8 /* FilterIssueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterIssueCell.swift; sourceTree = "<group>"; };
 		5C4F347F2547DAEE00E41121 /* LoginValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginValidator.swift; sourceTree = "<group>"; };
 		5C4F34832547E3BF00E41121 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		5C6E59E9255B82770098CC00 /* IssueInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueInfoViewController.swift; sourceTree = "<group>"; };
+		5C6E59ED255B85100098CC00 /* IssueInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IssueInfo.storyboard; sourceTree = "<group>"; };
+		5C6E59F1255B8DD30098CC00 /* IssueInfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueInfoButton.swift; sourceTree = "<group>"; };
+		5C6E59F5255B97350098CC00 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		5C6E59F6255B97350098CC00 /* UserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		5C7B9BB52556771D00804A77 /* Label.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Label.storyboard; sourceTree = "<group>"; };
 		5C7B9BB925567E4800804A77 /* LabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewController.swift; sourceTree = "<group>"; };
 		5C7B9BBD25567E9F00804A77 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -267,6 +277,7 @@
 				5C7B9BB52556771D00804A77 /* Label.storyboard */,
 				5C15D24D255829CA00D4F56A /* Milestone.storyboard */,
 				5C8D4570255A539700CDC167 /* IssueDetail.storyboard */,
+				5C6E59ED255B85100098CC00 /* IssueInfo.storyboard */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -373,6 +384,7 @@
 				5CFED74D254949BC00DE811F /* UpdateIssueViewController.swift */,
 				5C3951932551438A00C6AEB8 /* IssueFilterViewController.swift */,
 				5C8D4574255A53C700CDC167 /* IssueDetailViewController.swift */,
+				5C6E59E9255B82770098CC00 /* IssueInfoViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -433,6 +445,9 @@
 				5C8D4579255A5E5400CDC167 /* IssueDetailHeader.xib */,
 				5C8D457E255A631300CDC167 /* IssueDetailCell.swift */,
 				5C8D457F255A631300CDC167 /* IssueDetailCell.xib */,
+				5C6E59F1255B8DD30098CC00 /* IssueInfoButton.swift */,
+				5C6E59F5255B97350098CC00 /* UserCell.swift */,
+				5C6E59F6255B97350098CC00 /* UserCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -734,6 +749,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C6E59EE255B85100098CC00 /* IssueInfo.storyboard in Resources */,
+				5C6E59F8255B97350098CC00 /* UserCell.xib in Resources */,
 				5C15D2462558251900D4F56A /* MilestoneCell.xib in Resources */,
 				5CFED7432549381400DE811F /* Issue.storyboard in Resources */,
 				5CBF7C1B2557DCB000853F62 /* UpdateLabelView.xib in Resources */,
@@ -854,6 +871,7 @@
 				5C3951942551438A00C6AEB8 /* IssueFilterViewController.swift in Sources */,
 				5CEC93782559140E005F0772 /* UpdateMilestoneView.swift in Sources */,
 				5C4F34842547E3BF00E41121 /* LoginViewModel.swift in Sources */,
+				5C6E59F2255B8DD30098CC00 /* IssueInfoButton.swift in Sources */,
 				5C4F34802547DAEE00E41121 /* LoginValidator.swift in Sources */,
 				BDA8F8E32557DCDD00A0E7C9 /* LabelCell.swift in Sources */,
 				BD090CFB25480D1500454C79 /* DummyList.swift in Sources */,
@@ -864,10 +882,12 @@
 				BDA8F8392553CE6B00A0E7C9 /* Comment.swift in Sources */,
 				5CBF7C272557E8C900853F62 /* UpdateLabelView.swift in Sources */,
 				BDA8F8F22557E54C00A0E7C9 /* NibLoadable.swift in Sources */,
+				5C6E59EA255B82770098CC00 /* IssueInfoViewController.swift in Sources */,
 				BDA8F8972556771300A0E7C9 /* APIService.swift in Sources */,
 				BDA8F99325596CCD00A0E7C9 /* MilestoneResponse.swift in Sources */,
 				BDA8F9B0255A969E00A0E7C9 /* LabelResponse.swift in Sources */,
 				BD02F15C25523EFA0013C643 /* FilterSection.swift in Sources */,
+				5C6E59F7255B97350098CC00 /* UserCell.swift in Sources */,
 				5CFED74E254949BC00DE811F /* UpdateIssueViewController.swift in Sources */,
 				5C8D459A255AB21C00CDC167 /* User.swift in Sources */,
 				5C8D457A255A5E5400CDC167 /* IssueDetailHeader.swift in Sources */,
