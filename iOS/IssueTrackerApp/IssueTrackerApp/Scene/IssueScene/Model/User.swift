@@ -11,5 +11,5 @@ struct User: Hashable {
   var id: Int
   var name: String
   var password: String
-  var profileImageUrl: String
+  var profileImageUrl: String = ""
 }
