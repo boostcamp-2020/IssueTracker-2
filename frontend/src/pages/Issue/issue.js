@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../../components/Common/Header';
 import Navigation from '../../components/Issue/navigation';
 import IssueList from '../../components/Issue/issueList';
 import Footer from '../../components/Common/Footer';
+
+import { getFetch } from '../../service/fetch';
 import { useHistory } from 'react-router-dom';
 
 const ISSUE_LIST_DATA = [
@@ -44,11 +46,23 @@ const ISSUE_LIST_DATA = [
 const Issue = () => {
   const historyState = useHistory().location.state;
 
+  const [issueListData, setIssueListData] = useState([]);
+
+  const getIssueListData = () => {
+    getFetch(process.env.SERVER_URL + '/api/issue/all').then(res => {
+      setIssueListData(res.issuesInfo.issuesArray);
+    });
+  };
+
+  useEffect(() => {
+    getIssueListData();
+  }, []);
+
   return (
     <>
       <Header />
       <Navigation />
-      <IssueList ISSUE_LIST_DATA={ISSUE_LIST_DATA} />
+      <IssueList issueListData={issueListData} />
       <Footer />
     </>
   );

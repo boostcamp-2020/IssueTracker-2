@@ -11,7 +11,7 @@ exports.create = async ({
   try {
     const connection = await db.pool.getConnection(async conn => conn);
     let sql =
-      'INSERT INTO issues (user_sid, issue_content, issue_name, created_at,milestone_id,issue_status) VALUES ( ?, ?, ?,?,?,?)';
+      'INSERT INTO issues (user_sid, issue_content, issue_name, created_at,milestone_id,issue_status) VALUES ( ?, ?, ?, ?, ?, ?)';
     const [{ insertId }] = await connection.query(sql, [
       user_sid,
       issue_content,
@@ -43,7 +43,6 @@ left join issue_assignees as ia
 on i.user_sid = ia.issue_id
 left join users as u
 on u.sid = ia.assignee_id
-
     `;
 
     const [milestones] = await connection.query(sql, []);

@@ -18,6 +18,7 @@ const COLOUMN_LIST = [
 ];
 
 export default function ListForm(props) {
+  console.log(props.issueListData);
   const getHeaderContent = type => {
     if (type === 'issue') {
       return (
@@ -27,9 +28,8 @@ export default function ListForm(props) {
           <Open>
             <Count>
               {
-                props.ISSUE_LIST_DATA.filter(
-                  issueData => issueData.issue_status,
-                ).length
+                props.issueListData.filter(issueData => issueData.issue_status)
+                  .length
               }
             </Count>
             <span>Open</span>
@@ -38,9 +38,8 @@ export default function ListForm(props) {
           <Closed>
             <Count>
               {
-                props.ISSUE_LIST_DATA.filter(
-                  issueData => !issueData.issue_status,
-                ).length
+                props.issueListData.filter(issueData => !issueData.issue_status)
+                  .length
               }
             </Count>
             <span>Closed</span>
