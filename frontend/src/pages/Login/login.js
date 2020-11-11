@@ -3,12 +3,21 @@ import styled from 'styled-components';
 import UserManagementButtons from '../../components/Login/userManagementButtons';
 import UserInput from '../../components/Login/userInput';
 import { useHistory } from 'react-router-dom';
-import { getFetch } from '../../service/fetch';
+import jwt_decode from 'jwt-decode';
 
 const Login = ({ setUserInfo }) => {
   const [userLoginInfo, setUserLoginInfo] = useState({ id: null, pw: null });
 
   const history = useHistory();
+  useEffect(async () => {
+    if (document.cookie.includes('jwt')) {
+      const token = document.cookie.replace('jwt=', '');
+      console.log(token);
+      const userInfo = jwt_decode(token);
+      console.log(userInfo);
+      // history.push('/issues');
+    }
+  });
 
   return (
     <Wrapper>
