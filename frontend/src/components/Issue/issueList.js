@@ -2,10 +2,16 @@ import React from 'react';
 import ListForm from '../Common/ListForm';
 import IssueUnit from './issueUnit';
 
-export default function IssueList(props) {
+export default function IssueList({ issueListData }) {
   return (
     <>
-      <ListForm content={<IssueUnit />} type="issue" />
+      <ListForm
+        issueListData={issueListData}
+        content={issueListData.map(issueData => (
+          <IssueUnit issueData={issueData} />
+        ))}
+        type="issue"
+      ></ListForm>
     </>
   );
 }

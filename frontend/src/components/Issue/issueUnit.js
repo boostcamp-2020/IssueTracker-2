@@ -2,17 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 import { MilestoneIcon, IssueOpenedIcon } from '@primer/octicons-react';
 
-export default function IssueUnit(props) {
+export default function IssueUnit({ issueData }) {
   return (
     <Wrapper>
       <Checkbox type="checkbox" />
       <IssueIconWrapper>
         <IssueOpenedIcon size={18} />
       </IssueIconWrapper>
-
       <LeftContent>
         <LeftTopContent>
-          <IssueTitle>ISSUE Page 마크업</IssueTitle>
+          <IssueTitle>{issueData.issue_title}</IssueTitle>
           <Labels>라벨들</Labels>
         </LeftTopContent>
         <LeftDownContent>

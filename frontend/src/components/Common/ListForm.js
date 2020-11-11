@@ -8,7 +8,17 @@ import {
 import DropdownCaret from './DropdownCaret';
 import PopupContent from '../Common/popup';
 
+const COLOUMN_LIST = [
+  'Author',
+  'Label',
+  'Projects',
+  'Milestones',
+  'Assignee',
+  'Sort',
+];
+
 export default function ListForm(props) {
+  console.log(props.issueListData);
   const getHeaderContent = type => {
     if (type === 'issue') {
       return (
@@ -16,58 +26,34 @@ export default function ListForm(props) {
           <Checkbox type="checkbox" />
           <IssueOpenedIcon size={18} />
           <Open>
-            <Count>2</Count>
+            <Count>
+              {
+                props.issueListData.filter(issueData => issueData.issue_status)
+                  .length
+              }
+            </Count>
             <span>Open</span>
           </Open>
           <CheckIcon size={20} />
           <Closed>
-            <Count>0</Count>
+            <Count>
+              {
+                props.issueListData.filter(issueData => !issueData.issue_status)
+                  .length
+              }
+            </Count>
             <span>Closed</span>
           </Closed>
           <FilteringConditions>
-            <Details>
-              <Condition>
-                Author
-                <DropdownCaret />
-              </Condition>
-              <PopupContent type="Author" />
-            </Details>
-
-            <Details>
-              <Condition>
-                Label
-                <DropdownCaret />
-              </Condition>
-              <PopupContent type="Label" />
-            </Details>
-            <Details>
-              <Condition>
-                Projects
-                <DropdownCaret />
-              </Condition>
-              <PopupContent type="Projects" />
-            </Details>
-            <Details>
-              <Condition>
-                Milestones
-                <DropdownCaret />
-              </Condition>
-              <PopupContent type="Milestone" />
-            </Details>
-            <Details>
-              <Condition>
-                Assignee
-                <DropdownCaret />
-              </Condition>
-              <PopupContent type="Assignee" />
-            </Details>
-            <Details>
-              <Condition>
-                Sort
-                <DropdownCaret />
-              </Condition>
-              <PopupContent type="Sort" />
-            </Details>
+            {COLOUMN_LIST.map((columnName, index) => (
+              <Details key={index}>
+                <Condition>
+                  {columnName}
+                  <DropdownCaret />
+                </Condition>
+                <PopupContent type={columnName} />
+              </Details>
+            ))}
           </FilteringConditions>
         </HeaderWrapper>
       );

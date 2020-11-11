@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './app.css';
 
@@ -13,7 +13,6 @@ import {
   Issue,
   IssueDetail,
 } from './pages';
-import { useState } from 'react';
 
 const App = ({ milestoneService }) => {
   return (
