@@ -2,19 +2,58 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
-
-const getPercent = (open, close) => {
-  if (open === 0) return 0;
-  return close / (open + close);
-};
-
-export default function RightContent({ milestone }) {
-
-
+export default function RightContent({ milestone,  milestones, setMilestones, id, milestoneService }) {
   const history = useHistory();
+  
   const onClickEdit = () => {
-    history.push('/milestone/edit');
+    history.push({
+       pathname: '/milestone/edit',
+       state : {id : id},
+  });
   };
+
+  const getPercent = (open, close) => {
+    if (open === 0) return 0;
+    return close / (open + close);
+  };
+
+  const deleteMilestone = () => {
+    milestoneService.deleteMilestone(`http://localhost:3000/api/milestone?id=${id}`);
+  };
+
+  const closeMilestone = () => {
+    milestoneService.updateMilestone('http://localhost:3000/api/milestone', {
+      id: id,
+      milestone_name: milestone.milestone_name,
+      milestone_description: milestone.milestone_description,
+      // 시간 변경
+      end_date: '2020-11-10',
+      status: 1,
+    });
+  };
+
+  const onClickDelete = async () => {
+    let _milestones = {...milestones};
+
+    if(milestone.status === 0) _milestones.openTotalCount -= 1; 
+    else  _milestones.closeTotalCount -= 1;
+
+    const newmilestoneArray = _milestones.milestoneArray.filter(milestone=>milestone.id !== id);
+    setMilestones({... _milestones, milestoneArray:newmilestoneArray});
+
+    deleteMilestone();
+  }
+
+  const onClickClose = async () => {
+    let _milestones = {...milestones};
+
+    _milestones.closeTotalCount += 1; 
+    _milestones.openTotalCount -= 1;
+
+    const newmilestoneArray = _milestones.milestoneArray.filter(milestone=>milestone.id !== id);
+    setMilestones({... _milestones, milestoneArray:newmilestoneArray});
+    closeMilestone();
+  }
 
   return (
     <ContentRight>
@@ -34,8 +73,8 @@ export default function RightContent({ milestone }) {
 
       <Buttons>
         <BlueTextButton onClick={onClickEdit}>Edit</BlueTextButton>
-        <BlueTextButton>Close</BlueTextButton>
-        <RedTextButton>Delete</RedTextButton>
+        <BlueTextButton onClick={onClickClose}>Close</BlueTextButton>
+        <RedTextButton onClick={onClickDelete}>Delete</RedTextButton>
       </Buttons>
     </ContentRight>
   );

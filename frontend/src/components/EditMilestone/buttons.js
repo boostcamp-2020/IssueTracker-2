@@ -4,19 +4,18 @@ import styled from 'styled-components';
 import NormalButton from '../Common/NormalButton';
 import SaveButton from '../Common/GreenButton';
 
-export default function Buttons({ Context, milestoneService }) {
+export default function Buttons({ Context, milestoneService, id }) {
   const milestoneInfo = useContext(Context);
 
   const history = useHistory();
 
   const updateMilestone = () => {
     milestoneService.updateMilestone('http://localhost:3000/api/milestone', {
-      id: 13,
-      issue_id: 0,
+      id: 1,
       milestone_name: milestoneInfo.title,
       milestone_description: milestoneInfo.desc,
       end_date: milestoneInfo.dueDate,
-      status: 'open',
+      status: 0,
     });
     history.push('/milestones');
   };
