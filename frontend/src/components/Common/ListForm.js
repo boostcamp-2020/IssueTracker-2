@@ -25,12 +25,24 @@ export default function ListForm(props) {
           <Checkbox type="checkbox" />
           <IssueOpenedIcon size={18} />
           <Open>
-            <Count>2</Count>
+            <Count>
+              {
+                props.ISSUE_LIST_DATA.filter(
+                  issueData => issueData.issue_status,
+                ).length
+              }
+            </Count>
             <span>Open</span>
           </Open>
           <CheckIcon size={20} />
           <Closed>
-            <Count>0</Count>
+            <Count>
+              {
+                props.ISSUE_LIST_DATA.filter(
+                  issueData => !issueData.issue_status,
+                ).length
+              }
+            </Count>
             <span>Closed</span>
           </Closed>
           <FilteringConditions>
