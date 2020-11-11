@@ -7,9 +7,6 @@ import NormalButton from '../Common/NormalButton';
 import GreenButton from '../Common/GreenButton';
 import RandomColorButton from '../Common/RandomColorButton';
 
-const HEX_NUMBER = '0123456789abcdef';
-const HEX_NUMBER_LENGTH = 6;
-
 export default function LabelAddTabl({ setIsAddTab, getLabelList }) {
   const [newLabelInfo, setNewLabelInfo] = useState({
     labelName: '',
@@ -37,18 +34,6 @@ export default function LabelAddTabl({ setIsAddTab, getLabelList }) {
     setNewLabelInfo({ ...newLabelInfo, labelColor: event.target.value });
   };
 
-  const getRandomColorHex = () => {
-    let randomColorHex = '#';
-
-    for (let i = 0; i < HEX_NUMBER_LENGTH; i++)
-      randomColorHex += HEX_NUMBER[Math.floor(Math.random() * 16)];
-
-    setNewLabelInfo({
-      ...newLabelInfo,
-      labelColor: randomColorHex,
-    });
-  };
-
   const handleAddLabelChange = () => {
     postFetch(process.env.SERVER_URL + '/api/label', {
       label_name: newLabelInfo.labelName,
@@ -64,12 +49,15 @@ export default function LabelAddTabl({ setIsAddTab, getLabelList }) {
       <InputList>
         <LabelNameArea>
           <InputTitle>Label name</InputTitle>
-          <textarea onChange={handleLabelName} value={newLabelInfo.labelName} />
+          <InputTextBox
+            onChange={handleLabelName}
+            value={newLabelInfo.labelName}
+          />
         </LabelNameArea>
         <LabelDetailArea>
           <LabelDescriptionArea>
             <InputTitle>Description</InputTitle>
-            <textarea
+            <InputTextBox
               onChange={handleLabelDescription}
               value={newLabelInfo.labelDescription}
             />
@@ -81,7 +69,7 @@ export default function LabelAddTabl({ setIsAddTab, getLabelList }) {
                 state={newLabelInfo}
                 setState={setNewLabelInfo}
               />
-              <textarea
+              <InputTextBox
                 onChange={handleLabelColor}
                 value={newLabelInfo.labelColor}
               />
@@ -127,16 +115,19 @@ const LabelDetailArea = styled.div`
   justify-content: space-between;
 `;
 
-const LabelDescriptionArea = styled.div``;
+const LabelDescriptionArea = styled.div`
+  width: 20rem;
+`;
 
-const LabelColorArea = styled.div``;
+const LabelColorArea = styled.div`
+  width: 8rem;
+`;
 
 const LabelAddButtonArea = styled.div``;
 
 const InputTitle = styled.p`
   font-weight: bold;
   height: 25px;
-
   padding: 0;
   margin: 0;
 `;
@@ -147,4 +138,14 @@ const AddButtonsWrapper = styled.div`
 
 const ColorInputArea = styled.div`
   display: flex;
+`;
+
+const InputTextBox = styled.input`
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 5px;
+  resize: none;
+  font-size: 1rem;
+  padding: 0.2rem 0.5rem;
+  width: 100%;
+  height: 2rem;
 `;

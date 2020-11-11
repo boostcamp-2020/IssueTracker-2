@@ -19,4 +19,9 @@ export default function RandomColorButton({ state, setState }) {
   return <Wrapper onClick={getRandomColorHex}>Rand</Wrapper>;
 }
 
-const Wrapper = styled.button``;
+const Wrapper = styled.button`
+  padding: 0;
+  margin: 0;
+  height: 2rem;
+  margin-right: 0.5rem;
+`;
