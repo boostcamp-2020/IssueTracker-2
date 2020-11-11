@@ -8,10 +8,6 @@ exports.loginGitHub = (req, res, next) => {
       return next(err);
     }
 
-    console.log(user[0]);
-    console.log(user[1]);
-    console.log(user[2]);
-
     const payload = { id: user[0], nickname: user[1], profile: user[2] };
     const secret = 'secret';
     const options = { expiresIn: '7d', subject: 'userInfo' };
