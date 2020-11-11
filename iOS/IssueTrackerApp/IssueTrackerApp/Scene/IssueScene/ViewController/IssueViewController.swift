@@ -204,10 +204,10 @@ extension IssueViewController: UICollectionViewDelegateFlowLayout {
     cell.editHiddenCell(status: isEdited)
   }
   
-//  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//
-//    return CGSize(width: UIScreen.main.bounds.width, height: 170)
-//  }
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+    return CGSize(width: UIScreen.main.bounds.width, height: 170)
+  }
 }
 
 extension UICollectionView {

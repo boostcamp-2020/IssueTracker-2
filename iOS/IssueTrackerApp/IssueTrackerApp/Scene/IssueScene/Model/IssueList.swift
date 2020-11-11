@@ -18,8 +18,8 @@ struct DummyList: Hashable {
 //  ]
   
   static var dummyIssues = [
-    Issue(id: 0, userSid: 0, issueTitle: "레이블 목록보기 구현", issueAuthor: "songjucho", label: [Label(labelName: "라벨 1", color: "#ECCEF5")]),
-    Issue(id: 1, userSid: 2, issueTitle: "마일스톤 목록", issueAuthor: "fElix-MR", label: [Label(labelName: "라벨 2", color: "#ECCEF5")]),
+    Issue(id: 0, userSid: 0, issueTitle: "레이블 목록보기 구현", issueAuthor: "songjucho", label: [Label(labelName: "라벨 1가나다라마바사아자차카", color: "#ECCEF5"), Label(id: 1, labelName: "라벨 1가나다라마바사아자", color: "#ECCEF5"), Label(id: 2, labelName: "라벨 1가나다라", color: "#ECCEF5"), Label(id: 3, labelName: "라벨 1가", color: "#ECCEF5")]),
+    Issue(id: 1, userSid: 2, issueTitle: "마일스톤 목록", issueAuthor: "fElix-MR", label: [Label(labelName: "ABCDEFGHIJKLMNOPQRSTUVWXYZ", color: "#ECCEF5")]),
     Issue(id: 2, userSid: 1, issueTitle: "이슈 모델 구현", issueAuthor: "zlrlo", label: [Label(labelName: "라벨 3", color: "#ECCEF5")]),
     Issue(id: 3, userSid: 3, issueTitle: "Issue API", issueAuthor: "puba5", label: [Label(labelName: "라벨 4", color: "#ECCEF5")]),
     Issue(id: 4, userSid: 0, issueTitle: "마크다운뷰 UI 구성", issueAuthor: "songjucho", label: [Label(labelName: "라벨 5", color: "#ECCEF5"), Label(id: 1, labelName: "라벨 51", color: "#ECCEF5"), Label(id: 2, labelName: "라벨 52", color: "#ECCEF5"), Label(id: 3, labelName: "라벨 53", color: "#ECCEF5"), Label(id: 4, labelName: "라벨 54", color: "#ECCEF5"), Label(id: 5, labelName: "라벨 55", color: "#ECCEF5"), Label(id: 6, labelName: "라벨 56", color: "#ECCEF5"), Label(id: 7, labelName: "라벨 57", color: "#ECCEF5"), Label(id: 8, labelName: "라벨 58", color: "#ECCEF5"), Label(id: 9, labelName: "라벨 51", color: "#ECCEF5"), Label(id: 10, labelName: "라벨 51", color: "#ECCEF5"), Label(id: 11, labelName: "라벨 51", color: "#ECCEF5"), Label(id: 12, labelName: "라벨 51", color: "#ECCEF5")]),
