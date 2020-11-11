@@ -12,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="IssueCell" id="gTV-IL-0wX" customClass="IssueCell" customModule="IssueTrackerApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="301" height="80"/>
-            <autoresizingMask key="autoresizingMask"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="301" height="80"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -22,7 +22,6 @@
                         <color key="backgroundColor" systemColor="systemRedColor"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="80" id="5Wf-ai-YNg"/>
-                            <constraint firstAttribute="width" secondItem="7Z0-kI-Lt8" secondAttribute="height" multiplier="1:1" id="Beu-3K-kHC"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -35,7 +34,6 @@
                                 <rect key="frame" x="351" y="0.0" width="80" height="80"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="D4t-cb-j5o" secondAttribute="height" multiplier="1:1" id="RLf-Oj-uEY"/>
                                     <constraint firstAttribute="width" constant="80" id="xTx-Fs-adv"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -63,22 +61,25 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fsc-fa-TMz">
-                                        <rect key="frame" x="16" y="49" width="41.5" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" id="GWv-rj-B8U"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Udy-gM-yWe">
+                                        <rect key="frame" x="16" y="46" width="269" height="24"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0dm-aX-acN">
+                                            <size key="itemSize" width="128" height="128"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                    </collectionView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="Udy-gM-yWe" firstAttribute="leading" secondItem="ACS-V4-EFt" secondAttribute="leading" constant="16" id="54D-H0-Noq"/>
+                                    <constraint firstItem="Udy-gM-yWe" firstAttribute="top" secondItem="iD9-xe-Win" secondAttribute="bottom" constant="15" id="7GO-dX-afv"/>
                                     <constraint firstAttribute="trailing" secondItem="T8X-FL-tZ5" secondAttribute="trailing" constant="16" id="7yt-QN-ITh"/>
-                                    <constraint firstItem="Fsc-fa-TMz" firstAttribute="leading" secondItem="ACS-V4-EFt" secondAttribute="leading" constant="16" id="Grt-dS-Zij"/>
+                                    <constraint firstAttribute="bottom" secondItem="Udy-gM-yWe" secondAttribute="bottom" constant="10" id="NDV-TF-zIC"/>
                                     <constraint firstItem="iD9-xe-Win" firstAttribute="top" secondItem="ACS-V4-EFt" secondAttribute="top" constant="10" id="OvG-nc-R4l"/>
-                                    <constraint firstAttribute="bottom" secondItem="Fsc-fa-TMz" secondAttribute="bottom" constant="10" id="SI2-vm-KBR"/>
+                                    <constraint firstAttribute="trailing" secondItem="Udy-gM-yWe" secondAttribute="trailing" constant="16" id="Y0S-xR-cgv"/>
                                     <constraint firstItem="T8X-FL-tZ5" firstAttribute="top" secondItem="ACS-V4-EFt" secondAttribute="top" constant="10" id="ibV-ki-hlB"/>
                                     <constraint firstItem="iD9-xe-Win" firstAttribute="leading" secondItem="ACS-V4-EFt" secondAttribute="leading" constant="16" id="jfo-io-evE"/>
                                 </constraints>
@@ -134,11 +135,11 @@
                 <outlet property="bigView" destination="dmN-8G-3ko" id="PA1-Hm-wSh"/>
                 <outlet property="checkmarkImageView" destination="Vdg-Jy-1MK" id="1kS-UT-pQY"/>
                 <outlet property="closeLabel" destination="7Z0-kI-Lt8" id="sdU-0g-drh"/>
-                <outlet property="labelLabel" destination="Fsc-fa-TMz" id="iJW-dq-ltx"/>
+                <outlet property="innerLabelCollectionView" destination="Udy-gM-yWe" id="uPl-Ya-JCA"/>
                 <outlet property="milestoneLabel" destination="T8X-FL-tZ5" id="p0o-Xu-SBg"/>
                 <outlet property="titleLabel" destination="iD9-xe-Win" id="TdA-5X-dLF"/>
             </connections>
-            <point key="canvasLocation" x="139.13043478260872" y="75"/>
+            <point key="canvasLocation" x="-163.04347826086959" y="117.85714285714285"/>
         </collectionViewCell>
     </objects>
     <resources>

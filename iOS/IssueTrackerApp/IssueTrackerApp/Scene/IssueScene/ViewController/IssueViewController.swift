@@ -91,7 +91,6 @@ class IssueViewController: UIViewController {
       cell.gestureRecognizers = [leftGesture, rightGesture]
       
       cell.updateCell(withItem: item)
-      
       return cell
     }
     
@@ -208,7 +207,8 @@ extension IssueViewController: UICollectionViewDelegateFlowLayout {
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: view.bounds.width, height: 80)
+
+    return CGSize(width: UIScreen.main.bounds.width, height: 170)
   }
 }
 

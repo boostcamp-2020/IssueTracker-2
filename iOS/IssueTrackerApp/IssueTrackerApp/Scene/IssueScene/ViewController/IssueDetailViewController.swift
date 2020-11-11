@@ -100,7 +100,7 @@ class IssueDetailViewController: UIViewController {
     issueInfoVC.view.translatesAutoresizingMaskIntoConstraints = false
     issueInfoVC.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
     issueInfoVC.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-    issueInfoVC.view.topAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -500).isActive = true
+    issueInfoVC.view.topAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -self.view.bounds.height / 5).isActive = true
     issueInfoVC.view.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
   }
   

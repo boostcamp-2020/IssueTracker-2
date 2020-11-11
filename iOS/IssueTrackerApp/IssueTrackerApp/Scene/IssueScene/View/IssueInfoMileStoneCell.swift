@@ -7,13 +7,26 @@
 
 import UIKit
 
-class IssueInfoMileStoneCell: UICollectionViewCell {
-
-  @IBOutlet weak var milestoneTitleLabel: UILabel!
+class IssueInfoMileStoneCell: UICollectionViewCell, Reusable, NibLoadable {
   
+  @IBOutlet weak var milestoneTitleLabel: UILabel!
   @IBOutlet weak var milestoneProgressView: UIProgressView!
+  
   override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
+    super.awakeFromNib()
+    configure()
+  }
+  
+  private func configure() {
+    layer.borderWidth = 0.5
+    layer.borderColor = UIColor.gray.cgColor
+    layer.cornerRadius = 5
+  }
+  
+  func updateCell(withMilestone milestone: Milestone) {
+    milestoneTitleLabel.text = milestone.milestoneName
+    let percentage: Int = milestone.openCount + milestone.closeCount == 0 ? 0 : Int(Float(milestone.closeCount) / Float(milestone.closeCount + milestone.openCount) * Float(100))
+    milestoneProgressView.setProgress(Float(percentage)/100, animated: false)
+  }
+  
 }
