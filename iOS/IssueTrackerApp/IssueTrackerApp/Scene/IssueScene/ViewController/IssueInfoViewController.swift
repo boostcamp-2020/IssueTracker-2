@@ -38,6 +38,17 @@ class IssueInfoViewController: UIViewController {
   private func configure() {
     self.view.layer.cornerRadius = 20
   }
+  
+  @IBAction func closeButtonTouched(_ sender: Any) {
+    
+  }
+  
+  @IBAction func addCommentButtonTouched(_ sender: Any) {
+    let storyboard = UIStoryboard(name: "Comment", bundle: nil)
+    let commentVC = storyboard.instantiateViewController(withIdentifier: "CommentViewController")
+    present(commentVC, animated: true, completion: nil)
+  }
+  
 }
 
 extension IssueInfoViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

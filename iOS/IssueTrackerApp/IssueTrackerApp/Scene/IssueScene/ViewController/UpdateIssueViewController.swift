@@ -80,7 +80,7 @@ class UpdateIssueViewController: UIViewController {
   
   private func configureNavigationBar() {
     if let number = issueNumber {
-      navigationBar.topItem?.title = "#" + String(number)
+      navigationBar.topItem?.title = "# " + String(number)
       issueTitleTextField.text = issueTitle
     } else {
       navigationBar.topItem?.title = "새이슈"
