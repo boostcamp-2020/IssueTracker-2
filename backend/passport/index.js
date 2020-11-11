@@ -13,19 +13,19 @@ const githubConfig = {
 };
 
 const verifyGitHub = async (accessToken, refreshToken, profile, cb) => {
-  const user = profile.username;
+  const nickname = profile.username;
   const avatar = profile.photos[0].value;
 
-  const userInfo = await users.findOne({ username: user });
+  const userInfo = await users.findOne({ username: nickname });
 
   if (!userInfo) {
-    await users.create({
-      id: user,
+    const insertId = await users.create({
+      id: nickname,
       profileImageUrl: avatar,
       password: 'initial',
     });
 
-    return cb(null, [user, avatar]);
+    return cb(null, [insertId, nickname, avatar]);
   }
 
   return cb(null, new Error('Already exist user'));

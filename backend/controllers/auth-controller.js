@@ -8,7 +8,11 @@ exports.loginGitHub = (req, res, next) => {
       return next(err);
     }
 
-    const payload = { id: user.sid, nickname: user[0] };
+    console.log(user[0]);
+    console.log(user[1]);
+    console.log(user[2]);
+
+    const payload = { id: user[0], nickname: user[1], profile: user[2] };
     const secret = 'secret';
     const options = { expiresIn: '7d', subject: 'userInfo' };
     const token = jwt.sign(payload, secret, options);
@@ -41,10 +45,6 @@ exports.loginPassport = (req, res, next) => {
       res.status(401).json({ message: info.message });
     }
 
-    /**
-     * jwt 토큰 발급
-     * jwt.sign(payload, secretOrPrivateKey, [options, callback])
-     */
     const payload = { id: user.sid, nickname: user.nickname };
     const secret = 'secret';
     const options = { expiresIn: '7d', subject: 'userInfo' };
