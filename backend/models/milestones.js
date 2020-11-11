@@ -29,7 +29,7 @@ exports.getAll = async ({ status }) => {
   try {
     const connection = await db.pool.getConnection(async conn => conn);
     let sql = `
-    select t3.id, t3.milestone_name, t3.milestone_description, t3.end_date, t3.status, IFNULL(t1.count, 0) as open_count, IFNULL(t2.count, 0) as close_count
+    select t3.id, t3.milestone_name, t3.milestone_description, DATE_FORMAT(t3.end_date,'%Y-%m-%d') as end_date, t3.status, IFNULL(t1.count, 0) as open_count, IFNULL(t2.count, 0) as close_count
     from milestones as t3
     left join 
     (

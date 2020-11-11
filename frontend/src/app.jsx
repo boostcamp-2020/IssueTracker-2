@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import './app.css';
 
@@ -13,12 +13,13 @@ import {
   Issue,
   IssueDetail,
 } from './pages';
+import { useState } from 'react';
 
 const App = ({ milestoneService }) => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component={Login} />
+        <Route exact path="/" render={() => <Login />} />
         <Route
           exact
           path="/milestones"
@@ -33,8 +34,8 @@ const App = ({ milestoneService }) => {
           render={() => <EditMilestone milestoneService={milestoneService} />}
         />
         <Route path="/labels" component={Label} />
-        <Route path="/issue/create" component={IssueCreation} />
-        <Route path="/issues" component={Issue} />
+        <Route path="/issue/create" render={() => <IssueCreation />} />
+        <Route path="/issues" render={() => <Issue />} />
         <Route exact path="/issue/:id" component={IssueDetail} />
       </Switch>
     </BrowserRouter>

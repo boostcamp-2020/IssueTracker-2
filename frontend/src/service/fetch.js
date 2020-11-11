@@ -4,9 +4,10 @@ export const getFetch = async query => {
     headers: {
       'Content-Type': 'application/json',
     },
+    credentials: 'include',
   });
-
-  return response;
+  const json = response.json();
+  return json;
 };
 
 export const postFetch = async (query, body) => {
@@ -15,10 +16,11 @@ export const postFetch = async (query, body) => {
     headers: {
       'Content-Type': 'application/json',
     },
+    credentials: 'include',
     body: JSON.stringify(body),
   });
-
-  return response;
+  const json = response.json();
+  return json;
 };
 
 export const updateFetch = async (query, body) => {
@@ -27,10 +29,11 @@ export const updateFetch = async (query, body) => {
     headers: {
       'Content-Type': 'application/json',
     },
+    credentials: 'include',
     body: JSON.stringify(body),
   });
-
-  return response;
+  const json = response.json();
+  return json;
 };
 
 export const deleteFetch = async (query) => {
@@ -39,7 +42,8 @@ export const deleteFetch = async (query) => {
     headers: {
       'Content-Type': 'application/json',
     },
+    credentials: 'include',
   });
-
-  return response;
+  const json = response.json();
+  return json;
 };

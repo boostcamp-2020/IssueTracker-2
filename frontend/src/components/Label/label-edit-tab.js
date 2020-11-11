@@ -1,25 +1,26 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { postFetch } from '../../service/fetch';
+import { updateFetch } from '../../service/fetch';
 
 import NormalButton from '../Common/NormalButton';
 import GreenButton from '../Common/GreenButton';
 import RandomColorButton from '../Common/RandomColorButton';
 
-export default function LabelAddTabl({ setIsAddTab, getLabelList }) {
+export default function LabelEditTab({
+  labelInfo,
+  setIsEditTab,
+  getLabelList,
+}) {
   const [newLabelInfo, setNewLabelInfo] = useState({
-    labelName: '',
-    labelDescription: '',
-    labelColor: '',
+    labelId: labelInfo.id,
+    labelName: labelInfo.label_name,
+    labelDescription: labelInfo.label_description,
+    labelColor: labelInfo.color,
   });
 
   const closeEditTab = () => {
-    setIsAddTab(false);
-  };
-
-  const handleCancelAddTab = () => {
-    closeEditTab();
+    setIsEditTab(false);
   };
 
   const handleLabelName = event => {
@@ -34,8 +35,9 @@ export default function LabelAddTabl({ setIsAddTab, getLabelList }) {
     setNewLabelInfo({ ...newLabelInfo, labelColor: event.target.value });
   };
 
-  const handleAddLabelChange = () => {
-    postFetch(process.env.SERVER_URL + '/api/label', {
+  const handleSaveChange = () => {
+    updateFetch(process.env.SERVER_URL + '/api/label', {
+      id: newLabelInfo.labelId,
       label_name: newLabelInfo.labelName,
       label_description: newLabelInfo.labelDescription,
       color: newLabelInfo.labelColor,
@@ -45,7 +47,6 @@ export default function LabelAddTabl({ setIsAddTab, getLabelList }) {
 
   return (
     <Wrapper>
-      <Header>Label Preview</Header>
       <InputList>
         <LabelNameArea>
           <InputTitle>Label name</InputTitle>
@@ -79,11 +80,8 @@ export default function LabelAddTabl({ setIsAddTab, getLabelList }) {
         <LabelAddButtonArea>
           <InputTitle />
           <AddButtonsWrapper>
-            <NormalButton onClick={handleCancelAddTab} content="Cancel" />
-            <GreenButton
-              onClick={handleAddLabelChange}
-              content="Create Label"
-            />
+            <NormalButton content="Cancel" onClick={closeEditTab} />
+            <GreenButton content="Save changes" onClick={handleSaveChange} />
           </AddButtonsWrapper>
         </LabelAddButtonArea>
       </InputList>
@@ -94,11 +92,7 @@ export default function LabelAddTabl({ setIsAddTab, getLabelList }) {
 const Wrapper = styled.div`
   height: 100px;
   padding: 20px 16px;
-  background: #eeeeee;
-  margin: 20px 0;
 `;
-
-const Header = styled.div``;
 
 const InputList = styled.div`
   display: flex;
