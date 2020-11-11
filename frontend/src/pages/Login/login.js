@@ -12,10 +12,14 @@ const Login = ({ setUserInfo }) => {
   useEffect(async () => {
     if (document.cookie.includes('jwt')) {
       const token = document.cookie.replace('jwt=', '');
-      console.log(token);
       const userInfo = jwt_decode(token);
-      console.log(userInfo);
-      // history.push('/issues');
+
+      setUserInfo({
+        id: userInfo.id,
+        nickname: userInfo.nickname,
+        profile: userInfo.profile,
+      });
+      history.push('/issues');
     }
   });
 
