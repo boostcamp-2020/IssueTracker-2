@@ -4,7 +4,6 @@ const service = require('../services/user-service');
 
 exports.getNowUser = async (req, res, next) => {
   try {
-    console.log(req.cookies);
     const { status, message, insertId } = await service.userService(req);
     res.status(status).json({ message, insertId });
   } catch (err) {
