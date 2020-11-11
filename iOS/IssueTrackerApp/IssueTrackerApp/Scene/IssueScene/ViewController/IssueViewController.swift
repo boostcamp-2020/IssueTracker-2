@@ -118,8 +118,8 @@ class IssueViewController: UIViewController {
   private func applySnapshot(animatingDifferences: Bool = true) {
     var snapshot = Snapshot()
     snapshot.appendSections([.main])
-    let dummyList = DummyList()
-    snapshot.appendItems(dummyList.dummyIssues)
+    let issues = DummyList().dummyIssues
+    snapshot.appendItems(issues)
     dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
   }
   

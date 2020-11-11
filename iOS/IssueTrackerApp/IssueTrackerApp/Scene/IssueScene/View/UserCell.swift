@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UserCell: UICollectionReusableView {
+class UserCell: UICollectionViewCell, Reusable, NibLoadable {
   
   @IBOutlet weak var userImageView: UIImageView!
   @IBOutlet weak var userNameLabel: UILabel!
@@ -22,9 +22,16 @@ class UserCell: UICollectionReusableView {
   }
   
   func updateCell(withUser user: User) {
-    guard let url = URL(string: user.profileImageUrl) else { return }
+    userNameLabel.text = user.name
+    let urlString: String
+    if user.profileImageUrl == "" {
+      urlString =  "https://user-images.githubusercontent.com/65107199/98780537-4471a880-2438-11eb-95ab-0032ac67fee2.jpg"
+    } else {
+      urlString = user.profileImageUrl
+    }
+    
+    guard let url = URL(string: urlString) else { return }
     let data = try? Data(contentsOf: url)
     userImageView.image = UIImage(data: data ?? Data())
-    userNameLabel.text = user.name
   }
 }
