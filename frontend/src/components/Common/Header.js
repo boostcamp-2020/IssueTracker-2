@@ -2,17 +2,24 @@ import React from 'react';
 import styled from 'styled-components';
 import { RepoIcon } from '@primer/octicons-react';
 import { useHistory } from 'react-router-dom';
+import { getFetch } from '../../service/fetch';
+
 export default function Header() {
   const history = useHistory();
   const onClickHeader = () => {
     history.push('/issues');
   };
+  const onClickLogout = async () => {
+    await getFetch(`${process.env.SERVER_URL}/auth/logout`);
+    history.push('/');
+  };
+
   return (
     <>
       <Title>
         <RepoIcon size={24} />
         <Text onClick={onClickHeader}>ISSUE</Text>
-        <LogoutButton>Logout</LogoutButton>
+        <LogoutButton onClick={onClickLogout}>Logout</LogoutButton>
       </Title>
     </>
   );
