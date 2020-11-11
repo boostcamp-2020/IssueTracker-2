@@ -7,7 +7,7 @@
 
 import UIKit
 
-class IssueDetailViewController: UIViewController {
+class IssueDetailViewController: UIViewController, UIGestureRecognizerDelegate {
   
   typealias DataSource = UICollectionViewDiffableDataSource<CommentSection, Comment>
   typealias Snapshot = NSDiffableDataSourceSnapshot<CommentSection, Comment>
@@ -17,6 +17,17 @@ class IssueDetailViewController: UIViewController {
   
   @IBOutlet weak var issueDetailCollectionView: UICollectionView!
   
+  var startingOffset: CGFloat = 0
+  let topPadding: CGFloat = 64
+  var heightConstraint: NSLayoutConstraint?
+  lazy var maxOffset = (view.frame.height * 0.7) - topPadding
+  
+  lazy var panGesture: UIPanGestureRecognizer = {
+      let gesture = UIPanGestureRecognizer()
+      gesture.delegate = self
+      return gesture
+  }()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     configure()
@@ -24,6 +35,8 @@ class IssueDetailViewController: UIViewController {
     navigationItem.largeTitleDisplayMode = .never
     applySnapshot(animatingDifferences: true)
     addBottomSheetViewController()
+    panGesture.addTarget(self, action: #selector(panGesture(recognizer:)))
+    view.subviews.last?.addGestureRecognizer(panGesture)
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -98,11 +111,13 @@ class IssueDetailViewController: UIViewController {
     issueInfoVC.didMove(toParent: self)
     
     issueInfoVC.view.translatesAutoresizingMaskIntoConstraints = false
-    issueInfoVC.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-    issueInfoVC.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-    issueInfoVC.view.topAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -self.view.bounds.height / 5).isActive = true
-    issueInfoVC.view.heightAnchor.constraint(equalTo: self.view.heightAnchor).isActive = true
-  }
+    issueInfoVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+    issueInfoVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+    issueInfoVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+    heightConstraint = issueInfoVC.view.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2)
+    heightConstraint?.isActive = true
+
+    }
   
   @objc func editButtonTouched() {
     
@@ -111,6 +126,65 @@ class IssueDetailViewController: UIViewController {
       return UpdateIssueViewController(coder: coder, issueTitle: self.issue.issueTitle, issueNumber: self.issue.id)
     })
     present(newIssueVC, animated: true)
+  }
+  
+  @objc func panGesture(recognizer: UIPanGestureRecognizer) {
+    let translation = recognizer.translation(in: view)
+    
+    switch recognizer.state {
+    case .began: startingOffset = heightConstraint?.constant ?? 0
+    case .changed:
+      let offset = startingOffset - translation.y
+      var minOffset: CGFloat = 0
+      
+      issueDetailCollectionView.alpha = 1 - (0.5 * (offset / maxOffset))
+      
+      // This adds elasticity
+      if offset < 0 {
+        minOffset = -(0 - offset)/3
+      }
+      
+      // ** Track bottom sheet with pan gesture by finding the diff
+      // between translation and starting offset, then constraint
+      // this value to be between our top margin and min height
+      let currentOffset = min(maxOffset, max(minOffset, offset))
+      heightConstraint?.constant = currentOffset
+      
+      // ** `offset` == 0 means the sheet is minimized
+      // `offset` == `maxOffset` means the sheet is open
+     if currentOffset == maxOffset {
+        panGesture.isEnabled = false
+        panGesture.isEnabled = true
+    }
+      
+    case .ended, .cancelled:
+      guard let offset = heightConstraint?.constant else { return }
+      
+      // ** Handle last position - if nearer to the top finish out the
+      // animation to the top, and vice versa
+      var finalOffset: CGFloat = offset > maxOffset/2 ? maxOffset : 0
+      let velocity = recognizer.velocity(in: view).y
+      
+      // ** Toggle tableView scrollability
+      // Handle "flick" action using `velocity`
+      if velocity < -100 {
+        finalOffset = maxOffset
+      } else if offset > maxOffset/2 && velocity > 200 {
+        finalOffset = 0
+      }
+      
+      // ** Animate to top or bottom docking position when gesture ends
+      // or is cancelled
+      heightConstraint?.constant = finalOffset
+      UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.2, options: [.curveEaseOut, .allowUserInteraction], animations: { [weak self] in
+        guard let strongSelf = self else { return }
+        strongSelf.view.layoutIfNeeded()
+        strongSelf.issueDetailCollectionView.alpha = 1 - (0.5 * (finalOffset / strongSelf.maxOffset))
+        
+      }, completion: nil)
+      
+    default: ()
+    }
   }
 }
 
