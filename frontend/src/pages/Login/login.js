@@ -5,20 +5,13 @@ import UserInput from '../../components/Login/userInput';
 import { useHistory } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 
-const Login = ({ setUserInfo }) => {
+const Login = () => {
   const [userLoginInfo, setUserLoginInfo] = useState({ id: null, pw: null });
 
   const history = useHistory();
+
   useEffect(async () => {
     if (document.cookie.includes('jwt')) {
-      const token = document.cookie.replace('jwt=', '');
-      const userInfo = jwt_decode(token);
-
-      setUserInfo({
-        id: userInfo.id,
-        nickname: userInfo.nickname,
-        profile: userInfo.profile,
-      });
       history.push('/issues');
     }
   });
