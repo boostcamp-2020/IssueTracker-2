@@ -50,7 +50,7 @@ extension UIColor {
     var red: CGFloat { return CIColor(color: self).red }
     var blue: CGFloat { return CIColor(color: self).blue}
     var green: CGFloat { return CIColor(color: self).green}
-    let yiq = ((red * 299) + (green * 587) + (blue * blue)) / 1000
+    let yiq = ((red * 299) + (green * 587) + (blue * blue))
     
     return yiq < 150 ? true : false
   }

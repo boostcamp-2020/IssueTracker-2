@@ -19,6 +19,6 @@ class InnerLabelCell: UICollectionViewCell, Reusable, NibLoadable {
   func updateCell(withLabel label: Label) {
     innerLabel.text = label.labelName
     let color = UIColor(hex: label.color)
-    innerLabel.backgroundColor = color
+    innerLabel.setColor(withColor: color)
   }
 }

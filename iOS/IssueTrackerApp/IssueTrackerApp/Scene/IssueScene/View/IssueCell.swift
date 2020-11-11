@@ -41,9 +41,6 @@ class IssueCell: UICollectionViewCell, Reusable, NibLoadable {
     configure()
     innerLabelCollectionView.collectionViewLayout = LeftAlignedCollectionViewFlowLayout()
     innerLabelCollectionView.register(InnerLabelCell.self)
-    if let layout = innerLabelCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-      layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-    }
   }
   
   override func prepareForReuse() {
@@ -54,6 +51,19 @@ class IssueCell: UICollectionViewCell, Reusable, NibLoadable {
     layer.borderWidth = 0.25
     layer.borderColor = UIColor.lightGray.cgColor
     innerLabelCollectionView.delegate = self
+    configureContentView()
+  }
+  
+  private func configureContentView() {
+//    contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+//    translatesAutoresizingMaskIntoConstraints = true
+//    translatesAutoresizingMaskIntoConstraints = false
+//    NSLayoutConstraint.activate([
+//      topAnchor.constraint(equalTo: topAnchor),
+//      bottomAnchor.constraint(equalTo: bottomAnchor),
+//      leadingAnchor.constraint(equalTo: leadingAnchor),
+//      trailingAnchor.constraint(equalTo: trailingAnchor)
+//    ])
   }
   
   private func makeDataSource() -> DataSource {

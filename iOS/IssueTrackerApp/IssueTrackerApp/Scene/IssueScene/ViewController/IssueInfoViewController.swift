@@ -23,7 +23,7 @@ class IssueInfoViewController: UIViewController {
   
   private func makeDataSource() {
     let dataSource = DataSource(collectionView: issueInfoCollectionView) { (collectionView, indexPath, item) -> UICollectionViewCell? in
-      
+
       if indexPath == IndexPath(row: Int(), section: 0) {
         let cell: UserCell
       }

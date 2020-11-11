@@ -118,7 +118,8 @@ class IssueViewController: UIViewController {
   private func applySnapshot(animatingDifferences: Bool = true) {
     var snapshot = Snapshot()
     snapshot.appendSections([.main])
-    snapshot.appendItems(DummyList.dummyIssues)
+    let dummyList = DummyList()
+    snapshot.appendItems(dummyList.dummyIssues)
     dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
   }
   
@@ -206,8 +207,24 @@ extension IssueViewController: UICollectionViewDelegateFlowLayout {
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
-    return CGSize(width: UIScreen.main.bounds.width, height: 170)
+    
+    guard let item = dataSource.itemIdentifier(for: indexPath),
+          let labels = item.label else { return CGSize(width: UIScreen.main.bounds.size.width, height: 60)}
+    let screenWidth = UIScreen.main.bounds.size.width
+    var lineWidth: CGFloat = 0
+    var row = 1
+    for label in labels {
+      let dummyLabel = UILabel(frame: CGRect.zero)
+      dummyLabel.text = " \(label.labelName) "
+      dummyLabel.sizeToFit()
+      if lineWidth + dummyLabel.frame.size.width > screenWidth {
+        row += 1
+        lineWidth = dummyLabel.frame.size.width
+      } else {
+        lineWidth += dummyLabel.frame.size.width
+      }
+    }
+    return CGSize(width: UIScreen.main.bounds.width, height: CGFloat(row) * 30 + 45)
   }
 }
 
