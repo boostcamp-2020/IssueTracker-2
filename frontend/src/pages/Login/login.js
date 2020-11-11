@@ -1,10 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import UserManagementButtons from '../../components/Login/userManagementButtons';
 import UserInput from '../../components/Login/userInput';
+import { useHistory } from 'react-router-dom';
+import jwt_decode from 'jwt-decode';
 
 const Login = () => {
   const [userLoginInfo, setUserLoginInfo] = useState({ id: null, pw: null });
+
+  const history = useHistory();
+
+  useEffect(async () => {
+    if (document.cookie.includes('jwt')) {
+      history.push('/issues');
+    }
+  });
 
   return (
     <Wrapper>

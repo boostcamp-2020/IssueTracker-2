@@ -8,7 +8,7 @@ import SubmitButton from '../Common/GreenButton';
 import CancelButton from './CancelButton';
 import { useHistory } from 'react-router-dom';
 
-export default () => {
+export default ({ nickname, id }) => {
   const history = useHistory();
   const onClickSubmitButton = () => {
     history.push('/issues');
