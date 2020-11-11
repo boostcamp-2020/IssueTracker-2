@@ -14,13 +14,15 @@
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/polyfill": "^7.11.5",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.1",
-    "@babel/polyfill": "^7.11.5",
     "babel-loader": "^8.1.0",
     "babel-plugin-styled-components": "^1.11.1",
+    "babel-polyfill": "^6.26.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^5.0.0",
+    "dotenv-webpack": "^4.0.0",
     "eslint": "^7.2.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-prettier": "^6.14.0",
@@ -31,12 +33,11 @@
     "eslint-plugin-react-hooks": "^4.0.0",
     "html-webpack-plugin": "^4.5.0",
     "prettier": "2.1.2",
+    "react-markdown": "^5.0.2",
     "style-loader": "^2.0.0",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0",
-    "babel-polyfill": "^6.26.0",
-    "dotenv-webpack": "^4.0.0"
+    "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
     "@primer/octicons-react": "^11.0.0",
@@ -47,6 +48,7 @@
     "react-github-login": "^1.0.3",
     "react-google-login": "^5.1.22",
     "react-router-dom": "^5.2.0",
+    "remark-gfm": "^1.0.0",
     "styled-components": "^5.2.0"
   }
 }

@@ -29,9 +29,9 @@ const IssueCreation = () => {
           />
         </WriteArea>
         <SelectArea>
-          <Sidebar />
-          <Sidebar />
-          <Sidebar />
+          <Sidebar type="assignee" />
+          <Sidebar type="label" />
+          <Sidebar type="milestone" />
         </SelectArea>
       </IssueCreationBody>
       <Footer />
