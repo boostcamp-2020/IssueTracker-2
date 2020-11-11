@@ -7,12 +7,12 @@ import ListForm from '../Common/ListForm';
 
 // custom hooks
 // 분리해서 사용하면 좋을 듯
-const useFetch = (status, callback, url) => {
+const useFetch = (state, callback, url, method) => {
   const [loading, setLoading] = useState(false);
 
   const fetchInitialData = async () => {
     setLoading(true);
-    const response = await fetch(url, { method: 'GET' });
+    const response = await fetch(url, { method: method });
     const initialData = await response.json();
     callback(initialData.milestonesInfo);
     setLoading(false);
@@ -20,26 +20,26 @@ const useFetch = (status, callback, url) => {
 
   useEffect(() => {
     fetchInitialData();
-  }, [status]);
+  }, [state]);
 
   return loading;
 };
 
-const List = ({ milestones, loading }) => {
+const List = ({ milestones, setMilestones, loading, milestoneService}) => {
   let milestoneList = <div>Loading...</div>;
   if (!loading) {
-    milestoneList = milestones.map(milestone => (
+    milestoneList = milestones.milestoneArray.map(milestone => 
       <Milestone key={milestone.id}>
         <LeftContent milestone={milestone} />
-        <RightContent milestone={milestone} />
+        <RightContent milestone={milestone} milestones={milestones} setMilestones={setMilestones} id={milestone.id} milestoneService={milestoneService} />
       </Milestone>
-    ));
+    );
   }
 
   return <>{milestoneList}</>;
 };
 
-export default function MilestoneList(props) {
+export default function MilestoneList({milestoneService}) {
   const [status, setStatus] = useState(0);
   const [milestones, setMilestones] = useState({
     openTotalCount: 0,
@@ -51,6 +51,7 @@ export default function MilestoneList(props) {
     status,
     setMilestones,
     `http://localhost:3000/api/milestone/all?status=${status}`,
+    'GET'
   );
 
   const clickOpen = e => {
@@ -69,7 +70,7 @@ export default function MilestoneList(props) {
 
   return (
     <ListForm
-      content={<List milestones={milestones.milestoneArray} loading={loading} />}
+      content={<List milestones={milestones} setMilestones={setMilestones} loading={loading} milestoneService={milestoneService}  />}
       type="milestone"
       openTotalCount={milestones.openTotalCount}
       closeTotalCount={milestones.closeTotalCount}

@@ -23,8 +23,7 @@ const App = ({ milestoneService }) => {
         <Route
           exact
           path="/milestones"
-          milestoneService={milestoneService}
-          component={Milestone}
+          render={() => <Milestone milestoneService={milestoneService} />}
         />
         <Route
           path="/milestone/new"

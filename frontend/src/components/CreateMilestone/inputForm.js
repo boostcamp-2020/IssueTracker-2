@@ -9,7 +9,7 @@ import EditButtons from '../EditMilestone/buttons';
 const SetMilestoneContext = createContext(() => {});
 const MilestoneContext = createContext('');
 
-export default function InputForm({ milestoneService, type }) {
+export default function InputForm({ milestoneService, type, id }) {
   const [milestoneInfo, setMilestoneInfo] = useState({
     title: '',
     dueDate: '',
@@ -40,6 +40,7 @@ export default function InputForm({ milestoneService, type }) {
           <EditButtons
             Context={MilestoneContext}
             milestoneService={milestoneService}
+            id={id}
           />
         ) : (
           <Buttons

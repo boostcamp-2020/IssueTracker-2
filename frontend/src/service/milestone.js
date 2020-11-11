@@ -1,4 +1,4 @@
-import { postFetch, updateFetch } from './fetch';
+import { postFetch, updateFetch, deleteFetch } from './fetch';
 
 export default class MilestoneService {
   constructor() {}
@@ -9,5 +9,9 @@ export default class MilestoneService {
 
   async updateMilestone(url, data) {
     const res = await updateFetch(url, data);
+  }
+
+  async deleteMilestone(url, data) {
+    const res = await deleteFetch(url, data);
   }
 }

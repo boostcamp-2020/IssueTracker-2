@@ -36,14 +36,13 @@ export const updateFetch = async (query, body) => {
   return json;
 };
 
-export const deleteFetch = async (query, body) => {
+export const deleteFetch = async (query) => {
   const response = await fetch(`${query}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
     },
     credentials: 'include',
-    body: JSON.stringify(body),
   });
   const json = response.json();
   return json;
