@@ -52,7 +52,7 @@ const SQL_CREATE_MILESTONE_TABLE = `
 const SQL_DROP_LABEL_TABLE = `DROP TABLE IF EXISTS labels`;
 const SQL_CREATE_LABEL_TABLE = `
     CREATE TABLE labels (
-        id int PRIMARY KEY,
+        id int PRIMARY KEY AUTO_INCREMENT, 
         label_name varchar(255),
         color varchar(255),
         label_description varchar(255)
@@ -129,7 +129,7 @@ const createLabelTable = async () => {
       .then(() => connection.query(SQL_CREATE_LABEL_TABLE))
       .then(() =>
         connection.query(
-          `INSERT INTO labels values(1, "bug", "red","this is bug"),(2, "Web", "blue","Web is full stack"),(3, "iOS", "green","iOS is App");`,
+          `INSERT INTO labels values(1, "bug", "#aaaaaa","This is bug"),(2, "Web", "#11aa22","Web is Full stack"),(3, "iOS", "#aa33bb","iOS is App");`,
         ),
       )
       .then(() => connection.release());
