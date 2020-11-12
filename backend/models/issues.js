@@ -19,7 +19,7 @@ exports.create = async (connection, {
       milestone_id,
       issue_status,
     ]);
-    connection.release();
+  
     return insertId;
   } catch (err) {
     throw new Error(err);
