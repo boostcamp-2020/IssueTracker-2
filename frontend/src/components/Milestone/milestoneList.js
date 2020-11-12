@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import LeftContent from './leftContent';
 import RightContent from './rightContent';
 import ListForm from '../Common/ListForm';
+import { uuid } from 'uuidv4';
 
 // custom hooks
 // 분리해서 사용하면 좋을 듯
@@ -29,7 +30,7 @@ const List = ({ milestones, setMilestones, loading, milestoneService }) => {
   let milestoneList = <div>Loading...</div>;
   if (!loading) {
     milestoneList = milestones.milestoneArray.map(milestone => (
-      <Milestone key={milestone.id}>
+      <Milestone key={uuid()}>
         <LeftContent milestone={milestone} />
         <RightContent
           milestone={milestone}

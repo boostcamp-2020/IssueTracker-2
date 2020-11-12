@@ -2,16 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 import ListForm from '../Common/ListForm';
 import LabelDescription from './label-description';
+import { uuid } from 'uuidv4';
 
 export default function LabelList({ labelListData, getLabelList }) {
   return (
     <ListForm
       content={
         <LabelDescriptionList>
-          {labelListData.map((labelInfo, index) => {
+          {labelListData.map(labelInfo => {
             return (
               <LabelDescription
-                key={index}
+                key={uuid()}
                 labelInfo={labelInfo}
                 getLabelList={getLabelList}
               />
