@@ -25,9 +25,17 @@ export default function ListForm(props) {
   };
 
   const handleFilterOpenIssue = () => {
+    if (props.issueFilter === 1) {
+      props.setIssueFilter(0);
+      return;
+    }
     props.setIssueFilter(1);
   };
   const handleFilterCloseIssue = () => {
+    if (props.issueFilter === 2) {
+      props.setIssueFilter(0);
+      return;
+    }
     props.setIssueFilter(2);
   };
 
@@ -43,22 +51,12 @@ export default function ListForm(props) {
           />
           <IssueOpenedIcon size={18} />
           <Open onClick={handleFilterOpenIssue}>
-            <Count>
-              {
-                props.issueListData.filter(issueData => !issueData.issue_status)
-                  .length
-              }
-            </Count>
+            <Count>{props.issueCount.open}</Count>
             <span>Open</span>
           </Open>
           <CheckIcon size={20} />
           <Closed onClick={handleFilterCloseIssue}>
-            <Count>
-              {
-                props.issueListData.filter(issueData => issueData.issue_status)
-                  .length
-              }
-            </Count>
+            <Count>{props.issueCount.close}</Count>
             <span>Closed</span>
           </Closed>
           <IssueCount>

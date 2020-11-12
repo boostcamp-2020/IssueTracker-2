@@ -31,9 +31,11 @@ export default function IssueUnit({
       <LeftContent>
         <LeftTopContent>
           <IssueTitle>{issueData.issue_name}</IssueTitle>
-          <Labels>
-            <Label color={issueData.color}>{issueData.label_name}</Label>
-          </Labels>
+          {issueData.label_name.map(labelData => (
+            <Labels>
+              <Label color={labelData.color}>{labelData.label_name}</Label>
+            </Labels>
+          ))}
         </LeftTopContent>
         <LeftDownContent>
           <IssueInfo>
