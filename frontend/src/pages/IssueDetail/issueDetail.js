@@ -8,9 +8,14 @@ import CommentForm from '../../components/IssueCreation/CommentForm';
 import Sidebar from '../../components/IssueCreation/Sidebar';
 import Profile from '../../components/IssueCreation/Profile';
 import Comments from '../../components/IssueDetail/comment';
+import { useHistory } from 'react-router-dom';
 
 const IssueDetail = props => {
   const { id } = useParams();
+  const history = useHistory();
+  if (!document.cookie.includes('jwt')) {
+    history.push('/');
+  }
 
   return (
     <>
