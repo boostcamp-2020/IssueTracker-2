@@ -1,25 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import IssueTitle from './IssueTitle';
 import Tab from './Tab';
 import CommentInput from './CommentInput';
-import SubmitButton from './SubmitButton';
+import SubmitButton from '../Common/GreenButton';
 import CancelButton from './CancelButton';
+import { useHistory } from 'react-router-dom';
 
-export default () => {
+export default ({ nickname, id }) => {
+  const [tabType, setTabType] = useState('write');
+  const [content, setContent] = useState('');
+
+  const history = useHistory();
+
+  const onClickSubmitButton = async () => {
+    await postFetch(`${process.env.SERVER_URL}/api/issue`, {
+      user_sid: 3,
+      issue_content: 'abcdefg',
+      issue_name: 'abcdefg',
+      milestone_id: 5,
+      issue_status: 1,
+      assignee_id: 1,
+      labelArray: [1, 2, 3],
+      assigneeArray: [1, 2, 3],
+    });
+    history.push('/issues');
+  };
+
   return (
     <Form>
       <IssueTitle />
-      <Tab />
+      <Tab tabType={tabType} setTabType={setTabType} />
       <Line />
-      <CommentInput />
+      <CommentInput
+        tabType={tabType}
+        setContent={setContent}
+        content={content}
+      />
       <FileAttachMessage>
         Attach files by dragging & droppping, selecting or pasting then.
       </FileAttachMessage>
       <ButtonWrap>
         <CancelButton />
-        <SubmitButton />
+        <SubmitButton
+          onClick={onClickSubmitButton}
+          content="Submit new issue"
+        />
       </ButtonWrap>
     </Form>
   );
@@ -41,6 +68,7 @@ const Line = styled.div`
 
 const ButtonWrap = styled.div`
   display: flex;
+  justify-content: space-between;
   margin: 8px;
   margin-top: 0;
 `;

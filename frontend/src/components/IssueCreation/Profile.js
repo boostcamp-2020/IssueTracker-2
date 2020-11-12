@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const Profile = () => {
+const Profile = ({ profile }) => {
   return (
     <div>
-      <ProfileImage />
+      <ProfileImage src={profile} />
     </div>
   );
 };
 
-const ProfileImage = styled.div`
-  border: 1px solid black;
+const ProfileImage = styled.img`
   width: 45px;
   height: 45px;
   margin-right: 10px;

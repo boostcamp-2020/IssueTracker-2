@@ -6,6 +6,7 @@ dotenv.config();
 exports.clientID = process.env.CLIENT_ID;
 exports.clientSecret = process.env.CLIENT_SECRET;
 exports.clinetURL = process.env.CLIENT_URL;
+exports.redirectURL = process.env.REDIRECT_URL;
 
 // Database
 exports.host = process.env.DB_HOST;

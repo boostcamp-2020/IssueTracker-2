@@ -1,65 +1,97 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { MilestoneIcon, CheckIcon } from '@primer/octicons-react';
+
 import LeftContent from './leftContent';
 import RightContent from './rightContent';
+import ListForm from '../Common/ListForm';
+import { v4 } from 'uuid';
 
-export default function MilestoneList(props) {
+// custom hooks
+// 분리해서 사용하면 좋을 듯
+const useFetch = (state, callback, url) => {
+  const [loading, setLoading] = useState(false);
+
+  const fetchInitialData = async () => {
+    setLoading(true);
+    const response = await fetch(url, { method: 'GET', credentials: 'include' });
+    const initialData = await response.json();
+    callback(initialData.milestonesInfo);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchInitialData();
+  }, [state]);
+
+  return loading;
+};
+
+const List = ({ milestones, setMilestones, loading, milestoneService }) => {
+  let milestoneList = <div>Loading...</div>;
+  if (!loading) {
+    milestoneList = milestones.milestoneArray.map(milestone => (
+      <Milestone key={v4()}>
+        <LeftContent milestone={milestone} />
+        <RightContent
+          milestone={milestone}
+          milestones={milestones}
+          setMilestones={setMilestones}
+          id={milestone.id}
+          milestoneService={milestoneService}
+        />
+      </Milestone>
+    ));
+  }
+
+  return <>{milestoneList}</>;
+};
+
+export default function MilestoneList({ milestoneService }) {
+  const [status, setStatus] = useState(0);
+  const [milestones, setMilestones] = useState({
+    openTotalCount: 0,
+    closeTotalCount: 0,
+    milestoneArray: [],
+  });
+
+  const loading = useFetch(
+    status,
+    setMilestones,
+    `${process.env.SERVER_URL}/api/milestone/all?status=${status}`,
+    'GET',
+  );
+
+  const clickOpen = e => {
+    if (status) {
+      setStatus(0);
+    }
+  };
+
+  const clickClose = e => {
+    if (!status) {
+      setStatus(1);
+    }
+  };
+
   return (
-    <Wrapper>
-      <ListHeader>
-        <MilestoneIcon size={20} />
-        <Open>
-          <Count>2</Count>
-          <span>Open</span>
-        </Open>
-        <Closed>
-          <CheckIcon size={22} />
-          <Count>0</Count>
-          <span>Closed</span>
-        </Closed>
-      </ListHeader>
-      <List>
-        <Milestone>
-          <LeftContent />
-          <RightContent />
-        </Milestone>
-        <Milestone>
-          <LeftContent />
-          <RightContent />
-        </Milestone>
-      </List>
-    </Wrapper>
+    <ListForm
+      content={
+        <List
+          milestones={milestones}
+          setMilestones={setMilestones}
+          loading={loading}
+          milestoneService={milestoneService}
+        />
+      }
+      type="milestone"
+      openTotalCount={milestones.openTotalCount}
+      closeTotalCount={milestones.closeTotalCount}
+      clickOpen={clickOpen}
+      clickClose={clickClose}
+      status={status}
+    />
   );
 }
-
-const Wrapper = styled.div`
-  width: 90%;
-  height: 25em;
-  margin: auto;
-`;
-
-const ListHeader = styled.div`
-  width: 100%;
-  padding: 0.5em 1.5em;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 5px 5px 0 0;
-  background-color: rgba(0, 0, 0, 0.05);
-`;
-
-const Open = styled.span``;
-const Count = styled.span`
-  margin-left: 0.3em;
-  margin-right: 0.3em;
-`;
-const Closed = styled.span`
-  margin-left: 1em;
-`;
-
-const List = styled.div`
-  width: 100%;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-`;
 
 const Milestone = styled.div`
   position: relative;

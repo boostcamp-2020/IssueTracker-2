@@ -1,49 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
+import CreateButton from '../Common/GreenButton';
+import NavigationButton from '../Common/NavButton';
 
-export default function NavBar() {
+export default function NavBar({ isAddTab, setIsAddTab }) {
+  const handleCreateButton = () => {
+    setIsAddTab(!isAddTab);
+  };
   return (
     <Wrapper>
-      <OptionButtonsWrapper>
-        <OptionButton borderRight="1px solid #aaaaaa">Label</OptionButton>
-        <OptionButton>Milestones</OptionButton>
-      </OptionButtonsWrapper>
-      <AddLabelButton>New label</AddLabelButton>
+      <NavigationButton type="label" />
+      <ButtonWrapper>
+        <CreateButton onClick={handleCreateButton} content="New label" />
+      </ButtonWrapper>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 50px;
+  width: 100%;
+  position: relative;
+  padding: 3em 0;
 `;
 
-const AddLabelButton = styled.button`
-  background-color: #4caf50;
-  border: 1px solid;
-  border-color: #1b1f231a;
-  border-radius: 6px;
-  color: white;
-  padding: 5px 16px;
-  font-size: 14px;
-  font-weight: 500;
-  height: 35px;
-  cursor: pointer;
-`;
-
-const OptionButtonsWrapper = styled.div`
-  border-radius: 6px;
-  border: 1px solid #aaaaaa;
-`;
-
-const OptionButton = styled.button`
-  background: none;
-  border: none;
-  border-right: ${props => props.borderRight};
-  padding: 5px 16px;
-  font-size: 14px;
-  font-weight: 500;
-  height: 35px;
+const ButtonWrapper = styled.div`
+  position: absolute;
+  right: 0;
 `;

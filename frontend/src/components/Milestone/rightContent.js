@@ -1,24 +1,114 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-export default function RightContent(props) {
+
+export default function RightContent({
+  milestone,
+  milestones,
+  setMilestones,
+  id,
+  milestoneService,
+}) {
+  const history = useHistory();
+
+  const onClickEdit = () => {
+    history.push({
+      pathname: '/milestone/edit',
+      state: { id: id },
+    });
+  };
+
+  const getPercent = (open, close) => {
+    if (open === 0) return 0;
+    return (close / (open + close)) * 100;
+  };
+
+  const deleteMilestone = () => {
+    milestoneService.deleteMilestone(`${process.env.SERVER_URL}/api/milestone?id=${id}`);
+
+  };
+
+  const closeMilestone = () => {
+    milestoneService.updateMilestone(`${process.env.SERVER_URL}/api/milestone`, {
+      id: id,
+      milestone_name: milestone.milestone_name,
+      milestone_description: milestone.milestone_description,
+      end_date: milestone.end_date,
+      status: 1,
+    });
+  };
+
+  const openMilestone = () => {
+    milestoneService.updateMilestone(`${process.env.SERVER_URL}/api/milestone`, {
+      id: id,
+      milestone_name: milestone.milestone_name,
+      milestone_description: milestone.milestone_description,
+      end_date: milestone.end_date,
+      status: 0,
+    });
+  };
+
+  const onClickDelete = async () => {
+    let newMilestone = [];
+    let _milestones = { ...milestones };
+
+    if (milestone.status === 0) _milestones.openTotalCount -= 1;
+    else _milestones.closeTotalCount -= 1;
+
+    const newmilestoneArray = _milestones.milestoneArray.filter(
+      milestone => milestone.id !== id,
+    );
+    setMilestones({ ..._milestones, milestoneArray: newmilestoneArray });
+
+    deleteMilestone();
+  };
+
+  const changeStatus = async () => {
+    let _milestones = { ...milestones };
+
+    if (milestone.status) {
+      _milestones.closeTotalCount -= 1;
+      _milestones.openTotalCount += 1;
+      const newmilestoneArray = _milestones.milestoneArray.filter(
+        milestone => milestone.id !== id,
+      );
+      setMilestones({ ..._milestones, milestoneArray: newmilestoneArray });
+      openMilestone();
+    } else {
+      _milestones.closeTotalCount += 1;
+      _milestones.openTotalCount -= 1;
+      const newmilestoneArray = _milestones.milestoneArray.filter(
+        milestone => milestone.id !== id,
+      );
+      setMilestones({ ..._milestones, milestoneArray: newmilestoneArray });
+      closeMilestone();
+    }
+  };
+
   return (
     <ContentRight>
       <GaugeBar>
-        <PercentGauge />
+        <PercentGauge
+          percent={getPercent(milestone.open_count, milestone.close_count)}
+        />
       </GaugeBar>
       <Info>
-        <Percent>40%</Percent>
+        <Percent>
+          {`${getPercent(milestone.open_count, milestone.close_count)}%`}
+        </Percent>
         <span>complete</span>
-        <OpenCount>2</OpenCount>
+        <OpenCount>{milestone.open_count}</OpenCount>
         <span>open</span>
-        <ClosedCount>1</ClosedCount>
+        <ClosedCount>{milestone.close_count}</ClosedCount>
         <span>closed</span>
       </Info>
 
       <Buttons>
-        <BlueTextButton>Edit</BlueTextButton>
-        <BlueTextButton>Close</BlueTextButton>
-        <RedTextButton>Delete</RedTextButton>
+        <BlueTextButton onClick={onClickEdit}>Edit</BlueTextButton>
+        <BlueTextButton onClick={changeStatus}>
+          {milestone.status === 0 ? 'Close' : 'Open'}
+        </BlueTextButton>
+        <RedTextButton onClick={onClickDelete}>Delete</RedTextButton>
       </Buttons>
     </ContentRight>
   );
@@ -39,7 +129,9 @@ const GaugeBar = styled.div`
 `;
 
 const PercentGauge = styled.div`
-  width: 40%;
+  ${({ percent }) => {
+    return `width: ${percent}%;`;
+  }}
   height: 10px;
   border-radius: 50px;
   background-color: green;
@@ -54,11 +146,13 @@ const BlueTextButton = styled.a`
   color: blue;
   margin-right: 1em;
   text-decoration: none;
+  cursor: pointer;
 `;
 
 const RedTextButton = styled.a`
   color: red;
   text-decoration: none;
+  cursor: pointer;
 `;
 
 const Buttons = styled.div`

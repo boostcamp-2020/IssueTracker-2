@@ -1,13 +1,34 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import NormalButton from '../Common/NormalButton';
+import SaveButton from '../Common/GreenButton';
 
-export default function Buttons(props) {
+export default function Buttons({ Context, milestoneService, id }) {
+  const milestoneInfo = useContext(Context);
+
+  const history = useHistory();
+
+  const updateMilestone = () => {
+    milestoneService.updateMilestone(`${process.env.SERVER_URL}/api/milestone`, {
+      id: id,
+      milestone_name: milestoneInfo.title,
+      milestone_description: milestoneInfo.desc,
+      end_date: milestoneInfo.dueDate,
+      status: 0,
+    });
+    history.push('/milestones');
+  };
+
+  const onClickCancel = () => {
+    history.push('/milestones');
+  };
   return (
     <Wrapper>
       <ButtonSet>
-        <Button>Cancel</Button>
-        <Button>Close milestone</Button>
-        <SaveButton>Save Change</SaveButton>
+        <NormalButton onClick={onClickCancel} content="Cancel" />
+        <NormalButton content="Close milestone" />
+        <SaveButton onClick={updateMilestone} content="Save Change" />
       </ButtonSet>
     </Wrapper>
   );
@@ -22,27 +43,7 @@ const Wrapper = styled.div`
 const ButtonSet = styled.div`
   position: absolute;
   right: 0;
-  width: 33%;
+  gap: 1em;
   display: flex;
   justify-content: space-around;
-`;
-const Button = styled.button`
-  background-color: #fafbfc;
-  border: 1px solid rgba(27, 31, 35, 0.15);
-  border-radius: 5px;
-  color: black;
-  padding: 0.5em 1em;
-  font-size: 1em;
-  font-weight: 500;
-  cursor: pointer;
-`;
-const SaveButton = styled.button`
-  background-color: #2ea44f;
-  border: 1px solid rgba(27, 31, 35, 0.15);
-  border-radius: 5px;
-  color: white;
-  padding: 0.5em 1em;
-  font-size: 1em;
-  font-weight: 500;
-  cursor: pointer;
 `;

@@ -1,17 +1,54 @@
-import React from 'react';
+import React, { createContext, useState } from 'react';
 import styled from 'styled-components';
 import InputTitle from './inputTitle';
 import InputDueDate from './inputDueDate';
 import InputDescription from './inputDescription';
+import Buttons from './buttons';
+import EditButtons from '../EditMilestone/buttons';
 
-export default function InputForm(props) {
+const SetMilestoneContext = createContext(() => {});
+const MilestoneContext = createContext('');
+
+export default function InputForm({ milestoneService, type, id }) {
+  const [milestoneInfo, setMilestoneInfo] = useState({
+    title: '',
+    dueDate: '',
+    desc: '',
+  });
+
   return (
     <>
       <Wrapper>
-        <InputTitle />
-        <InputDueDate />
-        <InputDescription />
+        <SetMilestoneContext.Provider value={setMilestoneInfo}>
+          <InputTitle
+            SetTitleContext={SetMilestoneContext}
+            milestoneInfo={milestoneInfo}
+          />
+          <InputDueDate
+            SetDueDateContext={SetMilestoneContext}
+            milestoneInfo={milestoneInfo}
+          />
+          <InputDescription
+            SetDescContext={SetMilestoneContext}
+            milestoneInfo={milestoneInfo}
+          />
+        </SetMilestoneContext.Provider>
       </Wrapper>
+
+      <MilestoneContext.Provider value={milestoneInfo}>
+        {type === 'edit' ? (
+          <EditButtons
+            Context={MilestoneContext}
+            milestoneService={milestoneService}
+            id={id}
+          />
+        ) : (
+          <Buttons
+            Context={MilestoneContext}
+            milestoneService={milestoneService}
+          />
+        )}
+      </MilestoneContext.Provider>
     </>
   );
 }

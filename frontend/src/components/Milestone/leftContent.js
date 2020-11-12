@@ -2,20 +2,20 @@ import React from 'react';
 import styled from 'styled-components';
 import { AlertIcon, CalendarIcon, ClockIcon } from '@primer/octicons-react';
 
-export default function LeftContent(props) {
+export default function LeftContent({ milestone }) {
   return (
     <ContentLeft>
-      <MilestoneTitle>[WEB] 마일스톤 페이지 마크업</MilestoneTitle>
+      <MilestoneTitle>{milestone.milestone_name}</MilestoneTitle>
       <DueInfo>
         <CalendarIcon />
-        or
-        <AlertIcon />
         <Duedate>
-          <ClockIcon />
-          <UpdatedTime>Last updated about 2 hours ago</UpdatedTime>
+          Due by
+          <UpdatedTime>{milestone.end_date}</UpdatedTime>
         </Duedate>
       </DueInfo>
-      <MilestoneDescription>마일스톤 페이지 마크업</MilestoneDescription>
+      <MilestoneDescription>
+        {milestone.milestone_description}
+      </MilestoneDescription>
     </ContentLeft>
   );
 }

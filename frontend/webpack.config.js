@@ -2,12 +2,13 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: ['babel-polyfill', './src/index.js'],
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
+    publicPath: '/',
+    filename: 'bundle.[hash].js',
   },
   module: {
     rules: [
@@ -48,9 +49,10 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      template: './public/index.html',
+      template: './index.html',
       changeOrigin: true,
     }),
     new CleanWebpackPlugin(),
+    new Dotenv(),
   ],
 };

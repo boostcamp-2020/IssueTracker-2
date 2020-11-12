@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { TagIcon, MilestoneIcon } from '@primer/octicons-react';
-import CreateButton from './createButton';
+
+import NavigationButton from '../Common/NavButton';
+import CreateButton from '../Common/GreenButton';
+import { useHistory } from 'react-router-dom';
 
 export default function NavButton(props) {
+  const history = useHistory();
+  const onClickNewMilestone = () => {
+    history.push('/milestone/new');
+  };
   return (
     <Nav>
-      <LabelButton>
-        <TagIcon size={17} />
-        <Text>Labels</Text>
-      </LabelButton>
-      <MilestoneButton>
-        <MilestoneIcon size={17} />
-        <Text>Milestones</Text>
-      </MilestoneButton>
-      <CreateButton>New milestone</CreateButton>
+      <NavigationButton type="milestone" />
+      <ButtonWrapper>
+        <CreateButton onClick={onClickNewMilestone} content="New milestone" />
+      </ButtonWrapper>
     </Nav>
   );
 }
@@ -52,4 +53,9 @@ const MilestoneButton = styled.span`
   color: white;
   background-color: #0366d6;
   fill: white;
+`;
+
+const ButtonWrapper = styled.span`
+  position: absolute;
+  right: 0;
 `;

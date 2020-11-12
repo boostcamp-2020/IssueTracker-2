@@ -1,17 +1,22 @@
 import React from 'react';
-import Header from '../../components/CreateMilestone/header';
+import Header from '../../components/Common/Header';
 import NavButton from '../../components/EditMilestone/navButton';
 import InputForm from '../../components/CreateMilestone/inputForm';
-import Buttons from '../../components/EditMilestone/buttons';
-import Footer from '../../components/CreateMilestone/footer';
+import Footer from '../../components/Common/Footer';
+import { useHistory } from 'react-router-dom';
 
-const EditMilestone = props => {
+const EditMilestone = ({ milestoneService }) => {
+  const id = useHistory().location.state.id;
+  const history = useHistory();
+  if (!document.cookie.includes('jwt')) {
+    history.push('/');
+  }
+
   return (
     <>
       <Header />
       <NavButton />
-      <InputForm />
-      <Buttons />
+      <InputForm milestoneService={milestoneService} type="edit" id={id} />
       <Footer />
     </>
   );
