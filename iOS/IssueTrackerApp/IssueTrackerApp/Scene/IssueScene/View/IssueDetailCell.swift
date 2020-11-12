@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import MarkdownView
 
 class IssueDetailCell: UICollectionViewCell, Reusable, NibLoadable {
   
   @IBOutlet weak var profileImageView: UIImageView!
   @IBOutlet weak var userNameLabel: UILabel!
   @IBOutlet weak var timeLabel: UILabel!
-  @IBOutlet weak var commentTextView: UITextView!
+  @IBOutlet weak var commentTextView: MarkdownView!
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -25,7 +26,7 @@ class IssueDetailCell: UICollectionViewCell, Reusable, NibLoadable {
   }
   
   func updateCell(withItem item: Comment) {
-    commentTextView.text = item.description
+    commentTextView.load(markdown: item.description)
     timeLabel.text = item.createAt
   }
 }

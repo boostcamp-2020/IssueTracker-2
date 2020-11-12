@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MarkdownView
 
 class IssueDetailViewController: UIViewController, UIGestureRecognizerDelegate {
   
@@ -80,6 +81,8 @@ class IssueDetailViewController: UIViewController, UIGestureRecognizerDelegate {
       let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "IssueDetailHeader", for: indexPath) as? IssueDetailHeader
       
       sectionHeader?.updateHeader(withItem: self.issue)
+      sectionHeader?.issueStatusLabel.layer.borderColor = self.issue.issueStatus == true ? UIColor.systemGreen.cgColor : UIColor.systemRed.cgColor
+      sectionHeader?.issueStatusLabel.text = self.issue.issueStatus == true ? "✓ OPEN" : "✕ CLOSE"
       return sectionHeader
     }
     return dataSource
@@ -202,6 +205,6 @@ extension IssueDetailViewController: UICollectionViewDelegateFlowLayout {
     dummyTextView.text = item.description
     dummyTextView.sizeToFit()
     
-    return CGSize(width: view.bounds.width, height: dummyTextView.frame.height + 100)
+    return CGSize(width: view.bounds.width, height: dummyTextView.frame.height + 70)
   }
 }

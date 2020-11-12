@@ -58,7 +58,8 @@ class IssueViewController: UIViewController {
   @IBOutlet weak var collectionViewBottomConstraint: NSLayoutConstraint!
   
   @IBAction func newIssueButtonTouched(_ sender: Any) {
-    guard let newIssueVC = storyboard?.instantiateViewController(identifier: "NewIssueVC") else { return }
+    guard let newIssueVC = storyboard?.instantiateViewController(identifier: "NewIssueVC") as? UpdateIssueViewController else { return }
+    newIssueVC.handler = loadIssueData
     present(newIssueVC, animated: true)
   }
   

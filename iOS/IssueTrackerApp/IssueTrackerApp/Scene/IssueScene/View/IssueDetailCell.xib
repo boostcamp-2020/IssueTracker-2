@@ -37,35 +37,32 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="안녕하세요 하하하하!!!!" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AA3-mu-M1A">
-                        <rect key="frame" x="10" y="70" width="316" height="287"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z2N-6M-2jo" customClass="MarkdownView" customModule="MarkdownView">
+                        <rect key="frame" x="10" y="70" width="316" height="297"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" id="ecR-sM-8KM"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" id="G8R-EI-cSY"/>
                         </constraints>
-                        <color key="textColor" systemColor="labelColor"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                    </textView>
+                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="hYb-Ly-shY" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="15" id="0KL-LG-OqT"/>
-                <constraint firstAttribute="trailing" secondItem="AA3-mu-M1A" secondAttribute="trailing" constant="15" id="3wd-eM-ZOf"/>
-                <constraint firstAttribute="bottom" secondItem="AA3-mu-M1A" secondAttribute="bottom" constant="20" id="ARw-Jf-xCF"/>
+                <constraint firstAttribute="bottom" secondItem="Z2N-6M-2jo" secondAttribute="bottom" constant="10" id="Gqh-lE-rfp"/>
+                <constraint firstItem="Z2N-6M-2jo" firstAttribute="top" secondItem="vj9-yx-8Uv" secondAttribute="bottom" constant="15" id="IE3-kQ-CDz"/>
                 <constraint firstItem="hYb-Ly-shY" firstAttribute="leading" secondItem="vj9-yx-8Uv" secondAttribute="trailing" constant="7" id="Q57-0Y-Gyv"/>
-                <constraint firstItem="AA3-mu-M1A" firstAttribute="leading" secondItem="vj9-yx-8Uv" secondAttribute="leading" id="TYt-wA-Ngn"/>
                 <constraint firstItem="vj9-yx-8Uv" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="15" id="XHu-WX-jMg"/>
-                <constraint firstItem="AA3-mu-M1A" firstAttribute="top" secondItem="vj9-yx-8Uv" secondAttribute="bottom" constant="15" id="cpq-T9-hAq"/>
+                <constraint firstAttribute="trailing" secondItem="Z2N-6M-2jo" secondAttribute="trailing" constant="15" id="YNx-Xs-K05"/>
+                <constraint firstItem="Z2N-6M-2jo" firstAttribute="leading" secondItem="vj9-yx-8Uv" secondAttribute="leading" id="dKx-l7-OOD"/>
                 <constraint firstItem="1Vw-Zy-24n" firstAttribute="top" secondItem="hYb-Ly-shY" secondAttribute="bottom" constant="3" id="dtG-mc-19A"/>
                 <constraint firstItem="vj9-yx-8Uv" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="eFb-d0-ZaJ"/>
                 <constraint firstItem="1Vw-Zy-24n" firstAttribute="leading" secondItem="vj9-yx-8Uv" secondAttribute="trailing" constant="7" id="p9z-hg-QFC"/>
             </constraints>
             <size key="customSize" width="341" height="377"/>
             <connections>
-                <outlet property="commentTextView" destination="AA3-mu-M1A" id="mFP-r5-S5w"/>
+                <outlet property="commentTextView" destination="Z2N-6M-2jo" id="zj0-Mb-rKi"/>
                 <outlet property="profileImageView" destination="vj9-yx-8Uv" id="eTI-tb-S21"/>
                 <outlet property="timeLabel" destination="1Vw-Zy-24n" id="RsQ-6p-tlv"/>
                 <outlet property="userNameLabel" destination="hYb-Ly-shY" id="AcA-So-vLF"/>
@@ -74,9 +71,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -28,6 +28,7 @@ class UpdateIssueViewController: UIViewController {
 
   private var issueTitle: String = ""
   private var issueNumber: Int?
+  var handler: (() -> ())?
   
   @IBOutlet weak var navigationBar: UINavigationBar!
   @IBOutlet weak var issueContentTextView: IssueContentTextView!
@@ -41,6 +42,29 @@ class UpdateIssueViewController: UIViewController {
   
   @IBAction func submitButtonTouched(_ sender: Any) {
     // TODO:- 이슈 데이터 저장
+    guard let titleTextField = issueTitleTextField.text else { return }
+    let apiService = APIService()
+    let dummyIssueId = UserDefaults.standard.integer(forKey: "issueId")
+    let comment: Comment
+    var issue = Issue(id: dummyIssueId, userSid: 0, issueTitle: titleTextField, issueAuthor: "", comment: [], label: [], milestone: nil, issueStatus: true, assignee: [])
+    if issueContentTextView.text != nil && issueContentTextView.text != "" {
+      let dateFormatter = DateFormatter()
+      dateFormatter.dateFormat = "yyyy-MM-dd"
+      let dateAsString = dateFormatter.string(from: Date())
+      if let text = issueContentTextView.text {
+        comment = Comment(writerId: 0, description: text, createAt: dateAsString)
+        var commentArray: [Comment] = []
+        commentArray.append(comment)
+        issue = Issue(id: dummyIssueId, userSid: 0, issueTitle: titleTextField, issueAuthor: "", comment: commentArray, label: [], milestone: nil, issueStatus: true, assignee: [])
+      }
+    }
+    let endPoint = IssueEndPoint.postIssue(issue: issue).endPoint
+    apiService.requestIssue(forEndPoint: endPoint) { [weak self] (data, res, error) in
+      guard let self = self else { return }
+      self.dismiss(animated: true) { [weak self] in
+        self?.handler?()
+      }
+    }
   }
   
   init?(coder: NSCoder, issueTitle: String = "", issueNumber: Int? = nil) {
