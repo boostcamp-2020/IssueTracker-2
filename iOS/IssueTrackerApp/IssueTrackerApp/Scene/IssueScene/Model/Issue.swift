@@ -16,8 +16,8 @@ struct Issue: Hashable, Codable {
     hasher.combine(id)
   }
   
-  var id: Int
-  var userSid: Int
+  var id: Int = 0
+  var userSid: Int = 0
   var issueTitle: String
   var issueAuthor: String
   var comment: [Comment]?

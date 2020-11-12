@@ -106,8 +106,8 @@ class LabelViewController: UIViewController {
       
       nibView.translatesAutoresizingMaskIntoConstraints = false
       NSLayoutConstraint.activate([
-        nibView.heightAnchor.constraint(equalToConstant: 384),
-        nibView.widthAnchor.constraint(equalToConstant: 350),
+        nibView.heightAnchor.constraint(equalToConstant: 310),
+        nibView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
         nibView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         nibView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
       ])
@@ -123,7 +123,7 @@ class LabelViewController: UIViewController {
     if let keyboardSize = (note.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
        let updateLabelView = view.subviews.last as? UpdateLabelView {
       UIView.animate(withDuration: 0.3, animations: {
-        updateLabelView.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + 230)
+        updateLabelView.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height / 3)
       })
     }
   }

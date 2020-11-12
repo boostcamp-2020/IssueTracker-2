@@ -17,10 +17,17 @@ class UpdateMilestoneView: UIView {
   
   weak var delegate: UpdateMilestoneViewDelegate?
   
+  private var endDate = Date()
+  
   @IBOutlet weak var titleLabel: UITextField!
-  @IBOutlet weak var endDateLabel: UITextField!
   @IBOutlet weak var descriptionLabel: UITextField!
   @IBOutlet weak var saveButton: UIButton!
+  @IBOutlet weak var datePickerView: UIDatePicker!
+  
+  @IBAction func dateValueChanged(_ sender: UIDatePicker) {
+    self.endDate = sender.date
+  }
+  
   
   @IBAction func closeButtonTouched(_ sender: UIButton) {
     delegate?.closeButtonTouched(sender)
@@ -31,10 +38,12 @@ class UpdateMilestoneView: UIView {
   }
   
   @IBAction func saveButtonTouched(_ sender: UIButton) {
-    guard let title = titleLabel.text,
-          let endDate = endDateLabel.text else { return }
+    guard let title = titleLabel.text else { return }
+    let dateformatter = DateFormatter()
+    dateformatter.dateFormat = "yyyy-MM-dd"
+    let endDateAsString = dateformatter.string(from: endDate)
     let description = descriptionLabel.text
-    delegate?.saveButtonTouched(withTitle: title, description: description, endDate: endDate)
+    delegate?.saveButtonTouched(withTitle: title, description: description, endDate: endDateAsString)
   }
   
   override func awakeFromNib() {
@@ -45,6 +54,6 @@ class UpdateMilestoneView: UIView {
   func configure() {
     layer.cornerRadius = 10
     frame = CGRect(x: 0, y: 0, width: 350, height: 384)
-    saveButton.layer.cornerRadius = 10
+    datePickerView.minimumDate = Date()
   }
 }

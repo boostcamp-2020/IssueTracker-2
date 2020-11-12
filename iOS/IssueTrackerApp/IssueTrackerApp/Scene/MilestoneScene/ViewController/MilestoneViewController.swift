@@ -12,8 +12,8 @@ class MilestoneViewController: UIViewController {
   typealias DataSource = UICollectionViewDiffableDataSource<MilestoneSection, Milestone>
   typealias Snapshot = NSDiffableDataSourceSnapshot<MilestoneSection, Milestone>
   
-  lazy var dataSource = makeDataSource()
-  var milestoneData: [Milestone] = [] {
+  private lazy var dataSource = makeDataSource()
+  private var milestoneData: [Milestone] = [] {
     willSet {
       DispatchQueue.main.async { [weak self] in
         self?.applySnapshot(withItem: newValue)
@@ -33,7 +33,6 @@ class MilestoneViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     configure()
-    
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -119,8 +118,8 @@ class MilestoneViewController: UIViewController {
       
       nibView.translatesAutoresizingMaskIntoConstraints = false
       NSLayoutConstraint.activate([
-        nibView.heightAnchor.constraint(equalToConstant: 384),
-        nibView.widthAnchor.constraint(equalToConstant: 350),
+        nibView.heightAnchor.constraint(equalToConstant: 310),
+        nibView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
         nibView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         nibView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
       ])
@@ -136,7 +135,7 @@ class MilestoneViewController: UIViewController {
     if let keyboardSize = (note.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
        let updateMilestoneView = view.subviews.last as? UpdateMilestoneView {
       UIView.animate(withDuration: 0.3, animations: {
-        updateMilestoneView.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + 230)
+        updateMilestoneView.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height / 3)
       })
     }
   }
