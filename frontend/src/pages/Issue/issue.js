@@ -20,11 +20,22 @@ const Issue = () => {
   });
 
   const [issueFilter, setIssueFilter] = useState(0);
+  const [issueCount, setIssueCount] = useState({ open: 0, close: 0 });
+
+  const getIssueCount = () => {
+    getFetch(process.env.SERVER_URL + '/api/issue/all').then(res => {
+      let issueAll = sortLabelByIssue(res.issuesInfo.issuesArray);
+
+      setIssueCount({
+        open: issueAll.filter(issueData => issueData.issue_status).length,
+        close: issueAll.filter(issueData => !issueData.issue_status).length,
+      });
+    });
+  };
 
   const getIssueListData = () => {
     getFetch(process.env.SERVER_URL + '/api/issue/all').then(res => {
       setIssueListData(res.issuesInfo);
-      console.log(res.issuesInfo);
     });
   };
 
@@ -44,22 +55,8 @@ const Issue = () => {
     );
   };
 
-  const sortLabelByIssue = issueListData => {
-    let sortedIssue = [];
-    let issueLabelMap = {};
-    issueListData.forEach(issueData => {
-      if (!issueLabelMap[issueData.id]) {
-        issueLabelMap[issueData.id] = sortedIssue.length;
-        sortedIssue.push({ ...issueData, label_name: [issueData.label_name] });
-        return;
-      }
-      let issueIndex = issueLabelMap[issueData.id];
-      sortedIssue[issueIndex].label_name.push(issueData.label_name);
-    });
-    return sortedIssue;
-  };
-
   useEffect(() => {
+    getIssueCount();
     switch (issueFilter) {
       case 0:
         getIssueListData();
@@ -73,13 +70,39 @@ const Issue = () => {
     }
   }, [issueFilter]);
 
+  const sortLabelByIssue = issueList => {
+    let sortedIssue = [];
+    let issueLabelMap = {};
+    issueList.forEach(issueData => {
+      if (issueLabelMap[issueData.id] === undefined) {
+        issueLabelMap[issueData.id] = sortedIssue.length;
+        sortedIssue.push({
+          ...issueData,
+          label_name: [
+            { label_name: issueData.label_name, color: issueData.color },
+          ],
+        });
+        return;
+      }
+      let issueIndex = issueLabelMap[issueData.id];
+      sortedIssue[issueIndex].label_name.push({
+        label_name: issueData.label_name,
+        color: issueData.color,
+      });
+    });
+
+    return sortedIssue;
+  };
+
   return (
     <>
       <Header />
       <Navigation countInfo={issueListData} />
       <IssueList
-        issueListData={issueListData.issuesArray}
+        issueFilter={issueFilter}
+        issueListData={sortLabelByIssue(issueListData.issuesArray)}
         setIssueFilter={setIssueFilter}
+        issueCount={issueCount}
       />
       <Footer />
     </>

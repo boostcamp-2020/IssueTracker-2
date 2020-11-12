@@ -3,7 +3,12 @@ import ListForm from '../Common/ListForm';
 import IssueUnit from './issueUnit';
 import { v4 } from 'uuid';
 
-const IssueList = ({ issueListData, setIssueFilter }) => {
+const IssueList = ({
+  issueListData,
+  setIssueFilter,
+  issueFilter,
+  issueCount,
+}) => {
   const [isCheckList, setIsCheckList] = useState([]);
   const [isAllChecked, setIsAllChecked] = useState(false);
 
@@ -11,41 +16,18 @@ const IssueList = ({ issueListData, setIssueFilter }) => {
     setIsCheckList(new Array(issueListData.length).fill(false));
   }, [issueListData]);
 
-  const sortLabelByIssue = issueListData => {
-    let sortedIssue = [];
-    let issueLabelMap = {};
-    issueListData.forEach(issueData => {
-      if (issueLabelMap[issueData.id] === undefined) {
-        issueLabelMap[issueData.id] = sortedIssue.length;
-        sortedIssue.push({
-          ...issueData,
-          label_name: [
-            { label_name: issueData.label_name, color: issueData.color },
-          ],
-        });
-        return;
-      }
-      let issueIndex = issueLabelMap[issueData.id];
-      sortedIssue[issueIndex].label_name.push({
-        label_name: issueData.label_name,
-        color: issueData.color,
-      });
-    });
-
-    return sortedIssue;
-  };
-  console.log(sortLabelByIssue(issueListData));
-
   return (
     <>
       <ListForm
+        issueCount={issueCount}
         isCheckList={isCheckList}
         setIsCheckList={setIsCheckList}
         issueListData={issueListData}
         isAllChecked={isAllChecked}
         setIsAllChecked={setIsAllChecked}
+        issueFilter={issueFilter}
         setIssueFilter={setIssueFilter}
-        content={sortLabelByIssue(issueListData).map((issueData, index) => (
+        content={issueListData.map((issueData, index) => (
           <IssueUnit
             key={v4()}
             index={index}
