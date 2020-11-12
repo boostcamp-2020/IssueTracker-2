@@ -97,7 +97,11 @@ const Issue = () => {
   return (
     <>
       <Header />
-      <Navigation countInfo={issueListData} />
+      <Navigation
+        issueListData={issueListData}
+        setIssueListData={setIssueListData}
+        countInfo={issueListData}
+      />
       <IssueList
         issueFilter={issueFilter}
         issueListData={sortLabelByIssue(issueListData.issuesArray)}

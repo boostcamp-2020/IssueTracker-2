@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Title-->
+        <scene sceneID="Vy6-Qb-zJy">
+            <objects>
+                <viewController storyboardIdentifier="CommentViewController" id="Z9F-Na-PMw" customClass="CommentViewController" customModule="IssueTrackerApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="E7B-vr-yB9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="여기에 코멘트 입력 ㄱㄱㄱ" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="XvW-c3-Vhz">
+                                <rect key="frame" x="10" y="54" width="394" height="798"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ccq-cf-Ts7">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Comment" id="DEI-1L-Isb">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="xLE-bv-cnY">
+                                            <connections>
+                                                <action selector="cancelButtonTouched:" destination="Z9F-Na-PMw" id="3ms-AG-VSU"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="sKD-xt-yJm">
+                                            <connections>
+                                                <action selector="saveButtonTouched:" destination="Z9F-Na-PMw" id="k3l-Px-hAS"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="SDw-Ln-mSc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ccq-cf-Ts7" firstAttribute="top" secondItem="E7B-vr-yB9" secondAttribute="top" id="Hx2-5N-0ei"/>
+                            <constraint firstItem="SDw-Ln-mSc" firstAttribute="bottom" secondItem="XvW-c3-Vhz" secondAttribute="bottom" constant="10" id="IGn-6z-5fZ"/>
+                            <constraint firstItem="SDw-Ln-mSc" firstAttribute="trailing" secondItem="XvW-c3-Vhz" secondAttribute="trailing" constant="10" id="L68-hH-Suw"/>
+                            <constraint firstItem="XvW-c3-Vhz" firstAttribute="top" secondItem="ccq-cf-Ts7" secondAttribute="bottom" constant="10" id="XWe-C7-yXK"/>
+                            <constraint firstItem="XvW-c3-Vhz" firstAttribute="leading" secondItem="SDw-Ln-mSc" secondAttribute="leading" constant="10" id="YKZ-BW-Y1i"/>
+                            <constraint firstAttribute="trailing" secondItem="ccq-cf-Ts7" secondAttribute="trailing" id="krK-nK-E69"/>
+                            <constraint firstItem="ccq-cf-Ts7" firstAttribute="leading" secondItem="E7B-vr-yB9" secondAttribute="leading" id="scm-0I-SUK"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="DB0-4G-5sc"/>
+                    <connections>
+                        <outlet property="bottomConstraint" destination="IGn-6z-5fZ" id="MGg-EH-0Ut"/>
+                        <outlet property="commentTextView" destination="XvW-c3-Vhz" id="aAN-PT-jvN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xSq-bv-DdG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="181.15942028985509" y="-131.25"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

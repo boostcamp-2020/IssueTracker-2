@@ -7,6 +7,7 @@ import CommentInput from './CommentInput';
 import SubmitButton from '../Common/GreenButton';
 import CancelButton from './CancelButton';
 import { useHistory } from 'react-router-dom';
+import { postFetch } from '../../service/fetch';
 
 export default ({ nickname, id }) => {
   const [tabType, setTabType] = useState('write');

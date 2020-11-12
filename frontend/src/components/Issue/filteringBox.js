@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import DropdownCaret from '../Common/DropdownCaret';
 import PopupContent from '../Common/popup';
 
-export default function FiilteringBox(props) {
+export default function FiilteringBox({ issueListData, setIssueListData }) {
   return (
     <>
       <Details>
@@ -11,7 +11,11 @@ export default function FiilteringBox(props) {
           Fileters
           <DropdownCaret />
         </FilteringButton>
-        <PopupContent type="issue" />
+        <PopupContent
+          issueListData={issueListData}
+          setIssueListData={setIssueListData}
+          type="issue"
+        />
       </Details>
       <SearchBar type="text" value="is:issue is:open " readOnly />
     </>
