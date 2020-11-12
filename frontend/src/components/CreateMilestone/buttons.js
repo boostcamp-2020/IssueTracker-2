@@ -8,7 +8,7 @@ export default function buttons({ Context, milestoneService }) {
   const history = useHistory();
 
   const createMilestone = () => {
-    milestoneService.createMilestone('http://localhost:3000/api/milestone', {
+    milestoneService.createMilestone(`${process.env.SERVER_URL}/api/milestone`, {
       milestone_name: milestoneInfo.title,
       milestone_description: milestoneInfo.desc,
       end_date: milestoneInfo.dueDate,
