@@ -1,9 +1,10 @@
 const router = require('express').Router();
 const controller = require('../../controllers/label-controller');
+const token = require('../../controllers/token-controller');
 
-router.get('/', controller.readLabel);
-router.delete('/', controller.deleteLabel);
-router.put('/', controller.updateLabel);
-router.post('/', controller.addLabel);
+router.get('/', token.check, controller.readLabel);
+router.delete('/', token.check, controller.deleteLabel);
+router.put('/', token.check, controller.updateLabel);
+router.post('/', token.check, controller.addLabel);
 
 module.exports = router;
