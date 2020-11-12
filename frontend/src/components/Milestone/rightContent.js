@@ -18,11 +18,11 @@ export default function RightContent({ milestone,  milestones, setMilestones, id
   };
 
   const deleteMilestone = () => {
-    milestoneService.deleteMilestone(`http://localhost:3000/api/milestone?id=${id}`);
+    milestoneService.deleteMilestone(`${process.env.SERVER_URL}/api/milestone?id=${id}`);
   };
 
   const closeMilestone = () => {
-    milestoneService.updateMilestone('http://localhost:3000/api/milestone', {
+    milestoneService.updateMilestone(`${process.env.SERVER_URL}/api/milestone`, {
       id: id,
       milestone_name: milestone.milestone_name,
       milestone_description: milestone.milestone_description,
@@ -32,7 +32,7 @@ export default function RightContent({ milestone,  milestones, setMilestones, id
   };
 
   const openMilestone = () => {
-    milestoneService.updateMilestone('http://localhost:3000/api/milestone', {
+    milestoneService.updateMilestone(`${process.env.SERVER_URL}/api/milestone`, {
       id: id,
       milestone_name: milestone.milestone_name,
       milestone_description: milestone.milestone_description,

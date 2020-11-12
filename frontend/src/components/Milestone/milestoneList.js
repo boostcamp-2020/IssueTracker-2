@@ -57,7 +57,7 @@ export default function MilestoneList({ milestoneService }) {
   const loading = useFetch(
     status,
     setMilestones,
-    `http://localhost:3000/api/milestone/all?status=${status}`,
+    `${process.env.SERVER_URL}/api/milestone/all?status=${status}`,
     'GET',
   );
 
