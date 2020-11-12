@@ -1,6 +1,7 @@
 import React from 'react';
 import ListForm from '../Common/ListForm';
 import IssueUnit from './issueUnit';
+import { v4 } from 'uuid';
 
 export default function IssueList({ issueListData }) {
   return (
@@ -8,7 +9,7 @@ export default function IssueList({ issueListData }) {
       <ListForm
         issueListData={issueListData}
         content={issueListData.map(issueData => (
-          <IssueUnit issueData={issueData} />
+          <IssueUnit key={v4()} issueData={issueData} />
         ))}
         type="issue"
       ></ListForm>
