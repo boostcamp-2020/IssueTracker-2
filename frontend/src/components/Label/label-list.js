@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ListForm from '../Common/ListForm';
 import LabelDescription from './label-description';
-import { uuid } from 'uuidv4';
+import { v4 } from 'uuid';
 
 export default function LabelList({ labelListData, getLabelList }) {
   return (
@@ -12,7 +12,7 @@ export default function LabelList({ labelListData, getLabelList }) {
           {labelListData.map(labelInfo => {
             return (
               <LabelDescription
-                key={uuid()}
+                key={v4()}
                 labelInfo={labelInfo}
                 getLabelList={getLabelList}
               />
