@@ -2,10 +2,29 @@ import React from 'react';
 import styled from 'styled-components';
 import { MilestoneIcon, IssueOpenedIcon } from '@primer/octicons-react';
 
-export default function IssueUnit({ issueData }) {
+export default function IssueUnit({
+  issueData,
+  isCheckList,
+  setIsCheckList,
+  index,
+  setIsAllChecked,
+}) {
+  const handleCheckbox = e => {
+    let newCheckList = [...isCheckList];
+    if (!e.target.checked) {
+      setIsAllChecked(false);
+    }
+    newCheckList[index] = e.target.checked;
+
+    setIsCheckList(newCheckList);
+  };
   return (
     <Wrapper>
-      <Checkbox type="checkbox" />
+      <Checkbox
+        type="checkbox"
+        onClick={handleCheckbox}
+        checked={isCheckList[index]}
+      />
       <IssueIconWrapper>
         <IssueOpenedIcon size={18} />
       </IssueIconWrapper>

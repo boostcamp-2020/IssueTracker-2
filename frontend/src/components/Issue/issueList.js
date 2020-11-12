@@ -1,17 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ListForm from '../Common/ListForm';
 import IssueUnit from './issueUnit';
 
-export default function IssueList({ issueListData }) {
+const IssueList = ({ issueListData }) => {
+  const [isCheckList, setIsCheckList] = useState([]);
+  const [isAllChecked, setIsAllChecked] = useState(false);
+  useEffect(() => {
+    setIsCheckList(new Array(issueListData.length).fill(false));
+  }, [issueListData]);
+
   return (
     <>
       <ListForm
+        isCheckList={isCheckList}
+        setIsCheckList={setIsCheckList}
         issueListData={issueListData}
-        content={issueListData.map(issueData => (
-          <IssueUnit issueData={issueData} />
+        isAllChecked={isAllChecked}
+        setIsAllChecked={setIsAllChecked}
+        content={issueListData.map((issueData, index) => (
+          <IssueUnit
+            index={index}
+            isCheckList={isCheckList}
+            setIsCheckList={setIsCheckList}
+            issueData={issueData}
+            setIsAllChecked={setIsAllChecked}
+          />
         ))}
         type="issue"
       ></ListForm>
     </>
   );
-}
+};
+
+export default IssueList;
