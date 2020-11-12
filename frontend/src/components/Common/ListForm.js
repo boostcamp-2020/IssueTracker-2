@@ -18,31 +18,52 @@ const COLOUMN_LIST = [
 ];
 
 export default function ListForm(props) {
+  const handleCheckbox = e => {
+    let newCheckList = props.isCheckList.map(() => e.target.checked);
+    props.setIsAllChecked(e.target.checked);
+    props.setIsCheckList(newCheckList);
+  };
+
+  const handleFilterOpenIssue = () => {
+    props.setIssueFilter(1);
+  };
+  const handleFilterCloseIssue = () => {
+    props.setIssueFilter(2);
+  };
+
   const getHeaderContent = type => {
     if (type === 'issue') {
       return (
         <HeaderWrapper>
-          <Checkbox type="checkbox" />
+          <Checkbox
+            type="checkbox"
+            onClick={handleCheckbox}
+            checked={props.isAllChecked}
+            readOnly
+          />
           <IssueOpenedIcon size={18} />
-          <Open>
-            <Count>
-              {
-                props.issueListData.filter(issueData => issueData.issue_status)
-                  .length
-              }
-            </Count>
-            <span>Open</span>
-          </Open>
-          <CheckIcon size={20} />
-          <Closed>
+          <Open onClick={handleFilterOpenIssue}>
             <Count>
               {
                 props.issueListData.filter(issueData => !issueData.issue_status)
                   .length
               }
             </Count>
+            <span>Open</span>
+          </Open>
+          <CheckIcon size={20} />
+          <Closed onClick={handleFilterCloseIssue}>
+            <Count>
+              {
+                props.issueListData.filter(issueData => issueData.issue_status)
+                  .length
+              }
+            </Count>
             <span>Closed</span>
           </Closed>
+          <IssueCount>
+            {props.isCheckList.filter(isChecked => isChecked).length} selected
+          </IssueCount>
           <FilteringConditions>
             {COLOUMN_LIST.map((columnName, index) => (
               <Details key={index}>
@@ -57,6 +78,7 @@ export default function ListForm(props) {
         </HeaderWrapper>
       );
     }
+
     if (type === 'milestone') {
       return (
         <HeaderWrapper>
@@ -73,6 +95,7 @@ export default function ListForm(props) {
         </HeaderWrapper>
       );
     }
+
     if (type === 'label') {
       return (
         <HeaderWrapper>
@@ -100,7 +123,7 @@ const LabelTitle = styled.span`
 `;
 const Wrapper = styled.div`
   width: 90%;
-  height: 25em;
+  min-height: 25em;
   margin: auto;
 `;
 
@@ -170,4 +193,8 @@ const Details = styled.details`
   & > summary::-webkit-details-marker {
     display: none;
   }
+`;
+
+const IssueCount = styled.div`
+  margin-left: 1rem;
 `;

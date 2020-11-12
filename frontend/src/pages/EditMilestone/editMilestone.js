@@ -6,7 +6,11 @@ import Footer from '../../components/Common/Footer';
 import { useHistory } from 'react-router-dom';
 
 const EditMilestone = ({ milestoneService }) => {
- const id = useHistory().location.state.id;
+  const id = useHistory().location.state.id;
+  const history = useHistory();
+  if (!document.cookie.includes('jwt')) {
+    history.push('/');
+  }
 
   return (
     <>

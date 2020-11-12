@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import LeftContent from './leftContent';
 import RightContent from './rightContent';
 import ListForm from '../Common/ListForm';
-import { uuid } from 'uuidv4';
+import { v4 } from 'uuid';
 
 // custom hooks
 // 분리해서 사용하면 좋을 듯
@@ -13,7 +13,7 @@ const useFetch = (state, callback, url) => {
 
   const fetchInitialData = async () => {
     setLoading(true);
-    const response = await fetch(url, { method: 'GET' });
+    const response = await fetch(url, { method: 'GET', credentials: 'include' });
     const initialData = await response.json();
     callback(initialData.milestonesInfo);
     setLoading(false);
@@ -30,7 +30,7 @@ const List = ({ milestones, setMilestones, loading, milestoneService }) => {
   let milestoneList = <div>Loading...</div>;
   if (!loading) {
     milestoneList = milestones.milestoneArray.map(milestone => (
-      <Milestone key={uuid()}>
+      <Milestone key={v4()}>
         <LeftContent milestone={milestone} />
         <RightContent
           milestone={milestone}
@@ -57,7 +57,7 @@ export default function MilestoneList({ milestoneService }) {
   const loading = useFetch(
     status,
     setMilestones,
-    `http://localhost:3000/api/milestone/all?status=${status}`,
+    `${process.env.SERVER_URL}/api/milestone/all?status=${status}`,
     'GET',
   );
 

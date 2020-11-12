@@ -52,7 +52,7 @@ const SQL_CREATE_LABEL_TABLE = `
 const SQL_DROP_ISSUE_LABEL_TABLE = `DROP TABLE IF EXISTS issue_labels`;
 const SQL_CREATE_ISSUE_LABEL_TABLE = `
     CREATE TABLE issue_labels (
-        id int PRIMARY KEY,
+        id int PRIMARY KEY AUTO_INCREMENT,
         label_id int,
         issue_id int
     );`;

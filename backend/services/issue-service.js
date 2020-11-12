@@ -3,17 +3,46 @@ const issueLabels = require('../models/issue_labels');
 const issueAssignees = require('../models/issue_assignees');
 const milestones = require('../models/milestones');
 const labels = require('../models/labels');
+const db = require('../db');
+
 
 exports.createIssue = async req => {
   try {
-    const insertId = await issues.create(req.body);
-    const issue_id = insertId;
-    const label_name = req.body.label_name;
-    const assignee_id = req.body.assignee_id;
-    await issueLabels.create({ issue_id, label_name });
-    await issueAssignees.create({ issue_id, assignee_id });
-    return { status: 202, message: '이슈 등록 성공', insertId };
+    let reqData = JSON.stringify(req.body);
+    reqData = JSON.parse(reqData); 
+    
+    const issueData = { 
+      user_sid : reqData.user_sid,
+      issue_content : reqData.issue_content,
+      issue_name : reqData.issue_name,
+      milestone_id : reqData.milestone_id,
+      issue_status : reqData.issue_status,
+      assignee_id : reqData.assignee_id
+    };
+
+    const labelData = reqData.labelArray; 
+    const assigneeData = reqData.assigneeArray; 
+
+    const connection = await db.pool.getConnection(async conn => conn);
+    connection.beginTransaction(); 
+
+    const issue_id = await issues.create(connection, issueData);
+
+    labelData.forEach(async label_id => {
+      await issueLabels.create(connection, { issue_id, label_id });
+    });
+
+    assigneeData.forEach(async assignee_id => {
+      await issueAssignees.create(connection, { issue_id, assignee_id });
+    });
+
+    connection.commit(); 
+    connection.release();
+
+    return { status: 202, message: '이슈 등록 성공', issue_id};
   } catch (err) {
+    connection.rollback(); 
+    connection.release();
     throw err;
   }
 };

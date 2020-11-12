@@ -68,6 +68,7 @@ const jwtConfig = {
 const verifyJwt = async (jwt_payload, done) => {
   try {
     const username = jwt_payload.nickname;
+
     const userInfo = await users.findOne({ username });
 
     if (!userInfo) {
