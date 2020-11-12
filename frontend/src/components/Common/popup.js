@@ -31,6 +31,7 @@ export default function popup({ type }) {
       const allLabel = await getFetch(
         `${process.env.SERVER_URL}/api/label/all`,
       );
+
       setContent(allLabel.labels);
     }
 
@@ -52,13 +53,22 @@ export default function popup({ type }) {
 
     if (type === 'Label') {
       return content.map(label => {
-        return <PopupContent key={v4()}>{label.label_name}</PopupContent>;
+        return (
+          <PopupContent type="label" color={label.color} key={v4()}>
+            {label.label_name}
+          </PopupContent>
+        );
       });
     }
 
     if (type === 'Assignee') {
       return content.map(user => {
-        return <PopupContent key={v4()}>{user.nickname}</PopupContent>;
+        return (
+          <PopupContent key={v4()}>
+            <ProfileImage src={user.profile_image_url} />
+            {user.nickname}
+          </PopupContent>
+        );
       });
     }
   };
@@ -100,12 +110,27 @@ export default function popup({ type }) {
   );
 }
 
+const ProfileImage = styled.img`
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+`;
+
 const PopupContent = styled.div`
-  width: 100%;
-  background-color: black;
-  color: white;
+  ${props => {
+    if (props.type === 'label') {
+      return `transform:translateX(120%);justify-content:center;text-align: center;width:30%;background-color:${props.color}; color:black;`;
+    }
+    return `width: 60%;`;
+  }}
+
   padding: 1em;
+  display: flex;
+  gap: 2em;
+  align-items: center;
+  border-radius: 20px;
   margin-bottom: 1em;
+  font-family: 'Roboto', sans-serif;
 `;
 
 const DetailMenu = styled.div`
