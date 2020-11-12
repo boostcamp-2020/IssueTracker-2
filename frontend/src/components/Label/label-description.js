@@ -87,4 +87,5 @@ const LabelTag = styled.div`
   background: ${props => props.backgroundColor};
   color: ${props => props.textColor};
   width: fit-content;
+  font-size: 0.9em;
 `;

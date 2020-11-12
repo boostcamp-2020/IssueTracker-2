@@ -120,7 +120,7 @@ const LabelTitle = styled.span`
   font-weight: bold;
 `;
 const Wrapper = styled.div`
-  width: 90%;
+  width: 80%;
   min-height: 25em;
   margin: auto;
 `;

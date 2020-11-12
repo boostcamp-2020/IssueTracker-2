@@ -41,6 +41,6 @@ export default function Content() {
 const Wrapper = styled.div``;
 
 const ContentContainer = styled.div`
-  width: 90%;
+  width: 80%;
   margin: auto;
 `;
