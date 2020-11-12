@@ -13,6 +13,8 @@ class LabelViewController: UIViewController {
   typealias Snapshot = NSDiffableDataSourceSnapshot<LabelSection, Label>
   
   private lazy var dataSource = makeDataSource()
+  private var dummyList = DummyList()
+  private var dummyLabelUpdateId: Int = 0
   
   @IBOutlet weak var labelCollectionView: UICollectionView!
   @IBOutlet weak var blurView: UIVisualEffectView!
@@ -21,6 +23,8 @@ class LabelViewController: UIViewController {
     let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.addButtonTapped))
     return button
   }()
+  
+  var isLabelUpdating: Bool = false
   
   private var labelData: [Label] = [] {
     willSet {
@@ -40,6 +44,7 @@ class LabelViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     registerForKeyboardNotifications()
+    loadLabelData()
   }
   
   override func viewWillDisappear(_ animated: Bool) {
@@ -90,11 +95,20 @@ class LabelViewController: UIViewController {
     let apiService = APIService()
     let endPoint = LabelEndPoint.getLabels.endPoint
     apiService.requestLabel(forEndPoint: endPoint) { [weak self] (data, response, error) in
-      let decoder = JSONDecoder()
-      decoder.keyDecodingStrategy = .convertFromSnakeCase
-      guard let data = data else { return }
-      guard let result = try? decoder.decode(LabelResponse.self, from: data) else { return }
-      self?.labelData = result.labels
+      guard let self = self else { return }
+      
+      if let res = response as? HTTPURLResponse {
+        if res.statusCode == 202 {
+          let decoder = JSONDecoder()
+          decoder.keyDecodingStrategy = .convertFromSnakeCase
+          guard let data = data else { return }
+          guard let result = try? decoder.decode(LabelResponse.self, from: data) else { return }
+          self.labelData = result.labels
+        } else {
+          self.labelData = self.dummyList.dummyLabels
+          print(self.dummyList.dummyLabels)
+        }
+      }
     }
   }
   
@@ -141,6 +155,35 @@ extension LabelViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     return CGSize(width: view.bounds.width, height: 80)
   }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    guard let label = dataSource.itemIdentifier(for: indexPath) else { return }
+    dummyLabelUpdateId = label.id
+    
+    addButton.isEnabled = false
+    isLabelUpdating = false
+    if let nib = Bundle.main.loadNibNamed("UpdateLabelView", owner: self),
+       let nibView = nib.first as? UpdateLabelView {
+      nibView.titleTextField.text = label.labelName
+      nibView.descriptionTextField.text = label.labelDescription
+      nibView.colorHexLabel.text = label.color
+      nibView.colorPreview.backgroundColor = UIColor(hex: label.color)
+      self.view.addSubview(nibView)
+      
+      nibView.translatesAutoresizingMaskIntoConstraints = false
+      NSLayoutConstraint.activate([
+        nibView.heightAnchor.constraint(equalToConstant: 384),
+        nibView.widthAnchor.constraint(equalToConstant: 350),
+        nibView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        nibView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+      ])
+      nibView.delegate = self
+    }
+    
+    blurView.effect = UIBlurEffect(style: .dark)
+    blurView.frame = self.view.bounds
+    self.blurView.isHidden.toggle()
+  }
 }
 
 extension LabelViewController: UpdateLabelViewDelegate {
@@ -164,13 +207,32 @@ extension LabelViewController: UpdateLabelViewDelegate {
   
   func saveButtonTouched(title: String, description: String?, colorAsHex: String) {
     let apiService = APIService()
-    let label = Label(labelName: title, color: colorAsHex, labelDescription: description)
-    let endPoint = LabelEndPoint.postLabel(label: label).endPoint
-    apiService.requestLabel(forEndPoint: endPoint) { [weak self] (data, res, error) in
-      guard let res = res as? HTTPURLResponse else { return }
-      self?.loadLabelData()
-      self?.addButton.isEnabled = true
-      self?.dismissUpdateLabelView()
+    let dummyLabelId = UserDefaults.standard.integer(forKey: "labelId")
+    let label = Label(id: dummyLabelId, labelName: title, color: colorAsHex, labelDescription: description)
+    let endPoint: EndPoint<Label>
+    switch isLabelUpdating {
+    case true:
+      endPoint = LabelEndPoint.updateLabel(label: label).endPoint
+    default:
+      endPoint = LabelEndPoint.postLabel(label: label).endPoint
     }
+    apiService.requestLabel(forEndPoint: endPoint) { [weak self] (data, res, error) in
+      guard let self = self,
+            let res = res as? HTTPURLResponse else { return }
+      if res.statusCode != 202 {
+        for index in 0..<self.dummyList.dummyLabels.count {
+          if self.dummyList.dummyLabels[index].id == self.dummyLabelUpdateId {
+            self.dummyList.dummyLabels[index].color = colorAsHex
+            self.dummyList.dummyLabels[index].labelName = title
+            self.dummyList.dummyLabels[index].labelDescription = description
+          }
+        }
+      }
+      self.loadLabelData()
+    }
+    self.addButton.isEnabled = true
+    self.isLabelUpdating = false
+    self.dismissUpdateLabelView()
+    self.labelCollectionView.reloadData()
   }
 }

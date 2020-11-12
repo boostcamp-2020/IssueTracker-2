@@ -28,7 +28,7 @@ enum MilestoneEndPoint {
     case .updateMilestone(let milestone):
       return EndPoint(
         path: "api/milestone",
-        httpMethod: .post,
+        httpMethod: .put,
         task: .requestParameters(
           bodyParameters: milestone,
           urlParameters: nil

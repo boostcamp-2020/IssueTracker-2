@@ -68,15 +68,16 @@ class IssueViewController: UIViewController {
     let apiService = APIService()
     let endPoint = IssueEndPoint.getOpenIssues.endPoint
     apiService.requestIssue(forEndPoint: endPoint) { [weak self] (data, res, error) in
+      guard let self = self else { return }
       if let res = res as? HTTPURLResponse {
         if res.statusCode == 202 {
           let decoder = JSONDecoder()
+          decoder.keyDecodingStrategy = .convertFromSnakeCase
           guard let data = data,
                 let result = try? decoder.decode(IssueResponse.self, from: data) else { return }
-          
-          self?.issueData = result.issues
+          self.issueData = result.issues
         } else {
-          self?.issueData = DummyList().dummyIssues
+          self.issueData = self.dummyList.dummyIssues
         }
       }
     }
