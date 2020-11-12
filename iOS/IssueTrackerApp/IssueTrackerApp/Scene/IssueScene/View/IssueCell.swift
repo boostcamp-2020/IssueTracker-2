@@ -77,7 +77,7 @@ class IssueCell: UICollectionViewCell, Reusable, NibLoadable {
   }
   
   func updateCell(withItem item: Issue) {
-    titleLabel.text = item.issueTitle
+    titleLabel.text = item.issueName
     milestoneLabel.text = item.milestone?.milestoneName
     if let labels = item.label {
       labelData = labels

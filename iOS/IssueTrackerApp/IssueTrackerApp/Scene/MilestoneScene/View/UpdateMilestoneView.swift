@@ -38,16 +38,21 @@ class UpdateMilestoneView: UIView {
   }
   
   @IBAction func saveButtonTouched(_ sender: UIButton) {
-    guard let title = titleLabel.text,
-          var milestone = milestone else { return }
+    guard let title = titleLabel.text else { return }
     let dateformatter = DateFormatter()
     dateformatter.dateFormat = "yyyy-MM-dd"
     let endDateAsString = dateformatter.string(from: endDate)
+    guard var updatedMilestone = milestone else {
+      let milestone = Milestone(id: UserDefaults.standard.integer(forKey: "milestoneId"), milestoneName: title, milestoneDescription: descriptionLabel.text, endDate: endDateAsString, status: 0, openCount: 0, closeCount: 0)
+      delegate?.saveButtonTouched(withMilestone: milestone)
+      return
+    }
+
     let description = descriptionLabel.text
-    milestone.milestoneName = title
-    milestone.milestoneDescription = description
-    milestone.endDate = endDateAsString
-    delegate?.saveButtonTouched(withMilestone: milestone)
+    updatedMilestone.milestoneName = title
+    updatedMilestone.milestoneDescription = description
+    updatedMilestone.endDate = endDateAsString
+    delegate?.saveButtonTouched(withMilestone: updatedMilestone)
   }
   
   override func awakeFromNib() {

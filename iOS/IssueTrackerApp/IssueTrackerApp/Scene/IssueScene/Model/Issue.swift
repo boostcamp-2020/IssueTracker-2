@@ -18,7 +18,7 @@ struct Issue: Hashable, Codable {
   
   var id: Int = 0
   var userSid: Int = 0
-  var issueTitle: String
+  var issueName: String
   var issueAuthor: String
   var comment: [Comment]?
   var label: [Label]?

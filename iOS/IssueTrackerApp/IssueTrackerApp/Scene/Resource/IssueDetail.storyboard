@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hWL-Fi-pTf">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="652"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="eJL-cc-UDk">
                                     <size key="itemSize" width="128" height="128"/>
@@ -32,13 +32,23 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ei-Uz-a1J">
+                                <rect key="frame" x="0.0" y="696" width="414" height="166"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="166" id="p8l-rN-u0H"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yRp-dK-0e2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="hWL-Fi-pTf" firstAttribute="top" secondItem="yRp-dK-0e2" secondAttribute="top" id="Eah-LZ-PSC"/>
-                            <constraint firstItem="yRp-dK-0e2" firstAttribute="bottom" secondItem="hWL-Fi-pTf" secondAttribute="bottom" id="SJx-II-wgU"/>
+                            <constraint firstItem="yRp-dK-0e2" firstAttribute="bottom" secondItem="8ei-Uz-a1J" secondAttribute="bottom" id="dBU-FU-8Zk"/>
                             <constraint firstItem="hWL-Fi-pTf" firstAttribute="leading" secondItem="yRp-dK-0e2" secondAttribute="leading" id="iWj-Rb-jTY"/>
+                            <constraint firstItem="8ei-Uz-a1J" firstAttribute="top" secondItem="hWL-Fi-pTf" secondAttribute="bottom" id="lB7-09-dv2"/>
+                            <constraint firstItem="8ei-Uz-a1J" firstAttribute="leading" secondItem="yRp-dK-0e2" secondAttribute="leading" id="p2f-G1-EIH"/>
+                            <constraint firstItem="yRp-dK-0e2" firstAttribute="trailing" secondItem="8ei-Uz-a1J" secondAttribute="trailing" id="rM7-rp-qrP"/>
                             <constraint firstItem="yRp-dK-0e2" firstAttribute="trailing" secondItem="hWL-Fi-pTf" secondAttribute="trailing" id="tri-jP-Fdo"/>
                         </constraints>
                     </view>

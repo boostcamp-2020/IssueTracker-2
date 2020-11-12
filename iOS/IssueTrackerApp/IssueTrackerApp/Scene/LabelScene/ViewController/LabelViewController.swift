@@ -51,6 +51,10 @@ class LabelViewController: UIViewController {
     unregisterForKeyboardNotifications()
   }
   
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    self.view.endEditing(true)
+  }
+  
   private func configureNavigator() {
     self.navigationItem.rightBarButtonItem = self.addButton
     guard let navigationController = navigationController else { return }

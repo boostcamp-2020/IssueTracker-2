@@ -36,6 +36,7 @@ class MilestoneCell: UICollectionViewCell, Reusable, NibLoadable {
     openIssueLabel.text = "\(item.openCount) open"
     closedIssueLabel.text = "\(item.closeCount) closed"
     
+    milestoneLabel.layer.borderColor = item.status == 0 ? UIColor.systemGreen.cgColor : UIColor.systemRed.cgColor
   }
   
   private func transformDate(fromDate date: String) -> String {

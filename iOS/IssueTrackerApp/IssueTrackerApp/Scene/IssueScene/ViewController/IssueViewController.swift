@@ -8,7 +8,26 @@
 import UIKit
 
 struct IssueResponse: Decodable {
-  var issues: [Issue]
+  var message: String
+  var issuesInfo: IssueInfo
+  
+  struct IssueInfo: Decodable {
+    var milestoneCount: Int
+    var labelCount: Int
+    var issuesArray: [IssueArrayResponse]
+  }
+}
+
+struct IssueArrayResponse: Decodable {
+  var issueName: String
+  var id: Int
+  var createdAt: String
+  var issueStatus: Int
+  var labelName: String
+  var color: String
+  var milestoneName: String
+  var profileImageUrl: String
+  var nickname: String
 }
 
 class IssueViewController: UIViewController {
@@ -52,6 +71,7 @@ class IssueViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     registerForKeyboardNotifications()
+    loadIssueData()
   }
   
   override func viewWillDisappear(_ animated: Bool) {
@@ -66,7 +86,7 @@ class IssueViewController: UIViewController {
   
   private func loadIssueData() {
     let apiService = APIService()
-    let endPoint = IssueEndPoint.getOpenIssues.endPoint
+    let endPoint = IssueEndPoint.getIssues.endPoint
     apiService.requestIssue(forEndPoint: endPoint) { [weak self] (data, res, error) in
       guard let self = self else { return }
       if let res = res as? HTTPURLResponse {
@@ -76,10 +96,14 @@ class IssueViewController: UIViewController {
           guard let data = data,
                 let result = try? decoder.decode(IssueResponse.self, from: data) else { return }
           
+//          var newIssues: [Issue] = []
+//          var labels: [Label] = []
+//
+//          for i in result {
+//            i.
+//          }
           
-          
-          
-          self.issueData = result.issues
+//          self.issueData = result.issues
         } else {
           self.issueData = self.dummyList.dummyIssues
         }
@@ -136,7 +160,7 @@ class IssueViewController: UIViewController {
   private func performQuery(withFilter filter: String) {
     let data = issueData
     let items = data.filter { (issue) -> Bool in
-      issue.issueTitle.contains(filter)
+      issue.issueName.contains(filter)
     }
     DispatchQueue.main.async { [weak self] in
       self?.applySnapshot(issueData: items)

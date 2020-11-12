@@ -11,6 +11,7 @@ import NetworkService
 enum IssueEndPoint {
   case postIssue(issue: Issue)
   case updateIssue(issue: Issue)
+  case getIssues
   case getOpenIssues
   case getYourIssues(id: Int)
   case getAssignedIssues(id: Int)
@@ -37,6 +38,12 @@ enum IssueEndPoint {
           bodyParameters: issue,
           urlParameters: nil
         )
+      )
+    case .getIssues:
+      return EndPoint<Issue>(
+        path: "api/issue/all",
+        httpMethod: .get,
+        task: .request
       )
     case .getOpenIssues:
       return EndPoint<Issue>(

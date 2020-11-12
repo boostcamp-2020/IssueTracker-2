@@ -130,7 +130,7 @@ class IssueDetailViewController: UIViewController, UIGestureRecognizerDelegate {
     
     let storyboard = UIStoryboard(name: "Issue", bundle: nil)
     let newIssueVC = storyboard.instantiateViewController(identifier: "NewIssueVC", creator: { (coder) -> UpdateIssueViewController? in
-      return UpdateIssueViewController(coder: coder, issueTitle: self.issue.issueTitle, issueNumber: self.issue.id)
+      return UpdateIssueViewController(coder: coder, issueTitle: self.issue.issueName, issueNumber: self.issue.id)
     })
     present(newIssueVC, animated: true)
   }

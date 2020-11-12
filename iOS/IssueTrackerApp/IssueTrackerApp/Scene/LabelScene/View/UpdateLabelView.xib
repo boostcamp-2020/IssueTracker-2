@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UpdateLabelView" customModule="IssueTrackerApp" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" restorationIdentifier="UpdateLabelView" id="iN0-l3-epB" customClass="UpdateLabelView" customModule="IssueTrackerApp" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
@@ -113,12 +113,6 @@
                         <action selector="colorRefreshButtonTouched:" destination="iN0-l3-epB" eventType="touchUpInside" id="9kh-gX-9g6"/>
                     </connections>
                 </button>
-                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6aJ-yH-16v">
-                    <rect key="frame" x="60" y="123" width="220" height="18.5"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="s7q-bN-u0Q">
                     <rect key="frame" x="55" y="134.5" width="250" height="18.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -187,7 +181,7 @@
             <connections>
                 <outlet property="colorHexLabel" destination="ygt-QR-uuA" id="8xl-vT-Gtx"/>
                 <outlet property="colorPreview" destination="n1g-dm-rxI" id="eG5-gC-opQ"/>
-                <outlet property="descriptionTextField" destination="6aJ-yH-16v" id="M6e-L8-aI7"/>
+                <outlet property="descriptionTextField" destination="s7q-bN-u0Q" id="63U-ca-x3F"/>
                 <outlet property="titleTextField" destination="GpK-ZE-YmP" id="a6s-U8-1RH"/>
             </connections>
             <point key="canvasLocation" x="140.57971014492756" y="79.6875"/>

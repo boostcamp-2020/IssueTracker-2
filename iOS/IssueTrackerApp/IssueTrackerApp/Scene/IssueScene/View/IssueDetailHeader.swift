@@ -21,7 +21,7 @@ class IssueDetailHeader: UICollectionReusableView, NibLoadable, Reusable {
   
   func updateHeader(withItem item: Issue) {
     issueIDLabel.text = "#" + String(item.id)
-    issueTitleLabel.text = item.issueTitle
+    issueTitleLabel.text = item.issueName
     // issueStatusLabel.text =
   }
     
