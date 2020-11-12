@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-export default () => {
+export default ({ setIssueName }) => {
+  const onChange = e => {
+    setIssueName(e.target.value);
+  };
+
   return (
     <Title>
-      <GlowingBorder placeholder="Title" type="text" />
+      <GlowingBorder onChange={onChange} placeholder="Title" type="text" />
     </Title>
   );
 };

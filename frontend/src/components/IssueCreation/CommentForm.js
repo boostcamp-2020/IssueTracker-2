@@ -11,27 +11,28 @@ import { postFetch } from '../../service/fetch';
 
 export default ({ nickname, id }) => {
   const [tabType, setTabType] = useState('write');
+  const [issueName, setIssueName] = useState('');
   const [content, setContent] = useState('');
 
   const history = useHistory();
 
   const onClickSubmitButton = async () => {
     await postFetch(`${process.env.SERVER_URL}/api/issue`, {
-      user_sid: 3,
-      issue_content: 'abcdefg',
-      issue_name: 'abcdefg',
-      milestone_id: 5,
-      issue_status: 1,
-      assignee_id: 1,
+      user_sid: id,
+      issue_content: content,
+      issue_name: issueName,
+      milestone_id: 1,
+      issue_status: 0,
+      assignee_id: 2,
       labelArray: [1, 2, 3],
-      assigneeArray: [1, 2, 3],
+      assigneeArray: [1, 2],
     });
     history.push('/issues');
   };
 
   return (
     <Form>
-      <IssueTitle />
+      <IssueTitle setIssueName={setIssueName} />
       <Tab tabType={tabType} setTabType={setTabType} />
       <Line />
       <CommentInput
