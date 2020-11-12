@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import CreateButton from '../Common/GreenButton';
 import NavButton from '../Common/NavButton';
 import FiilteringBox from './filteringBox';
+import { postFetch } from '../../service/fetch';
+
 export default function Navigation({ countInfo }) {
   const history = useHistory();
 

@@ -13,7 +13,18 @@ export default ({ nickname, id }) => {
   const [content, setContent] = useState('');
 
   const history = useHistory();
-  const onClickSubmitButton = () => {
+
+  const onClickSubmitButton = async () => {
+    await postFetch(`${process.env.SERVER_URL}/api/issue`, {
+      user_sid: 3,
+      issue_content: 'abcdefg',
+      issue_name: 'abcdefg',
+      milestone_id: 5,
+      issue_status: 1,
+      assignee_id: 1,
+      labelArray: [1, 2, 3],
+      assigneeArray: [1, 2, 3],
+    });
     history.push('/issues');
   };
 
