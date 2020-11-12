@@ -46,7 +46,7 @@ class IssueInfoViewController: UIViewController {
   }
   
   @IBAction func closeButtonTouched(_ sender: Any) {
-    
+    navigationController?.popViewController(animated: true)
   }
   
   @IBAction func addCommentButtonTouched(_ sender: Any) {

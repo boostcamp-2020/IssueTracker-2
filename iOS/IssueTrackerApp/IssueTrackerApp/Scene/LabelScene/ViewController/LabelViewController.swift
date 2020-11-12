@@ -165,7 +165,7 @@ extension LabelViewController: UICollectionViewDelegateFlowLayout {
     dummyLabelUpdateId = label.id
     
     addButton.isEnabled = false
-    isLabelUpdating = false
+    isLabelUpdating = true
     if let nib = Bundle.main.loadNibNamed("UpdateLabelView", owner: self),
        let nibView = nib.first as? UpdateLabelView {
       nibView.titleTextField.text = label.labelName

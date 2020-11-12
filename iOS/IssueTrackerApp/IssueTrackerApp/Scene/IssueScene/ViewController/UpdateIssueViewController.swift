@@ -8,6 +8,10 @@
 import UIKit
 import MarkdownView
 
+protocol IssueDelegate {
+  func submit(issue: Issue)
+}
+
 class UpdateIssueViewController: UIViewController {
   
   private var pickerView = UIImagePickerController()
@@ -28,7 +32,7 @@ class UpdateIssueViewController: UIViewController {
 
   private var issueTitle: String = ""
   private var issueNumber: Int?
-  var handler: (() -> ())?
+  var delegate: IssueDelegate?
   
   @IBOutlet weak var navigationBar: UINavigationBar!
   @IBOutlet weak var issueContentTextView: IssueContentTextView!
@@ -46,7 +50,8 @@ class UpdateIssueViewController: UIViewController {
     let apiService = APIService()
     let dummyIssueId = UserDefaults.standard.integer(forKey: "issueId")
     let comment: Comment
-    var issue = Issue(id: dummyIssueId, userSid: 0, issueTitle: titleTextField, issueAuthor: "", comment: [], label: [], milestone: nil, issueStatus: true, assignee: [])
+    let milestone = Milestone(id: 0, milestoneName: "마일스톤 \(dummyIssueId)", milestoneDescription: nil, endDate: "", status: 0, openCount: 1, closeCount: 3)
+    var issue = Issue(id: dummyIssueId, userSid: 0, issueName: titleTextField, issueAuthor: "", comment: [], label: [], milestone: milestone, issueStatus: true, assignee: [])
     if issueContentTextView.text != nil && issueContentTextView.text != "" {
       let dateFormatter = DateFormatter()
       dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -55,16 +60,19 @@ class UpdateIssueViewController: UIViewController {
         comment = Comment(writerId: 0, description: text, createAt: dateAsString)
         var commentArray: [Comment] = []
         commentArray.append(comment)
-        issue = Issue(id: dummyIssueId, userSid: 0, issueTitle: titleTextField, issueAuthor: "", comment: commentArray, label: [], milestone: nil, issueStatus: true, assignee: [])
+        issue = Issue(id: dummyIssueId, userSid: 0, issueName: titleTextField, issueAuthor: "", comment: commentArray, label: [], milestone: milestone, issueStatus: true, assignee: [])
       }
     }
     let endPoint = IssueEndPoint.postIssue(issue: issue).endPoint
     apiService.requestIssue(forEndPoint: endPoint) { [weak self] (data, res, error) in
       guard let self = self else { return }
-      self.dismiss(animated: true) { [weak self] in
-        self?.handler?()
+      DispatchQueue.main.async {
+        self.dismiss(animated: true) { [weak self] in
+          self?.delegate?.submit(issue: issue)
+        }
       }
     }
+    UserDefaults.standard.setValue(dummyIssueId + 1, forKey: "issueId")
   }
   
   init?(coder: NSCoder, issueTitle: String = "", issueNumber: Int? = nil) {

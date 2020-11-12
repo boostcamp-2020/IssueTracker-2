@@ -45,6 +45,7 @@ class IssueCell: UICollectionViewCell, Reusable, NibLoadable {
   
   override func prepareForReuse() {
     labelData = []
+    checkmarkImageView.image = UIImage(systemName: "circle")!
   }
 
   private func configure() {
