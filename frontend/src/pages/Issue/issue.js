@@ -44,7 +44,10 @@ const ISSUE_LIST_DATA = [
 ];
 
 const Issue = () => {
-  const historyState = useHistory().location.state;
+  const history = useHistory();
+  if (!document.cookie.includes('jwt')) {
+    history.push('/');
+  }
 
   const [issueListData, setIssueListData] = useState({
     milestoneCount: 0,
@@ -59,7 +62,7 @@ const Issue = () => {
   };
 
   useEffect(() => {
-    getIssueListData();
+    return () => getIssueListData();
   }, []);
 
   return (
