@@ -1,10 +1,44 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { getFetch } from '../../service/fetch';
+import { v4 } from 'uuid';
 
 export default function popup({ type }) {
+  const [content, setContent] = useState([]);
+
   const onClickCancel = e => {
     e.target.closest('details').removeAttribute('open');
   };
+
+  const getContents = async type => {
+    if (type === 'Milestones') {
+      const openMilestone = await getFetch(
+        `${process.env.SERVER_URL}/api/milestone/all/?status=0`,
+      );
+
+      const closeMilestone = await getFetch(
+        `${process.env.SERVER_URL}/api/milestone/all/?status=1`,
+      );
+
+      const arr = [
+        ...openMilestone.milestonesInfo.milestoneArray,
+        ...closeMilestone.milestonesInfo.milestoneArray,
+      ];
+      setContent(arr);
+    }
+  };
+
+  const getDomElements = type => {
+    if (type === 'Milestones') {
+      return content.map(milestone => {
+        return <div key={v4()}>{milestone.milestone_name}</div>;
+      });
+    }
+  };
+
+  useEffect(() => {
+    getContents(type);
+  }, []);
 
   return (
     <>
@@ -30,9 +64,7 @@ export default function popup({ type }) {
                 Filter by {type}
                 <PopupCancel onClick={onClickCancel}>x</PopupCancel>
               </FilteringHeader>
-              <FilteringCondition>
-                각 조건에 따른 데이터 배열형태로 생성해서 사용하기.
-              </FilteringCondition>
+              <FilteringCondition>{getDomElements(type)}</FilteringCondition>
             </Wrapper>
           )}
         </FilteringBox>
