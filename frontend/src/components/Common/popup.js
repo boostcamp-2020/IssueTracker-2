@@ -1,10 +1,71 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { getFetch } from '../../service/fetch';
+import { v4 } from 'uuid';
 
 export default function popup({ type }) {
+  const [content, setContent] = useState([]);
+
   const onClickCancel = e => {
     e.target.closest('details').removeAttribute('open');
   };
+
+  const getContents = async type => {
+    if (type === 'Milestones') {
+      const openMilestone = await getFetch(
+        `${process.env.SERVER_URL}/api/milestone/all/?status=0`,
+      );
+
+      const closeMilestone = await getFetch(
+        `${process.env.SERVER_URL}/api/milestone/all/?status=1`,
+      );
+
+      const arr = [
+        ...openMilestone.milestonesInfo.milestoneArray,
+        ...closeMilestone.milestonesInfo.milestoneArray,
+      ];
+      setContent(arr);
+    }
+
+    if (type === 'Label') {
+      const allLabel = await getFetch(
+        `${process.env.SERVER_URL}/api/label/all`,
+      );
+      setContent(allLabel.labels);
+    }
+
+    if (type === 'Assignee') {
+      const users = await getFetch(`${process.env.SERVER_URL}/api/user/all`);
+
+      setContent(users.allUser);
+    }
+  };
+
+  const getDomElements = type => {
+    if (type === 'Milestones') {
+      return content.map(milestone => {
+        return (
+          <PopupContent key={v4()}>{milestone.milestone_name}</PopupContent>
+        );
+      });
+    }
+
+    if (type === 'Label') {
+      return content.map(label => {
+        return <PopupContent key={v4()}>{label.label_name}</PopupContent>;
+      });
+    }
+
+    if (type === 'Assignee') {
+      return content.map(user => {
+        return <PopupContent key={v4()}>{user.nickname}</PopupContent>;
+      });
+    }
+  };
+
+  useEffect(() => {
+    getContents(type);
+  }, []);
 
   return (
     <>
@@ -30,9 +91,7 @@ export default function popup({ type }) {
                 Filter by {type}
                 <PopupCancel onClick={onClickCancel}>x</PopupCancel>
               </FilteringHeader>
-              <FilteringCondition>
-                각 조건에 따른 데이터 배열형태로 생성해서 사용하기.
-              </FilteringCondition>
+              <FilteringCondition>{getDomElements(type)}</FilteringCondition>
             </Wrapper>
           )}
         </FilteringBox>
@@ -40,6 +99,14 @@ export default function popup({ type }) {
     </>
   );
 }
+
+const PopupContent = styled.div`
+  width: 100%;
+  background-color: black;
+  color: white;
+  padding: 1em;
+  margin-bottom: 1em;
+`;
 
 const DetailMenu = styled.div`
   position: relative;

@@ -92,7 +92,7 @@ const createUserTable = async () => {
       .then(() => connection.query(SQL_CREATE_USER_TABLE))
       .then(() =>
         connection.query(
-          `INSERT INTO users values (1, 'zlrlo', 'https://avatars3.githubusercontent.com/u/68647194?v=4', 'password');`,
+          `INSERT INTO users values (1, 'zlrlo', 'https://avatars3.githubusercontent.com/u/68647194?v=4', 'password'),(2, 'msmk530', 'https://avatars1.githubusercontent.com/u/49441876?v=4', 'password');`,
         ),
       )
       .then(() => connection.release());
