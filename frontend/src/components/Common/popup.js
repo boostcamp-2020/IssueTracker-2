@@ -26,12 +26,39 @@ export default function popup({ type }) {
       ];
       setContent(arr);
     }
+
+    if (type === 'Label') {
+      const allLabel = await getFetch(
+        `${process.env.SERVER_URL}/api/label/all`,
+      );
+      setContent(allLabel.labels);
+    }
+
+    if (type === 'Assignee') {
+      const users = await getFetch(`${process.env.SERVER_URL}/api/user/all`);
+
+      setContent(users.allUser);
+    }
   };
 
   const getDomElements = type => {
     if (type === 'Milestones') {
       return content.map(milestone => {
-        return <div key={v4()}>{milestone.milestone_name}</div>;
+        return (
+          <PopupContent key={v4()}>{milestone.milestone_name}</PopupContent>
+        );
+      });
+    }
+
+    if (type === 'Label') {
+      return content.map(label => {
+        return <PopupContent key={v4()}>{label.label_name}</PopupContent>;
+      });
+    }
+
+    if (type === 'Assignee') {
+      return content.map(user => {
+        return <PopupContent key={v4()}>{user.nickname}</PopupContent>;
       });
     }
   };
@@ -72,6 +99,14 @@ export default function popup({ type }) {
     </>
   );
 }
+
+const PopupContent = styled.div`
+  width: 100%;
+  background-color: black;
+  color: white;
+  padding: 1em;
+  margin-bottom: 1em;
+`;
 
 const DetailMenu = styled.div`
   position: relative;
