@@ -8,11 +8,9 @@ export default function LeftContent({ milestone }) {
       <MilestoneTitle>{milestone.milestone_name}</MilestoneTitle>
       <DueInfo>
         <CalendarIcon />
-        or
-        <AlertIcon />
         <Duedate>
-          <ClockIcon />
-          <UpdatedTime>Last updated about 2 hours ago</UpdatedTime>
+          Due by
+          <UpdatedTime>{milestone.end_date}</UpdatedTime>
         </Duedate>
       </DueInfo>
       <MilestoneDescription>

@@ -7,12 +7,12 @@ import ListForm from '../Common/ListForm';
 
 // custom hooks
 // 분리해서 사용하면 좋을 듯
-const useFetch = (state, callback, url, method) => {
+const useFetch = (state, callback, url) => {
   const [loading, setLoading] = useState(false);
 
   const fetchInitialData = async () => {
     setLoading(true);
-    const response = await fetch(url, { method: method });
+    const response = await fetch(url, { method: 'GET' });
     const initialData = await response.json();
     callback(initialData.milestonesInfo);
     setLoading(false);

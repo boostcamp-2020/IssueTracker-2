@@ -11,7 +11,7 @@ export default function Buttons({ Context, milestoneService, id }) {
 
   const updateMilestone = () => {
     milestoneService.updateMilestone('http://localhost:3000/api/milestone', {
-      id: 1,
+      id: id,
       milestone_name: milestoneInfo.title,
       milestone_description: milestoneInfo.desc,
       end_date: milestoneInfo.dueDate,
