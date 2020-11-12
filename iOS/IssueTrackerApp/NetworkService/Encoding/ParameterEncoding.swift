@@ -10,7 +10,7 @@ import Foundation
 public typealias Parameters = [String: Encodable]
 
 public protocol ParameterEncoder {
-  static func encode<T: Encodable>(urlRequest: inout URLRequest, with parameters: T) throws
+  static func encode<T: Encodable>(urlRequest: inout URLRequest, with parameters: T?) throws
 }
 
 public enum NetworkError: String, Error {
