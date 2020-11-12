@@ -1,4 +1,5 @@
 const service = require('../services/label-service');
+const users = require('../models/users');
 
 exports.login = async (req, res, next) => {
   try {
@@ -7,11 +8,7 @@ exports.login = async (req, res, next) => {
       let insertId; 
 
       if (!userInfo) {
-          insertId = await users.create({
-              id: nickname,
-              profileImageUrl: avatar,
-              password: 'password',
-        });
+          insertId = await users.create({id: nickname, profileImageUrl: userInfo.profileImageUrl, password: 'password'});
       } else {
         insertId = userInfo.sid;
       }
@@ -21,17 +18,3 @@ exports.login = async (req, res, next) => {
     next(err);
   }
 };
-
-
-
-
- 
-  if (!userInfo) {
-    insertId = await users.create({
-      id: nickname,
-      profileImageUrl: avatar,
-      password: 'initial',
-    });
-  } else {
-    insertId = userInfo.sid;
-  }
