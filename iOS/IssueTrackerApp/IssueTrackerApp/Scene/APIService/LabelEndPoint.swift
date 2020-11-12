@@ -29,7 +29,7 @@ enum LabelEndPoint {
     case .updateLabel(let label):
       return EndPoint(
         path: "api/label",
-        httpMethod: .post,
+        httpMethod: .put,
         task: .requestParameters(
           bodyParameters: label,
           urlParameters: nil

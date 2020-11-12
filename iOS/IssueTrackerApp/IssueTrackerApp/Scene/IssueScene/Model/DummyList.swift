@@ -62,7 +62,7 @@ struct DummyList: Hashable {
     
     UserDefaults.standard.set(dummyLabels.count, forKey: "labelId")
     UserDefaults.standard.set(dummyMilestones.count, forKey: "milestoneId")
-    UserDefaults.standard.set(dummyIssues.count, forKey: "milestoneID")
+    UserDefaults.standard.set(dummyIssues.count, forKey: "issueId")
     UserDefaults.standard.set(comments.count, forKey: "commentsID")
   }
   

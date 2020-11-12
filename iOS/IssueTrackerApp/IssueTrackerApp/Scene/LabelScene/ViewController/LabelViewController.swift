@@ -172,8 +172,8 @@ extension LabelViewController: UICollectionViewDelegateFlowLayout {
       
       nibView.translatesAutoresizingMaskIntoConstraints = false
       NSLayoutConstraint.activate([
-        nibView.heightAnchor.constraint(equalToConstant: 384),
-        nibView.widthAnchor.constraint(equalToConstant: 350),
+        nibView.heightAnchor.constraint(equalToConstant: 310),
+        nibView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
         nibView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         nibView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
       ])
@@ -229,10 +229,11 @@ extension LabelViewController: UpdateLabelViewDelegate {
         }
       }
       self.loadLabelData()
+      DispatchQueue.main.async {
+        self.addButton.isEnabled = true
+        self.isLabelUpdating = false
+        self.dismissUpdateLabelView()
+      }
     }
-    self.addButton.isEnabled = true
-    self.isLabelUpdating = false
-    self.dismissUpdateLabelView()
-    self.labelCollectionView.reloadData()
   }
 }

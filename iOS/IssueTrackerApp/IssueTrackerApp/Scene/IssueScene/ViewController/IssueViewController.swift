@@ -75,6 +75,10 @@ class IssueViewController: UIViewController {
           decoder.keyDecodingStrategy = .convertFromSnakeCase
           guard let data = data,
                 let result = try? decoder.decode(IssueResponse.self, from: data) else { return }
+          
+          
+          
+          
           self.issueData = result.issues
         } else {
           self.issueData = self.dummyList.dummyIssues
