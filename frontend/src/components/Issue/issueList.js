@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ListForm from '../Common/ListForm';
 import IssueUnit from './issueUnit';
+import { v4 } from 'uuid';
 
 const IssueList = ({ issueListData }) => {
   const [isCheckList, setIsCheckList] = useState([]);
@@ -19,6 +20,7 @@ const IssueList = ({ issueListData }) => {
         setIsAllChecked={setIsAllChecked}
         content={issueListData.map((issueData, index) => (
           <IssueUnit
+            key={v4()}
             index={index}
             isCheckList={isCheckList}
             setIsCheckList={setIsCheckList}

@@ -49,6 +49,7 @@
     "react-google-login": "^5.1.22",
     "react-router-dom": "^5.2.0",
     "remark-gfm": "^1.0.0",
-    "styled-components": "^5.2.0"
+    "styled-components": "^5.2.0",
+    "uuidv4": "^6.2.5"
   }
 }
