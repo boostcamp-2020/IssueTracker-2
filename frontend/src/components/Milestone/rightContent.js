@@ -2,14 +2,20 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
-export default function RightContent({ milestone,  milestones, setMilestones, id, milestoneService }) {
+export default function RightContent({
+  milestone,
+  milestones,
+  setMilestones,
+  id,
+  milestoneService,
+}) {
   const history = useHistory();
-  
+
   const onClickEdit = () => {
     history.push({
-       pathname: '/milestone/edit',
-       state : {id : id},
-  });
+      pathname: '/milestone/edit',
+      state: { id: id },
+    });
   };
 
   const getPercent = (open, close) => {
@@ -19,6 +25,7 @@ export default function RightContent({ milestone,  milestones, setMilestones, id
 
   const deleteMilestone = () => {
     milestoneService.deleteMilestone(`${process.env.SERVER_URL}/api/milestone?id=${id}`);
+
   };
 
   const closeMilestone = () => {
@@ -42,41 +49,48 @@ export default function RightContent({ milestone,  milestones, setMilestones, id
   };
 
   const onClickDelete = async () => {
-    let newMilestone = []
-    let _milestones = {...milestones, };
+    let newMilestone = [];
+    let _milestones = { ...milestones };
 
-    if(milestone.status === 0) _milestones.openTotalCount -= 1; 
-    else  _milestones.closeTotalCount -= 1;
+    if (milestone.status === 0) _milestones.openTotalCount -= 1;
+    else _milestones.closeTotalCount -= 1;
 
-    const newmilestoneArray = _milestones.milestoneArray.filter(milestone=>milestone.id !== id);
-    setMilestones({... _milestones, milestoneArray:newmilestoneArray});
+    const newmilestoneArray = _milestones.milestoneArray.filter(
+      milestone => milestone.id !== id,
+    );
+    setMilestones({ ..._milestones, milestoneArray: newmilestoneArray });
 
     deleteMilestone();
-  }
+  };
 
   const changeStatus = async () => {
-    let _milestones = {...milestones};
+    let _milestones = { ...milestones };
 
-    if(milestone.status) {
-      _milestones.closeTotalCount -= 1; 
+    if (milestone.status) {
+      _milestones.closeTotalCount -= 1;
       _milestones.openTotalCount += 1;
-      const newmilestoneArray = _milestones.milestoneArray.filter(milestone=>milestone.id !== id);
-      setMilestones({... _milestones, milestoneArray:newmilestoneArray});
+      const newmilestoneArray = _milestones.milestoneArray.filter(
+        milestone => milestone.id !== id,
+      );
+      setMilestones({ ..._milestones, milestoneArray: newmilestoneArray });
       openMilestone();
-    }
-    else {
-      _milestones.closeTotalCount += 1; 
+    } else {
+      _milestones.closeTotalCount += 1;
       _milestones.openTotalCount -= 1;
-      const newmilestoneArray = _milestones.milestoneArray.filter(milestone=>milestone.id !== id);
-      setMilestones({... _milestones, milestoneArray:newmilestoneArray});
+      const newmilestoneArray = _milestones.milestoneArray.filter(
+        milestone => milestone.id !== id,
+      );
+      setMilestones({ ..._milestones, milestoneArray: newmilestoneArray });
       closeMilestone();
     }
-  }
+  };
 
   return (
     <ContentRight>
       <GaugeBar>
-        <PercentGauge percent={getPercent(milestone.open_count, milestone.close_count)}/>
+        <PercentGauge
+          percent={getPercent(milestone.open_count, milestone.close_count)}
+        />
       </GaugeBar>
       <Info>
         <Percent>
@@ -91,9 +105,9 @@ export default function RightContent({ milestone,  milestones, setMilestones, id
 
       <Buttons>
         <BlueTextButton onClick={onClickEdit}>Edit</BlueTextButton>
-  <BlueTextButton onClick={changeStatus}>{
-     milestone.status === 0 ? 'Close' : 'Open'
-  }</BlueTextButton>
+        <BlueTextButton onClick={changeStatus}>
+          {milestone.status === 0 ? 'Close' : 'Open'}
+        </BlueTextButton>
         <RedTextButton onClick={onClickDelete}>Delete</RedTextButton>
       </Buttons>
     </ContentRight>
@@ -115,8 +129,8 @@ const GaugeBar = styled.div`
 `;
 
 const PercentGauge = styled.div`
-  ${({percent}) => {
-    return `width: ${percent}%;` 
+  ${({ percent }) => {
+    return `width: ${percent}%;`;
   }}
   height: 10px;
   border-radius: 50px;

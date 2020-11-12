@@ -1,6 +1,9 @@
 const passport = require('passport');
 
 exports.check = (req, res, next) => {
+
+  passport.authenticate('jwt', function (err, user, info) {
+
   if(req.headers['user-agent'].includes('iPhone')) {
     next(); 
   }
@@ -18,4 +21,5 @@ exports.check = (req, res, next) => {
     })(req, res, next);
    
   }
+
 };
