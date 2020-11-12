@@ -14,7 +14,7 @@ export default function RightContent({ milestone,  milestones, setMilestones, id
 
   const getPercent = (open, close) => {
     if (open === 0) return 0;
-    return close / (open + close);
+    return (close / (open + close)) * 100;
   };
 
   const deleteMilestone = () => {
@@ -26,14 +26,24 @@ export default function RightContent({ milestone,  milestones, setMilestones, id
       id: id,
       milestone_name: milestone.milestone_name,
       milestone_description: milestone.milestone_description,
-      // 시간 변경
-      end_date: '2020-11-10',
+      end_date: milestone.end_date,
       status: 1,
     });
   };
 
+  const openMilestone = () => {
+    milestoneService.updateMilestone('http://localhost:3000/api/milestone', {
+      id: id,
+      milestone_name: milestone.milestone_name,
+      milestone_description: milestone.milestone_description,
+      end_date: milestone.end_date,
+      status: 0,
+    });
+  };
+
   const onClickDelete = async () => {
-    let _milestones = {...milestones};
+    let newMilestone = []
+    let _milestones = {...milestones, };
 
     if(milestone.status === 0) _milestones.openTotalCount -= 1; 
     else  _milestones.closeTotalCount -= 1;
@@ -44,21 +54,29 @@ export default function RightContent({ milestone,  milestones, setMilestones, id
     deleteMilestone();
   }
 
-  const onClickClose = async () => {
+  const changeStatus = async () => {
     let _milestones = {...milestones};
 
-    _milestones.closeTotalCount += 1; 
-    _milestones.openTotalCount -= 1;
-
-    const newmilestoneArray = _milestones.milestoneArray.filter(milestone=>milestone.id !== id);
-    setMilestones({... _milestones, milestoneArray:newmilestoneArray});
-    closeMilestone();
+    if(milestone.status) {
+      _milestones.closeTotalCount -= 1; 
+      _milestones.openTotalCount += 1;
+      const newmilestoneArray = _milestones.milestoneArray.filter(milestone=>milestone.id !== id);
+      setMilestones({... _milestones, milestoneArray:newmilestoneArray});
+      openMilestone();
+    }
+    else {
+      _milestones.closeTotalCount += 1; 
+      _milestones.openTotalCount -= 1;
+      const newmilestoneArray = _milestones.milestoneArray.filter(milestone=>milestone.id !== id);
+      setMilestones({... _milestones, milestoneArray:newmilestoneArray});
+      closeMilestone();
+    }
   }
 
   return (
     <ContentRight>
       <GaugeBar>
-        <PercentGauge />
+        <PercentGauge percent={getPercent(milestone.open_count, milestone.close_count)}/>
       </GaugeBar>
       <Info>
         <Percent>
@@ -73,7 +91,9 @@ export default function RightContent({ milestone,  milestones, setMilestones, id
 
       <Buttons>
         <BlueTextButton onClick={onClickEdit}>Edit</BlueTextButton>
-        <BlueTextButton onClick={onClickClose}>Close</BlueTextButton>
+  <BlueTextButton onClick={changeStatus}>{
+     milestone.status === 0 ? 'Close' : 'Open'
+  }</BlueTextButton>
         <RedTextButton onClick={onClickDelete}>Delete</RedTextButton>
       </Buttons>
     </ContentRight>
@@ -95,7 +115,9 @@ const GaugeBar = styled.div`
 `;
 
 const PercentGauge = styled.div`
-  width: 40%;
+  ${({percent}) => {
+    return `width: ${percent}%;` 
+  }}
   height: 10px;
   border-radius: 50px;
   background-color: green;
