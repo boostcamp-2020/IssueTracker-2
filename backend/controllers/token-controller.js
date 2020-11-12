@@ -6,12 +6,10 @@ exports.check = (req, res, next) => {
       return next(err);
     }
 
-    if(!user) {
+    if (!user) {
       res.status(401).json({ message: info.message });
     }
 
-    res.cookie('id', user.nickname);
     next();
-    
   })(req, res, next);
 };
