@@ -4,9 +4,12 @@ import styled from 'styled-components';
 import CreateButton from '../Common/GreenButton';
 import NavButton from '../Common/NavButton';
 import FiilteringBox from './filteringBox';
-import { postFetch } from '../../service/fetch';
 
-export default function Navigation({ countInfo }) {
+export default function Navigation({
+  issueListData,
+  setIssueListData,
+  countInfo,
+}) {
   const history = useHistory();
 
   const onClickNewIssue = () => {
@@ -15,7 +18,10 @@ export default function Navigation({ countInfo }) {
 
   return (
     <Wrapper>
-      <FiilteringBox />
+      <FiilteringBox
+        issueListData={issueListData}
+        setIssueListData={setIssueListData}
+      />
       <ButtonWrapper>
         <Nav>
           <NavButton

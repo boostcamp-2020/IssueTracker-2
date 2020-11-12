@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { getFetch } from '../../service/fetch';
 import { v4 } from 'uuid';
 
-export default function popup({ type }) {
+export default function popup({ type, setIssueListData, issueListData }) {
   const [content, setContent] = useState([]);
 
   const onClickCancel = e => {
@@ -11,7 +11,7 @@ export default function popup({ type }) {
   };
 
   const getContents = async type => {
-    if (type === 'Milestones') {
+    if (type === 'Milestones' || type === 'milestone') {
       const openMilestone = await getFetch(
         `${process.env.SERVER_URL}/api/milestone/all/?status=0`,
       );
@@ -27,7 +27,7 @@ export default function popup({ type }) {
       setContent(arr);
     }
 
-    if (type === 'Label') {
+    if (type === 'Label' || type === 'label') {
       const allLabel = await getFetch(
         `${process.env.SERVER_URL}/api/label/all`,
       );
@@ -35,7 +35,7 @@ export default function popup({ type }) {
       setContent(allLabel.labels);
     }
 
-    if (type === 'Assignee') {
+    if (type === 'Assignee' || type === 'assignee') {
       const users = await getFetch(`${process.env.SERVER_URL}/api/user/all`);
 
       setContent(users.allUser);
@@ -43,7 +43,7 @@ export default function popup({ type }) {
   };
 
   const getDomElements = type => {
-    if (type === 'Milestones') {
+    if (type === 'Milestones' || type === 'milestone') {
       return content.map(milestone => {
         return (
           <PopupContent key={v4()}>{milestone.milestone_name}</PopupContent>
@@ -51,7 +51,7 @@ export default function popup({ type }) {
       });
     }
 
-    if (type === 'Label') {
+    if (type === 'Label' || type === 'label') {
       return content.map(label => {
         return (
           <PopupContent type="label" color={label.color} key={v4()}>
@@ -61,7 +61,7 @@ export default function popup({ type }) {
       });
     }
 
-    if (type === 'Assignee') {
+    if (type === 'Assignee' || type === 'assignee') {
       return content.map(user => {
         return (
           <PopupContent key={v4()}>
@@ -71,6 +71,27 @@ export default function popup({ type }) {
         );
       });
     }
+  };
+
+  const onClickOpenIssue = async () => {
+    const filteringData = await getFetch(
+      `${process.env.SERVER_URL}/api/issue/all?filter=open`,
+    );
+    setIssueListData({
+      ...issueListData,
+      issuesArray: filteringData.issuesInfo.issuesArray,
+    });
+  };
+
+  const onClickCloseIssue = async () => {
+    const filteringData = await getFetch(
+      `${process.env.SERVER_URL}/api/issue/all?filter=close`,
+    );
+
+    setIssueListData({
+      ...issueListData,
+      issuesArray: filteringData.issuesInfo.issuesArray,
+    });
   };
 
   useEffect(() => {
@@ -87,13 +108,17 @@ export default function popup({ type }) {
                 Fitler issues
                 <PopupCancel onClick={onClickCancel}>x</PopupCancel>
               </FilteringHeader>
-              <FilteringCondition>Open issues</FilteringCondition>
+              <FilteringCondition onClick={onClickOpenIssue}>
+                Open issues
+              </FilteringCondition>
               <FilteringCondition>Your issues</FilteringCondition>
               <FilteringCondition>
                 Everything assigned to you
               </FilteringCondition>
               <FilteringCondition>Everything mentioning you</FilteringCondition>
-              <FilteringCondition>Closed issues</FilteringCondition>
+              <FilteringCondition onClick={onClickCloseIssue}>
+                Closed issues
+              </FilteringCondition>
             </Wrapper>
           ) : (
             <Wrapper>
@@ -131,6 +156,7 @@ const PopupContent = styled.div`
   border-radius: 20px;
   margin-bottom: 1em;
   font-family: 'Roboto', sans-serif;
+  cursor: pointer;
 `;
 
 const DetailMenu = styled.div`
@@ -187,7 +213,7 @@ const FilteringCondition = styled.div`
   border-left: 1px solid rgba(0, 0, 0, 0.1);
   border-right: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-
+  cursor: pointer;
   background-color: white;
   padding: 1em;
   font-size: 0.8em;

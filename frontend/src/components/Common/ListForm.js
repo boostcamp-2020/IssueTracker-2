@@ -179,6 +179,7 @@ const List = styled.div`
 `;
 
 const Condition = styled.summary`
+  outline: none;
   cursor: pointer;
 `;
 const FilteringConditions = styled.div`
