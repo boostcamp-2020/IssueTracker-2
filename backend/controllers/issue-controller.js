@@ -2,8 +2,8 @@ const service = require('../services/issue-service');
 
 exports.createIssue = async (req, res, next) => {
   try {
-    const { status, message, insertId } = await service.createIssue(req);
-    res.status(status).json({ message, insertId });
+    const { status, message, issue_id } = await service.createIssue(req);
+    res.status(status).json({ message, issue_id });
   } catch (err) {
     next(err);
   }
