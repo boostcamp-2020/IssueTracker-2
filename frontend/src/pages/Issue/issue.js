@@ -24,6 +24,7 @@ const Issue = () => {
   const getIssueListData = () => {
     getFetch(process.env.SERVER_URL + '/api/issue/all').then(res => {
       setIssueListData(res.issuesInfo);
+      console.log(res.issuesInfo);
     });
   };
 
@@ -41,6 +42,21 @@ const Issue = () => {
         setIssueListData(res.issuesInfo);
       },
     );
+  };
+
+  const sortLabelByIssue = issueListData => {
+    let sortedIssue = [];
+    let issueLabelMap = {};
+    issueListData.forEach(issueData => {
+      if (!issueLabelMap[issueData.id]) {
+        issueLabelMap[issueData.id] = sortedIssue.length;
+        sortedIssue.push({ ...issueData, label_name: [issueData.label_name] });
+        return;
+      }
+      let issueIndex = issueLabelMap[issueData.id];
+      sortedIssue[issueIndex].label_name.push(issueData.label_name);
+    });
+    return sortedIssue;
   };
 
   useEffect(() => {
