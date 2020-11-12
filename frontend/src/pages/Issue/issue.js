@@ -7,42 +7,6 @@ import Footer from '../../components/Common/Footer';
 import { getFetch } from '../../service/fetch';
 import { useHistory } from 'react-router-dom';
 
-const ISSUE_LIST_DATA = [
-  {
-    id: 0,
-    user_sid: 0,
-    issue_title: '1번 이슈',
-    issue_author: 'string',
-    comment: 'string',
-    label: 0,
-    milestone: 0,
-    issue_status: true,
-    assignee: 0,
-  },
-  {
-    id: 1,
-    user_sid: 1,
-    issue_title: '2번 이슈',
-    issue_author: 'string',
-    comment: 'string',
-    label: 0,
-    milestone: 0,
-    issue_status: true,
-    assignee: 0,
-  },
-  {
-    id: 1,
-    user_sid: 1,
-    issue_title: '3번 이슈',
-    issue_author: 'string',
-    comment: 'string',
-    label: 0,
-    milestone: 0,
-    issue_status: false,
-    assignee: 0,
-  },
-];
-
 const Issue = () => {
   const history = useHistory();
   if (!document.cookie.includes('jwt')) {
@@ -55,21 +19,52 @@ const Issue = () => {
     issuesArray: [],
   });
 
+  const [issueFilter, setIssueFilter] = useState(0);
+
   const getIssueListData = () => {
     getFetch(process.env.SERVER_URL + '/api/issue/all').then(res => {
       setIssueListData(res.issuesInfo);
     });
   };
 
+  const getIssueListOpenData = () => {
+    getFetch(process.env.SERVER_URL + '/api/issue/all?filter=open').then(
+      res => {
+        setIssueListData(res.issuesInfo);
+      },
+    );
+  };
+
+  const getIssueListCloseData = () => {
+    getFetch(process.env.SERVER_URL + '/api/issue/all?filter=close').then(
+      res => {
+        setIssueListData(res.issuesInfo);
+      },
+    );
+  };
+
   useEffect(() => {
-    getIssueListData();
-  }, []);
+    switch (issueFilter) {
+      case 0:
+        getIssueListData();
+        return;
+      case 1:
+        getIssueListOpenData();
+        return;
+      case 2:
+        getIssueListCloseData();
+        return;
+    }
+  }, [issueFilter]);
 
   return (
     <>
       <Header />
       <Navigation countInfo={issueListData} />
-      <IssueList issueListData={issueListData.issuesArray} />
+      <IssueList
+        issueListData={issueListData.issuesArray}
+        setIssueFilter={setIssueFilter}
+      />
       <Footer />
     </>
   );

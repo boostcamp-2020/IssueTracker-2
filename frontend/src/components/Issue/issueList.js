@@ -3,7 +3,7 @@ import ListForm from '../Common/ListForm';
 import IssueUnit from './issueUnit';
 import { v4 } from 'uuid';
 
-const IssueList = ({ issueListData }) => {
+const IssueList = ({ issueListData, setIssueFilter }) => {
   const [isCheckList, setIsCheckList] = useState([]);
   const [isAllChecked, setIsAllChecked] = useState(false);
   useEffect(() => {
@@ -18,6 +18,7 @@ const IssueList = ({ issueListData }) => {
         issueListData={issueListData}
         isAllChecked={isAllChecked}
         setIsAllChecked={setIsAllChecked}
+        setIssueFilter={setIssueFilter}
         content={issueListData.map((issueData, index) => (
           <IssueUnit
             key={v4()}
