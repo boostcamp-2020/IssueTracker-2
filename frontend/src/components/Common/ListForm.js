@@ -99,7 +99,7 @@ export default function ListForm(props) {
     if (type === 'label') {
       return (
         <HeaderWrapper>
-          <LabelCount>13</LabelCount>
+          <LabelCount>{props.count}</LabelCount>
           <LabelTitle>labels</LabelTitle>
         </HeaderWrapper>
       );

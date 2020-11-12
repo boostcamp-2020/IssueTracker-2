@@ -50,6 +50,7 @@ export default function LabelAddTabl({ setIsAddTab, getLabelList }) {
         <LabelNameArea>
           <InputTitle>Label name</InputTitle>
           <InputTextBox
+            placeholder="Label name"
             onChange={handleLabelName}
             value={newLabelInfo.labelName}
           />
@@ -58,6 +59,7 @@ export default function LabelAddTabl({ setIsAddTab, getLabelList }) {
           <LabelDescriptionArea>
             <InputTitle>Description</InputTitle>
             <InputTextBox
+              placeholder="Description (optional)"
               onChange={handleLabelDescription}
               value={newLabelInfo.labelDescription}
             />
@@ -74,8 +76,10 @@ export default function LabelAddTabl({ setIsAddTab, getLabelList }) {
                 value={newLabelInfo.labelColor}
               />
             </ColorInputArea>
+            <ColorSpec color={newLabelInfo.labelColor} />
           </LabelColorArea>
         </LabelDetailArea>
+
         <LabelAddButtonArea>
           <InputTitle />
           <AddButtonsWrapper>
@@ -92,21 +96,32 @@ export default function LabelAddTabl({ setIsAddTab, getLabelList }) {
 }
 
 const Wrapper = styled.div`
-  height: 100px;
+  height: 10em;
   padding: 20px 16px;
   background: #eeeeee;
   margin: 20px 0;
+  position: relative;
+  border-radius: 5px;
 `;
 
-const Header = styled.div``;
+const Header = styled.div`
+  width: 8em;
+  text-align: center;
+  background-color: #c5def5;
+  border-radius: 20px;
+  padding: 0.5em;
+  font-size: 0.8em;
+  margin-bottom: 1.5em;
+  font-family: 'Roboto', sans-serif;
+`;
 
 const InputList = styled.div`
   display: flex;
-  justify-content: space-between;
+  gap: 5em;
 `;
 
 const LabelNameArea = styled.div`
-  width: 200px;
+  width: 300px;
 `;
 
 const LabelDetailArea = styled.div`
@@ -134,10 +149,14 @@ const InputTitle = styled.p`
 
 const AddButtonsWrapper = styled.div`
   display: flex;
+  gap: 1em;
+  position: absolute;
+  right: 2em;
 `;
 
 const ColorInputArea = styled.div`
   display: flex;
+  width: 15em;
 `;
 
 const InputTextBox = styled.input`
@@ -148,4 +167,17 @@ const InputTextBox = styled.input`
   padding: 0.2rem 0.5rem;
   width: 100%;
   height: 2rem;
+`;
+
+const ColorSpec = styled.div`
+  width: 2em;
+  height: 2em;
+
+  ${props => {
+    return `background-color:${props.color};`;
+  }}
+
+  border-radius: 20px;
+  position: absolute;
+  top: 1.5em;
 `;

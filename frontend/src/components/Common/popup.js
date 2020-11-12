@@ -5,7 +5,7 @@ import { v4 } from 'uuid';
 
 export default function popup({ type }) {
   const [content, setContent] = useState([]);
-  console.log(content);
+
   const onClickCancel = e => {
     e.target.closest('details').removeAttribute('open');
   };
