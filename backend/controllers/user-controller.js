@@ -47,3 +47,12 @@ exports.loginPassport = (req, res, next) => {
     res.status(202).json({ message: 'logged in successfully' });
   })(req, res, next);
 };
+
+exports.getAllUser = async (req, res, next) => {
+  try {
+    const { status, message, allUser } = await service.getAllUser();
+    res.status(status).json({ message, allUser });
+  } catch (err) {
+    next(err);
+  }
+};
