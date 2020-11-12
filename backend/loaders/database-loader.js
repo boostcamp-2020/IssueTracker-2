@@ -17,9 +17,8 @@ const SQL_CREATE_ISSUE_TABLE = `
         issue_content varchar(255),
         issue_name varchar(255),
         created_at timestamp,
-        milestone_name varchar(255),
         milestone_id int,
-        issue_status varchar(255)
+        issue_status boolean
     );`;
 
 const SQL_DROP_ISSUE_ASSIGNEE_TABLE = `DROP TABLE IF EXISTS issue_assignees;`;
@@ -28,14 +27,6 @@ const SQL_CREATE_ISSUE_ASSIGNEE_TABLE = `
         id int PRIMARY KEY AUTO_INCREMENT,
         assignee_id int,
         issue_id int
-    );`;
-
-const SQL_DROP_ISSUE_COMMENT_TABLE = `DROP TABLE IF EXISTS issue_comments;`;
-const SQL_CREATE_ISSUE_COMMENT_TABLE = `
-    CREATE TABLE issue_comments (
-        id int PRIMARY KEY AUTO_INCREMENT,
-        issue_id int,
-        comment_id int
     );`;
 
 const SQL_DROP_MILESTONE_TABLE = `DROP TABLE IF EXISTS milestones`;
@@ -74,8 +65,6 @@ const SQL_CREATE_COMMNET_TABLE = `
         issue_id int,
         description varchar(255),
         created_at datetime
-        
-        
     );`;
 
 const SQL_DROP_EMOJI_TABLE = `DROP TABLE IF EXISTS emojis`;
@@ -101,6 +90,11 @@ const createUserTable = async () => {
     connection
       .query(SQL_DROP_USER_TABLE)
       .then(() => connection.query(SQL_CREATE_USER_TABLE))
+      .then(() =>
+        connection.query(
+          `INSERT INTO users values (1, 'zlrlo', 'https://avatars3.githubusercontent.com/u/68647194?v=4', 'password');`,
+        ),
+      )
       .then(() => connection.release());
   } catch (err) {
     throw new Error(err);
@@ -129,7 +123,7 @@ const createLabelTable = async () => {
       .then(() => connection.query(SQL_CREATE_LABEL_TABLE))
       .then(() =>
         connection.query(
-          `INSERT INTO labels values(1, "bug", "#aaaaaa","This is bug"),(2, "Web", "#11aa22","Web is Full stack"),(3, "iOS", "#aa33bb","iOS is App");`,
+          `INSERT INTO labels values(1, "bug", "#aaaaaa","This is bug"),( 2,"Web", "#11aa22","Web is Full stack"),(3, "iOS", "#aa33bb","iOS is App");`,
         ),
       )
       .then(() => connection.release());
@@ -145,6 +139,11 @@ const createMilestoneTable = async () => {
     connection
       .query(SQL_DROP_MILESTONE_TABLE)
       .then(() => connection.query(SQL_CREATE_MILESTONE_TABLE))
+      .then(() =>
+        connection.query(
+          `INSERT INTO milestones values(1, "backend milestone", "backend 마일스톤입니다.","2020-11-15", 0, "2020-11-12");`,
+        ),
+      )
       .then(() => connection.release());
   } catch (err) {
     throw new Error(err);
@@ -158,6 +157,11 @@ const createCommentTable = async () => {
     connection
       .query(SQL_DROP_COMMENT_TABLE)
       .then(() => connection.query(SQL_CREATE_COMMNET_TABLE))
+      .then(() =>
+        connection.query(
+          `INSERT INTO comments values ( 1,1, 2,'수고하셨습니다 ~','2020-11-12');`,
+        ),
+      )
       .then(() => connection.release());
   } catch (err) {
     throw new Error(err);
@@ -184,19 +188,11 @@ const createIssueLabelTable = async () => {
     connection
       .query(SQL_DROP_ISSUE_LABEL_TABLE)
       .then(() => connection.query(SQL_CREATE_ISSUE_LABEL_TABLE))
-      .then(() => connection.release());
-  } catch (err) {
-    throw new Error(err);
-  }
-};
-
-const createIssueCommentTable = async () => {
-  try {
-    const connection = await db.pool.getConnection(async conn => conn);
-
-    connection
-      .query(SQL_DROP_ISSUE_COMMENT_TABLE)
-      .then(() => connection.query(SQL_CREATE_ISSUE_COMMENT_TABLE))
+      .then(() =>
+        connection.query(
+          `INSERT INTO issue_labels values(1, 1, 1),(2,1,2),(3,2,1),(4,3,1),(5,3,2);`,
+        ),
+      )
       .then(() => connection.release());
   } catch (err) {
     throw new Error(err);
@@ -210,6 +206,11 @@ const createIssueTable = async () => {
     connection
       .query(SQL_DROP_ISSUE_TABLE)
       .then(() => connection.query(SQL_CREATE_ISSUE_TABLE))
+      .then(() =>
+        connection.query(
+          `INSERT INTO issues values(1, 1, "오어스 구현했습니다.", "로그인구현","2020-11-12",1,0),(2,2, "팝업창 했습니다. ", "완성된 팝업창","2020-11-12",1,1);`,
+        ),
+      )
       .then(() => connection.release());
   } catch (err) {
     throw new Error(err);
@@ -223,6 +224,11 @@ const createIssueAssigneeTable = async () => {
     connection
       .query(SQL_DROP_ISSUE_ASSIGNEE_TABLE)
       .then(() => connection.query(SQL_CREATE_ISSUE_ASSIGNEE_TABLE))
+      .then(() =>
+        connection.query(
+          `INSERT INTO issue_assignees values ( 1,1,1),(2,1,2);`,
+        ),
+      )
       .then(() => connection.release());
   } catch (err) {
     throw new Error(err);
@@ -270,7 +276,7 @@ const makeTables = () => {
   createCommentTable();
   createCommentEmojiTable();
   createIssueLabelTable();
-  createIssueCommentTable();
+
   createIssueAssigneeTable();
 };
 
@@ -278,4 +284,4 @@ const makeRelation = () => {
   createTableRelation();
 };
 
-// initializeTables();
+initializeTables();
