@@ -24,6 +24,13 @@ export default function ListForm(props) {
     props.setIsCheckList(newCheckList);
   };
 
+  const handleFilterOpenIssue = () => {
+    props.setIssueFilter(1);
+  };
+  const handleFilterCloseIssue = () => {
+    props.setIssueFilter(2);
+  };
+
   const getHeaderContent = type => {
     if (type === 'issue') {
       return (
@@ -35,30 +42,28 @@ export default function ListForm(props) {
             readOnly
           />
           <IssueOpenedIcon size={18} />
-          <Open>
-            <Count>
-              {
-                props.issueListData.filter(issueData => issueData.issue_status)
-                  .length
-              }
-            </Count>
-            <span>Open</span>
-          </Open>
-          <CheckIcon size={20} />
-          <Closed>
+          <Open onClick={handleFilterOpenIssue}>
             <Count>
               {
                 props.issueListData.filter(issueData => !issueData.issue_status)
                   .length
               }
             </Count>
+            <span>Open</span>
+          </Open>
+          <CheckIcon size={20} />
+          <Closed onClick={handleFilterCloseIssue}>
+            <Count>
+              {
+                props.issueListData.filter(issueData => issueData.issue_status)
+                  .length
+              }
+            </Count>
             <span>Closed</span>
           </Closed>
-          {props.isCheckList && (
-            <IssueCount>
-              {props.isCheckList.filter(isChecked => isChecked).length} selected
-            </IssueCount>
-          )}
+          <IssueCount>
+            {props.isCheckList.filter(isChecked => isChecked).length} selected
+          </IssueCount>
           <FilteringConditions>
             {COLOUMN_LIST.map((columnName, index) => (
               <Details key={index}>
