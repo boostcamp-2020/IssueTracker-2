@@ -62,7 +62,7 @@ const Issue = () => {
   };
 
   useEffect(() => {
-    return () => getIssueListData();
+    getIssueListData();
   }, []);
 
   return (

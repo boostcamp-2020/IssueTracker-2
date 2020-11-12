@@ -32,6 +32,7 @@ export default function ListForm(props) {
             type="checkbox"
             onClick={handleCheckbox}
             checked={props.isAllChecked}
+            readOnly
           />
           <IssueOpenedIcon size={18} />
           <Open>
