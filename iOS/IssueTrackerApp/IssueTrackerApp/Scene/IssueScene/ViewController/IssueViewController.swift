@@ -129,6 +129,16 @@ class IssueViewController: UIViewController {
     return dataSource
   }
   
+  private func performQuery(withFilter filter: String) {
+    let data = issueData
+    let items = data.filter { (issue) -> Bool in
+      issue.issueTitle.contains(filter)
+    }
+    DispatchQueue.main.async { [weak self] in
+      self?.applySnapshot(issueData: items)
+    }
+  }
+  
   @objc func swipeLeft(_ sender: UISwipeGestureRecognizer) {
     if isEdited { return }
     guard let view = sender.view as? IssueCell else { return }
@@ -286,5 +296,13 @@ extension IssueViewController: UISearchBarDelegate {
     searchBar.text = nil
     searchBar.showsCancelButton = false
     searchBar.endEditing(true)
+    loadIssueData()
+  }
+  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    if searchText == "" {
+      loadIssueData()
+    } else {
+      performQuery(withFilter: searchText)
+    }
   }
 }

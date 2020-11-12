@@ -104,6 +104,7 @@
 		BDD18CF72546E5EC00974FB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDD18CF62546E5EC00974FB4 /* Assets.xcassets */; };
 		BDD18CFA2546E5EC00974FB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDD18CF82546E5EC00974FB4 /* LaunchScreen.storyboard */; };
 		BDD18D032547B4D000974FB4 /* SignInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD18D022547B4D000974FB4 /* SignInButton.swift */; };
+		BDFD0A4E255D422300788EA3 /* RegisterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFD0A4D255D422200788EA3 /* RegisterData.swift */; };
 		E31E97D286B47038D68F2141 /* Pods_IssueTrackerApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8997B99C248D0ACDADB72D03 /* Pods_IssueTrackerApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -242,6 +243,7 @@
 		BDD18CF92546E5EC00974FB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BDD18CFB2546E5EC00974FB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BDD18D022547B4D000974FB4 /* SignInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInButton.swift; sourceTree = "<group>"; };
+		BDFD0A4D255D422200788EA3 /* RegisterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterData.swift; sourceTree = "<group>"; };
 		D4EADA6AA7F2815DF6270443 /* Pods-IssueTrackerApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IssueTrackerApp.release.xcconfig"; path = "Target Support Files/Pods-IssueTrackerApp/Pods-IssueTrackerApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -478,6 +480,7 @@
 			children = (
 				5C4F347F2547DAEE00E41121 /* LoginValidator.swift */,
 				BDA8F88E25565A2F00A0E7C9 /* LoginKeychain.swift */,
+				BDFD0A4D255D422200788EA3 /* RegisterData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -921,6 +924,7 @@
 				5CCE210D2557AA1F0043FA30 /* LabelList.swift in Sources */,
 				BD02F15925519FDC0013C643 /* FilterTableDataSource.swift in Sources */,
 				5C7DF6B42557B39B00D730EE /* LabelMarkLabel.swift in Sources */,
+				BDFD0A4E255D422300788EA3 /* RegisterData.swift in Sources */,
 				5C7C84BD255BE1FD0009CEAE /* CommentViewController.swift in Sources */,
 				5C15D25225582A7200D4F56A /* MilestoneViewController.swift in Sources */,
 				BDA8F89B255685B700A0E7C9 /* IssueEndPoint.swift in Sources */,

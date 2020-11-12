@@ -229,10 +229,11 @@ extension LabelViewController: UpdateLabelViewDelegate {
         }
       }
       self.loadLabelData()
+      DispatchQueue.main.async {
+        self.addButton.isEnabled = true
+        self.isLabelUpdating = false
+        self.dismissUpdateLabelView()
+      }
     }
-    self.addButton.isEnabled = true
-    self.isLabelUpdating = false
-    self.dismissUpdateLabelView()
-    self.labelCollectionView.reloadData()
   }
 }
