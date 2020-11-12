@@ -81,6 +81,8 @@ class IssueDetailViewController: UIViewController, UIGestureRecognizerDelegate {
       let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "IssueDetailHeader", for: indexPath) as? IssueDetailHeader
       
       sectionHeader?.updateHeader(withItem: self.issue)
+      sectionHeader?.issueStatusLabel.layer.borderColor = self.issue.issueStatus == true ? UIColor.systemGreen.cgColor : UIColor.systemRed.cgColor
+      sectionHeader?.issueStatusLabel.text = self.issue.issueStatus == true ? "✓ OPEN" : "✕ CLOSE"
       return sectionHeader
     }
     return dataSource

@@ -39,7 +39,8 @@ class IssueViewController: UIViewController {
   @IBOutlet weak var collectionViewBottomConstraint: NSLayoutConstraint!
   
   @IBAction func newIssueButtonTouched(_ sender: Any) {
-    guard let newIssueVC = storyboard?.instantiateViewController(identifier: "NewIssueVC") else { return }
+    guard let newIssueVC = storyboard?.instantiateViewController(identifier: "NewIssueVC") as? UpdateIssueViewController else { return }
+    newIssueVC.handler = loadIssueData
     present(newIssueVC, animated: true)
   }
   
@@ -75,10 +76,6 @@ class IssueViewController: UIViewController {
           decoder.keyDecodingStrategy = .convertFromSnakeCase
           guard let data = data,
                 let result = try? decoder.decode(IssueResponse.self, from: data) else { return }
-          
-          
-          
-          
           self.issueData = result.issues
         } else {
           self.issueData = self.dummyList.dummyIssues

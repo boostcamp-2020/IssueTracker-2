@@ -8,7 +8,7 @@
 import Foundation
 
 struct Comment: Codable, Hashable {
-  var id: Int
+  var id: Int = 0
   var writerId: Int
   var description: String
   var createAt: String
