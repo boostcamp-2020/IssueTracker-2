@@ -13,7 +13,7 @@ export default function FiilteringBox(props) {
         </FilteringButton>
         <PopupContent type="issue" />
       </Details>
-      <SearchBar type="text" value="is:issue is:open " />
+      <SearchBar type="text" value="is:issue is:open " readOnly />
     </>
   );
 }

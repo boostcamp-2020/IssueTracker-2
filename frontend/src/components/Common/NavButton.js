@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { TagIcon, MilestoneIcon } from '@primer/octicons-react';
 import { useHistory } from 'react-router-dom';
 
-export default function NavButton({ type }) {
+export default function NavButton({ type, milestoneCount, labelCount }) {
   const history = useHistory();
 
   const onClickLabelNav = () => {
@@ -19,13 +19,13 @@ export default function NavButton({ type }) {
       <LabelButton onClick={onClickLabelNav} type={type}>
         <TagIcon size={20} />
         <Text>Labels</Text>
-        {type === 'issue' && <Count>3</Count>}
+        {type === 'issue' && <Count>{labelCount}</Count>}
       </LabelButton>
       <MilestoneButton onClick={onClickMilestoneNav} type={type}>
         <MilestoneIcon size={20} />
 
         <Text>Milestones</Text>
-        {type === 'issue' && <Count>4</Count>}
+        {type === 'issue' && <Count>{milestoneCount}</Count>}
       </MilestoneButton>
     </>
   );

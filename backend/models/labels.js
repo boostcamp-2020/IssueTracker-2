@@ -61,3 +61,16 @@ exports.update = async ({ id, label_name, color, label_description }) => {
     throw new Error(err);
   }
 };
+
+exports.getAllCount = async () => {
+  try {
+    const connection = await db.pool.getConnection(async conn => conn);
+    let sql = `SELECT count(*) as count FROM labels `;
+    const [[count]] = await connection.query(sql);
+
+    connection.release();
+    return count;
+  } catch (err) {
+    throw new Error(err);
+  }
+};

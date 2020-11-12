@@ -18,7 +18,6 @@ const COLOUMN_LIST = [
 ];
 
 export default function ListForm(props) {
-  console.log(props.issueListData);
   const getHeaderContent = type => {
     if (type === 'issue') {
       return (

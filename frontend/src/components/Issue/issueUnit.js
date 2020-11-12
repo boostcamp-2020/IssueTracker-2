@@ -11,15 +11,19 @@ export default function IssueUnit({ issueData }) {
       </IssueIconWrapper>
       <LeftContent>
         <LeftTopContent>
-          <IssueTitle>{issueData.issue_title}</IssueTitle>
-          <Labels>라벨들</Labels>
+          <IssueTitle>{issueData.issue_name}</IssueTitle>
+          <Labels>
+            <Label color={issueData.color}>{issueData.label_name}</Label>
+          </Labels>
         </LeftTopContent>
         <LeftDownContent>
-          <IssueInfo>#115 opened 12 hours ago by msmk530</IssueInfo>
+          <IssueInfo>
+            #115 opened 12 hours ago by {issueData.nickname}
+          </IssueInfo>
           <MilestoneInfo>
             <MilestoneIcon size={16} />
           </MilestoneInfo>
-          <MilestoneTitle>[WEB] 이슈페이지 마크업</MilestoneTitle>
+          <MilestoneTitle>{issueData.milestone_name}</MilestoneTitle>
         </LeftDownContent>
       </LeftContent>
     </Wrapper>
@@ -53,7 +57,7 @@ const IssueTitle = styled.span`
 `;
 
 const Labels = styled.span`
-  margin-left: 0.5em;
+  margin-left: 2em;
 `;
 
 const MilestoneInfo = styled.span`
@@ -76,4 +80,17 @@ const LeftDownContent = styled.div`
 const IssueInfo = styled.div`
   margin-top: 0.5em;
   color: rgba(0, 0, 0, 0.7);
+`;
+
+const Label = styled.span`
+  display: inline-block;
+  padding: 0.2em 1em;
+  height: 1.5em;
+  text-align: center;
+  line-height: 1.3em;
+
+  border-radius: 20px;
+  ${props => {
+    return `background-color:${props.color}`;
+  }};
 `;

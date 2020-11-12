@@ -27,12 +27,10 @@ exports.create = async ({
   }
 };
 
-exports.getAll = async ({column, condition}) => {
+exports.getAll = async ({ column, condition }) => {
   try {
     const sql = `
-    select i.issue_name, i.created_at, i.issue_status, l.label_name, l.color, m.milestone_name, u.profile_image_url
-
-
+    select i.issue_name, i.id,i.created_at, i.issue_status, l.label_name, l.color, m.milestone_name, u.profile_image_url,u.nickname
     from issues as i
     left join issue_labels as il
     on i.id = il.issue_id
@@ -47,20 +45,18 @@ exports.getAll = async ({column, condition}) => {
 
     `;
 
-    if(column) {
+    if (column) {
       const connection = await db.pool.getConnection(async conn => conn);
-      let newSql = sql + `where ${column}=${condition}`
+      let newSql = sql + `where ${column}=${condition}`;
       const [milestones] = await connection.query(newSql, []);
       connection.release();
       return milestones;
-    }
-    else {
+    } else {
       const connection = await db.pool.getConnection(async conn => conn);
       const [milestones] = await connection.query(sql, []);
       connection.release();
       return milestones;
     }
-
   } catch (err) {
     throw new Error(err);
   }

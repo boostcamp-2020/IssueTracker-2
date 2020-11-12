@@ -46,11 +46,15 @@ const ISSUE_LIST_DATA = [
 const Issue = () => {
   const historyState = useHistory().location.state;
 
-  const [issueListData, setIssueListData] = useState([]);
+  const [issueListData, setIssueListData] = useState({
+    milestoneCount: 0,
+    labelCount: 0,
+    issuesArray: [],
+  });
 
   const getIssueListData = () => {
     getFetch(process.env.SERVER_URL + '/api/issue/all').then(res => {
-      setIssueListData(res.issuesInfo.issuesArray);
+      setIssueListData(res.issuesInfo);
     });
   };
 
@@ -61,8 +65,8 @@ const Issue = () => {
   return (
     <>
       <Header />
-      <Navigation />
-      <IssueList issueListData={issueListData} />
+      <Navigation countInfo={issueListData} />
+      <IssueList issueListData={issueListData.issuesArray} />
       <Footer />
     </>
   );

@@ -25,21 +25,27 @@ const useFetch = (state, callback, url, method) => {
   return loading;
 };
 
-const List = ({ milestones, setMilestones, loading, milestoneService}) => {
+const List = ({ milestones, setMilestones, loading, milestoneService }) => {
   let milestoneList = <div>Loading...</div>;
   if (!loading) {
-    milestoneList = milestones.milestoneArray.map(milestone => 
+    milestoneList = milestones.milestoneArray.map(milestone => (
       <Milestone key={milestone.id}>
         <LeftContent milestone={milestone} />
-        <RightContent milestone={milestone} milestones={milestones} setMilestones={setMilestones} id={milestone.id} milestoneService={milestoneService} />
+        <RightContent
+          milestone={milestone}
+          milestones={milestones}
+          setMilestones={setMilestones}
+          id={milestone.id}
+          milestoneService={milestoneService}
+        />
       </Milestone>
-    );
+    ));
   }
 
   return <>{milestoneList}</>;
 };
 
-export default function MilestoneList({milestoneService}) {
+export default function MilestoneList({ milestoneService }) {
   const [status, setStatus] = useState(0);
   const [milestones, setMilestones] = useState({
     openTotalCount: 0,
@@ -51,18 +57,16 @@ export default function MilestoneList({milestoneService}) {
     status,
     setMilestones,
     `http://localhost:3000/api/milestone/all?status=${status}`,
-    'GET'
+    'GET',
   );
 
   const clickOpen = e => {
-    console.log('clicked open');
     if (status) {
       setStatus(0);
     }
   };
 
   const clickClose = e => {
-    console.log('clicked close');
     if (!status) {
       setStatus(1);
     }
@@ -70,7 +74,14 @@ export default function MilestoneList({milestoneService}) {
 
   return (
     <ListForm
-      content={<List milestones={milestones} setMilestones={setMilestones} loading={loading} milestoneService={milestoneService}  />}
+      content={
+        <List
+          milestones={milestones}
+          setMilestones={setMilestones}
+          loading={loading}
+          milestoneService={milestoneService}
+        />
+      }
       type="milestone"
       openTotalCount={milestones.openTotalCount}
       closeTotalCount={milestones.closeTotalCount}

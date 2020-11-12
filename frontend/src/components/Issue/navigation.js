@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import CreateButton from '../Common/GreenButton';
 import NavButton from '../Common/NavButton';
 import FiilteringBox from './filteringBox';
-export default function Navigation(props) {
+export default function Navigation({ countInfo }) {
   const history = useHistory();
 
   const onClickNewIssue = () => {
@@ -16,7 +16,11 @@ export default function Navigation(props) {
       <FiilteringBox />
       <ButtonWrapper>
         <Nav>
-          <NavButton type="issue" />
+          <NavButton
+            type="issue"
+            milestoneCount={countInfo.milestoneCount}
+            labelCount={countInfo.labelCount}
+          />
         </Nav>
         <CreateButton onClick={onClickNewIssue} content="New issue" />
       </ButtonWrapper>

@@ -18,24 +18,19 @@ exports.createIssue = async req => {
   }
 };
 
-const getFilterType = (reqData) => {
-  if(reqData.filter === 'open') {
-    return { column : 'i.issue_status', condition : 0 };
-  }
-  else if(reqData.filter === 'your') {
-    return { column : 'i.user_sid', condition : reqData.id };
-  }
-  else if(reqData.filter === 'assigned') {
-    return { column : 'ia.issue_id', condition : reqData.id };
-  }
-  else if(reqData.filter === 'mentioning') {
+const getFilterType = reqData => {
+  if (reqData.filter === 'open') {
+    return { column: 'i.issue_status', condition: 0 };
+  } else if (reqData.filter === 'your') {
+    return { column: 'i.user_sid', condition: reqData.id };
+  } else if (reqData.filter === 'assigned') {
+    return { column: 'ia.issue_id', condition: reqData.id };
+  } else if (reqData.filter === 'mentioning') {
     // 나중에 추가
-  }
-  else if(reqData.filter === 'close') {
-    return { column : 'i.issue_status', condition : 1 };
-  }
-  else return { column : 0, condition : 0};
-}
+  } else if (reqData.filter === 'close') {
+    return { column: 'i.issue_status', condition: 1 };
+  } else return { column: 0, condition: 0 };
+};
 
 exports.getAllIssues = async req => {
   try {
@@ -46,10 +41,10 @@ exports.getAllIssues = async req => {
     const milestoneCloseCount = await milestones.getStatusCount(status.close);
 
     const milestoneCount = milestoneOpenCount + milestoneCloseCount;
-    const labelCount = await labels.read().length;
+    const labelCount = await labels.getAllCount();
 
     issuesInfo.milestoneCount = milestoneCount;
-    issuesInfo.labelCount = labelCount;
+    issuesInfo.labelCount = labelCount.count;
 
     const filterType = getFilterType(req.query);
 
