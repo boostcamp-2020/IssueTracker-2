@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MarkdownView
 
 class IssueDetailViewController: UIViewController, UIGestureRecognizerDelegate {
   
@@ -202,6 +203,6 @@ extension IssueDetailViewController: UICollectionViewDelegateFlowLayout {
     dummyTextView.text = item.description
     dummyTextView.sizeToFit()
     
-    return CGSize(width: view.bounds.width, height: dummyTextView.frame.height + 100)
+    return CGSize(width: view.bounds.width, height: dummyTextView.frame.height + 70)
   }
 }
