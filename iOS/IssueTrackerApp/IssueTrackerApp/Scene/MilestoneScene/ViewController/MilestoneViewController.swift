@@ -220,6 +220,7 @@ extension MilestoneViewController: UpdateMilestoneViewDelegate {
       endPoint = MilestoneEndPoint.postMilestone(milestone: newMilestone).endPoint
     }
     apiService.requestMilestone(forEndPoint: endPoint) { [weak self] (data, response, error) in
+<<<<<<< HEAD
       guard let self = self,
             let res = response as? HTTPURLResponse else { return }
       if res.statusCode != 202 {
