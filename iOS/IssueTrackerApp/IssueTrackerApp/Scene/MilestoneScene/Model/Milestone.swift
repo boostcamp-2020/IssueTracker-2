@@ -8,6 +8,10 @@
 import Foundation
 
 struct Milestone: Codable, Hashable {
+  static func == (lhs: Milestone, rhs: Milestone) -> Bool {
+    return lhs.id == rhs.id
+  }
+  
   var id: Int = 0
   var milestoneName: String
   var milestoneDescription: String?

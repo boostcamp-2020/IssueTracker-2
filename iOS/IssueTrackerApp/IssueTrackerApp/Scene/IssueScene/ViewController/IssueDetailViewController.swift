@@ -120,7 +120,8 @@ class IssueDetailViewController: UIViewController, UIGestureRecognizerDelegate {
     issueInfoVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
     issueInfoVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
     issueInfoVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-    heightConstraint = issueInfoVC.view.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.25)
+    let multiplier = 166 / UIScreen.main.bounds.height
+    heightConstraint = issueInfoVC.view.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: multiplier)
     heightConstraint?.isActive = true
 
     }

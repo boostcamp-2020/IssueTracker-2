@@ -9,14 +9,20 @@ import Foundation
 
 struct Label: Codable, Hashable {
   static func == (lhs: Label, rhs: Label) -> Bool {
-    return lhs.id == rhs.id
+    return lhs.id == rhs.id &&
+      lhs.labelName == rhs.labelName &&
+      lhs.color == rhs.color &&
+      lhs.labelDescription == rhs.labelDescription
   }
   
   func hash(into hasher: inout Hasher) {
     hasher.combine(id)
+    hasher.combine(labelName)
+    hasher.combine(color)
+    hasher.combine(labelDescription)
   }
   
-  var id: Int = 0
+  var id: Int
   var labelName: String
   var color: String
   var labelDescription: String?
