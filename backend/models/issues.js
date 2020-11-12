@@ -1,7 +1,7 @@
 const db = require('../db');
 const util = require('../util');
 
-exports.create = async ({
+exports.create = async (connection, {
   user_sid,
   issue_content,
   issue_name,
@@ -9,7 +9,6 @@ exports.create = async ({
   issue_status,
 }) => {
   try {
-    const connection = await db.pool.getConnection(async conn => conn);
     let sql =
       'INSERT INTO issues (user_sid, issue_content, issue_name, created_at,milestone_id,issue_status) VALUES ( ?, ?, ?, ?, ?, ?)';
     const [{ insertId }] = await connection.query(sql, [
