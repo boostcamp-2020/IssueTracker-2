@@ -3,21 +3,23 @@ import styled from 'styled-components';
 import { BookmarkIcon } from '@primer/octicons-react';
 import EditButton from '../Common/NormalButton';
 
-export default function IssueInfo({ issueNumber }) {
+export default function IssueInfo({ issueInfo }) {
   return (
     <Wrapper>
       <IssueInfoHeader>
-        <IssueTitle>레이블 목록 보기 구현</IssueTitle>
-        <IssueNumber>#{issueNumber}</IssueNumber>
+        <IssueTitle>{issueInfo.issue_name}</IssueTitle>
+        <IssueNumber>#{issueInfo.id}</IssueNumber>
         <BookmarkIconWrap>
           <BookmarkIcon size={16} />
         </BookmarkIconWrap>
       </IssueInfoHeader>
       <IssueInfoDescription>
-        <span>Open여부</span>
+        <span>{issueInfo.issue_status === 0 ? 'Open' : 'Close'}</span>
         <span>msmk530</span>
-        <span>opended this issue 1 hours ago</span>
-        <span>0 comments</span>
+        <span>
+          opended this issue at {issueInfo.created_at.substring(0, 10)}
+        </span>
+        <span>1 comments</span>
       </IssueInfoDescription>
       <EditBtn>
         <EditButton content="Edit" />
@@ -27,7 +29,7 @@ export default function IssueInfo({ issueNumber }) {
 }
 
 const Wrapper = styled.div`
-  width: 90%;
+  width: 80%;
   margin: auto;
   padding: 3em 0;
   position: relative;

@@ -2,12 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { SmileyIcon } from '@primer/octicons-react';
 
-export default function comment(props) {
+export default function comment({ issueInfo }) {
   return (
     <Wrapper>
       <CommentHeader>
-        <CommentAuthor>msmk530</CommentAuthor>
-        <CommentWritenTime>commented 1 hour ago</CommentWritenTime>
+        <CommentAuthor>{issueInfo.nickname}</CommentAuthor>
+        <CommentWritenTime>
+          commented 1 {issueInfo.created_at.substring(0, 10)}
+        </CommentWritenTime>
         <RightContent>
           <Role>Member</Role>
           <SmileyIcon size={16} />

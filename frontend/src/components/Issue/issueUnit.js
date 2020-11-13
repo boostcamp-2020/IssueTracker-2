@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { MilestoneIcon, IssueOpenedIcon } from '@primer/octicons-react';
+import { useHistory } from 'react-router-dom';
 
 export default function IssueUnit({
   issueData,
@@ -9,6 +10,7 @@ export default function IssueUnit({
   index,
   setIsAllChecked,
 }) {
+  const history = useHistory();
   const handleCheckbox = e => {
     let newCheckList = [...isCheckList];
     if (!e.target.checked) {
@@ -17,6 +19,9 @@ export default function IssueUnit({
     newCheckList[index] = e.target.checked;
 
     setIsCheckList(newCheckList);
+  };
+  const onClickIssueName = () => {
+    history.push({ pathname: '/issue/1', state: issueData });
   };
   return (
     <Wrapper>
@@ -30,7 +35,9 @@ export default function IssueUnit({
       </IssueIconWrapper>
       <LeftContent>
         <LeftTopContent>
-          <IssueTitle>{issueData.issue_name}</IssueTitle>
+          <IssueTitle onClick={onClickIssueName}>
+            {issueData.issue_name}
+          </IssueTitle>
           {issueData.label_name.map(labelData => (
             <Labels>
               <Label color={labelData.color}>{labelData.label_name}</Label>
@@ -39,7 +46,8 @@ export default function IssueUnit({
         </LeftTopContent>
         <LeftDownContent>
           <IssueInfo>
-            #{issueData.id} opened {issueData.created_at.substring(0, 10)} by
+            #{issueData.id} opened {issueData.created_at.substring(0, 10)} by{' '}
+            {'  '}
             {issueData.nickname}
           </IssueInfo>
           <MilestoneInfo>
@@ -63,11 +71,9 @@ const Wrapper = styled.div`
 
 const IssueIconWrapper = styled.span`
   color: green;
-  transform: translateY(0.5em);
 `;
 const Checkbox = styled.input`
   margin-right: 1.5em;
-  transform: translateY(0.5em);
 `;
 
 const LeftContent = styled.div`
@@ -79,10 +85,11 @@ const LeftContent = styled.div`
 const IssueTitle = styled.span`
   font-weight: bold;
   font-size: 1.1em;
+  cursor: pointer;
 `;
 
 const Labels = styled.span`
-  margin-left: 2em;
+  margin-left: 1em;
 `;
 
 const MilestoneInfo = styled.span`

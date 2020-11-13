@@ -16,24 +16,21 @@ const IssueDetail = props => {
   if (!document.cookie.includes('jwt')) {
     history.push('/');
   }
-
+  const issueInfo = history.location.state;
+  console.log(issueInfo);
   return (
     <>
       <Header />
-      <IssueInfo issueNumber={id} />
+      <IssueInfo issueInfo={issueInfo} />
       <CommentBody>
         <IssueCommentWrap>
           <Comment>
-            <Profile />
-            <Comments />
-          </Comment>
-          <Comment>
-            <Profile />
-            <Comments />
+            <Profile profile={issueInfo.profile_image_url} />
+            <Comments issueInfo={issueInfo} />
           </Comment>
           <WriteArea>
             <Profile />
-            <CommentForm />
+            <CommentForm userInfo={issueInfo.profile_image_url} />
           </WriteArea>
         </IssueCommentWrap>
         <SelectArea>
@@ -48,7 +45,7 @@ const IssueDetail = props => {
 };
 
 const CommentBody = styled.div`
-  width: 90%;
+  width: 80%;
   display: flex;
   height: 700px;
   margin: auto;
