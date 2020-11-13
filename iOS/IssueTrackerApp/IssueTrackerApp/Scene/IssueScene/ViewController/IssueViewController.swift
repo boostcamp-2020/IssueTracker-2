@@ -80,20 +80,20 @@ class IssueViewController: UIViewController {
   private func loadIssueData() {
     let apiService = APIService()
     let endPoint = IssueEndPoint.getIssues.endPoint
-    apiService.requestIssue(forEndPoint: endPoint) { [weak self] (data, res, error) in
-      guard let self = self else { return }
-      if let res = res as? HTTPURLResponse {
-        if res.statusCode == 200 {
-          let decoder = JSONDecoder()
-          decoder.keyDecodingStrategy = .convertFromSnakeCase
-          guard let data = data,
-                let result = try? decoder.decode(IssueArrayResponse.self, from: data) else { return }
-          self.issueData = result.issues
-        } else {
+//    apiService.requestIssue(forEndPoint: endPoint) { [weak self] (data, res, error) in
+//      guard let self = self else { return }
+//      if let res = res as? HTTPURLResponse {
+//        if res.statusCode == 200 {
+//          let decoder = JSONDecoder()
+//          decoder.keyDecodingStrategy = .convertFromSnakeCase
+//          guard let data = data,
+//                let result = try? decoder.decode(IssueArrayResponse.self, from: data) else { return }
+//          self.issueData = result.issues
+//        } else {
           self.issueData = self.dummyList.dummyIssues
-        }
-      }
-    }
+//        }
+//      }
+//    }
   }
   
   func delegate(issue: Issue) {

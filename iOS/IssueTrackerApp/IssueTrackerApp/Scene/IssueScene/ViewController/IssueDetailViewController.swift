@@ -79,7 +79,6 @@ class IssueDetailViewController: UIViewController, UIGestureRecognizerDelegate {
     
     dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
       let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "IssueDetailHeader", for: indexPath) as? IssueDetailHeader
-      
       sectionHeader?.updateHeader(withItem: self.issue)
       sectionHeader?.issueStatusLabel.layer.borderColor = self.issue.issueStatus == true ? UIColor.systemGreen.cgColor : UIColor.systemRed.cgColor
       sectionHeader?.issueStatusLabel.text = self.issue.issueStatus == true ? "✓ OPEN" : "✕ CLOSE"
@@ -92,18 +91,19 @@ class IssueDetailViewController: UIViewController, UIGestureRecognizerDelegate {
     var snapshot = Snapshot()
     snapshot.appendSections([.main])
     let comments = [
-      Comment(id: 0, writerId: 0, description: "과연 나올까??????", createAt: "2020-11-09"),
+      Comment(id: 0, writerId: 0, description: "> 과연 나올까??????", createAt: "2020-11-09"),
       Comment(id: 1, writerId: 1, description:
                 """
-                안나올거같은데???????ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
-                ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
-                ㅁㅁㅁㅁㅁㅁㅁㅁㄹ디지ㅏㅁ로지ㅏ러지Kflajf;lw jc;ilwef;o.
-                efj;iowejFlkwefjkwbfkhwe.fkhwekfhwkfhwljl.
-                wjkflsdflwkehf,eknf
+                ## 안녕하세요 오늘은 빼빼로데이입니다
+                > 행
+                **복**
+                ~~하~~
+                세
+                요
                 """, createAt: "2020-11-08"),
-      Comment(id: 2, writerId: 2, description: "가나다라마바사", createAt: "2020-01-11")
+      Comment(id: 2, writerId: 2, description: "ㅎㅇㅎㅇ", createAt: "2020-01-11")
     ]
-    snapshot.appendItems(comments, toSection: .main)
+    snapshot.appendItems(issue.comment ?? comments, toSection: .main)
     UIView.animate(withDuration: 0.5) {
       self.dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
     }
@@ -205,6 +205,6 @@ extension IssueDetailViewController: UICollectionViewDelegateFlowLayout {
     dummyTextView.text = item.description
     dummyTextView.sizeToFit()
     
-    return CGSize(width: view.bounds.width, height: dummyTextView.frame.height + 70)
+    return CGSize(width: view.bounds.width, height: dummyTextView.frame.height + 100)
   }
 }
