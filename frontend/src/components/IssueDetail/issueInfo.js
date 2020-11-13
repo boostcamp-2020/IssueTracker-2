@@ -14,8 +14,10 @@ export default function IssueInfo({ issueInfo }) {
         </BookmarkIconWrap>
       </IssueInfoHeader>
       <IssueInfoDescription>
-        <span>{issueInfo.issue_status === 0 ? 'Open' : 'Close'}</span>
-        <span>msmk530</span>
+        <IssueStatus status={issueInfo.issue_status}>
+          {issueInfo.issue_status === 0 ? 'Open' : 'Close'}
+        </IssueStatus>
+        <span>{issueInfo.nickname}</span>
         <span>
           opended this issue at {issueInfo.created_at.substring(0, 10)}
         </span>
@@ -27,6 +29,20 @@ export default function IssueInfo({ issueInfo }) {
     </Wrapper>
   );
 }
+
+const IssueStatus = styled.span`
+  display: inline-block;
+  padding: 0.5em 1em;
+  ${props => {
+    if (props.status === 0) {
+      return 'background-color:green;';
+    }
+    return 'background-color:red ;';
+  }}
+
+  border-radius: 20px;
+  color: white;
+`;
 
 const Wrapper = styled.div`
   width: 80%;

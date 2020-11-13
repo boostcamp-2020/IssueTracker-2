@@ -28,15 +28,11 @@ const IssueDetail = props => {
             <Profile profile={issueInfo.profile_image_url} />
             <Comments issueInfo={issueInfo} />
           </Comment>
-          <WriteArea>
-            <Profile />
-            <CommentForm userInfo={issueInfo.profile_image_url} />
-          </WriteArea>
         </IssueCommentWrap>
         <SelectArea>
-          <Sidebar />
-          <Sidebar />
-          <Sidebar />
+          <Sidebar type="assignee" />
+          <Sidebar type="label" />
+          <Sidebar type="milestone" />
         </SelectArea>
       </CommentBody>
       <Footer />
@@ -47,7 +43,7 @@ const IssueDetail = props => {
 const CommentBody = styled.div`
   width: 80%;
   display: flex;
-  height: 700px;
+  height: 500px;
   margin: auto;
 `;
 const IssueCommentWrap = styled.div`
@@ -58,6 +54,7 @@ const IssueCommentWrap = styled.div`
 const Comment = styled.div`
   display: flex;
   width: 100%;
+
   margin-bottom: 2em;
 `;
 const WriteArea = styled.div`

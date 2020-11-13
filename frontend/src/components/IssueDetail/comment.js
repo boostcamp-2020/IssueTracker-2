@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { SmileyIcon } from '@primer/octicons-react';
+import MarkdownEditor from '../Common/MarkdownEditor';
 
 export default function comment({ issueInfo }) {
   return (
@@ -16,7 +17,9 @@ export default function comment({ issueInfo }) {
           <span>Edit</span>
         </RightContent>
       </CommentHeader>
-      <CommentDesc>hi</CommentDesc>
+      <CommentDesc>
+        <MarkdownEditor content={issueInfo.issue_content} />
+      </CommentDesc>
     </Wrapper>
   );
 }
