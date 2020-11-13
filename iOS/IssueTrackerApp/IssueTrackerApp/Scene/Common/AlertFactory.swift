@@ -21,4 +21,12 @@ class AlertFactory {
     
     viewController.present(actionSheet, animated: true, completion: nil)
   }
+  
+  func makeAlert(viewControllerToPresent viewController: UIViewController, message: String) {
+    let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+    let action = UIAlertAction(title: nil, style: .default, handler: nil)
+    
+    alert.addAction(action)
+    viewController.present(alert, animated: true, completion: nil)
+  }
 }

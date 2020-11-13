@@ -45,16 +45,13 @@ class IssueCell: UICollectionViewCell, Reusable, NibLoadable {
   
   override func prepareForReuse() {
     labelData = []
+    checkmarkImageView.image = UIImage(systemName: "circle")!
   }
 
   private func configure() {
     layer.borderWidth = 0.25
     layer.borderColor = UIColor.lightGray.cgColor
     innerLabelCollectionView.delegate = self
-    configureContentView()
-  }
-  
-  private func configureContentView() {
   }
   
   private func makeDataSource() -> DataSource {

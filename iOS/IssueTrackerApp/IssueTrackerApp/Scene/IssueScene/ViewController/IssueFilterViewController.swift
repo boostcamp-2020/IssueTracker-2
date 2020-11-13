@@ -33,6 +33,7 @@ class IssueFilterViewController: UIViewController {
   }
   
   @IBAction func doneButtonTouched(_ sender: UIBarButtonItem) {
+    
     dismiss(animated: true, completion: nil)
   }
   

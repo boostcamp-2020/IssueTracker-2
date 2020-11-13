@@ -212,9 +212,8 @@ extension MilestoneViewController: UpdateMilestoneViewDelegate {
   }
   
   func saveButtonTouched(withMilestone milestone: Milestone) {
-    let dummyMilestoneId = UserDefaults.standard.integer(forKey: "milestoneId")
     let apiService = APIService()
-    let newMilestone = Milestone(id: dummyMilestoneId, milestoneName: milestone.milestoneName, milestoneDescription: milestone.milestoneDescription, endDate: milestone.endDate, status: milestone.status, openCount: milestone.openCount, closeCount: milestone.closeCount)
+    let newMilestone = Milestone(id: dummyMilestoneUpdateId, milestoneName: milestone.milestoneName, milestoneDescription: milestone.milestoneDescription, endDate: milestone.endDate, status: milestone.status, openCount: milestone.openCount, closeCount: milestone.closeCount)
     
     let endPoint: EndPoint<Milestone>
     switch isMilestoneUpdating {

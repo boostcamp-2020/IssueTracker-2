@@ -9,11 +9,13 @@ import Foundation
 
 struct Issue: Hashable, Codable {
   static func == (lhs: Issue, rhs: Issue) -> Bool {
-    return lhs.id == rhs.id
+    return lhs.id == rhs.id &&
+      lhs.label == rhs.label
   }
   
   func hash(into hasher: inout Hasher) {
     hasher.combine(id)
+    hasher.combine(label)
   }
   
   var id: Int = 0

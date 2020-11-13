@@ -14,7 +14,14 @@ class IssueDetailViewController: UIViewController, UIGestureRecognizerDelegate {
   typealias Snapshot = NSDiffableDataSourceSnapshot<CommentSection, Comment>
   
   private lazy var dataSource = makeDataSource()
-  var issue: Issue
+  
+  var issue: Issue {
+    willSet {
+      DispatchQueue.main.async { [weak self] in
+        self?.applySnapshot(animatingDifferences: true)
+      }
+    }
+  }
   
   @IBOutlet weak var issueDetailCollectionView: UICollectionView!
   
@@ -32,7 +39,6 @@ class IssueDetailViewController: UIViewController, UIGestureRecognizerDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     configure()
-    issueDetailCollectionView.delegate = self
     navigationItem.largeTitleDisplayMode = .never
     applySnapshot(animatingDifferences: true)
     addBottomSheetViewController()
@@ -53,12 +59,17 @@ class IssueDetailViewController: UIViewController, UIGestureRecognizerDelegate {
   private func configure() {
     configureNavigator()
     tabBarController?.tabBar.isHidden = true
+    configureIssueDetailCollectionView()
     issueDetailCollectionView.register(IssueDetailCell.self)
     issueDetailCollectionView.registerHeader(IssueDetailHeader.self)
   }
   
   private func configureNavigator() {
     self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editButtonTouched))
+  }
+  
+  private func configureIssueDetailCollectionView() {
+    issueDetailCollectionView.delegate = self
   }
   
   init?(coder: NSCoder, issue: Issue) {
@@ -79,7 +90,6 @@ class IssueDetailViewController: UIViewController, UIGestureRecognizerDelegate {
     
     dataSource.supplementaryViewProvider = { (collectionView, kind, indexPath) in
       let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "IssueDetailHeader", for: indexPath) as? IssueDetailHeader
-      
       sectionHeader?.updateHeader(withItem: self.issue)
       sectionHeader?.issueStatusLabel.layer.borderColor = self.issue.issueStatus == true ? UIColor.systemGreen.cgColor : UIColor.systemRed.cgColor
       sectionHeader?.issueStatusLabel.text = self.issue.issueStatus == true ? "✓ OPEN" : "✕ CLOSE"
@@ -92,18 +102,19 @@ class IssueDetailViewController: UIViewController, UIGestureRecognizerDelegate {
     var snapshot = Snapshot()
     snapshot.appendSections([.main])
     let comments = [
-      Comment(id: 0, writerId: 0, description: "과연 나올까??????", createAt: "2020-11-09"),
+      Comment(id: 0, writerId: 0, description: "> 과연 나올까??????", createAt: "2020-11-09"),
       Comment(id: 1, writerId: 1, description:
                 """
-                안나올거같은데???????ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
-                ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
-                ㅁㅁㅁㅁㅁㅁㅁㅁㄹ디지ㅏㅁ로지ㅏ러지Kflajf;lw jc;ilwef;o.
-                efj;iowejFlkwefjkwbfkhwe.fkhwekfhwkfhwljl.
-                wjkflsdflwkehf,eknf
+                ## 안녕하세요 오늘은 빼빼로데이입니다
+                > 행
+                **복**
+                ~~하~~
+                세
+                요
                 """, createAt: "2020-11-08"),
-      Comment(id: 2, writerId: 2, description: "가나다라마바사", createAt: "2020-01-11")
+      Comment(id: 2, writerId: 2, description: "ㅎㅇㅎㅇ", createAt: "2020-01-11")
     ]
-    snapshot.appendItems(comments, toSection: .main)
+    snapshot.appendItems(issue.comment ?? comments, toSection: .main)
     UIView.animate(withDuration: 0.5) {
       self.dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
     }
@@ -149,19 +160,11 @@ class IssueDetailViewController: UIViewController, UIGestureRecognizerDelegate {
       
       issueDetailCollectionView.alpha = 1 - (0.5 * (offset / maxOffset))
       
-      // This adds elasticity
       if offset < 0 {
         minOffset = -(0 - offset)/3
       }
-      
-      // ** Track bottom sheet with pan gesture by finding the diff
-      // between translation and starting offset, then constraint
-      // this value to be between our top margin and min height
       let currentOffset = min(maxOffset, max(minOffset, offset))
       heightConstraint?.constant = currentOffset
-      
-      // ** `offset` == 0 means the sheet is minimized
-      // `offset` == `maxOffset` means the sheet is open
      if currentOffset == maxOffset {
         panGesture.isEnabled = false
         panGesture.isEnabled = true
@@ -169,22 +172,15 @@ class IssueDetailViewController: UIViewController, UIGestureRecognizerDelegate {
       
     case .ended, .cancelled:
       guard let offset = heightConstraint?.constant else { return }
-      
-      // ** Handle last position - if nearer to the top finish out the
-      // animation to the top, and vice versa
       var finalOffset: CGFloat = offset > maxOffset/2 ? maxOffset : 0
       let velocity = recognizer.velocity(in: view).y
-      
-      // ** Toggle tableView scrollability
-      // Handle "flick" action using `velocity`
+
       if velocity < -100 {
         finalOffset = maxOffset
       } else if offset > maxOffset/2 && velocity > 200 {
         finalOffset = 0
       }
-      
-      // ** Animate to top or bottom docking position when gesture ends
-      // or is cancelled
+
       heightConstraint?.constant = finalOffset
       UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.2, options: [.curveEaseOut, .allowUserInteraction], animations: { [weak self] in
         guard let strongSelf = self else { return }
@@ -205,6 +201,6 @@ extension IssueDetailViewController: UICollectionViewDelegateFlowLayout {
     dummyTextView.text = item.description
     dummyTextView.sizeToFit()
     
-    return CGSize(width: view.bounds.width, height: dummyTextView.frame.height + 70)
+    return CGSize(width: view.bounds.width, height: dummyTextView.frame.height + 100)
   }
 }

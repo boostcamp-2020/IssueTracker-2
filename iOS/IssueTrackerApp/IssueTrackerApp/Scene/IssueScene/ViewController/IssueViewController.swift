@@ -19,15 +19,7 @@ struct IssueResponse: Decodable {
 }
 
 struct IssueArrayResponse: Decodable {
-  var issueName: String
-  var id: Int
-  var createdAt: String
-  var issueStatus: Int
-  var labelName: String
-  var color: String
-  var milestoneName: String
-  var profileImageUrl: String
-  var nickname: String
+  var issues: [Issue]
 }
 
 class IssueViewController: UIViewController {
@@ -59,7 +51,7 @@ class IssueViewController: UIViewController {
   
   @IBAction func newIssueButtonTouched(_ sender: Any) {
     guard let newIssueVC = storyboard?.instantiateViewController(identifier: "NewIssueVC") as? UpdateIssueViewController else { return }
-    newIssueVC.handler = loadIssueData
+    newIssueVC.delegate = self
     present(newIssueVC, animated: true)
   }
   
@@ -91,25 +83,21 @@ class IssueViewController: UIViewController {
     apiService.requestIssue(forEndPoint: endPoint) { [weak self] (data, res, error) in
       guard let self = self else { return }
       if let res = res as? HTTPURLResponse {
-        if res.statusCode == 202 {
+        if res.statusCode == 200 {
           let decoder = JSONDecoder()
           decoder.keyDecodingStrategy = .convertFromSnakeCase
           guard let data = data,
-                let result = try? decoder.decode(IssueResponse.self, from: data) else { return }
-          
-//          var newIssues: [Issue] = []
-//          var labels: [Label] = []
-//
-//          for i in result {
-//            i.
-//          }
-          
-//          self.issueData = result.issues
+                let result = try? decoder.decode(IssueArrayResponse.self, from: data) else { return }
+          self.issueData = result.issues
         } else {
           self.issueData = self.dummyList.dummyIssues
         }
       }
     }
+  }
+  
+  func delegate(issue: Issue) {
+    loadIssueData()
   }
   
   func registerForKeyboardNotifications() {
@@ -333,5 +321,12 @@ extension IssueViewController: UISearchBarDelegate {
     } else {
       performQuery(withFilter: searchText)
     }
+  }
+}
+
+extension IssueViewController: IssueDelegate {
+  func submit(issue: Issue) {
+    dummyList.dummyIssues.append(issue)
+    loadIssueData()
   }
 }

@@ -7,10 +7,16 @@
 
 import UIKit
 
+protocol CommentDelegate {
+  func submit(text: String)
+}
+
 class CommentViewController: UIViewController {
   
   @IBOutlet weak var commentTextView: UITextView!
   @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
+  
+  var delegate: CommentDelegate?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -61,6 +67,7 @@ class CommentViewController: UIViewController {
   }
   
   @IBAction func saveButtonTouched(_ sender: Any) {
+    delegate?.submit(text: commentTextView.text)
     dismiss(animated: true, completion: nil)
   }
 }
