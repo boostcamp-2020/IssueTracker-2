@@ -16,6 +16,8 @@ const IssueList = ({
     setIsCheckList(new Array(issueListData.length).fill(false));
   }, [issueListData]);
 
+  console.log(issueListData);
+
   return (
     <>
       <ListForm

@@ -3,7 +3,12 @@ import styled from 'styled-components';
 import { getFetch } from '../../service/fetch';
 import { v4 } from 'uuid';
 
-export default function popup({ type, setIssueListData, issueListData }) {
+export default function popup({
+  type,
+  setIssueListData,
+  issueListData,
+  setData,
+}) {
   const [content, setContent] = useState([]);
 
   const onClickCancel = e => {

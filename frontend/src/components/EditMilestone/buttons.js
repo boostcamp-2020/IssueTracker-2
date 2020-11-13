@@ -10,13 +10,16 @@ export default function Buttons({ Context, milestoneService, id }) {
   const history = useHistory();
 
   const updateMilestone = () => {
-    milestoneService.updateMilestone(`${process.env.SERVER_URL}/api/milestone`, {
-      id: id,
-      milestone_name: milestoneInfo.title,
-      milestone_description: milestoneInfo.desc,
-      end_date: milestoneInfo.dueDate,
-      status: 0,
-    });
+    milestoneService.updateMilestone(
+      `${process.env.SERVER_URL}/api/milestone`,
+      {
+        id: id,
+        milestone_name: milestoneInfo.title,
+        milestone_description: milestoneInfo.desc,
+        end_date: milestoneInfo.dueDate,
+        status: 0,
+      },
+    );
     history.push('/milestones');
   };
 
@@ -35,7 +38,7 @@ export default function Buttons({ Context, milestoneService, id }) {
 }
 
 const Wrapper = styled.div`
-  width: 90%;
+  width: 80%;
   margin: auto;
   padding: 1.5em;
   position: relative;

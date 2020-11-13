@@ -54,7 +54,7 @@ export default function InputForm({ milestoneService, type, id }) {
 }
 
 const Wrapper = styled.div`
-  width: 90%;
+  width: 80%;
   margin: auto;
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 `;

@@ -25,7 +25,7 @@ export default function Footer(props) {
 
 const Wrapper = styled.div`
   display: flex;
-  width: 90%;
+  width: 80%;
   margin: auto;
   margin-top: 4em;
   border-top: 1px solid rgba(0, 0, 0, 0.3);

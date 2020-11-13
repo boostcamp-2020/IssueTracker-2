@@ -24,6 +24,10 @@ const IssueCreation = () => {
     profile: user.profile,
   });
 
+  const [assignees, setAssignees] = useState([]);
+  const [labels, setLabels] = useState([]);
+  const [milestone, setMilestone] = useState('');
+
   return (
     <div>
       <Header />
@@ -35,9 +39,9 @@ const IssueCreation = () => {
           />
         </WriteArea>
         <SelectArea>
-          <Sidebar type="assignee" />
-          <Sidebar type="label" />
-          <Sidebar type="milestone" />
+          <Sidebar setData={setAssignees} type="assignee" />
+          <Sidebar setData={setLabels} type="label" />
+          <Sidebar setData={setMilestone} type="milestone" />
         </SelectArea>
       </IssueCreationBody>
       <Footer />
@@ -46,9 +50,9 @@ const IssueCreation = () => {
 };
 
 const IssueCreationBody = styled.div`
-  width: 90%;
+  width: 80%;
   display: flex;
-  padding: 3em 0;
+  padding: 5em 0;
   height: 700px;
   margin: auto;
 `;

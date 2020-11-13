@@ -11,7 +11,7 @@ export default function NavButton(props) {
 }
 
 const Nav = styled.nav`
-  width: 90%;
+  width: 80%;
   margin: auto;
   padding: 2em 0;
   position: relative;

@@ -8,12 +8,15 @@ export default function buttons({ Context, milestoneService }) {
   const history = useHistory();
 
   const createMilestone = () => {
-    milestoneService.createMilestone(`${process.env.SERVER_URL}/api/milestone`, {
-      milestone_name: milestoneInfo.title,
-      milestone_description: milestoneInfo.desc,
-      end_date: milestoneInfo.dueDate,
-      status: 0,
-    });
+    milestoneService.createMilestone(
+      `${process.env.SERVER_URL}/api/milestone`,
+      {
+        milestone_name: milestoneInfo.title,
+        milestone_description: milestoneInfo.desc,
+        end_date: milestoneInfo.dueDate,
+        status: 0,
+      },
+    );
     history.push('/milestones');
   };
 
@@ -28,7 +31,7 @@ export default function buttons({ Context, milestoneService }) {
 
 const Wrapper = styled.div`
   padding: 1.5em 0;
-  width: 90%;
+  width: 80%;
   margin: auto;
   position: relative;
 `;

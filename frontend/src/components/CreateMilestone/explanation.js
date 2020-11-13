@@ -14,7 +14,7 @@ export default function Explanation(props) {
 }
 
 const Wrapper = styled.div`
-  width: 90%;
+  width: 80%;
   padding: 1em 0;
   margin: auto;
   border-bottom: 1px solid rgba(0, 0, 0, 0.3);

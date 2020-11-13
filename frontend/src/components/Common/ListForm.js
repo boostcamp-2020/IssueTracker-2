@@ -51,12 +51,12 @@ export default function ListForm(props) {
           />
           <IssueOpenedIcon size={18} />
           <Open onClick={handleFilterOpenIssue}>
-            <Count>{props.issueCount.open}</Count>
+            <Count>{props.issueCount.close}</Count>
             <span>Open</span>
           </Open>
           <CheckIcon size={20} />
           <Closed onClick={handleFilterCloseIssue}>
-            <Count>{props.issueCount.close}</Count>
+            <Count>{props.issueCount.open}</Count>
             <span>Closed</span>
           </Closed>
           <IssueCount>

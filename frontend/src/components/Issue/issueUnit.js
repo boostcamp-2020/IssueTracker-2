@@ -39,7 +39,8 @@ export default function IssueUnit({
         </LeftTopContent>
         <LeftDownContent>
           <IssueInfo>
-            #115 opened 12 hours ago by {issueData.nickname}
+            #{issueData.id} opened {issueData.created_at.substring(0, 10)} by
+            {issueData.nickname}
           </IssueInfo>
           <MilestoneInfo>
             <MilestoneIcon size={16} />
@@ -56,14 +57,17 @@ const Wrapper = styled.div`
   padding: 1.5em;
   border-left: 1px solid rgba(0, 0, 0, 0.1);
   border-right: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
 `;
 
 const IssueIconWrapper = styled.span`
   color: green;
+  transform: translateY(0.5em);
 `;
 const Checkbox = styled.input`
   margin-right: 1.5em;
+  transform: translateY(0.5em);
 `;
 
 const LeftContent = styled.div`
