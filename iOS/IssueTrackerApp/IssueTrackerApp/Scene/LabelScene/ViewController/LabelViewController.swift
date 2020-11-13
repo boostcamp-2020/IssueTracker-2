@@ -13,7 +13,6 @@ class LabelViewController: UIViewController {
   typealias Snapshot = NSDiffableDataSourceSnapshot<LabelSection, Label>
   
   private lazy var dataSource = makeDataSource()
-  private var dummyList = DummyList()
   private var dummyLabelUpdateId: Int = 0
   
   @IBOutlet weak var labelCollectionView: UICollectionView!
@@ -109,8 +108,8 @@ class LabelViewController: UIViewController {
           guard let result = try? decoder.decode(LabelResponse.self, from: data) else { return }
           self.labelData = result.labels
         } else {
-          self.labelData = self.dummyList.dummyLabels
-          print(self.dummyList.dummyLabels)
+          self.labelData = DummyList.dummyLabels
+          print(DummyList.dummyLabels)
         }
       }
     }
@@ -224,11 +223,11 @@ extension LabelViewController: UpdateLabelViewDelegate {
       guard let self = self,
             let res = res as? HTTPURLResponse else { return }
       if res.statusCode != 202 {
-        for index in 0..<self.dummyList.dummyLabels.count {
-          if self.dummyList.dummyLabels[index].id == self.dummyLabelUpdateId {
-            self.dummyList.dummyLabels[index].color = colorAsHex
-            self.dummyList.dummyLabels[index].labelName = title
-            self.dummyList.dummyLabels[index].labelDescription = description
+        for index in 0..<DummyList.dummyLabels.count {
+          if DummyList.dummyLabels[index].id == self.dummyLabelUpdateId {
+            DummyList.dummyLabels[index].color = colorAsHex
+            DummyList.dummyLabels[index].labelName = title
+            DummyList.dummyLabels[index].labelDescription = description
           }
         }
       }

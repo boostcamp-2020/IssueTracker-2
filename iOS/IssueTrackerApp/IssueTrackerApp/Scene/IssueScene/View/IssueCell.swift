@@ -52,10 +52,6 @@ class IssueCell: UICollectionViewCell, Reusable, NibLoadable {
     layer.borderWidth = 0.25
     layer.borderColor = UIColor.lightGray.cgColor
     innerLabelCollectionView.delegate = self
-    configureContentView()
-  }
-  
-  private func configureContentView() {
   }
   
   private func makeDataSource() -> DataSource {

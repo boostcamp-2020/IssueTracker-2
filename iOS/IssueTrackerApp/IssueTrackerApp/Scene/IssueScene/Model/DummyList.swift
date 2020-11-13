@@ -41,7 +41,7 @@ struct DummyList: Hashable {
     User(id: 4, name: "msmk530", password: "12345", profileImageUrl: "https://user-images.githubusercontent.com/65107199/99013985-0d64d980-2595-11eb-92d3-b1c0ae5a2e73.png"),
   ]
   
-  var dummyLabels: [Label] = [
+  static var dummyLabels: [Label] = [
     Label(id: 0, labelName: "iOS", color: "#00BFFF", labelDescription: "iOS 개발 관련 레이블"),
     Label(id: 1, labelName: "Backend", color: "#B40486", labelDescription: "백엔드 개발 관련 레이블"),
     Label(id: 2, labelName: "Frontend", color: "#000000", labelDescription: "프론트엔드 개발 관련 레이블"),
@@ -73,26 +73,48 @@ struct DummyList: Hashable {
       Milestone(id: 0, milestoneName: "스프린트 1", milestoneDescription: "이번 배포를 위한 스프린트", endDate: "2020-11-01", status: 0, openCount: 2, closeCount: 7)
     
     self.dummyIssues = [
-      Issue(id: 0, userSid: 0, issueName: "레이블 목록보기 구현", issueAuthor: "songjucho", comment: comments1, label: dummyLabels, milestone: milestone, issueStatus: true, assignee: [0, 2, 3]),
-      Issue(id: 1, userSid: 2, issueName: "마일스톤 목록", issueAuthor: "fElix-MR", comment: comments2, label: dummyLabels, milestone: milestone, issueStatus: true, assignee: [0, 2, 1]),
-      Issue(id: 2, userSid: 1, issueName: "이슈 모델 구현", issueAuthor: "zlrlo", comment: comments3, label: dummyLabels, milestone: milestone, issueStatus: true, assignee: [4, 2, 1]),
-      Issue(id: 3, userSid: 3, issueName: "Issue API", issueAuthor: "puba5", comment: comments4, label: dummyLabels, milestone: milestone, issueStatus: true, assignee: [0, 3,1]),
-      Issue(id: 4, userSid: 0, issueName: "마크다운뷰 UI 구성", issueAuthor: "songjucho", comment: comments3, label: dummyLabels, milestone: milestone, issueStatus: true, assignee: [3,4,2]),
-      Issue(id: 5, userSid: 2, issueName: "특정 레이블 가져오기", issueAuthor: "fElix-MR", comment: comments4, label: dummyLabels, milestone: milestone, issueStatus: true, assignee: [3,2,1]),
-      Issue(id: 6, userSid: 1, issueName: "마일스톤 조회 화면 API 연동", issueAuthor: "zlrlo", comment: comments1, label: dummyLabels, milestone: milestone, issueStatus: true, assignee: [0, 2, 1]),
-      Issue(id: 7, userSid: 0, issueName: "저장 Button", issueAuthor: "songjucho", comment: comments5, label: dummyLabels, milestone: milestone, issueStatus: true, assignee: [3,2,0]),
-      Issue(id: 8, userSid: 4, issueName: "레이블 업데이트 UI 구성", issueAuthor: "msmk530", comment: comments6, label: dummyLabels, milestone: milestone, issueStatus: true, assignee: [3,2,1]),
-      Issue(id: 9, userSid: 3, issueName: "description 마크다운 변환", issueAuthor: "puba5", comment: comments2, label: dummyLabels, milestone: milestone, issueStatus: true, assignee: [4,3,2]),
-      Issue(id: 10, userSid: 3, issueName: "로그인 상태 유무에 따른 라우팅 작업", issueAuthor: "puba5", comment: comments6, label: dummyLabels, milestone: milestone, issueStatus: true, assignee: [4,2,3]),
-      Issue(id: 11, userSid: 1, issueName: "레이블 페이지 마크업", issueAuthor: "zlrlo", comment: comments5, label: dummyLabels, milestone: milestone, issueStatus: true, assignee: [1,2,3]),
-      Issue(id: 12, userSid: 0, issueName: "데이터베이스 스키마 구현", issueAuthor: "songjucho", comment: comments2, label: dummyLabels, milestone: milestone, issueStatus: true, assignee: [4,0,1]),
-      Issue(id: 13, userSid: 2, issueName: "공통 컴포넌트 작업", issueAuthor: "fElix-MR", comment: comments4, label: dummyLabels, milestone: milestone, issueStatus: true, assignee: [0, 2, 4])
+      Issue(id: 0, userSid: 0, issueName: "레이블 목록보기 구현", issueAuthor: "songjucho", comment: comments1, label: Self.randomLabel(), milestone: milestone, issueStatus: true, assignee: [0, 2, 3]),
+      Issue(id: 1, userSid: 2, issueName: "마일스톤 목록", issueAuthor: "fElix-MR", comment: comments2, label: Self.randomLabel(), milestone: milestone, issueStatus: true, assignee: [0, 2, 1]),
+      Issue(id: 2, userSid: 1, issueName: "이슈 모델 구현", issueAuthor: "zlrlo", comment: comments3, label: Self.randomLabel(), milestone: milestone, issueStatus: true, assignee: [4, 2, 1]),
+      Issue(id: 3, userSid: 3, issueName: "Issue API", issueAuthor: "puba5", comment: comments4, label: Self.randomLabel(), milestone: milestone, issueStatus: true, assignee: [0, 3,1]),
+      Issue(id: 4, userSid: 0, issueName: "마크다운뷰 UI 구성", issueAuthor: "songjucho", comment: comments3, label: Self.randomLabel(), milestone: milestone, issueStatus: true, assignee: [3,4,2]),
+      Issue(id: 5, userSid: 2, issueName: "특정 레이블 가져오기", issueAuthor: "fElix-MR", comment: comments4, label: Self.randomLabel(), milestone: milestone, issueStatus: true, assignee: [3,2,1]),
+      Issue(id: 6, userSid: 1, issueName: "마일스톤 조회 화면 API 연동", issueAuthor: "zlrlo", comment: comments1, label: Self.randomLabel(), milestone: milestone, issueStatus: true, assignee: [0, 2, 1]),
+      Issue(id: 7, userSid: 0, issueName: "저장 Button", issueAuthor: "songjucho", comment: comments5, label: Self.randomLabel(), milestone: milestone, issueStatus: true, assignee: [3,2,0]),
+      Issue(id: 8, userSid: 4, issueName: "레이블 업데이트 UI 구성", issueAuthor: "msmk530", comment: comments6, label: Self.randomLabel(), milestone: milestone, issueStatus: true, assignee: [3,2,1]),
+      Issue(id: 9, userSid: 3, issueName: "description 마크다운 변환", issueAuthor: "puba5", comment: comments2, label: Self.randomLabel(), milestone: milestone, issueStatus: true, assignee: [4,3,2]),
+      Issue(id: 10, userSid: 3, issueName: "로그인 상태 유무에 따른 라우팅 작업", issueAuthor: "puba5", comment: comments6, label: Self.randomLabel(), milestone: milestone, issueStatus: true, assignee: [4,2,3]),
+      Issue(id: 11, userSid: 1, issueName: "레이블 페이지 마크업", issueAuthor: "zlrlo", comment: comments5, label: Self.randomLabel(), milestone: milestone, issueStatus: true, assignee: [1,2,3]),
+      Issue(id: 12, userSid: 0, issueName: "데이터베이스 스키마 구현", issueAuthor: "songjucho", comment: comments2, label: Self.randomLabel(), milestone: milestone, issueStatus: true, assignee: [4,0,1]),
+      Issue(id: 13, userSid: 2, issueName: "공통 컴포넌트 작업", issueAuthor: "fElix-MR", comment: comments4, label: Self.randomLabel(), milestone: milestone, issueStatus: true, assignee: [0, 2, 4])
     ]
     
-    UserDefaults.standard.set(dummyLabels.count, forKey: "labelId")
+    UserDefaults.standard.set(Self.dummyLabels.count, forKey: "labelId")
     UserDefaults.standard.set(dummyMilestones.count, forKey: "milestoneId")
     UserDefaults.standard.set(dummyIssues.count, forKey: "issueId")
     UserDefaults.standard.set(comments1.count, forKey: "commentsID")
+  }
+  
+  static func randomLabel() -> [Label] {
+    var labels: [Label] = []
+    let count = Int.random(in: 1...Self.dummyLabels.count)
+    let randomNumber = randomSequenceGenerator(min: 0, max: Self.dummyLabels.count - 1)
+    for _ in 0..<count {
+      labels.append(Self.dummyLabels[randomNumber()])
+    }
+    return labels
+  }
+  
+  private static func randomSequenceGenerator(min: Int, max: Int) -> () -> Int {
+    var numbers: [Int] = []
+    return {
+      if numbers.isEmpty {
+        numbers = Array(min ... max)
+      }
+      
+      let index = Int(arc4random_uniform(UInt32(numbers.count)))
+      return numbers.remove(at: index)
+    }
   }
   
   func getUser(withID id: Int) -> User? {
