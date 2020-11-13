@@ -12,16 +12,15 @@ class IssueInfoViewController: UIViewController {
   @IBOutlet weak var issueInfoCollectionView: UICollectionView!
   
   var dummyData = DummyList()
-  var issue: Issue
+  var issue: Issue {
+    willSet {
+      guard let issueDetailVC = self.parent as? IssueDetailViewController else { return }
+      issueDetailVC.issue = newValue
+    }
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    issueInfoCollectionView.register(UserCell.self)
-    issueInfoCollectionView.register(InnerLabelCell.self)
-    issueInfoCollectionView.register(IssueInfoMileStoneCell.self)
-    
-    issueInfoCollectionView.delegate = self
-    issueInfoCollectionView.dataSource = self
     configure()
   }
   
@@ -37,6 +36,17 @@ class IssueInfoViewController: UIViewController {
   
   private func configure() {
     self.view.layer.cornerRadius = 20
+    configureIssueInfoCollectionView()
+  }
+  
+  private func configureIssueInfoCollectionView() {
+    issueInfoCollectionView.collectionViewLayout = LeftAlignedCollectionViewFlowLayout()
+    issueInfoCollectionView.register(UserCell.self)
+    issueInfoCollectionView.register(InnerLabelCell.self)
+    issueInfoCollectionView.register(IssueInfoMileStoneCell.self)
+    
+    issueInfoCollectionView.delegate = self
+    issueInfoCollectionView.dataSource = self
   }
   
   private func reloadData() {
@@ -51,7 +61,8 @@ class IssueInfoViewController: UIViewController {
   
   @IBAction func addCommentButtonTouched(_ sender: Any) {
     let storyboard = UIStoryboard(name: "Comment", bundle: nil)
-    let commentVC = storyboard.instantiateViewController(withIdentifier: "CommentViewController")
+    guard let commentVC = storyboard.instantiateViewController(withIdentifier: "CommentViewController") as? CommentViewController else { return }
+    commentVC.delegate = self
     present(commentVC, animated: true, completion: nil)
   }
   
@@ -137,5 +148,12 @@ extension IssueInfoViewController: UICollectionViewDelegate, UICollectionViewDat
       break
     }
     return UICollectionViewCell()
+  }
+}
+
+
+extension IssueInfoViewController: CommentDelegate {
+  func submit(text: String) {
+    issue.comment!.append(Comment(writerId: 3, description: text, createAt: "2020-11-13"))
   }
 }
