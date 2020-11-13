@@ -14,7 +14,14 @@ class IssueDetailViewController: UIViewController, UIGestureRecognizerDelegate {
   typealias Snapshot = NSDiffableDataSourceSnapshot<CommentSection, Comment>
   
   private lazy var dataSource = makeDataSource()
-  var issue: Issue
+  
+  var issue: Issue {
+    willSet {
+      DispatchQueue.main.async { [weak self] in
+        self?.applySnapshot(animatingDifferences: true)
+      }
+    }
+  }
   
   @IBOutlet weak var issueDetailCollectionView: UICollectionView!
   
@@ -32,7 +39,6 @@ class IssueDetailViewController: UIViewController, UIGestureRecognizerDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     configure()
-    issueDetailCollectionView.delegate = self
     navigationItem.largeTitleDisplayMode = .never
     applySnapshot(animatingDifferences: true)
     addBottomSheetViewController()
@@ -53,12 +59,17 @@ class IssueDetailViewController: UIViewController, UIGestureRecognizerDelegate {
   private func configure() {
     configureNavigator()
     tabBarController?.tabBar.isHidden = true
+    configureIssueDetailCollectionView()
     issueDetailCollectionView.register(IssueDetailCell.self)
     issueDetailCollectionView.registerHeader(IssueDetailHeader.self)
   }
   
   private func configureNavigator() {
     self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editButtonTouched))
+  }
+  
+  private func configureIssueDetailCollectionView() {
+    issueDetailCollectionView.delegate = self
   }
   
   init?(coder: NSCoder, issue: Issue) {
@@ -149,19 +160,11 @@ class IssueDetailViewController: UIViewController, UIGestureRecognizerDelegate {
       
       issueDetailCollectionView.alpha = 1 - (0.5 * (offset / maxOffset))
       
-      // This adds elasticity
       if offset < 0 {
         minOffset = -(0 - offset)/3
       }
-      
-      // ** Track bottom sheet with pan gesture by finding the diff
-      // between translation and starting offset, then constraint
-      // this value to be between our top margin and min height
       let currentOffset = min(maxOffset, max(minOffset, offset))
       heightConstraint?.constant = currentOffset
-      
-      // ** `offset` == 0 means the sheet is minimized
-      // `offset` == `maxOffset` means the sheet is open
      if currentOffset == maxOffset {
         panGesture.isEnabled = false
         panGesture.isEnabled = true
@@ -169,22 +172,15 @@ class IssueDetailViewController: UIViewController, UIGestureRecognizerDelegate {
       
     case .ended, .cancelled:
       guard let offset = heightConstraint?.constant else { return }
-      
-      // ** Handle last position - if nearer to the top finish out the
-      // animation to the top, and vice versa
       var finalOffset: CGFloat = offset > maxOffset/2 ? maxOffset : 0
       let velocity = recognizer.velocity(in: view).y
-      
-      // ** Toggle tableView scrollability
-      // Handle "flick" action using `velocity`
+
       if velocity < -100 {
         finalOffset = maxOffset
       } else if offset > maxOffset/2 && velocity > 200 {
         finalOffset = 0
       }
-      
-      // ** Animate to top or bottom docking position when gesture ends
-      // or is cancelled
+
       heightConstraint?.constant = finalOffset
       UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.2, options: [.curveEaseOut, .allowUserInteraction], animations: { [weak self] in
         guard let strongSelf = self else { return }
