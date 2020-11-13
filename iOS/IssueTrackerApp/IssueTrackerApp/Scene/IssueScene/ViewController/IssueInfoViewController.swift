@@ -40,7 +40,6 @@ class IssueInfoViewController: UIViewController {
   }
   
   private func configureIssueInfoCollectionView() {
-    issueInfoCollectionView.collectionViewLayout = LeftAlignedCollectionViewFlowLayout()
     issueInfoCollectionView.register(UserCell.self)
     issueInfoCollectionView.register(InnerLabelCell.self)
     issueInfoCollectionView.register(IssueInfoMileStoneCell.self)
