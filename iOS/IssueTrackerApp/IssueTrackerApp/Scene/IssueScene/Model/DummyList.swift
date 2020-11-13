@@ -34,11 +34,11 @@ struct DummyList: Hashable {
   ]
   
   var dummyUsers: [User] = [
-    User(id: 0, name: "songjucho", password: "12345", profileImageUrl: ""),
-    User(id: 1, name: "zlrlo", password: "12345", profileImageUrl: ""),
-    User(id: 2, name: "fElix-MR", password: "12345", profileImageUrl: ""),
-    User(id: 3, name: "puba5", password: "12345", profileImageUrl: ""),
-    User(id: 4, name: "msmk530", password: "12345", profileImageUrl: ""),
+    User(id: 0, name: "songjucho", password: "12345", profileImageUrl: "https://user-images.githubusercontent.com/65107199/99013842-beb73f80-2594-11eb-9b4c-076b1cc2fca8.png"),
+    User(id: 1, name: "zlrlo", password: "12345", profileImageUrl: "https://user-images.githubusercontent.com/65107199/99013884-d7bff080-2594-11eb-8f34-d4af856c9d7c.png"),
+    User(id: 2, name: "fElix-MR", password: "12345", profileImageUrl: "https://user-images.githubusercontent.com/65107199/99013896-df7f9500-2594-11eb-8d2f-1ff7d75299dd.png"),
+    User(id: 3, name: "puba5", password: "12345", profileImageUrl: "https://user-images.githubusercontent.com/65107199/99013927-eefede00-2594-11eb-93bb-f82212602db0.png"),
+    User(id: 4, name: "msmk530", password: "12345", profileImageUrl: "https://user-images.githubusercontent.com/65107199/99013985-0d64d980-2595-11eb-92d3-b1c0ae5a2e73.png"),
   ]
   
   var dummyLabels: [Label] = [
@@ -49,6 +49,13 @@ struct DummyList: Hashable {
     Label(id: 4, labelName: "invalid", color: "#01DF3A", labelDescription: "유효하지 않은 문제"),
     Label(id: 5, labelName: "UI", color: "#01DF3A", labelDescription: "UI 관련 레이블"),
     Label(id: 6, labelName: "enhancement", color: "#01DF3A", labelDescription: "새로운 feature나 request"),
+    Label(id: 7, labelName: "fix", color: "#819FF7", labelDescription: "새로운 feature나 request"),
+    Label(id: 8, labelName: "refactor", color: "#3B0B2E", labelDescription: "코드 리팩토링"),
+    Label(id: 9, labelName: "duplicate", color: "#868A08", labelDescription: "중복된 코드"),
+    Label(id: 10, labelName: "question", color: "#FF0040", labelDescription: "질문"),
+    Label(id: 11, labelName: "wontfix", color: "#FF4000", labelDescription: "고치지 않을 코드"),
+    Label(id: 12, labelName: "HotFix", color: "#3BDF3A", labelDescription: "급하게 고쳐야 하는 에러"),
+    Label(id: 13, labelName: "오타수정", color: "#09B13A", labelDescription: "오타 수정해야하는 문제")
   ]
   
   var dummyMilestones: [Milestone] = [
