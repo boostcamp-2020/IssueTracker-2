@@ -211,8 +211,7 @@ extension LabelViewController: UpdateLabelViewDelegate {
   
   func saveButtonTouched(title: String, description: String?, colorAsHex: String) {
     let apiService = APIService()
-    let dummyLabelId = UserDefaults.standard.integer(forKey: "labelId")
-    let label = Label(id: dummyLabelId, labelName: title, color: colorAsHex, labelDescription: description)
+    let label = Label(id: dummyLabelUpdateId, labelName: title, color: colorAsHex, labelDescription: description)
     let endPoint: EndPoint<Label>
     switch isLabelUpdating {
     case true:
