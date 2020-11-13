@@ -1,7 +1,11 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 
-export default function InputTitle({ SetTitleContext, milestoneInfo }) {
+export default function InputTitle({
+  SetTitleContext,
+  milestoneInfo,
+  content,
+}) {
   const setTitle = useContext(SetTitleContext);
 
   const onChange = e => {
@@ -11,7 +15,12 @@ export default function InputTitle({ SetTitleContext, milestoneInfo }) {
   return (
     <Wrapper>
       <Title>Title</Title>
-      <TitleInput type="text" placeholder="Title" onChange={onChange} />
+      <TitleInput
+        type="text"
+        placeholder="Title"
+        value={content}
+        onChange={onChange}
+      />
     </Wrapper>
   );
 }

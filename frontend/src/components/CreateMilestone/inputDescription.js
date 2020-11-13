@@ -1,6 +1,10 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-export default function InputDescription({ SetDescContext, milestoneInfo }) {
+export default function InputDescription({
+  SetDescContext,
+  milestoneInfo,
+  content,
+}) {
   const setDesc = useContext(SetDescContext);
   const onChange = e => {
     setDesc({ ...milestoneInfo, desc: e.target.value });
@@ -8,7 +12,7 @@ export default function InputDescription({ SetDescContext, milestoneInfo }) {
   return (
     <Wrapper>
       <Description>Description</Description>
-      <DescriptionInput onChange={onChange} />
+      <DescriptionInput value={content} onChange={onChange} />
     </Wrapper>
   );
 }

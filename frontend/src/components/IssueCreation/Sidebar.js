@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PopupContent from '../Common/popup';
 
-export default ({ type, setData }) => {
+export default ({ type, setData, data }) => {
   return (
     <Sidebar>
       <Details>
@@ -29,7 +29,7 @@ export default ({ type, setData }) => {
         <PopupContent setData={setData} type={type} />
       </Details>
       {type === 'assignee' && <DescText>No one-assign yourself</DescText>}
-      {type === 'label' && <DescText>None yet</DescText>}
+      {type === 'label' && <DescText>{data}</DescText>}
       {type === 'milestone' && <DescText>No milestone</DescText>}
     </Sidebar>
   );

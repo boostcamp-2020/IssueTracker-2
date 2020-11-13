@@ -43,7 +43,7 @@ const IssueDetail = props => {
 const CommentBody = styled.div`
   width: 80%;
   display: flex;
-  height: 500px;
+  height: 600px;
   margin: auto;
 `;
 const IssueCommentWrap = styled.div`

@@ -13,7 +13,10 @@ const useFetch = (state, callback, url) => {
 
   const fetchInitialData = async () => {
     setLoading(true);
-    const response = await fetch(url, { method: 'GET', credentials: 'include' });
+    const response = await fetch(url, {
+      method: 'GET',
+      credentials: 'include',
+    });
     const initialData = await response.json();
     callback(initialData.milestonesInfo);
     setLoading(false);
@@ -38,6 +41,7 @@ const List = ({ milestones, setMilestones, loading, milestoneService }) => {
           setMilestones={setMilestones}
           id={milestone.id}
           milestoneService={milestoneService}
+          data={milestone}
         />
       </Milestone>
     ));

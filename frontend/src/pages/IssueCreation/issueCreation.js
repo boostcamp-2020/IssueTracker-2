@@ -25,7 +25,7 @@ const IssueCreation = () => {
   });
 
   const [assignees, setAssignees] = useState([]);
-  const [labels, setLabels] = useState([]);
+  const [labels, setLabels] = useState(['None yet']);
   const [milestone, setMilestone] = useState('');
 
   return (
@@ -40,7 +40,7 @@ const IssueCreation = () => {
         </WriteArea>
         <SelectArea>
           <Sidebar setData={setAssignees} type="assignee" />
-          <Sidebar setData={setLabels} type="label" />
+          <Sidebar data={labels} setData={setLabels} type="label" />
           <Sidebar setData={setMilestone} type="milestone" />
         </SelectArea>
       </IssueCreationBody>

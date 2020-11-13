@@ -1,6 +1,10 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-export default function InputDueDate({ SetDueDateContext, milestoneInfo }) {
+export default function InputDueDate({
+  SetDueDateContext,
+  milestoneInfo,
+  content,
+}) {
   const setDueDate = useContext(SetDueDateContext);
   const onChange = e => {
     setDueDate({ ...milestoneInfo, dueDate: e.target.value });
@@ -9,7 +13,7 @@ export default function InputDueDate({ SetDueDateContext, milestoneInfo }) {
   return (
     <Wrapper>
       <DueDate>Due Date(optional)</DueDate>
-      <DueDateInput type="date" onChange={onChange} />
+      <DueDateInput type="date" value={content} onChange={onChange} />
     </Wrapper>
   );
 }

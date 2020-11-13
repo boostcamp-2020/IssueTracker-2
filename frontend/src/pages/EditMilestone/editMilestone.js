@@ -7,6 +7,7 @@ import { useHistory } from 'react-router-dom';
 
 const EditMilestone = ({ milestoneService }) => {
   const id = useHistory().location.state.id;
+  const data = useHistory().location.state.data;
   const history = useHistory();
   if (!document.cookie.includes('jwt')) {
     history.push('/');
@@ -16,7 +17,12 @@ const EditMilestone = ({ milestoneService }) => {
     <>
       <Header />
       <NavButton />
-      <InputForm milestoneService={milestoneService} type="edit" id={id} />
+      <InputForm
+        milestoneService={milestoneService}
+        type="edit"
+        id={id}
+        data={data}
+      />
       <Footer />
     </>
   );
