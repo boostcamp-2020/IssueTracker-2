@@ -9,9 +9,9 @@ exports.labelService = async req => {
   }
 };
 
-
 exports.deleteLabelService = async req => {
   try {
+    console.log(req.body);
     const deleteLabelId = await labels.delete(req.body);
     return { status: 202, message: 'label delete success', deleteLabelId };
   } catch (err) {
@@ -19,12 +19,11 @@ exports.deleteLabelService = async req => {
   }
 };
 
-
 exports.updateLabelService = async req => {
   try {
     const updatedLabelId = await labels.update(req.body);
     return { status: 202, message: 'label update 성공', updatedLabelId };
-} catch (err) {
+  } catch (err) {
     throw err;
   }
 };

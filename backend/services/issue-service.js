@@ -5,26 +5,25 @@ const milestones = require('../models/milestones');
 const labels = require('../models/labels');
 const db = require('../db');
 
-
 exports.createIssue = async req => {
   try {
     let reqData = JSON.stringify(req.body);
-    reqData = JSON.parse(reqData); 
-    
-    const issueData = { 
-      user_sid : reqData.user_sid,
-      issue_content : reqData.issue_content,
-      issue_name : reqData.issue_name,
-      milestone_id : reqData.milestone_id,
-      issue_status : reqData.issue_status,
-      assignee_id : reqData.assignee_id
+    reqData = JSON.parse(reqData);
+
+    const issueData = {
+      user_sid: reqData.user_sid,
+      issue_content: reqData.issue_content,
+      issue_name: reqData.issue_name,
+      milestone_id: reqData.milestone_id,
+      issue_status: reqData.issue_status,
+      assignee_id: reqData.assignee_id,
     };
 
-    const labelData = reqData.labelArray; 
-    const assigneeData = reqData.assigneeArray; 
+    const labelData = reqData.labelArray;
+    const assigneeData = reqData.assigneeArray;
 
     const connection = await db.pool.getConnection(async conn => conn);
-    connection.beginTransaction(); 
+    connection.beginTransaction();
 
     const issue_id = await issues.create(connection, issueData);
 
@@ -36,12 +35,12 @@ exports.createIssue = async req => {
       await issueAssignees.create(connection, { issue_id, assignee_id });
     });
 
-    connection.commit(); 
+    connection.commit();
     connection.release();
 
-    return { status: 202, message: '이슈 등록 성공', issue_id};
+    return { status: 202, message: '이슈 등록 성공', issue_id };
   } catch (err) {
-    connection.rollback(); 
+    connection.rollback();
     connection.release();
     throw err;
   }
