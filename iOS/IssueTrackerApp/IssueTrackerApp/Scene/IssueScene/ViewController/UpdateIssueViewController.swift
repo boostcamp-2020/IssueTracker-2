@@ -50,8 +50,9 @@ class UpdateIssueViewController: UIViewController {
     let apiService = APIService()
     let dummyIssueId = UserDefaults.standard.integer(forKey: "issueId")
     let comment: Comment
+    let labels = DummyList.randomLabel()
     let milestone = Milestone(id: 0, milestoneName: "마일스톤 \(dummyIssueId)", milestoneDescription: nil, endDate: "", status: 0, openCount: 1, closeCount: 3)
-    var issue = Issue(id: dummyIssueId, userSid: 0, issueName: titleTextField, issueAuthor: "", comment: [], label: [], milestone: milestone, issueStatus: true, assignee: [])
+    var issue = Issue(id: dummyIssueId, userSid: 0, issueName: titleTextField, issueAuthor: "", comment: [], label:labels, milestone: milestone, issueStatus: true, assignee: [])
     if issueContentTextView.text != nil && issueContentTextView.text != "" {
       let dateFormatter = DateFormatter()
       dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -60,7 +61,7 @@ class UpdateIssueViewController: UIViewController {
         comment = Comment(writerId: 0, description: text, createAt: dateAsString)
         var commentArray: [Comment] = []
         commentArray.append(comment)
-        issue = Issue(id: dummyIssueId, userSid: 0, issueName: titleTextField, issueAuthor: "", comment: commentArray, label: [], milestone: milestone, issueStatus: true, assignee: [])
+        issue = Issue(id: dummyIssueId, userSid: 0, issueName: titleTextField, issueAuthor: "", comment: commentArray, label: labels, milestone: milestone, issueStatus: true, assignee: [])
       }
     }
     let endPoint = IssueEndPoint.postIssue(issue: issue).endPoint
