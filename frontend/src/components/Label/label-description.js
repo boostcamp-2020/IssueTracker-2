@@ -82,8 +82,10 @@ const LabelManageButton = styled.a`
 `;
 
 const LabelTag = styled.div`
-  padding: 0 5px;
+  padding: 0.4em 0.7em;
+  border-radius: 15px;
   background: ${props => props.backgroundColor};
   color: ${props => props.textColor};
   width: fit-content;
+  font-size: 0.9em;
 `;

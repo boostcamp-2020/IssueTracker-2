@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { MilestoneIcon, IssueOpenedIcon } from '@primer/octicons-react';
+import { useHistory } from 'react-router-dom';
 
 export default function IssueUnit({
   issueData,
@@ -9,6 +10,7 @@ export default function IssueUnit({
   index,
   setIsAllChecked,
 }) {
+  const history = useHistory();
   const handleCheckbox = e => {
     let newCheckList = [...isCheckList];
     if (!e.target.checked) {
@@ -17,6 +19,9 @@ export default function IssueUnit({
     newCheckList[index] = e.target.checked;
 
     setIsCheckList(newCheckList);
+  };
+  const onClickIssueName = () => {
+    history.push({ pathname: '/issue/1', state: issueData });
   };
   return (
     <Wrapper>
@@ -30,14 +35,20 @@ export default function IssueUnit({
       </IssueIconWrapper>
       <LeftContent>
         <LeftTopContent>
-          <IssueTitle>{issueData.issue_name}</IssueTitle>
-          <Labels>
-            <Label color={issueData.color}>{issueData.label_name}</Label>
-          </Labels>
+          <IssueTitle onClick={onClickIssueName}>
+            {issueData.issue_name}
+          </IssueTitle>
+          {issueData.label_name.map(labelData => (
+            <Labels>
+              <Label color={labelData.color}>{labelData.label_name}</Label>
+            </Labels>
+          ))}
         </LeftTopContent>
         <LeftDownContent>
           <IssueInfo>
-            #115 opened 12 hours ago by {issueData.nickname}
+            #{issueData.id} opened {issueData.created_at.substring(0, 10)} by{' '}
+            {'  '}
+            {issueData.nickname}
           </IssueInfo>
           <MilestoneInfo>
             <MilestoneIcon size={16} />
@@ -54,6 +65,7 @@ const Wrapper = styled.div`
   padding: 1.5em;
   border-left: 1px solid rgba(0, 0, 0, 0.1);
   border-right: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
 `;
 
@@ -73,10 +85,11 @@ const LeftContent = styled.div`
 const IssueTitle = styled.span`
   font-weight: bold;
   font-size: 1.1em;
+  cursor: pointer;
 `;
 
 const Labels = styled.span`
-  margin-left: 2em;
+  margin-left: 1em;
 `;
 
 const MilestoneInfo = styled.span`

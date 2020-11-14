@@ -8,13 +8,14 @@ export default function RightContent({
   setMilestones,
   id,
   milestoneService,
+  data,
 }) {
   const history = useHistory();
 
   const onClickEdit = () => {
     history.push({
       pathname: '/milestone/edit',
-      state: { id: id },
+      state: { id: id, data: data },
     });
   };
 
@@ -24,28 +25,35 @@ export default function RightContent({
   };
 
   const deleteMilestone = () => {
-    milestoneService.deleteMilestone(`${process.env.SERVER_URL}/api/milestone?id=${id}`);
-
+    milestoneService.deleteMilestone(
+      `${process.env.SERVER_URL}/api/milestone?id=${id}`,
+    );
   };
 
   const closeMilestone = () => {
-    milestoneService.updateMilestone(`${process.env.SERVER_URL}/api/milestone`, {
-      id: id,
-      milestone_name: milestone.milestone_name,
-      milestone_description: milestone.milestone_description,
-      end_date: milestone.end_date,
-      status: 1,
-    });
+    milestoneService.updateMilestone(
+      `${process.env.SERVER_URL}/api/milestone`,
+      {
+        id: id,
+        milestone_name: milestone.milestone_name,
+        milestone_description: milestone.milestone_description,
+        end_date: milestone.end_date,
+        status: 1,
+      },
+    );
   };
 
   const openMilestone = () => {
-    milestoneService.updateMilestone(`${process.env.SERVER_URL}/api/milestone`, {
-      id: id,
-      milestone_name: milestone.milestone_name,
-      milestone_description: milestone.milestone_description,
-      end_date: milestone.end_date,
-      status: 0,
-    });
+    milestoneService.updateMilestone(
+      `${process.env.SERVER_URL}/api/milestone`,
+      {
+        id: id,
+        milestone_name: milestone.milestone_name,
+        milestone_description: milestone.milestone_description,
+        end_date: milestone.end_date,
+        status: 0,
+      },
+    );
   };
 
   const onClickDelete = async () => {

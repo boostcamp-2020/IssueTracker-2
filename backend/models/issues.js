@@ -1,13 +1,10 @@
 const db = require('../db');
 const util = require('../util');
 
-exports.create = async (connection, {
-  user_sid,
-  issue_content,
-  issue_name,
-  milestone_id,
-  issue_status,
-}) => {
+exports.create = async (
+  connection,
+  { user_sid, issue_content, issue_name, milestone_id, issue_status },
+) => {
   try {
     let sql =
       'INSERT INTO issues (user_sid, issue_content, issue_name, created_at,milestone_id,issue_status) VALUES ( ?, ?, ?, ?, ?, ?)';
@@ -19,7 +16,7 @@ exports.create = async (connection, {
       milestone_id,
       issue_status,
     ]);
-  
+
     return insertId;
   } catch (err) {
     throw new Error(err);
@@ -29,7 +26,7 @@ exports.create = async (connection, {
 exports.getAll = async ({ column, condition }) => {
   try {
     const sql = `
-    select i.issue_name, i.id,i.created_at, i.issue_status, l.label_name, l.color, m.milestone_name, u.profile_image_url,u.nickname
+    select i.issue_name, i.id,i.created_at,i.issue_content, i.issue_status, l.label_name, l.color, m.milestone_name, u.profile_image_url,u.nickname
     from issues as i
     left join issue_labels as il
     on i.id = il.issue_id

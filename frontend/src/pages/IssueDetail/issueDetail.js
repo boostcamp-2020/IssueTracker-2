@@ -16,30 +16,23 @@ const IssueDetail = props => {
   if (!document.cookie.includes('jwt')) {
     history.push('/');
   }
-
+  const issueInfo = history.location.state;
+  console.log(issueInfo);
   return (
     <>
       <Header />
-      <IssueInfo issueNumber={id} />
+      <IssueInfo issueInfo={issueInfo} />
       <CommentBody>
         <IssueCommentWrap>
           <Comment>
-            <Profile />
-            <Comments />
+            <Profile profile={issueInfo.profile_image_url} />
+            <Comments issueInfo={issueInfo} />
           </Comment>
-          <Comment>
-            <Profile />
-            <Comments />
-          </Comment>
-          <WriteArea>
-            <Profile />
-            <CommentForm />
-          </WriteArea>
         </IssueCommentWrap>
         <SelectArea>
-          <Sidebar />
-          <Sidebar />
-          <Sidebar />
+          <Sidebar type="assignee" />
+          <Sidebar type="label" />
+          <Sidebar type="milestone" />
         </SelectArea>
       </CommentBody>
       <Footer />
@@ -48,9 +41,9 @@ const IssueDetail = props => {
 };
 
 const CommentBody = styled.div`
-  width: 90%;
+  width: 80%;
   display: flex;
-  height: 700px;
+  height: 600px;
   margin: auto;
 `;
 const IssueCommentWrap = styled.div`
@@ -61,6 +54,7 @@ const IssueCommentWrap = styled.div`
 const Comment = styled.div`
   display: flex;
   width: 100%;
+
   margin-bottom: 2em;
 `;
 const WriteArea = styled.div`

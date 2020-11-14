@@ -75,6 +75,7 @@ export default function LabelEditTab({
                 value={newLabelInfo.labelColor}
               />
             </ColorInputArea>
+            <ColorSpec color={newLabelInfo.labelColor} />
           </LabelColorArea>
         </LabelDetailArea>
         <LabelAddButtonArea>
@@ -96,21 +97,24 @@ const Wrapper = styled.div`
 
 const InputList = styled.div`
   display: flex;
-  justify-content: space-between;
+
+  gap: 5em;
 `;
 
 const LabelNameArea = styled.div`
-  width: 200px;
+  width: 300px;
 `;
 
 const LabelDetailArea = styled.div`
   width: 500px;
   display: flex;
   justify-content: space-between;
+  position: relative;
 `;
 
 const LabelDescriptionArea = styled.div`
   width: 20rem;
+  position: relative;
 `;
 
 const LabelColorArea = styled.div`
@@ -128,10 +132,14 @@ const InputTitle = styled.p`
 
 const AddButtonsWrapper = styled.div`
   display: flex;
+  gap: 1em;
+  position: absolute;
+  right: 2em;
 `;
 
 const ColorInputArea = styled.div`
   display: flex;
+  width: 15em;
 `;
 
 const InputTextBox = styled.input`
@@ -142,4 +150,17 @@ const InputTextBox = styled.input`
   padding: 0.2rem 0.5rem;
   width: 100%;
   height: 2rem;
+`;
+
+const ColorSpec = styled.div`
+  width: 2em;
+  height: 2em;
+
+  ${props => {
+    return `background-color:${props.color};`;
+  }}
+
+  border-radius: 20px;
+  position: absolute;
+  top: -3.5em;
 `;

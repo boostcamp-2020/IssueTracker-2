@@ -25,9 +25,17 @@ export default function ListForm(props) {
   };
 
   const handleFilterOpenIssue = () => {
+    if (props.issueFilter === 1) {
+      props.setIssueFilter(0);
+      return;
+    }
     props.setIssueFilter(1);
   };
   const handleFilterCloseIssue = () => {
+    if (props.issueFilter === 2) {
+      props.setIssueFilter(0);
+      return;
+    }
     props.setIssueFilter(2);
   };
 
@@ -43,22 +51,12 @@ export default function ListForm(props) {
           />
           <IssueOpenedIcon size={18} />
           <Open onClick={handleFilterOpenIssue}>
-            <Count>
-              {
-                props.issueListData.filter(issueData => !issueData.issue_status)
-                  .length
-              }
-            </Count>
+            <Count>{props.issueCount.close}</Count>
             <span>Open</span>
           </Open>
           <CheckIcon size={20} />
           <Closed onClick={handleFilterCloseIssue}>
-            <Count>
-              {
-                props.issueListData.filter(issueData => issueData.issue_status)
-                  .length
-              }
-            </Count>
+            <Count>{props.issueCount.open}</Count>
             <span>Closed</span>
           </Closed>
           <IssueCount>
@@ -99,7 +97,7 @@ export default function ListForm(props) {
     if (type === 'label') {
       return (
         <HeaderWrapper>
-          <LabelCount>13</LabelCount>
+          <LabelCount>{props.count}</LabelCount>
           <LabelTitle>labels</LabelTitle>
         </HeaderWrapper>
       );
@@ -122,7 +120,7 @@ const LabelTitle = styled.span`
   font-weight: bold;
 `;
 const Wrapper = styled.div`
-  width: 90%;
+  width: 80%;
   min-height: 25em;
   margin: auto;
 `;
@@ -179,6 +177,7 @@ const List = styled.div`
 `;
 
 const Condition = styled.summary`
+  outline: none;
   cursor: pointer;
 `;
 const FilteringConditions = styled.div`

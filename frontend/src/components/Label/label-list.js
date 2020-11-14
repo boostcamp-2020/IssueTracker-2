@@ -21,6 +21,7 @@ export default function LabelList({ labelListData, getLabelList }) {
         </LabelDescriptionList>
       }
       type="label"
+      count={labelListData.length}
     />
   );
 }
