@@ -42,6 +42,9 @@
 
 <br>
 
+### 배포
+[배포사이트](http://101.101.218.59:8080/)
+
 ### 작업 진행 상황
 
 [![GitHub Open Issues](https://img.shields.io/github/issues-raw/boostcamp-2020/IssueTracker-2?color=green)](https://github.com/boostcamp-2020/IssueTracker-2/issues)
