@@ -66,7 +66,7 @@
 
 ![ERD](./docs/images/erd.png)
 
-### 주요 기능
+### 🌟 주요 기능
 
 ### OAuth Login (GitHub)
 > GitHub 계정으로 로그인 가능
