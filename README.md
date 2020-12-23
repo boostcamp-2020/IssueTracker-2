@@ -65,3 +65,26 @@
 <br>
 
 ![ERD](./docs/images/erd.png)
+
+### 🌟 주요 기능
+
+### OAuth Login (GitHub)
+> GitHub 계정으로 로그인 가능
+
+![oauth](https://user-images.githubusercontent.com/68647194/102999859-2b96ff80-456d-11eb-85c9-148e0752ede7.gif)
+
+### Label
+> Label 추가, 수정, 삭제 가능
+
+![label](https://user-images.githubusercontent.com/68647194/102999964-6b5de700-456d-11eb-805d-193291c49a25.gif)
+
+### Milestone
+> Milestone 추가, 수정, 삭제, Open/Close 가능
+
+![마일스톤](https://user-images.githubusercontent.com/68647194/103000025-8af50f80-456d-11eb-88ed-e38f1889e208.gif)
+
+### Issue
+> Issue 추가 가능, 마크다운 Preview 기능 지원
+
+![new 이슈](https://user-images.githubusercontent.com/68647194/103000056-97796800-456d-11eb-94ef-705d50282b03.gif)
+
